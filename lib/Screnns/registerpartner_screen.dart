@@ -6,12 +6,12 @@ import '../rounded_button.dart';
 import 'home_screen.dart';
 import 'login_screen.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 
 class RegisterPartnerScreen extends StatefulWidget {
   const RegisterPartnerScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _RegisterScreenState createState() => _RegisterScreenState();
 }
 
@@ -23,7 +23,7 @@ class _RegisterScreenState extends State<RegisterPartnerScreen> {
   String _password = '';
   String _image = '';
   String _category = '';
-  int _roleId = 3;
+  final int _roleId = 3;
 
   List<String> categories = [
     '',

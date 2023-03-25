@@ -43,7 +43,7 @@ class AuthServices {
       "roleId": roleId,
     };
     var body = json.encode(data);
-    var url = Uri.parse(baseURL + 'user/registerpartner');
+    var url = Uri.parse('${baseURL}user/registerpartner');
     http.Response response = await http.post(
       url,
       headers: headers,
@@ -59,7 +59,7 @@ class AuthServices {
       "password": password,
     };
     var body = json.encode(data);
-    var url = Uri.parse(baseURL + 'user/login');
+    var url = Uri.parse('${baseURL}partner/login');
     http.Response response = await http.post(
       url,
       headers: headers,
