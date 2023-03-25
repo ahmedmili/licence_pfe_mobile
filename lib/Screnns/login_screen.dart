@@ -24,34 +24,61 @@ class _LoginScreenState extends State<LoginScreen> {
     return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
   }
 
-  loginPressed(BuildContext context) async {
+  Future<void> loginPressed(BuildContext context) async {
     if (_email.isNotEmpty && _password.isNotEmpty) {
       if (!isValidEmail(_email)) {
         errorSnackBar(context, 'Invalid email');
         return;
       }
-      http.Response response = await AuthServices.login(_email, _password);
-      Map responseMap = jsonDecode(response.body);
-      if (response.statusCode == 200) {
-        String token = responseMap['token'];
-        if (token != null && token.isNotEmpty) {
-          // store the token locally for future use
-          // e.g. using Shared Preferences
-          // then navigate to HomeScreen
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (BuildContext context) => const HomeScreen(),
-            ),
-          );
-        } else {
-          // handle authentication error
-          errorSnackBar(context, 'Invalid email or password');
+
+      try {
+        // Try to login as user
+        http.Response response =
+            await AuthServices.login(_email, _password, 'user');
+        Map responseMap = jsonDecode(response.body);
+
+        if (response.statusCode == 200) {
+          // Login successful, navigate to HomeScreen
+          String token = responseMap['token'];
+          if (token != null && token.isNotEmpty) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => const HomeScreen()),
+            );
+            return;
+          }
         }
-      } else {
-        // handle other errors
-        errorSnackBar(context, responseMap.values.first);
+      } catch (e) {
+        // Catch any errors and move on to the next attempt
+        print("Error: $e");
       }
+
+      try {
+        // Try to login as partner
+        http.Response response =
+            await AuthServices.login(_email, _password, 'partner');
+        Map responseMap = jsonDecode(response.body);
+
+        if (response.statusCode == 200) {
+          // Login successful as partner, navigate to PartnerScreen
+          String token = responseMap['token'];
+          if (token != null && token.isNotEmpty) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => const HomeScreen()),
+            );
+            return;
+          }
+        }
+      } catch (e) {
+        // Catch any errors and handle appropriately
+        print("Error: $e");
+      }
+
+      // If we reach this point, both login attempts have failed
+      errorSnackBar(context, 'Invalid email or password');
     } else {
       errorSnackBar(context, 'enter all required fields');
     }

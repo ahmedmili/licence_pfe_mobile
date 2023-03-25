@@ -53,13 +53,14 @@ class AuthServices {
     return response;
   }
 
-  static Future<http.Response> login(String email, String password) async {
+  static Future<http.Response> login(
+      String email, String password, String userType) async {
     Map data = {
       "email": email,
       "password": password,
     };
     var body = json.encode(data);
-    var url = Uri.parse('${baseURL}partner/login');
+    var url = Uri.parse('${baseURL}$userType/login');
     http.Response response = await http.post(
       url,
       headers: headers,
