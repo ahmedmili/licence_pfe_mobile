@@ -23,7 +23,31 @@ class _RegisterScreenState extends State<RegisterPartnerScreen> {
   String _password = '';
   String _image = '';
   String _category = '';
+  TimeOfDay _openingtime = TimeOfDay(hour: 8, minute: 30);
+  TimeOfDay _closingtime = TimeOfDay(hour: 9, minute: 30);
   final int _roleId = 3;
+
+  void _showTimePicker() {
+    showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    ).then((value) {
+      setState(() {
+        _openingtime = value!;
+      });
+    });
+  }
+
+  void _showClosingTimePicker() {
+    showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    ).then((value) {
+      setState(() {
+        _closingtime = value!;
+      });
+    });
+  }
 
   List<String> categories = [
     '',
@@ -37,13 +61,22 @@ class _RegisterScreenState extends State<RegisterPartnerScreen> {
     'LOCAL PRODUCERS'
   ];
 
-  createAccountPressed() async {
+  Future<void> createAccountPressed() async {
     bool emailValid = RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(_email);
     if (emailValid) {
-      http.Response response = await AuthServices.registerpartner(_name,
-          _description, _email, _phone, _password, _image, _category, _roleId);
+      http.Response response = await AuthServices.registerpartner(
+          _name,
+          _description,
+          _email,
+          _phone,
+          _password,
+          _image,
+          _category,
+          _openingtime.format(context),
+          _closingtime.format(context),
+          _roleId);
       Map responseMap = jsonDecode(response.body);
       if (response.statusCode == 200) {
         Navigator.push(
@@ -155,6 +188,37 @@ class _RegisterScreenState extends State<RegisterPartnerScreen> {
                   _category = value as String;
                 });
               },
+            ),
+            Text(
+              _openingtime.format(context).toString(),
+              style: TextStyle(fontSize: 10),
+            ),
+
+            // button
+            MaterialButton(
+              onPressed: _showTimePicker,
+              child: const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text('PICK TIME',
+                    style: TextStyle(color: Colors.white, fontSize: 5)),
+              ),
+              color: Colors.blue,
+            ),
+
+            Text(
+              _closingtime.format(context).toString(),
+              style: TextStyle(fontSize: 10),
+            ),
+
+            // button
+            MaterialButton(
+              onPressed: _showClosingTimePicker,
+              child: const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text('PICK TIME',
+                    style: TextStyle(color: Colors.white, fontSize: 5)),
+              ),
+              color: Colors.blue,
             ),
 
             RoundedButton(

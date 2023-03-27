@@ -31,6 +31,8 @@ class AuthServices {
       String password,
       String image,
       String category,
+      String openingtime,
+      String closingtime,
       int roleId) async {
     Map data = {
       "name": name,
@@ -40,6 +42,8 @@ class AuthServices {
       "password": password,
       "image": image,
       "category": category,
+      "openingtime": openingtime,
+      "closingtime": closingtime,
       "roleId": roleId,
     };
     var body = json.encode(data);
