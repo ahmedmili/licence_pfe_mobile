@@ -47,92 +47,96 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        centerTitle: true,
+        title: Text('Register User'),
         elevation: 0,
-        title: const Text(
-          'Registration',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            TextField(
-              decoration: const InputDecoration(
-                hintText: 'Name',
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 20,
               ),
-              onChanged: (value) {
-                _name = value;
-              },
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            TextField(
-              decoration: const InputDecoration(
-                hintText: 'Email',
+              TextField(
+                decoration: const InputDecoration(
+                    labelText: 'Name',
+                    contentPadding: EdgeInsets.all(10),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(width: 1, color: Colors.black))),
+                onChanged: (value) {
+                  _name = value;
+                },
               ),
-              onChanged: (value) {
-                _email = value;
-              },
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            TextField(
-              decoration: const InputDecoration(
-                hintText: 'Phone',
+              const SizedBox(
+                height: 30,
               ),
-              onChanged: (value) {
-                _phone = value;
-              },
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            TextField(
-              obscureText: true,
-              decoration: const InputDecoration(
-                hintText: 'Password',
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                    labelText: 'Email',
+                    contentPadding: EdgeInsets.all(10),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(width: 1, color: Colors.black))),
+                onChanged: (value) {
+                  _email = value;
+                },
               ),
-              onChanged: (value) {
-                _password = value;
-              },
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            RoundedButton(
-              btnText: 'Create Account',
-              onBtnPressed: () => createAccountPressed(),
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => const LoginScreen(),
-                    ));
-              },
-              child: const Text(
-                'already have an account',
-                style: TextStyle(
-                  decoration: TextDecoration.underline,
+              const SizedBox(
+                height: 30,
+              ),
+              TextField(
+                decoration: const InputDecoration(
+                    labelText: 'Phone',
+                    contentPadding: EdgeInsets.all(10),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(width: 1, color: Colors.black))),
+                onChanged: (value) {
+                  _phone = value;
+                },
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              TextField(
+                obscureText: true,
+                decoration: const InputDecoration(
+                    labelText: 'Password',
+                    contentPadding: EdgeInsets.all(10),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(width: 1, color: Colors.black))),
+                onChanged: (value) {
+                  _password = value;
+                },
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              RoundedButton(
+                btnText: 'REGISTER',
+                onBtnPressed: () => createAccountPressed(),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => const LoginScreen(),
+                      ));
+                },
+                child: const Text(
+                  'already have an account',
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

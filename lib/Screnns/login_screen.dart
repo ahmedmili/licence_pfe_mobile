@@ -88,110 +88,106 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        centerTitle: true,
+        title: Text('Login'),
         elevation: 0,
-        title: const Text(
-          'Login',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Form(
-          // 2
-          key: _formKey, // 1
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                // 2
-                decoration: const InputDecoration(
-                  hintText: 'Enter your email',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Email is required';
-                  } else if (!isValidEmail(value)) {
-                    return 'Invalid email format';
-                  }
-                  return null;
-                },
-                onChanged: (value) {
-                  _email = value;
-                },
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              TextFormField(
-                // 2
-                obscureText: true,
-                decoration: const InputDecoration(
-                  hintText: 'Enter your password',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Password is required';
-                  }
-                  return null;
-                },
-                onChanged: (value) {
-                  _password = value;
-                },
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              RoundedButton(
-                btnText: 'LOG IN',
-                onBtnPressed: () => loginPressed(context),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            const RegisterUserScreen(),
-                      ));
-                },
+      body: Form(
+        key: _formKey,
+        child: ListView(
+          padding: EdgeInsets.all(32),
+          children: [
+            TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(
+                  labelText: 'Email',
+                  contentPadding: EdgeInsets.all(10),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(width: 1, color: Colors.black))),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Email is required';
+                } else if (!isValidEmail(value)) {
+                  return 'Invalid email format';
+                }
+                return null;
+              },
+              onChanged: (value) {
+                _email = value;
+              },
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              obscureText: true,
+              decoration: const InputDecoration(
+                  labelText: 'Password',
+                  contentPadding: EdgeInsets.all(10),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(width: 1, color: Colors.black))),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Password is required';
+                }
+                return null;
+              },
+              onChanged: (value) {
+                _password = value;
+              },
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            RoundedButton(
+              btnText: 'LOGIN',
+              onBtnPressed: () => loginPressed(context),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          const RegisterUserScreen(),
+                    ));
+              },
+              child: Center(
                 child: const Text(
                   'Register As User',
                   style: TextStyle(
                     decoration: TextDecoration.underline,
+                    color: Colors.blue,
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 40,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            const RegisterPartnerScreen(),
-                      ));
-                },
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          const RegisterPartnerScreen(),
+                    ));
+              },
+              child: Center(
                 child: const Text(
                   'Register As Partner',
                   style: TextStyle(
                     decoration: TextDecoration.underline,
+                    color: Colors.blue,
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
