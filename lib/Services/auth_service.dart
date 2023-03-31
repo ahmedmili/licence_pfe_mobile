@@ -21,7 +21,7 @@ class AuthServices {
       headers: headers,
       body: body,
     );
-    print(response.body);
+    // print(response.body);
     return response;
   }
 
@@ -36,14 +36,14 @@ class AuthServices {
       String openingtime,
       String closingtime,
       int roleId) async {
-    var stream = new http.ByteStream(image.openRead());
-    var length = await image.length();
+    // var stream = http.ByteStream(image.openRead());
+    // var length = await image.length();
     var uri = Uri.parse('${baseURL}user/registerpartner');
-    var request = new http.MultipartRequest("POST", uri);
+    var request = http.MultipartRequest("POST", uri);
 
     // ignore: unnecessary_new
-    var multipartFile = new http.MultipartFile('image', stream, length,
-        filename: basename(image.path));
+    // var multipartFile = new http.MultipartFile('image', stream, length,
+    //     filename: basename(image.path));
 
     Map<String, String> data = {
       "name": name,
@@ -58,17 +58,18 @@ class AuthServices {
     };
 
     request.fields.addAll(data);
-    request.files.add(multipartFile);
+    request.files.add(await http.MultipartFile.fromPath('image', image.path));
+    // request.files.add(multipartFile);
     request.headers.addAll(headers);
 
     var response = await request.send();
     var responseString = await response.stream.bytesToString();
-
+    print(responseString);
     if (response.statusCode == 200) {
-      print(responseString);
       return http.Response(responseString, response.statusCode);
     } else {
-      throw Exception('Failed to load data from API');
+      throw responseString;
+      // throw Exception('Failed to load data from API');
     }
   }
 

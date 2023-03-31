@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:intl/intl.dart';
 import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -24,36 +25,60 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
   String _phone = '';
   String _password = '';
   late File? _image = null;
-  String _category = '';
-  TimeOfDay _openingtime = TimeOfDay(hour: 8, minute: 30);
-  TimeOfDay _closingtime = TimeOfDay(hour: 9, minute: 30);
+  String _category = 'hi';
+  // TimeOfDay _openingtime = TimeOfDay(hour: 8, minute: 30);
+  String _openingtime = "";
+  // TimeOfDay _closingtime = TimeOfDay(hour: 9, minute: 30);
+  late String _closingtime = "hello";
   final int _roleId = 3;
   String _imageName = '';
 
-  void _showTimePicker() {
-    showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.now(),
-    ).then((value) {
-      if (value != null) {
-        setState(() {
-          _openingtime = value;
+  void _showTimePicker() async {
+    TimeOfDay? pickedTime = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.now(),
+        builder: (BuildContext context, Widget? child) {
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
+            child: child!,
+          );
         });
-      }
-    });
+    if (pickedTime != null) {
+      DateTime dateTime = DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day,
+        pickedTime.hour,
+        pickedTime.minute,
+      );
+      setState(() {
+        _openingtime = DateFormat('hh:mm:ss').format(dateTime);
+      });
+    }
   }
 
-  void _showClosingTimePicker() {
-    showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.now(),
-    ).then((value) {
-      if (value != null) {
-        setState(() {
-          _closingtime = value;
+  void _showClosingTimePicker() async {
+    TimeOfDay? pickedTime = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.now(),
+        builder: (BuildContext context, Widget? child) {
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
+            child: child!,
+          );
         });
-      }
-    });
+    if (pickedTime != null) {
+      DateTime dateTime = DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day,
+        pickedTime.hour,
+        pickedTime.minute,
+      );
+      setState(() {
+        _closingtime = DateFormat('hh:mm:ss').format(dateTime);
+      });
+    }
   }
 
   List<String> categories = [
@@ -108,6 +133,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
     bool emailValid = RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(_email);
+    // print(_closingtime);
     if (emailValid) {
       http.Response response = await AuthServices.registerpartner(
           _name,
@@ -117,17 +143,19 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
           _password,
           _image!,
           _category,
-          _openingtime.format(context),
-          _closingtime.format(context),
+          _openingtime,
+          _closingtime,
           _roleId);
       Map<String, dynamic> responseMap = jsonDecode(response.body);
+      // print(responseMap);
       if (response.statusCode == 200) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => const HomeScreen(),
-          ),
-        );
+        // ignore: use_build_context_synchronously
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (BuildContext context) => const HomeScreen(),
+        //   ),
+        // );
       } else {
         errorSnackBar(context, responseMap.values.first[0]);
       }
@@ -245,7 +273,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 },
               ),
               Text(
-                _openingtime.format(context).toString(),
+                _openingtime,
                 style: TextStyle(fontSize: 5),
               ),
 
@@ -261,7 +289,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               ),
 
               Text(
-                _closingtime.format(context).toString(),
+                _closingtime,
                 style: TextStyle(fontSize: 5),
               ),
 
