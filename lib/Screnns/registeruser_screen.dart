@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../Services/auth_service.dart';
 import '../Services/globals.dart';
 import '../rounded_button.dart';
@@ -19,28 +20,47 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
   String _email = '';
   String _phone = '';
   String _password = '';
-  int _roleId = 2;
+  final int _roleId = 2;
 
   createAccountPressed() async {
     bool emailValid = RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(_email);
+
     if (emailValid) {
       http.Response response = await AuthServices.register(
           _name, _email, _phone, _password, _roleId);
+
       Map responseMap = jsonDecode(response.body);
-      if (response.statusCode == 200) {
-        Navigator.push(
+
+      if (responseMap != null) {
+        if (response.statusCode == 201) {
+          String token = responseMap['token'];
+          // print(token);
+          _save(token);
+          Navigator.push(
             context,
             MaterialPageRoute(
               builder: (BuildContext context) => const HomeScreen(),
-            ));
+            ),
+          );
+        } else {
+          String errorMessage = responseMap.values.first[0].toString();
+          errorSnackBar(context, errorMessage);
+        }
       } else {
-        errorSnackBar(context, responseMap.values.first[0]);
+        errorSnackBar(context, 'An error occurred');
       }
     } else {
-      errorSnackBar(context, 'email not valid');
+      errorSnackBar(context, 'Email not valid');
     }
+  }
+
+  _save(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = "token";
+    final value = token;
+    prefs.setString(key, value);
   }
 
   @override
