@@ -41,7 +41,7 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => const HomeScreen(),
+              builder: (BuildContext context) => HomeScreen(),
             ),
           );
         } else {

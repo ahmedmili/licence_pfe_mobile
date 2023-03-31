@@ -149,13 +149,12 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
       Map<String, dynamic> responseMap = jsonDecode(response.body);
       // print(responseMap);
       if (response.statusCode == 200) {
-        // ignore: use_build_context_synchronously
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (BuildContext context) => const HomeScreen(),
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => HomeScreen(),
+          ),
+        );
       } else {
         errorSnackBar(context, responseMap.values.first[0]);
       }
