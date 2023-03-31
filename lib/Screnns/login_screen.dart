@@ -6,6 +6,7 @@ import 'package:saverapp/Screnns/registeruser_screen.dart';
 import '../Services/auth_service.dart';
 import '../Services/globals.dart';
 import '../rounded_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,7 +18,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); // 1
-
   String _email = '';
   String _password = '';
   bool isValidEmail(String email) {
@@ -40,6 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
         if (response.statusCode == 200) {
           // Login successful, navigate to HomeScreen
           String token = responseMap['token'];
+          // print(token);
+          _save(token);
           if (token != null && token.isNotEmpty) {
             Navigator.push(
               context,
@@ -59,10 +61,12 @@ class _LoginScreenState extends State<LoginScreen> {
         http.Response response =
             await AuthServices.login(_email, _password, 'partner');
         Map responseMap = jsonDecode(response.body);
-
         if (response.statusCode == 200) {
           // Login successful as partner, navigate to PartnerScreen
+
           String token = responseMap['token'];
+          _save(token);
+
           if (token != null && token.isNotEmpty) {
             Navigator.push(
               context,
@@ -82,6 +86,20 @@ class _LoginScreenState extends State<LoginScreen> {
     } else {
       errorSnackBar(context, 'enter all required fields');
     }
+  }
+
+  _save(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = "token";
+    final value = token;
+    prefs.setString(key, value);
+  }
+
+  read() async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = "token";
+    final value = prefs.getString(key) ?? 0;
+    print('read:value');
   }
 
   @override
