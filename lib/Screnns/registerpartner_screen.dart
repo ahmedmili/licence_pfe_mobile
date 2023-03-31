@@ -125,7 +125,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (BuildContext context) => const HomeScreen(),
+            builder: (BuildContext context) => HomeScreen(),
           ),
         );
       } else {
