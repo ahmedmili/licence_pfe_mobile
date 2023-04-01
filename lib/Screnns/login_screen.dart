@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       } catch (e) {
         // Catch any errors and move on to the next attempt
-        print("Error: $e");
+        // print("Error: $e");
       }
 
       try {
@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       } catch (e) {
         // Catch any errors and handle appropriately
-        print("Error: $e");
+        // print("Error: $e");
       }
 
       // If we reach this point, both login attempts have failed
@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final prefs = await SharedPreferences.getInstance();
     final key = "token";
     final value = prefs.getString(key) ?? 0;
-    print('read:value');
+    // print('read:value');
   }
 
   @override

@@ -64,7 +64,7 @@ class AuthServices {
 
     var response = await request.send();
     var responseString = await response.stream.bytesToString();
-    print(responseString);
+    // print(responseString);
     if (response.statusCode == 200) {
       return http.Response(responseString, response.statusCode);
     } else {
@@ -86,7 +86,7 @@ class AuthServices {
       headers: headers,
       body: body,
     );
-    print(response.body);
+    // print(response.body);
     return response;
   }
 }
