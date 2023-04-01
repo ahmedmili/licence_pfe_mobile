@@ -12,7 +12,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: (Text("Add New Box")),
+        title: (const Text("Add New Box")),
       ),
       body: ListView(
         children: [

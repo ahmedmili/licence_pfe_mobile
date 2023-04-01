@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../Services/auth_service.dart';
 import '../Services/globals.dart';
 import '../rounded_button.dart';
@@ -29,7 +30,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
   // TimeOfDay _openingtime = TimeOfDay(hour: 8, minute: 30);
   String _openingtime = "";
   // TimeOfDay _closingtime = TimeOfDay(hour: 9, minute: 30);
-  late String _closingtime = "hello";
+  late String _closingtime = "";
   final int _roleId = 3;
   String _imageName = '';
 
@@ -123,6 +124,13 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
     );
   }
 
+  _save(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = "token";
+    final value = token;
+    prefs.setString(key, value);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -148,7 +156,10 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
           _roleId);
       Map<String, dynamic> responseMap = jsonDecode(response.body);
       // print(responseMap);
+
       if (response.statusCode == 200) {
+        String token = responseMap['token'];
+        _save(token);
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -167,16 +178,9 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        centerTitle: true,
+        title: Text('Register Partner'),
         elevation: 0,
-        title: const Text(
-          'Registration',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -184,60 +188,86 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
           child: Column(
             children: [
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               TextField(
                 decoration: const InputDecoration(
-                  hintText: 'Name',
+                  labelText: 'Name',
+                  contentPadding: EdgeInsets.all(10),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(width: 1, color: Colors.black)),
                 ),
                 onChanged: (value) {
                   _name = value;
                 },
               ),
-
+              const SizedBox(
+                height: 15,
+              ),
               TextField(
                 decoration: const InputDecoration(
-                  hintText: 'Description',
+                  labelText: 'Description',
+                  contentPadding: EdgeInsets.all(10),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(width: 1, color: Colors.black)),
                 ),
                 onChanged: (value) {
                   _description = value;
                 },
               ),
-
+              const SizedBox(
+                height: 15,
+              ),
               TextField(
+                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
-                  hintText: 'Email',
+                  labelText: 'Email',
+                  contentPadding: EdgeInsets.all(10),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(width: 1, color: Colors.black)),
                 ),
                 onChanged: (value) {
                   _email = value;
                 },
               ),
-
+              const SizedBox(
+                height: 15,
+              ),
               TextField(
                 decoration: const InputDecoration(
-                  hintText: 'Phone',
+                  labelText: 'Phone',
+                  contentPadding: EdgeInsets.all(10),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(width: 1, color: Colors.black)),
                 ),
                 onChanged: (value) {
                   _phone = value;
                 },
               ),
-
+              const SizedBox(
+                height: 15,
+              ),
               TextField(
                 obscureText: true,
                 decoration: const InputDecoration(
-                  hintText: 'Password',
+                  labelText: 'Password',
+                  contentPadding: EdgeInsets.all(10),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(width: 1, color: Colors.black)),
                 ),
                 onChanged: (value) {
                   _password = value;
                 },
               ),
+              const SizedBox(
+                height: 15,
+              ),
               ElevatedButton(
                 onPressed: _pickImage,
                 child: Text('Select Image'),
               ),
-              SizedBox(height: 8),
               Text(_imageName ?? 'No image selected'),
-              SizedBox(height: 8),
+              SizedBox(height: 3),
               Container(
                 width: double.infinity,
                 height: 150,
@@ -249,13 +279,16 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                     ? Center(child: const Text('No image selected'))
                     : Image.file(_image!, fit: BoxFit.cover),
               ),
+              const SizedBox(
+                height: 15,
+              ),
               // Utilisez un DropdownButtonFormField pour sélectionner la catégorie
               Text(
                 'Category',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 10,
-                ),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.blue),
               ),
               DropdownButtonFormField(
                 value: _category,
@@ -271,41 +304,58 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                   });
                 },
               ),
+              const SizedBox(
+                height: 15,
+              ),
               Text(
                 _openingtime,
-                style: TextStyle(fontSize: 5),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.blue),
               ),
 
               // button
               MaterialButton(
                 onPressed: _showTimePicker,
                 child: const Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: Text('PICK TIME',
-                      style: TextStyle(color: Colors.white, fontSize: 2)),
+                  padding: EdgeInsets.all(10.0),
+                  child: Text('Pick Opening Time',
+                      style: TextStyle(color: Colors.white, fontSize: 15)),
                 ),
                 color: Colors.blue,
               ),
 
               Text(
                 _closingtime,
-                style: TextStyle(fontSize: 5),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.blue),
               ),
 
               // button
               MaterialButton(
                 onPressed: _showClosingTimePicker,
                 child: const Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: Text('PICK TIME',
-                      style: TextStyle(color: Colors.white, fontSize: 2)),
+                  padding: EdgeInsets.all(10.0),
+                  child: Text('Pick Closing Time',
+                      style: TextStyle(color: Colors.white, fontSize: 15)),
                 ),
                 color: Colors.blue,
+              ),
+
+              const SizedBox(
+                height: 15,
               ),
 
               RoundedButton(
                 btnText: 'Create Account',
                 onBtnPressed: () => createAccountPressed(),
+              ),
+
+              const SizedBox(
+                height: 15,
               ),
 
               GestureDetector(
@@ -322,6 +372,9 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                     decoration: TextDecoration.underline,
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 15,
               ),
             ],
           ),
