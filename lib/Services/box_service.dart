@@ -16,7 +16,8 @@ class BoxServices {
       String quantity,
       File image,
       String category,
-      String status) async {
+      String status,
+      String token) async {
     var uri = Uri.parse('${baseURL}partner/boxs');
     var request = http.MultipartRequest("POST", uri);
 
@@ -35,7 +36,10 @@ class BoxServices {
     request.fields.addAll(data);
     request.files.add(await http.MultipartFile.fromPath('image', image.path));
     // request.files.add(multipartFile);
-    request.headers.addAll(headers);
+    request.headers.addAll({
+      "Content-Type": "multipart/form-data",
+      "Authorization": "Bearer $token"
+    });
 
     var response = await request.send();
     var responseString = await response.stream.bytesToString();

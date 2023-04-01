@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class BoxFormScreen extends StatefulWidget {
-  const BoxFormScreen({super.key, required String title});
+  const BoxFormScreen({required String title});
 
   @override
   State<BoxFormScreen> createState() => _BoxFormScreenState();
@@ -33,6 +33,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
   String _category = '';
   String _status = '';
   String _imageName = '';
+  late String token;
 
   List<String> categories = [
     '',
@@ -97,6 +98,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
   void initState() {
     super.initState();
     _category = categories.first;
+    readToken();
   }
 
   Future<void> createBoxPressed() async {
@@ -111,9 +113,10 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
       _image!,
       _category,
       _status,
+      token,
     );
     Map<String, dynamic> responseMap = jsonDecode(response.body);
-    // print(responseMap);
+    print(responseMap);
 
     if (response.statusCode == 200) {
       Navigator.push(
@@ -125,6 +128,14 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
     } else {
       errorSnackBar(context, responseMap.values.first[0]);
     }
+  }
+
+  Future<void> readToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      token = prefs.getString('token') ?? "0";
+    });
+    await createBoxPressed; // Appeler getPartnerBoxs() comme Future
   }
 
   @override
