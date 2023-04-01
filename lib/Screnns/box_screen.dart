@@ -24,7 +24,7 @@ class _BoxScreenState extends State<BoxScreen> {
       http.Response response = await PartnersService.getBoxs(token);
       List<dynamic> responseList = jsonDecode(response.body);
       for (var responseMap in responseList) {
-        print(responseMap);
+        // print(responseMap);
       }
     } catch (e) {
       print('Error: $e');

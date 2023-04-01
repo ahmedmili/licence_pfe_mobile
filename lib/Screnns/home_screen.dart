@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Screnns/boxform_screen.dart';
+import 'package:saverapp/Screnns/login_screen.dart';
 import 'package:saverapp/Screnns/profile_screen.dart';
 
+import '../Services/auth_service.dart';
 import 'box_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,12 +22,14 @@ class _HomeState extends State<HomeScreen> {
         actions: [
           IconButton(
             icon: Icon(Icons.exit_to_app),
-            onPressed: () {
-              //       logout().then((value) => {
-              //             Navigator.of(context).pushAndRemoveUntil(
-              //                 MaterialPageRoute(builder: (context) => Login()),
-              //                 (route) => false)
-              //           });
+            onPressed: () async {
+              await AuthServices.logout().then((value) => {
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                        (route) => false)
+                  });
+
+              // Naviguer vers l'écran de connexion
             },
           )
         ],
