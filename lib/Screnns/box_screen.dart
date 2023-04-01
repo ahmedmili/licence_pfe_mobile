@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class BoxScreen extends StatefulWidget {
-  const BoxScreen({super.key});
+  const BoxScreen({Key? key}) : super(key: key);
 
   @override
   State<BoxScreen> createState() => _BoxScreenState();
@@ -17,13 +17,18 @@ class _BoxScreenState extends State<BoxScreen> {
   void initState() {
     super.initState();
     readToken();
-    // getPartnerBoxs();
   }
 
-  getPartnerBoxs() async {
-    http.Response response = await PartnersService.getBoxs(token);
-    Map responseMap = jsonDecode(response.body);
-    print(responseMap);
+  Future<void> getPartnerBoxs() async {
+    try {
+      http.Response response = await PartnersService.getBoxs(token);
+      List<dynamic> responseList = jsonDecode(response.body);
+      for (var responseMap in responseList) {
+        print(responseMap);
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
   }
 
   Future<void> readToken() async {
@@ -31,11 +36,11 @@ class _BoxScreenState extends State<BoxScreen> {
     setState(() {
       token = prefs.getString('token') ?? "0";
     });
+    await getPartnerBoxs(); // Appeler getPartnerBoxs() comme Future
   }
 
   @override
   Widget build(BuildContext context) {
-    getPartnerBoxs();
     return Container(
       child: Center(child: Text("Boxs")),
     );
