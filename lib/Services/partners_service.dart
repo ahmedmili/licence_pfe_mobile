@@ -1,28 +1,26 @@
 import 'dart:convert';
-
+import 'package:saverapp/model/boxs.dart';
 import 'package:http/http.dart' as http;
 import 'globals.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-// read() async {
-//   final prefs = await SharedPreferences.getInstance();
-//   final String value = prefs.getString("token") ?? "0";
-//   return value;
-// }
 
 class PartnersService {
-  static Future<http.Response> getBoxs(token) async {
-    // final prefs = await SharedPreferences.getInstance();
-    // final String value = prefs.getString("token") ?? "0";
-    var url = Uri.parse('${baseURL}partner/boxs');
-    // print(value);
-    http.Response response = await http.get(
+  static Future<List<Box>> getBoxs(token) async {
+    final url = Uri.parse('${baseURL}partner/boxs');
+    final response = await http.get(
       url,
       headers: {
         "Content-Type": "application/json",
         'Authorization': 'Bearer $token'
       },
     );
-    return response;
+    if (response.statusCode == 200) {
+      List<dynamic> data = jsonDecode(response.body);
+      final box = List<Box>.from(
+        data.map((boxJson) => Box.fromJson(boxJson)),
+      );
+      return box;
+    } else {
+      throw Exception('Failed to fetch products');
+    }
   }
 }
