@@ -31,7 +31,6 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
   String _quantity = '';
   late File? _image = null;
   String _category = '';
-  String _status = '';
   String _imageName = '';
   late String token;
 
@@ -46,15 +45,6 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
     'SWEETS',
     'DRINKS',
     'VEGETARIAN',
-  ];
-
-  List<String> status = [
-    '',
-    'PENDING',
-    'ACCEPTED',
-    'REJECTED',
-    'FINISHED',
-    'EXPIRED'
   ];
 
   void _pickImage() async {
@@ -112,7 +102,6 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
       _quantity as String,
       _image!,
       _category,
-      _status,
       token,
     );
     Map<String, dynamic> responseMap = jsonDecode(response.body);
@@ -347,30 +336,6 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                 onChanged: (value) {
                   setState(() {
                     _category = value as String;
-                  });
-                },
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Text(
-                'Status',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: Colors.blue),
-              ),
-              DropdownButtonFormField(
-                value: _status,
-                items: status.map((status) {
-                  return DropdownMenuItem(
-                    value: status,
-                    child: Text(status),
-                  );
-                }).toList(),
-                onChanged: (value) {
-                  setState(() {
-                    _status = value as String;
                   });
                 },
               ),

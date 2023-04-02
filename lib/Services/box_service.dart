@@ -16,7 +16,6 @@ class BoxServices {
       String quantity,
       File image,
       String category,
-      String status,
       String token) async {
     var uri = Uri.parse('${baseURL}partner/boxs');
     var request = http.MultipartRequest("POST", uri);
@@ -30,7 +29,6 @@ class BoxServices {
       "enddate": DateTime.parse(enddate).toIso8601String(),
       "quantity": int.parse(quantity).toString(),
       "category": category,
-      "status": status,
     };
 
     request.fields.addAll(data);
