@@ -90,13 +90,18 @@ class AuthServices {
     return response;
   }
 
-  static Future<http.Response> logout() async {
+  static Future<http.Response> logout(token) async {
     var url = Uri.parse('${baseURL}partner/logout');
     http.Response response = await http.post(
       url,
-      headers: headers,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
     );
-    // print(response.body);
+    if (response.body != null && response.body.isNotEmpty) {
+      print(response.body);
+    }
     return response;
   }
 }

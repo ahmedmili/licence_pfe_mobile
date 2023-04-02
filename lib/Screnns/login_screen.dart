@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
         if (response.statusCode == 200) {
           // Login successful, navigate to HomeScreen
           String token = responseMap['token'];
-          // print(token);
+          print(token);
           _save(token);
           if (token != null && token.isNotEmpty) {
             Navigator.push(
