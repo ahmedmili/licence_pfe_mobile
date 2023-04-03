@@ -5,7 +5,7 @@ import 'globals.dart';
 
 class PartnersService {
   static Future<List<Box>> getBoxs(token) async {
-    final url = Uri.parse('${baseURL}partner/boxs');
+    final url = Uri.parse('${baseURL}user/boxs');
     final response = await http.get(
       url,
       headers: {
