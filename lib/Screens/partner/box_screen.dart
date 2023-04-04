@@ -18,7 +18,6 @@ class _BoxScreenState extends State<BoxScreen> {
   @override
   void initState() {
     super.initState();
-    readToken();
   }
 
   Future<String> readToken() async {

@@ -11,12 +11,12 @@ class SearchField extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
           contentPadding:
-              EdgeInsets.symmetric(horizontal: 32.0, vertical: 14.0),
+              const EdgeInsets.symmetric(horizontal: 32.0, vertical: 14.0),
           hintText: "To Research",
           suffixIcon: Material(
             elevation: 5.0,
             borderRadius: BorderRadius.circular(30.0),
-            child: Icon(
+            child: const Icon(
               Icons.search,
               color: Colors.black,
             ),

@@ -52,7 +52,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   builder: (BuildContext context) =>
                       const user_home.HomeScreen()),
             );
-            print('user home');
 
             return;
           }
@@ -81,7 +80,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   builder: (BuildContext context) =>
                       const partner_home.HomeScreen()),
             );
-            print('partner home');
             return;
           }
         }

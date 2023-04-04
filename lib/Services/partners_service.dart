@@ -13,6 +13,7 @@ class PartnersService {
         'Authorization': 'Bearer $token'
       },
     );
+    // print(token);
     if (response.statusCode == 200) {
       List<dynamic> data = jsonDecode(response.body);
       final box = List<Box>.from(
