@@ -39,14 +39,19 @@ class _BoxScreenState extends State<BoxScreen> {
                   itemCount: snapshot.data?.length,
                   itemBuilder: (context, index) {
                     final box = snapshot.data![index];
-                    return Container(
-                      child: BoxCard(
-                        image: box.image,
-                        title: box.title,
-                        description: box.description,
-                        newPrice: box.newprice,
-                        oldPrice: box.oldprice,
-                      ),
+                    return Column(
+                      children: [
+                        Container(
+                          child: BoxCard(
+                            image: box.image,
+                            title: box.title,
+                            description: box.description,
+                            newPrice: box.newprice,
+                            oldPrice: box.oldprice,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                      ],
                     );
                   },
                 );

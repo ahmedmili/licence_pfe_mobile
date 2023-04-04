@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/partner/box_screen.dart';
 import 'package:saverapp/widget/searchField.dart';
+import 'package:saverapp/widget/titleBox.dart';
 import '../login_screen.dart';
 import './profile_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -48,13 +49,11 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: const [
           SizedBox(height: 40.0),
-          Text(
-            "Votre texte ici",
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-          ),
           SearchField(),
           SizedBox(height: 20.0),
-          Expanded(child: BoxScreen())
+          TitleBox(),
+          SizedBox(height: 20.0),
+          Expanded(child: Center(child: BoxScreen()))
         ],
       ),
     );
