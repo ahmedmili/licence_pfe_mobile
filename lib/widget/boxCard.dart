@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saverapp/model/boxs.dart';
+import 'package:saverapp/Models/boxs.dart';
 
 // ignore: must_be_immutable
 class BoxCard extends StatelessWidget {

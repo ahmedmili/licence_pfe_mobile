@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(height: 30.0),
           TitleBox(),
           SizedBox(height: 15.0),
-          Expanded(child: Center(child: BoxScreen()))
+          Expanded(child: BoxScreen())
         ],
       ),
     );

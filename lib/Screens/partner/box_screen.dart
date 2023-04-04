@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Services/users_service.dart';
 
-import '../../model/boxs.dart';
+import '../../Models/boxs.dart';
 import '../../widget/boxCard.dart';
 
 class BoxScreen extends StatefulWidget {
@@ -36,10 +36,12 @@ class _BoxScreenState extends State<BoxScreen> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
+                  scrollDirection: Axis.horizontal,
                   itemCount: snapshot.data?.length,
                   itemBuilder: (context, index) {
                     final box = snapshot.data![index];
-                    return Column(
+                    return Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           child: BoxCard(
@@ -50,7 +52,7 @@ class _BoxScreenState extends State<BoxScreen> {
                             oldPrice: box.oldprice,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(width: 10),
                       ],
                     );
                   },
