@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:saverapp/Screnns/boxform_screen.dart';
-import 'package:saverapp/Screnns/login_screen.dart';
-import 'package:saverapp/Screnns/profile_screen.dart';
+import '../login_screen.dart';
+import './profile_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Services/auth_service.dart';
-import 'box_screen.dart';
+import '../../Services/auth_service.dart';
+import '../partner/box_screen.dart';
+import '../partner/boxform_screen.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   late String token;
+  late String role;
 
   static Future<void> doLogout(String token) async {
     try {
@@ -29,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       token = prefs.getString('token') ?? "0";
+      role = prefs.getString('role') ?? "user";
     });
   }
 
@@ -45,12 +50,12 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Saver App'),
         actions: [
           IconButton(
-            icon: Icon(Icons.exit_to_app),
+            icon: const Icon(Icons.exit_to_app),
             onPressed: () async {
               await readToken();
               await doLogout(token);
               Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
                   (route) => false);
             },
           )
@@ -71,9 +76,9 @@ class _HomeScreenState extends State<HomeScreen> {
         notchMargin: 5,
         elevation: 10,
         clipBehavior: Clip.antiAlias,
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         child: BottomNavigationBar(
-          items: [
+          items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: '')
           ],

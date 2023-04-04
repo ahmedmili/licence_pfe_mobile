@@ -1,16 +1,14 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../Services/box_service.dart';
-import '../Services/globals.dart';
-import '../rounded_button.dart';
-import 'home_screen.dart';
-import 'login_screen.dart';
+import '../../Services/box_service.dart';
+import '../../Services/globals.dart';
+import '../../rounded_button.dart';
+import '../user/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -29,7 +27,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
   DateTime? _startDate;
   DateTime? _endDate;
   String _quantity = '';
-  late File? _image = null;
+  late File? _image;
   String _category = '';
   String _imageName = '';
   late String token;
@@ -49,6 +47,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
 
   void _pickImage() async {
     final pickedFile =
+        // ignore: deprecated_member_use
         await ImagePicker().getImage(source: ImageSource.gallery);
     setState(() {
       if (pickedFile != null) {
@@ -77,13 +76,6 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
     );
   }
 
-  _save(String token) async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = "token";
-    final value = token;
-    prefs.setString(key, value);
-  }
-
   @override
   void initState() {
     super.initState();
@@ -95,11 +87,11 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
     http.Response response = await BoxServices.addBox(
       _title,
       _description,
-      _oldprice as String,
-      _newprice as String,
+      _oldprice,
+      _newprice,
       _startDate!.toIso8601String(), // Convert DateTime to String
       _endDate!.toIso8601String(), // Convert DateTime to String
-      _quantity as String,
+      _quantity,
       _image!,
       _category,
       token,
@@ -124,7 +116,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
     setState(() {
       token = prefs.getString('token') ?? "0";
     });
-    await createBoxPressed; // Appeler getPartnerBoxs() comme Future
+    createBoxPressed;
   }
 
   @override
@@ -299,10 +291,10 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
               ),
               ElevatedButton(
                 onPressed: _pickImage,
-                child: Text('Select Image'),
+                child: const Text('Select Image'),
               ),
-              Text(_imageName ?? 'No image selected'),
-              SizedBox(height: 3),
+              Text(_imageName),
+              const SizedBox(height: 3),
               Container(
                 width: double.infinity,
                 height: 150,
@@ -311,14 +303,14 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: _image == null
-                    ? Center(child: const Text('No image selected'))
+                    ? const Center(child: Text('No image selected'))
                     : Image.file(_image!, fit: BoxFit.cover),
               ),
               const SizedBox(
                 height: 15,
               ),
               // Utilisez un DropdownButtonFormField pour sélectionner la catégorie
-              Text(
+              const Text(
                 'Category',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,

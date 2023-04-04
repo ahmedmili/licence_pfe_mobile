@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../Services/auth_service.dart';
-import '../Services/globals.dart';
-import '../rounded_button.dart';
-import 'home_screen.dart';
-import 'login_screen.dart';
+import '../../Services/auth_service.dart';
+import '../../Services/globals.dart';
+import '../../rounded_button.dart';
+import './home_screen.dart';
+import '../login_screen.dart';
 import 'package:http/http.dart' as http;
 
 class RegisterUserScreen extends StatefulWidget {
@@ -58,16 +58,14 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
 
   _save(String token) async {
     final prefs = await SharedPreferences.getInstance();
-    final key = "token";
-    final value = token;
-    prefs.setString(key, value);
+    prefs.setString("token", token);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register User'),
+        title: const Text('Register User'),
         elevation: 0,
         centerTitle: true,
       ),

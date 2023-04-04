@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:saverapp/Screnns/registerpartner_screen.dart';
-import 'package:saverapp/Screnns/registeruser_screen.dart';
+import './partner/registerpartner_screen.dart';
+import './user/registeruser_screen.dart';
 import '../Services/auth_service.dart';
 import '../Services/globals.dart';
 import '../rounded_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'home_screen.dart';
+import 'user/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -40,9 +40,10 @@ class _LoginScreenState extends State<LoginScreen> {
         if (response.statusCode == 200) {
           // Login successful, navigate to HomeScreen
           String token = responseMap['token'];
-          print(token);
-          _save(token);
-          if (token != null && token.isNotEmpty) {
+          String role = responseMap['role'];
+          print("your token == $token \n your role == $role");
+          _save(token, role);
+          if (token.isNotEmpty) {
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -65,9 +66,10 @@ class _LoginScreenState extends State<LoginScreen> {
           // Login successful as partner, navigate to PartnerScreen
 
           String token = responseMap['token'];
-          _save(token);
+          String role = responseMap['role'];
+          _save(token, role);
 
-          if (token != null && token.isNotEmpty) {
+          if (/*token != null &&*/ token.isNotEmpty) {
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -88,11 +90,10 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  _save(String token) async {
+  _save(String token, String role) async {
     final prefs = await SharedPreferences.getInstance();
-    final key = "token";
-    final value = token;
-    prefs.setString(key, value);
+    prefs.setString("token", token);
+    prefs.setString("role", role);
   }
 
   read() async {
@@ -173,8 +174,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           const RegisterUserScreen(),
                     ));
               },
-              child: Center(
-                child: const Text(
+              child: const Center(
+                child: Text(
                   'Register As User',
                   style: TextStyle(
                     decoration: TextDecoration.underline,
@@ -195,8 +196,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           const RegisterPartnerScreen(),
                     ));
               },
-              child: Center(
-                child: const Text(
+              child: const Center(
+                child: Text(
                   'Register As Partner',
                   style: TextStyle(
                     decoration: TextDecoration.underline,

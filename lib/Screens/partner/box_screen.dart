@@ -18,22 +18,7 @@ class _BoxScreenState extends State<BoxScreen> {
   void initState() {
     super.initState();
     readToken();
-    // getPartnerBoxs();
   }
-
-  // Future<void> getPartnerBoxs() async {
-  //   try {
-  //     List<Box> response = await PartnersService.getBoxs(token);
-  // List<dynamic> responseList = jsonDecode(response.body);
-  // ignore: unused_local_variable
-  // print(response);
-  //     for (var responseMap in response) {
-  //       print(responseMap.description);
-  //     }
-  //   } catch (e) {
-  //     print('Error: $e');
-  //   }
-  // }
 
   Future<String> readToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

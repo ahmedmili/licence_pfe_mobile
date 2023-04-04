@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../Services/auth_service.dart';
 import '../Services/globals.dart';
 import '../rounded_button.dart';
-import 'home_screen.dart';
+import 'user/home_screen.dart';
 import 'login_screen.dart';
 import 'package:http/http.dart' as http;
 
@@ -25,7 +25,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
   String _email = '';
   String _phone = '';
   String _password = '';
-  late File? _image = null;
+  late File? _image;
   String _category = 'hi';
   // TimeOfDay _openingtime = TimeOfDay(hour: 8, minute: 30);
   String _openingtime = "";
@@ -96,6 +96,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
 
   void _pickImage() async {
     final pickedFile =
+        // ignore: deprecated_member_use
         await ImagePicker().getImage(source: ImageSource.gallery);
     setState(() {
       if (pickedFile != null) {
@@ -126,9 +127,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
 
   _save(String token) async {
     final prefs = await SharedPreferences.getInstance();
-    final key = "token";
-    final value = token;
-    prefs.setString(key, value);
+    prefs.setString("token", token);
   }
 
   @override
@@ -178,7 +177,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register Partner'),
+        title: const Text('Register Partner'),
         elevation: 0,
         centerTitle: true,
       ),
@@ -264,10 +263,10 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               ),
               ElevatedButton(
                 onPressed: _pickImage,
-                child: Text('Select Image'),
+                child: const Text('Select Image'),
               ),
-              Text(_imageName ?? 'No image selected'),
-              SizedBox(height: 3),
+              Text(_imageName),
+              const SizedBox(height: 3),
               Container(
                 width: double.infinity,
                 height: 150,
@@ -276,14 +275,14 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: _image == null
-                    ? Center(child: const Text('No image selected'))
+                    ? const Center(child: Text('No image selected'))
                     : Image.file(_image!, fit: BoxFit.cover),
               ),
               const SizedBox(
                 height: 15,
               ),
               // Utilisez un DropdownButtonFormField pour sélectionner la catégorie
-              Text(
+              const Text(
                 'Category',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -309,7 +308,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               ),
               Text(
                 _openingtime,
-                style: TextStyle(
+                style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
                     color: Colors.blue),
@@ -318,17 +317,17 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               // button
               MaterialButton(
                 onPressed: _showTimePicker,
+                color: Colors.blue,
                 child: const Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Text('Pick Opening Time',
                       style: TextStyle(color: Colors.white, fontSize: 15)),
                 ),
-                color: Colors.blue,
               ),
 
               Text(
                 _closingtime,
-                style: TextStyle(
+                style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
                     color: Colors.blue),
@@ -337,12 +336,12 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               // button
               MaterialButton(
                 onPressed: _showClosingTimePicker,
+                color: Colors.blue,
                 child: const Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Text('Pick Closing Time',
                       style: TextStyle(color: Colors.white, fontSize: 15)),
                 ),
-                color: Colors.blue,
               ),
 
               const SizedBox(
