@@ -26,6 +26,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> loginPressed(BuildContext context) async {
+    final currentContext = context;
+
     if (_email.isNotEmpty && _password.isNotEmpty) {
       if (!isValidEmail(_email)) {
         errorSnackBar(context, 'Invalid email');
@@ -42,22 +44,16 @@ class _LoginScreenState extends State<LoginScreen> {
           // Login successful, navigate to HomeScreen
           String token = responseMap['token'];
           String role = responseMap['role'];
-          print("your token == $token \n your role == $role");
           _save(token, role);
           if (token.isNotEmpty) {
-            role == "partner"
-                ? Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            const partner_home.HomeScreen()),
-                  )
-                : Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            const user_home.HomeScreen()),
-                  );
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      const user_home.HomeScreen()),
+            );
+            print('user home');
+
             return;
           }
         }
@@ -83,8 +79,9 @@ class _LoginScreenState extends State<LoginScreen> {
               context,
               MaterialPageRoute(
                   builder: (BuildContext context) =>
-                      const user_home.HomeScreen()),
+                      const partner_home.HomeScreen()),
             );
+            print('partner home');
             return;
           }
         }
