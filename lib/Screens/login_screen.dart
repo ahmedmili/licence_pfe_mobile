@@ -7,7 +7,8 @@ import '../Services/auth_service.dart';
 import '../Services/globals.dart';
 import '../rounded_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'user/home_screen.dart';
+import 'user/home_screen.dart' as user_home;
+import 'partner/home_screen.dart' as partner_home;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -44,11 +45,19 @@ class _LoginScreenState extends State<LoginScreen> {
           print("your token == $token \n your role == $role");
           _save(token, role);
           if (token.isNotEmpty) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => HomeScreen()),
-            );
+            role == "partner"
+                ? Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            const partner_home.HomeScreen()),
+                  )
+                : Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            const user_home.HomeScreen()),
+                  );
             return;
           }
         }
@@ -73,7 +82,8 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (BuildContext context) => HomeScreen()),
+                  builder: (BuildContext context) =>
+                      const user_home.HomeScreen()),
             );
             return;
           }

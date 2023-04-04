@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Saver App'),
+        title: const Text('user Home'),
         actions: [
           IconButton(
             icon: const Icon(Icons.exit_to_app),
