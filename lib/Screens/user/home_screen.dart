@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:saverapp/Screens/partner/box_screen.dart';
+import 'package:saverapp/widget/searchField.dart';
 import '../login_screen.dart';
 import './profile_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Services/auth_service.dart';
-import '../partner/box_screen.dart';
 import '../partner/boxform_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentIndex = 0;
   late String token;
   late String role;
 
@@ -46,49 +45,24 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('user Home'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.exit_to_app),
-            onPressed: () async {
-              await readToken();
-              await doLogout(token);
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => const LoginScreen()),
-                  (route) => false);
-            },
+      body: ListView(
+        padding: EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0),
+        children: <Widget>[
+          SearchField(),
+          SizedBox(height: 20.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                "Votre texte ici",
+                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+          Container(
+            child: BoxScreen(),
           )
         ],
-      ),
-      body: currentIndex == 0 ? BoxScreen() : ProfileScreen(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => BoxFormScreen(
-                    title: 'Add New Box',
-                  )));
-        },
-        child: Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        notchMargin: 5,
-        elevation: 10,
-        clipBehavior: Clip.antiAlias,
-        shape: const CircularNotchedRectangle(),
-        child: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: '')
-          ],
-          currentIndex: currentIndex,
-          onTap: (val) {
-            setState(() {
-              currentIndex = val;
-            });
-          },
-        ),
       ),
     );
   }
