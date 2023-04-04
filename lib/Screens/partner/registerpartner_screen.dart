@@ -10,6 +10,7 @@ import '../../Services/globals.dart';
 import '../../rounded_button.dart';
 import '../user/home_screen.dart';
 import '../login_screen.dart';
+
 import 'package:http/http.dart' as http;
 
 class RegisterPartnerScreen extends StatefulWidget {
