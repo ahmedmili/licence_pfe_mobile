@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../Services/partners_service.dart';
 
-import '../model/boxs.dart';
-import '../widget/boxCard.dart';
+import '../../Services/partners_service.dart';
+import '../../model/boxs.dart';
+import '../../widget/boxCard.dart';
 
 class BoxScreen extends StatefulWidget {
   const BoxScreen({Key? key}) : super(key: key);

@@ -5,12 +5,14 @@ import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../Services/auth_service.dart';
-import '../Services/globals.dart';
-import '../rounded_button.dart';
-import 'user/home_screen.dart';
-import 'login_screen.dart';
+
 import 'package:http/http.dart' as http;
+
+import '../../Services/auth_service.dart';
+import '../../Services/globals.dart';
+import '../../rounded_button.dart';
+import '../login_screen.dart';
+import '../user/home_screen.dart';
 
 class RegisterPartnerScreen extends StatefulWidget {
   const RegisterPartnerScreen({Key? key}) : super(key: key);
