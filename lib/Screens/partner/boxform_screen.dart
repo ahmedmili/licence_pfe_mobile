@@ -7,7 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/box_service.dart';
 import '../../Services/globals.dart';
-import '../../rounded_button.dart';
+import '../../widget/rounded_button.dart';
 import '../user/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;

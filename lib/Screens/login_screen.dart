@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:saverapp/Screens/user/main_screen.dart';
 import './partner/registerpartner_screen.dart';
 import './user/registeruser_screen.dart';
 import '../Services/auth_service.dart';
 import '../Services/globals.dart';
-import '../rounded_button.dart';
+import '../widget/rounded_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'user/home_screen.dart' as user_home;
 import 'partner/home_screen.dart' as partner_home;
@@ -49,8 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      const user_home.HomeScreen()),
+                  builder: (BuildContext context) => const MainScreen()),
             );
 
             return;

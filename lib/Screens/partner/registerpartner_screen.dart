@@ -7,7 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth_service.dart';
 import '../../Services/globals.dart';
-import '../../rounded_button.dart';
+import '../../widget/rounded_button.dart';
 import '../user/home_screen.dart';
 import '../login_screen.dart';
 

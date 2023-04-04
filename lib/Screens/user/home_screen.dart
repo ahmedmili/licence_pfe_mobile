@@ -50,9 +50,9 @@ class _HomeScreenState extends State<HomeScreen> {
         children: const [
           SizedBox(height: 40.0),
           SearchField(),
-          SizedBox(height: 20.0),
+          SizedBox(height: 30.0),
           TitleBox(),
-          SizedBox(height: 20.0),
+          SizedBox(height: 15.0),
           Expanded(child: Center(child: BoxScreen()))
         ],
       ),

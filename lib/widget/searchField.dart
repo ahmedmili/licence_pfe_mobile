@@ -5,23 +5,26 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(30.0),
-      child: TextField(
-        decoration: InputDecoration(
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 30.0, vertical: 14.0),
-          hintText: "To Research",
-          suffixIcon: Material(
-            elevation: 5.0,
-            borderRadius: BorderRadius.circular(30.0),
-            child: const Icon(
-              Icons.search,
-              color: Colors.black,
+    return Container(
+      padding: EdgeInsets.only(left: 20.0, right: 20.0),
+      child: Material(
+        elevation: 5.0,
+        borderRadius: BorderRadius.circular(30.0),
+        child: TextField(
+          decoration: InputDecoration(
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 30.0, vertical: 14.0),
+            hintText: "To Research",
+            suffixIcon: Material(
+              elevation: 5.0,
+              borderRadius: BorderRadius.circular(30.0),
+              child: const Icon(
+                Icons.search,
+                color: Colors.black,
+              ),
             ),
+            border: InputBorder.none,
           ),
-          border: InputBorder.none,
         ),
       ),
     );

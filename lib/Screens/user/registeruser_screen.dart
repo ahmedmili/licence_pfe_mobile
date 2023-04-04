@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth_service.dart';
 import '../../Services/globals.dart';
-import '../../rounded_button.dart';
+import '../../widget/rounded_button.dart';
 import './home_screen.dart';
 import '../login_screen.dart';
 import 'package:http/http.dart' as http;
