@@ -3,9 +3,9 @@ import 'package:saverapp/Models/boxs.dart';
 import 'package:http/http.dart' as http;
 import 'globals.dart';
 
-class PartnersService {
-  static Future<List<Box>> getBoxs(token) async {
-    final url = Uri.parse('${baseURL}user/boxs');
+class UserService {
+  static Future<List<Box>> getAvailableBoxs(token) async {
+    final url = Uri.parse('${baseURL}user/availableBoxs');
     final response = await http.get(
       url,
       headers: {

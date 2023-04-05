@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return FutureBuilder<List<Box>>(
-            future: PartnersService.getBoxs(snapshot.data!),
+            future: UserService.getAvailableBoxs(snapshot.data!),
             builder: (context, snapshot) {
               // print(snapshot.data);
               if (snapshot.hasData) {
