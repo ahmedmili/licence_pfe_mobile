@@ -13,7 +13,6 @@ class UserService {
         'Authorization': 'Bearer $token'
       },
     );
-    // print(token);
     if (response.statusCode == 200) {
       List<dynamic> data = jsonDecode(response.body);
       final box = List<Box>.from(
@@ -34,8 +33,6 @@ class UserService {
         'Authorization': 'Bearer $token'
       },
     );
-    // print(token);
-
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
       List<Box> boxs = [];
@@ -43,8 +40,6 @@ class UserService {
         Box box = Box.fromJson(item);
         boxs.add(box);
       }
-      // print(boxs);
-
       return boxs;
     } else {
       throw Exception('Failed to fetch products');

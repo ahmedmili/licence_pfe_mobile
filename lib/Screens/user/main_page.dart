@@ -23,10 +23,10 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    homeScreen = HomeScreen();
-    tourScreen = TourScreen();
-    favoritecreen = FavoriteScreen();
-    profileScreen = ProfileScreen();
+    homeScreen = const HomeScreen();
+    tourScreen = const TourScreen();
+    favoritecreen = const FavoriteScreen();
+    profileScreen = const ProfileScreen();
     pages = [homeScreen, tourScreen, favoritecreen, profileScreen];
     currentPage = homeScreen;
   }
@@ -43,6 +43,7 @@ class _MainScreenState extends State<MainScreen> {
         },
         currentIndex: currentTabIndex,
         type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.green[800],
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

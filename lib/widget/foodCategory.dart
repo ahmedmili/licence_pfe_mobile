@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:saverapp/Models/boxs.dart';
 import 'package:saverapp/Services/users.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:flutter/src/widgets/framework.dart';
-// import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../Models/category.dart';
 import '../data/categoryData.dart';

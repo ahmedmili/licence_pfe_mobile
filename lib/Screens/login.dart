@@ -8,7 +8,6 @@ import '../Services/auth.dart';
 import '../Services/globals.dart';
 import '../widget/rounded_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'user/home.dart' as user_home;
 import 'partner/home_.dart' as partner_home;
 
 class LoginScreen extends StatefulWidget {
@@ -101,25 +100,18 @@ class _LoginScreenState extends State<LoginScreen> {
     prefs.setString("role", role);
   }
 
-  read() async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = "token";
-    final value = prefs.getString(key) ?? 0;
-    // print('read:value');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: const Text('Login'),
         elevation: 0,
         centerTitle: true,
       ),
       body: Form(
         key: _formKey,
         child: ListView(
-          padding: EdgeInsets.all(32),
+          padding: const EdgeInsets.all(32),
           children: [
             TextFormField(
               keyboardType: TextInputType.emailAddress,
