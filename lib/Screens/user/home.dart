@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/boxs.dart';
-import 'package:saverapp/widget/box_screen.dart';
+import 'package:saverapp/widget/box_list_view.dart';
 import 'package:saverapp/widget/searchField.dart';
 import 'package:saverapp/widget/titleBox.dart';
 // import '../login_screen.dart';
 // import './profile_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../Services/auth_service.dart';
+import '../../Services/auth.dart';
 // import '../partner/boxform_screen.dart';
-import '../../Services/users_service.dart';
+import '../../Services/users.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:saverapp/Screens/user/home_screen.dart';
-import 'package:saverapp/Screens/user/tour_screen.dart';
+import 'package:saverapp/Screens/user/home.dart';
+import 'package:saverapp/Screens/user/tour.dart';
 
-import '../partner/profile_screen.dart';
-import 'favorite_screen.dart';
+import '../partner/profile.dart';
+import 'favorite.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

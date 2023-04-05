@@ -1,15 +1,15 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:saverapp/Screens/user/main_screen.dart';
-import './partner/registerpartner_screen.dart';
-import './user/registeruser_screen.dart';
-import '../Services/auth_service.dart';
+import 'package:saverapp/Screens/user/main_page.dart';
+import 'partner/register_partner.dart';
+import 'user/registeruser.dart';
+import '../Services/auth.dart';
 import '../Services/globals.dart';
 import '../widget/rounded_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'user/home_screen.dart' as user_home;
-import 'partner/home_screen.dart' as partner_home;
+import 'user/home.dart' as user_home;
+import 'partner/home_.dart' as partner_home;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

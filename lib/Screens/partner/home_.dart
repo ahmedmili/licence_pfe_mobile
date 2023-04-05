@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import './boxform_screen.dart';
-import '../login_screen.dart';
-import './profile_screen.dart';
+import 'boxform.dart';
+import '../login.dart';
+import 'profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../Services/auth_service.dart';
-import '../../widget/box_screen.dart';
+import '../../Services/auth.dart';
+import '../../widget/box_list_view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

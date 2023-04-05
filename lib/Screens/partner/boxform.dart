@@ -5,10 +5,10 @@ import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../Services/box_service.dart';
+import '../../Services/box.dart';
 import '../../Services/globals.dart';
 import '../../widget/rounded_button.dart';
-import '../user/home_screen.dart';
+import '../user/home.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 

@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../Services/auth_service.dart';
+import '../../Services/auth.dart';
 import '../../Services/globals.dart';
 import '../../widget/rounded_button.dart';
-import './home_screen.dart';
-import '../login_screen.dart';
+import 'home.dart';
+import '../login.dart';
 import 'package:http/http.dart' as http;
 
 class RegisterUserScreen extends StatefulWidget {
