@@ -2,13 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
+import '../Models/category.dart';
+import '../data/categoryData.dart';
+import 'foodCard.dart';
+
 class FoodCategory extends StatelessWidget {
-  const FoodCategory({super.key});
+  final List<Category> _categories = categories;
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      scrollDirection: Axis.horizontal,
+    return Container(
+      height: 80.0,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: _categories.length,
+        itemBuilder: (BuildContext context, int index) {
+          return FoodCard(
+            categoryName: _categories[index].categoryName,
+            imagePath: _categories[index].imagePath,
+          );
+        },
+      ),
     );
   }
 }
