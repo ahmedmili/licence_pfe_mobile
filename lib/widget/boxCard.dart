@@ -19,7 +19,7 @@ class BoxCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.all(
+      borderRadius: const BorderRadius.all(
         Radius.circular(10.0),
       ),
       child: Stack(
@@ -39,7 +39,7 @@ class BoxCard extends StatelessWidget {
             child: Container(
               height: 60.0,
               width: 340.0,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [Colors.black, Colors.black12],
                   begin: Alignment.bottomCenter,
@@ -76,7 +76,7 @@ class BoxCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 Column(
                   children: <Widget>[
                     Text(

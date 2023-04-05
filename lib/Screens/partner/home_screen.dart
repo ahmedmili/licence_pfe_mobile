@@ -5,7 +5,7 @@ import './profile_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Services/auth_service.dart';
-import 'box_screen.dart';
+import '../../widget/box_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-      body: currentIndex == 0 ? BoxScreen() : ProfileScreen(),
+      // body: currentIndex == 0 ? BoxScreen() : ProfileScreen(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
