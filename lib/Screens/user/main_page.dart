@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:saverapp/Screens/user/home.dart';
 import 'package:saverapp/Screens/user/tour.dart';
 
@@ -45,7 +43,7 @@ class _MainScreenState extends State<MainScreen> {
         },
         currentIndex: currentTabIndex,
         type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',

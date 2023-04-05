@@ -4,9 +4,9 @@ import '../Models/boxs.dart';
 import 'boxCard.dart';
 
 class BoxScreen extends StatefulWidget {
-  const BoxScreen({super.key, required this.items});
+  BoxScreen({super.key, required this.items, this.directions = "H"});
   final List<Box> items;
-
+  String directions;
   @override
   State<BoxScreen> createState() => _BoxScreenState();
 }
@@ -27,25 +27,38 @@ class _BoxScreenState extends State<BoxScreen> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      scrollDirection: Axis.horizontal,
+      scrollDirection:
+          widget.directions == "H" ? Axis.horizontal : Axis.vertical,
       itemCount: items.length,
       itemBuilder: (context, index) {
         final box = items[index];
-        return Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              child: BoxCard(
-                image: box.image,
-                title: box.title,
-                description: box.description,
-                newPrice: box.newprice,
-                oldPrice: box.oldprice,
-              ),
-            ),
-            const SizedBox(width: 10),
-          ],
-        );
+        return widget.directions == "H"
+            ? Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BoxCard(
+                    image: box.image,
+                    title: box.title,
+                    description: box.description,
+                    newPrice: box.newprice,
+                    oldPrice: box.oldprice,
+                  ),
+                  const SizedBox(width: 10)
+                ],
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BoxCard(
+                    image: box.image,
+                    title: box.title,
+                    description: box.description,
+                    newPrice: box.newprice,
+                    oldPrice: box.oldprice,
+                  ),
+                  const SizedBox(height: 20)
+                ],
+              );
       },
     );
   }
