@@ -45,6 +45,7 @@ class _MainScreenState extends State<MainScreen> {
         },
         currentIndex: currentTabIndex,
         type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.green[800],
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

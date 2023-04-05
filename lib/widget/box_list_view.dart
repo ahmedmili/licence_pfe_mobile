@@ -34,6 +34,9 @@ class _BoxScreenState extends State<BoxScreen> {
         return Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(
+              width: 10,
+            ),
             Container(
               child: BoxCard(
                 image: box.image,

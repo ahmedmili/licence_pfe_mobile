@@ -41,16 +41,16 @@ class _BoxCardState extends State<BoxCard> {
     return Container(
       decoration: BoxDecoration(
         color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(35),
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
               color: Colors.grey.shade500,
-              offset: Offset(6, 6),
+              offset: Offset(0, 0),
               blurRadius: 15.0,
               spreadRadius: 1.0),
           BoxShadow(
               color: Colors.white,
-              offset: Offset(-6, -6),
+              offset: Offset(-4, -4),
               blurRadius: 15.0,
               spreadRadius: 1.0),
         ],
@@ -62,7 +62,7 @@ class _BoxCardState extends State<BoxCard> {
         child: Stack(
           children: <Widget>[
             Container(
-              height: 200.0,
+              height: 190.0,
               width: 340.0,
               child: Image.network(
                 "http://10.0.2.2:8000/storage/boxs_imgs/${widget.image}",
@@ -117,20 +117,20 @@ class _BoxCardState extends State<BoxCard> {
                   Column(
                     children: <Widget>[
                       Text(
-                        widget.oldPrice,
+                        '${widget.oldPrice} Dt',
                         style: const TextStyle(
                           fontSize: 18,
                           color: Colors.redAccent,
-                          fontWeight: FontWeight.normal,
+                          fontWeight: FontWeight.bold,
                           decoration: TextDecoration.lineThrough,
                         ),
                       ),
                       Text(
-                        widget.newPrice,
-                        style: const TextStyle(
+                        '${widget.newPrice} Dt',
+                        style: TextStyle(
                           fontSize: 18,
-                          color: Colors.greenAccent,
                           fontWeight: FontWeight.bold,
+                          color: Colors.green[800],
                         ),
                       ),
                     ],
