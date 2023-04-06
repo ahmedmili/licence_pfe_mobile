@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/user/home.dart';
 import 'package:saverapp/Screens/user/tour.dart';
-
-import '../partner/profile.dart';
 import 'favorite.dart';
+import 'me.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -19,15 +18,15 @@ class _MainScreenState extends State<MainScreen> {
   late HomeScreen homeScreen;
   late TourScreen tourScreen;
   late FavoriteScreen favoritecreen;
-  late ProfileScreen profileScreen;
+  late MeScreen meScreen;
   @override
   void initState() {
     super.initState();
     homeScreen = const HomeScreen();
     tourScreen = const TourScreen();
     favoritecreen = const FavoriteScreen();
-    profileScreen = const ProfileScreen();
-    pages = [homeScreen, tourScreen, favoritecreen, profileScreen];
+    meScreen = const MeScreen();
+    pages = [homeScreen, tourScreen, favoritecreen, meScreen];
     currentPage = homeScreen;
   }
 
@@ -59,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: 'Me',
           ),
         ],
       ),

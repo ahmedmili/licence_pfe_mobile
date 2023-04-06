@@ -10,13 +10,15 @@ class BoxCard extends StatefulWidget {
       required this.title,
       required this.description,
       required this.newPrice,
-      required this.oldPrice});
+      required this.oldPrice,
+      required this.remaining_quantity});
 
   String image;
   String title;
   String description;
   String newPrice;
   String oldPrice;
+  int remaining_quantity;
 
   @override
   State<BoxCard> createState() => _BoxCardState();
@@ -138,12 +140,41 @@ class _BoxCardState extends State<BoxCard> {
               ),
             ),
             Positioned(
-                left: 290.0,
-                top: 5,
-                child: NeuButton(
-                  onTap: buttonPresssed,
-                  isButtonPressed: isButtonPressed,
-                )),
+              left: 290.0,
+              top: 5,
+              child: NeuButton(
+                onTap: buttonPresssed,
+                isButtonPressed: isButtonPressed,
+              ),
+            ),
+
+            //quantity
+            Container(
+              margin: EdgeInsets.only(left: 5, top: 5),
+              height: 30,
+              width: 100,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(35),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.shade500,
+                      offset: const Offset(6, 6),
+                      blurRadius: 15.0,
+                      spreadRadius: 1.0),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  '${widget.remaining_quantity.toString()} to save',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green[800],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

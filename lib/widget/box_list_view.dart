@@ -36,12 +36,14 @@ class _BoxScreenState extends State<BoxScreen> {
             ? Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const SizedBox(width: 10),
                   BoxCard(
                     image: box.image,
                     title: box.title,
                     description: box.description,
                     newPrice: box.newprice,
                     oldPrice: box.oldprice,
+                    remaining_quantity: box.remaining_quantity,
                   ),
                   const SizedBox(width: 10)
                 ],
@@ -55,6 +57,7 @@ class _BoxScreenState extends State<BoxScreen> {
                     description: box.description,
                     newPrice: box.newprice,
                     oldPrice: box.oldprice,
+                    remaining_quantity: box.remaining_quantity,
                   ),
                   const SizedBox(height: 20)
                 ],

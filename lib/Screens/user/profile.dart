@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saverapp/widget/bodyMe.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -10,6 +11,11 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("Profile"));
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Profile"),
+      ),
+      body: const Body(),
+    );
   }
 }

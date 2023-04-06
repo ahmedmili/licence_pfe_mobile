@@ -8,7 +8,7 @@ class Box {
 
   final String enddate;
   final int quantity;
-  final int remainingQuantity;
+  final int remaining_quantity;
 
   final String image;
   final String category;
@@ -19,7 +19,7 @@ class Box {
     required this.startdate,
     required this.enddate,
     required this.quantity,
-    required this.remainingQuantity,
+    required this.remaining_quantity,
     required this.image,
     required this.category,
     required this.partnerId,
@@ -38,7 +38,7 @@ class Box {
       startdate: json['startdate'],
       enddate: json['enddate'],
       quantity: json['quantity'],
-      remainingQuantity: json['remaining_quantity'],
+      remaining_quantity: json['remaining_quantity'],
       image: json['image'],
       partnerId: json['partner_id'],
       title: json['title'],
