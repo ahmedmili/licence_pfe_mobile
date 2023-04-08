@@ -133,60 +133,19 @@ class _FoodDetailsState extends State<FoodDetails> {
         decoration: BoxDecoration(
           color: Colors.grey[200],
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              padding:
-                  EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.green[800],
-              ),
-              child: MaterialButton(
-                minWidth: 320,
-                height: 60,
-                onPressed: () {},
-                child: Text(
-                  "TO Book",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-              ),
-            ),
-            // Icon(
-            //   Icons.remove,
-            //   color: Colors.green[800],
-            // ),
-            // SizedBox(
-            //   width: 5,
-            // ),
-            // Text("0"),
-            // SizedBox(
-            //   width: 5,
-            // ),
-            // Icon(
-            //   Icons.add,
-            //   color: Colors.green[800],
-            // ),
-          ],
+        child: MaterialButton(
+          onPressed: () {},
+          color: Colors.green[800],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Text(
+            "Add To Cart",
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
+          ),
         ),
       ),
-      // Container(
-      //   padding:
-      //       EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20),
-      //   child: Text(
-      //     "Add to cart",
-      //     style: TextStyle(
-      //       color: Colors.white,
-      //       fontWeight: FontWeight.bold,
-      //       fontSize: 20,
-      //     ),
-      //   ),
-      //   decoration: BoxDecoration(
-      //     borderRadius: BorderRadius.circular(10),
-      //     color: Colors.green[800],
-      //   ),
-      // )
     );
   }
 }
