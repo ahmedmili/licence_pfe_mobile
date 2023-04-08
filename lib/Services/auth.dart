@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'globals.dart';
 import 'dart:io';
-import 'package:path/path.dart';
 
 class AuthServices {
   static Future<http.Response> register(String name, String email, String phone,
@@ -90,8 +90,12 @@ class AuthServices {
     return response;
   }
 
-  static Future<http.Response> logout(token) async {
-    var url = Uri.parse('${baseURL}partner/logout');
+  static Future<http.Response> logout() async {
+    print("logged out Service");
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
+    var url = Uri.parse('${baseURL}user/logout');
+    // print(token);
     http.Response response = await http.post(
       url,
       headers: {
@@ -100,7 +104,7 @@ class AuthServices {
       },
     );
     if (response.body != null && response.body.isNotEmpty) {
-      print(response.body);
+      // print(response.body);
     }
     return response;
   }

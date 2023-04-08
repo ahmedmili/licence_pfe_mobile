@@ -20,9 +20,9 @@ class _HomeScreenState extends State<HomeScreen> {
   late String token;
   late String role;
 
-  static Future<void> doLogout(String token) async {
+  static Future<void> doLogout() async {
     try {
-      await AuthServices.logout(token);
+      await AuthServices.logout();
       // Do something on success
     } catch (e) {
       // Handle error
@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: const Icon(Icons.exit_to_app),
             onPressed: () async {
               await readToken();
-              await doLogout(token);
+              await doLogout();
               Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(builder: (context) => const LoginScreen()),
                   (route) => false);
