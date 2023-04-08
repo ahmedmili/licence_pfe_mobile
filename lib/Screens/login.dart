@@ -113,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Center(
             child: ListView(
               shrinkWrap: true,
-              padding: const EdgeInsets.all(32),
+              padding: const EdgeInsets.all(30),
               children: [
                 Column(
                   children: [
@@ -285,47 +285,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 const SizedBox(
                   height: 60,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              const RegisterUserScreen(),
-                        ));
-                  },
-                  child: const Center(
-                    child: Text(
-                      'Register As User',
-                      style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        color: Colors.blue,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              const RegisterPartnerScreen(),
-                        ));
-                  },
-                  child: const Center(
-                    child: Text(
-                      'Register As Partner',
-                      style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        color: Colors.blue,
-                      ),
-                    ),
-                  ),
                 ),
               ],
             ),
