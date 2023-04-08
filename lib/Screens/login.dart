@@ -1,7 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:saverapp/Screens/user/main_page.dart';
+import 'forgetPassword.dart';
 import 'partner/register_partner.dart';
 import 'user/registeruser.dart';
 import '../Services/auth.dart';
@@ -103,107 +106,230 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-        elevation: 0,
-        centerTitle: true,
-      ),
       body: Form(
         key: _formKey,
-        child: ListView(
-          padding: const EdgeInsets.all(32),
-          children: [
-            TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                  labelText: 'Email',
-                  contentPadding: EdgeInsets.all(10),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.black))),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Email is required';
-                } else if (!isValidEmail(value)) {
-                  return 'Invalid email format';
-                }
-                return null;
-              },
-              onChanged: (value) {
-                _email = value;
-              },
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              obscureText: true,
-              decoration: const InputDecoration(
-                  labelText: 'Password',
-                  contentPadding: EdgeInsets.all(10),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.black))),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Password is required';
-                }
-                return null;
-              },
-              onChanged: (value) {
-                _password = value;
-              },
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            RoundedButton(
-              btnText: 'LOGIN',
-              onBtnPressed: () => loginPressed(context),
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                          const RegisterUserScreen(),
-                    ));
-              },
-              child: const Center(
-                child: Text(
-                  'Register As User',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    color: Colors.blue,
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          child: Center(
+            child: ListView(
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(32),
+              children: [
+                Column(
+                  children: [
+                    Text("HELLO AGAIN !",
+                        style: GoogleFonts.bebasNeue(fontSize: 52)),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Welcome back , you\'ve been missed !",
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border:
+                          Border.all(color: Colors.green.shade800, width: 2),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 12.0),
+                      child: TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Email',
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Email is required';
+                          } else if (!isValidEmail(value)) {
+                            return 'Invalid email format';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          _email = value;
+                        },
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                          const RegisterPartnerScreen(),
-                    ));
-              },
-              child: const Center(
-                child: Text(
-                  'Register As Partner',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    color: Colors.blue,
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border:
+                          Border.all(color: Colors.green.shade800, width: 2),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 12.0),
+                      child: TextFormField(
+                        obscureText: true,
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Password',
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Password is required';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          _password = value;
+                        },
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                SizedBox(
+                  height: 10,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              const ForgetPassword(),
+                        ));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 220.0),
+                    child: Text(
+                      'Forget Password ?',
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                RoundedButton(
+                  btnText: 'LOGIN',
+                  onBtnPressed: () => loginPressed(context),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                // or continue with
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Text(
+                          'Or continue with',
+                          style: TextStyle(color: Colors.grey[700]),
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 30),
+
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/google_logo.png',
+                        height: 24.0,
+                      ),
+                      SizedBox(width: 8.0),
+                      Text('Sign in with Google'),
+                    ],
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    onPrimary: Colors.black87,
+                    minimumSize: Size(double.infinity, 60.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(
+                  height: 60,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              const RegisterUserScreen(),
+                        ));
+                  },
+                  child: const Center(
+                    child: Text(
+                      'Register As User',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              const RegisterPartnerScreen(),
+                        ));
+                  },
+                  child: const Center(
+                    child: Text(
+                      'Register As Partner',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
