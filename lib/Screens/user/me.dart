@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
+import 'package:saverapp/Screens/login.dart';
+import '../../Services/auth.dart';
 
 class MeScreen extends StatefulWidget {
   const MeScreen({super.key});
@@ -64,13 +65,20 @@ class _MeScreenState extends State<MeScreen> {
               final tile = customListTiles[index];
               return Padding(
                 padding: const EdgeInsets.only(bottom: 5),
-                child: Card(
-                  elevation: 4,
-                  shadowColor: Colors.black12,
-                  child: ListTile(
-                    leading: Icon(tile.icon),
-                    title: Text(tile.title),
-                    trailing: const Icon(Icons.chevron_right),
+                child: InkWell(
+                  onTap: () {
+                    tile.cb();
+                    // print("object");
+                  },
+                  // onTap: () => print("hello"),
+                  child: Card(
+                    elevation: 4,
+                    shadowColor: Colors.black12,
+                    child: ListTile(
+                      leading: Icon(tile.icon),
+                      title: Text(tile.title),
+                      trailing: const Icon(Icons.chevron_right),
+                    ),
                   ),
                 ),
               );
@@ -103,28 +111,49 @@ List<ProfileCompletionCard> profileCompletionCards = [
 ];
 
 class CustomListTile {
+  // ignore: prefer_typing_uninitialized_variables
+  final dynamic cb;
   final IconData icon;
   final String title;
   CustomListTile({
+    required this.cb,
     required this.icon,
     required this.title,
   });
+  dynamic get age {
+    return cb;
+  }
 }
 
 List<CustomListTile> customListTiles = [
   CustomListTile(
+    cb: () {},
     icon: Icons.person_2_outlined,
     title: "Profile",
   ),
   CustomListTile(
+    cb: () {
+      print("Location");
+    },
     icon: Icons.location_on_outlined,
     title: "Location",
   ),
   CustomListTile(
+    cb: () {
+      print("Help");
+    },
     title: "Help",
     icon: CupertinoIcons.chat_bubble_2,
   ),
   CustomListTile(
+    cb: () async {
+      // print("Help");
+      var res = await AuthServices.logout();
+      if (res.statusCode == 200) {
+        // Navigator.of(context).push(LoginScreen());
+        Get.to(const LoginScreen());
+      }
+    },
     title: "Logout",
     icon: CupertinoIcons.arrow_right_arrow_left,
   ),

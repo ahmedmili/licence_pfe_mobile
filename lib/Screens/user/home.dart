@@ -22,14 +22,14 @@ class _HomeScreenState extends State<HomeScreen> {
   // late String token;
   // late String role;
 
-  static Future<void> doLogout(String token) async {
-    try {
-      await AuthServices.logout(token);
-      // Do something on success
-    } catch (e) {
-      // Handle error
-    }
-  }
+  // static Future<void> doLogout(String token) async {
+  //   try {
+  //     await AuthServices.logout(token);
+  //     // Do something on success
+  //   } catch (e) {
+  //     // Handle error
+  //   }
+  // }
 
   // Future<void> readToken() async {
   //   SharedPreferences prefs = await SharedPreferences.getInstance();
