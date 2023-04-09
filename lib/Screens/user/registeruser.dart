@@ -64,69 +64,125 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Register User'),
-        elevation: 0,
-        centerTitle: true,
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
               const SizedBox(
-                height: 20,
+                height: 60,
               ),
-              TextField(
-                decoration: const InputDecoration(
-                    labelText: 'Name',
-                    contentPadding: EdgeInsets.all(10),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide(width: 1, color: Colors.black))),
-                onChanged: (value) {
-                  _name = value;
-                },
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                    labelText: 'Email',
-                    contentPadding: EdgeInsets.all(10),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide(width: 1, color: Colors.black))),
-                onChanged: (value) {
-                  _email = value;
-                },
+              Padding(
+                padding: const EdgeInsets.only(right: 60),
+                child: Text(
+                  "Create your profile to save food : ",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green[800]),
+                ),
               ),
               const SizedBox(
                 height: 30,
               ),
-              TextField(
-                decoration: const InputDecoration(
-                    labelText: 'Phone',
-                    contentPadding: EdgeInsets.all(10),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide(width: 1, color: Colors.black))),
-                onChanged: (value) {
-                  _phone = value;
-                },
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.green.shade800, width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Name',
+                      ),
+                      onChanged: (value) {
+                        _name = value;
+                      },
+                    ),
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 30,
               ),
-              TextField(
-                obscureText: true,
-                decoration: const InputDecoration(
-                    labelText: 'Password',
-                    contentPadding: EdgeInsets.all(10),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide(width: 1, color: Colors.black))),
-                onChanged: (value) {
-                  _password = value;
-                },
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.green.shade800, width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Email',
+                      ),
+                      onChanged: (value) {
+                        _email = value;
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.green.shade800, width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Phone',
+                      ),
+                      onChanged: (value) {
+                        _phone = value;
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.green.shade800, width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextField(
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Password',
+                      ),
+                      onChanged: (value) {
+                        _password = value;
+                      },
+                    ),
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 40,
@@ -136,7 +192,7 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
                 onBtnPressed: () => createAccountPressed(),
               ),
               const SizedBox(
-                height: 40,
+                height: 15,
               ),
               GestureDetector(
                 onTap: () {
@@ -147,10 +203,8 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
                       ));
                 },
                 child: const Text(
-                  'already have an account',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                  ),
+                  'Already have an account ? Login',
+                  style: TextStyle(color: Colors.blue),
                 ),
               )
             ],

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Screens/login.dart';
+import 'package:saverapp/Screens/welcome.dart';
 import '../../Services/auth.dart';
 
 class MeScreen extends StatefulWidget {
@@ -151,7 +152,7 @@ List<CustomListTile> customListTiles = [
       var res = await AuthServices.logout();
       if (res.statusCode == 200) {
         // Navigator.of(context).push(LoginScreen());
-        Get.to(const LoginScreen());
+        Get.to(const Welcome());
       }
     },
     title: "Logout",

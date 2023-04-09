@@ -26,7 +26,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
   String _email = '';
   String _phone = '';
   String _password = '';
-  late File? _image;
+  late File? _image = null;
   String _category = 'hi';
   // TimeOfDay _openingtime = TimeOfDay(hour: 8, minute: 30);
   String _openingtime = "";
@@ -177,93 +177,159 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Register Partner'),
-        elevation: 0,
-        centerTitle: true,
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
               const SizedBox(
-                height: 20,
+                height: 60,
               ),
-              TextField(
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                  contentPadding: EdgeInsets.all(10),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.black)),
+              Padding(
+                padding: const EdgeInsets.only(right: 60),
+                child: Text(
+                  "Create your profile to save your business : ",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green[800]),
                 ),
-                onChanged: (value) {
-                  _name = value;
-                },
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.green.shade800, width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Name',
+                      ),
+                      onChanged: (value) {
+                        _name = value;
+                      },
+                    ),
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 15,
               ),
-              TextField(
-                decoration: const InputDecoration(
-                  labelText: 'Description',
-                  contentPadding: EdgeInsets.all(10),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.black)),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.green.shade800, width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Description',
+                      ),
+                      onChanged: (value) {
+                        _description = value;
+                      },
+                    ),
+                  ),
                 ),
-                onChanged: (value) {
-                  _description = value;
-                },
               ),
               const SizedBox(
                 height: 15,
               ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  contentPadding: EdgeInsets.all(10),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.black)),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.green.shade800, width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Email',
+                      ),
+                      onChanged: (value) {
+                        _email = value;
+                      },
+                    ),
+                  ),
                 ),
-                onChanged: (value) {
-                  _email = value;
-                },
               ),
               const SizedBox(
                 height: 15,
               ),
-              TextField(
-                decoration: const InputDecoration(
-                  labelText: 'Phone',
-                  contentPadding: EdgeInsets.all(10),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.black)),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.green.shade800, width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Phone',
+                      ),
+                      onChanged: (value) {
+                        _phone = value;
+                      },
+                    ),
+                  ),
                 ),
-                onChanged: (value) {
-                  _phone = value;
-                },
               ),
               const SizedBox(
                 height: 15,
               ),
-              TextField(
-                obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  contentPadding: EdgeInsets.all(10),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.black)),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.green.shade800, width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextField(
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Password',
+                      ),
+                      onChanged: (value) {
+                        _password = value;
+                      },
+                    ),
+                  ),
                 ),
-                onChanged: (value) {
-                  _password = value;
-                },
               ),
               const SizedBox(
                 height: 15,
               ),
               ElevatedButton(
                 onPressed: _pickImage,
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.orange[900],
+                ),
                 child: const Text('Select Image'),
               ),
               Text(_imageName),
@@ -272,7 +338,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 width: double.infinity,
                 height: 150,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
+                  border: Border.all(color: Colors.green.shade800),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: _image == null
@@ -283,12 +349,12 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 height: 15,
               ),
               // Utilisez un DropdownButtonFormField pour sélectionner la catégorie
-              const Text(
+              Text(
                 'Category',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
-                    color: Colors.blue),
+                    color: Colors.green[800]),
               ),
               DropdownButtonFormField(
                 value: _category,
@@ -318,7 +384,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               // button
               MaterialButton(
                 onPressed: _showTimePicker,
-                color: Colors.blue,
+                color: Colors.orange[900],
                 child: const Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Text('Pick Opening Time',
@@ -328,16 +394,16 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
 
               Text(
                 _closingtime,
-                style: const TextStyle(
+                style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
-                    color: Colors.blue),
+                    color: Colors.orange[900]),
               ),
 
               // button
               MaterialButton(
                 onPressed: _showClosingTimePicker,
-                color: Colors.blue,
+                color: Colors.orange[900],
                 child: const Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Text('Pick Closing Time',
@@ -350,12 +416,12 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               ),
 
               RoundedButton(
-                btnText: 'Create Account',
+                btnText: 'Send Request',
                 onBtnPressed: () => createAccountPressed(),
               ),
 
               const SizedBox(
-                height: 15,
+                height: 10,
               ),
 
               GestureDetector(
@@ -367,10 +433,8 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                       ));
                 },
                 child: const Text(
-                  'already have an account',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                  ),
+                  'Already have an account ? Login',
+                  style: TextStyle(color: Colors.blue),
                 ),
               ),
               const SizedBox(
