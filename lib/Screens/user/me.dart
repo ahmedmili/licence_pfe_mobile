@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:saverapp/Screens/login.dart';
-import 'package:saverapp/Screens/welcome.dart';
 import '../../Services/auth.dart';
 
 class MeScreen extends StatefulWidget {
@@ -69,9 +67,7 @@ class _MeScreenState extends State<MeScreen> {
                 child: InkWell(
                   onTap: () {
                     tile.cb();
-                    // print("object");
                   },
-                  // onTap: () => print("hello"),
                   child: Card(
                     elevation: 4,
                     shadowColor: Colors.black12,
@@ -151,8 +147,7 @@ List<CustomListTile> customListTiles = [
       // print("Help");
       var res = await AuthServices.logout();
       if (res.statusCode == 200) {
-        // Navigator.of(context).push(LoginScreen());
-        Get.to(const Welcome());
+        Get.toNamed("/");
       }
     },
     title: "Logout",

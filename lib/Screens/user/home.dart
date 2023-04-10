@@ -3,42 +3,18 @@ import 'package:saverapp/Models/boxs.dart';
 import 'package:saverapp/widget/box_list_view.dart';
 import 'package:saverapp/widget/searchField.dart';
 
-// import '../login_screen.dart';
-// import './profile_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../Services/auth.dart';
-// import '../partner/boxform_screen.dart';
 import '../../Services/users.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // late String token;
-  // late String role;
-
-  // static Future<void> doLogout(String token) async {
-  //   try {
-  //     await AuthServices.logout(token);
-  //     // Do something on success
-  //   } catch (e) {
-  //     // Handle error
-  //   }
-  // }
-
-  // Future<void> readToken() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   setState(() {
-  //     token = prefs.getString('token') ?? "0";
-  //     role = prefs.getString('role') ?? "user";
-  //   });
-  // }
-
   Future<String> readToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('token') ?? "0";
