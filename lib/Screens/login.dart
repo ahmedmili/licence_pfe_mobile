@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
@@ -29,8 +30,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> loginPressed(BuildContext context) async {
-    final currentContext = context;
-
     if (_email.isNotEmpty && _password.isNotEmpty) {
       if (!isValidEmail(_email)) {
         errorSnackBar(context, 'Invalid email');
@@ -49,12 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
           String role = responseMap['role'];
           _save(token, role);
           if (token.isNotEmpty) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => const MainScreen()),
-            );
-
+            Get.toNamed('/main');
             return;
           }
         }
@@ -119,16 +113,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Text("HELLO AGAIN !",
                         style: GoogleFonts.bebasNeue(fontSize: 52)),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text(
+                    const Text(
                       "Welcome back , you\'ve been missed !",
                       style: TextStyle(
                         fontSize: 20,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                   ],
@@ -198,7 +192,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 GestureDetector(
@@ -210,8 +204,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               const ForgetPassword(),
                         ));
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 220.0),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 220.0),
                     child: Text(
                       'Forget Password ?',
                       style: TextStyle(
@@ -227,7 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   btnText: 'LOGIN',
                   onBtnPressed: () => loginPressed(context),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 // or continue with
@@ -262,6 +256,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 ElevatedButton(
                   onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.black87,
+                    backgroundColor: Colors.white,
+                    minimumSize: const Size(double.infinity, 60.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -269,17 +271,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         'assets/images/google_logo.png',
                         height: 24.0,
                       ),
-                      SizedBox(width: 8.0),
-                      Text('Sign in with Google'),
+                      const SizedBox(width: 8.0),
+                      const Text('Sign in with Google'),
                     ],
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
-                    onPrimary: Colors.black87,
-                    minimumSize: Size(double.infinity, 60.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
                   ),
                 ),
 

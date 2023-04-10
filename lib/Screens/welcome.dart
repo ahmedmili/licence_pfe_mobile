@@ -40,7 +40,7 @@ class _WelcomeState extends State<Welcome> {
             height: 10,
           ),
           const Text(
-            "Let\'s take you with us !",
+            "Let's take you with us !",
             style: TextStyle(
               fontSize: 20,
             ),
@@ -50,9 +50,9 @@ class _WelcomeState extends State<Welcome> {
           ),
           RoundedButton(
             btnText: 'LOGIN',
-            onBtnPressed: () => Get.to(LoginScreen()),
+            onBtnPressed: () => Get.toNamed("/login"),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Container(
@@ -70,14 +70,7 @@ class _WelcomeState extends State<Welcome> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              const RegisterPartnerScreen()),
-                    );
-                  },
+                  onTap: () => Get.toNamed("/registerPartner"),
                   child: Padding(
                     padding: const EdgeInsets.only(right: 5),
                     child: Text(
@@ -95,12 +88,7 @@ class _WelcomeState extends State<Welcome> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              const RegisterUserScreen()),
-                    );
+                    Get.toNamed("/registerUser");
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 10.0),

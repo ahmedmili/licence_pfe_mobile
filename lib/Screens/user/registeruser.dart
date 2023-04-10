@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth.dart';
 import '../../Services/globals.dart';
 import '../../widget/rounded_button.dart';
-import 'home.dart';
 import '../login.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,6 +12,7 @@ class RegisterUserScreen extends StatefulWidget {
   const RegisterUserScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _RegisterScreenState createState() => _RegisterScreenState();
 }
 
@@ -36,23 +37,22 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
       if (responseMap != null) {
         if (response.statusCode == 201) {
           String token = responseMap['token'];
-          // print(token);
           _save(token);
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (BuildContext context) => HomeScreen(),
-            ),
-          );
+
+          Get.toNamed("/home");
         } else {
           String errorMessage = responseMap.values.first[0].toString();
-          errorSnackBar(context, errorMessage);
+          // ignore: use_build_context_synchronously
+          // errorSnackBar(context, errorMessage);
+          Get.snackbar("Error", errorMessage);
         }
       } else {
-        errorSnackBar(context, 'An error occurred');
+        Get.snackbar("Error", "An error occurred");
+        // errorSnackBar(context, 'An error occurred');
       }
     } else {
-      errorSnackBar(context, 'Email not valid');
+      // errorSnackBar(context, 'Email not valid');
+      Get.snackbar("Error", "Email not valid");
     }
   }
 
