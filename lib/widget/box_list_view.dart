@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Models/boxs.dart';
 import 'boxCard.dart';
+import 'foodDetails.dart';
 
 class BoxScreen extends StatefulWidget {
   BoxScreen({super.key, required this.items, this.directions = "H"});
@@ -32,36 +33,44 @@ class _BoxScreenState extends State<BoxScreen> {
       itemCount: items.length,
       itemBuilder: (context, index) {
         final box = items[index];
-        return widget.directions == "H"
-            ? Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(width: 10),
-                  BoxCard(
-                    image: box.image,
-                    title: box.title,
-                    description: box.description,
-                    newPrice: box.newprice,
-                    oldPrice: box.oldprice,
-                    remaining_quantity: box.remaining_quantity,
-                  ),
-                  const SizedBox(width: 10)
-                ],
-              )
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BoxCard(
-                    image: box.image,
-                    title: box.title,
-                    description: box.description,
-                    newPrice: box.newprice,
-                    oldPrice: box.oldprice,
-                    remaining_quantity: box.remaining_quantity,
-                  ),
-                  const SizedBox(height: 20)
-                ],
-              );
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => FoodDetails(box: box)),
+            );
+          },
+          child: widget.directions == "H"
+              ? Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(width: 10),
+                    BoxCard(
+                      image: box.image,
+                      title: box.title,
+                      description: box.description,
+                      newPrice: box.newprice,
+                      oldPrice: box.oldprice,
+                      remaining_quantity: box.remaining_quantity,
+                    ),
+                    const SizedBox(width: 10)
+                  ],
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BoxCard(
+                      image: box.image,
+                      title: box.title,
+                      description: box.description,
+                      newPrice: box.newprice,
+                      oldPrice: box.oldprice,
+                      remaining_quantity: box.remaining_quantity,
+                    ),
+                    const SizedBox(height: 20)
+                  ],
+                ),
+        );
       },
     );
   }
