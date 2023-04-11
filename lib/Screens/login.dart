@@ -70,12 +70,14 @@ class _LoginScreenState extends State<LoginScreen> {
           _save(token, role);
 
           if (/*token != null &&*/ token.isNotEmpty) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      const partner_home.HomeScreen()),
-            );
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //       builder: (BuildContext context) =>
+            //           const partner_home.HomeScreen()),
+            // );
+            // Get.toNamed("/home");
+            Get.back();
             return;
           }
         }
@@ -95,6 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString("token", token);
     prefs.setString("role", role);
+    prefs.setBool("firstLogin", false);
   }
 
   @override
