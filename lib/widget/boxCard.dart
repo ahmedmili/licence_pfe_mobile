@@ -86,13 +86,13 @@ class _BoxCardState extends State<BoxCard> {
                           child: Container(
                             height: 60.0,
                             width: 340.0,
-                            decoration: const BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [Colors.black, Colors.black12],
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.topCenter,
-                              ),
-                            ),
+                            decoration: const BoxDecoration(color: Colors.white
+                                // gradient: LinearGradient(
+                                //   colors: [Colors.white, Colors.white12],
+                                //   begin: Alignment.bottomCenter,
+                                //   end: Alignment.topCenter,
+                                // ),
+                                ),
                           ),
                         ),
                         Positioned(
@@ -108,7 +108,7 @@ class _BoxCardState extends State<BoxCard> {
                                   Text(
                                     widget.box.title,
                                     style: const TextStyle(
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -186,7 +186,7 @@ class _BoxCardState extends State<BoxCard> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 40, top: 85),
+                          padding: const EdgeInsets.only(right: 40, top: 80),
                           child: Row(
                             children: [
                               Container(
