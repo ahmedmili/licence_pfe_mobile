@@ -22,7 +22,7 @@ class BoxCard extends StatefulWidget {
 class _BoxCardState extends State<BoxCard> {
   bool isButtonPressed = false;
 
-  void buttonPresssed() {
+  void buttonPresssed(int boxid, String token) {
     setState(() {
       if (isButtonPressed == false) {
         isButtonPressed = true;
@@ -41,13 +41,12 @@ class _BoxCardState extends State<BoxCard> {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: readToken(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
+      builder: (context, tokensnapshot) {
+        if (tokensnapshot.hasData) {
           return FutureBuilder<Partner>(
-            future:
-                UserService.getBoxPartnerInfo(snapshot.data!, widget.box.id),
+            future: UserService.getBoxPartnerInfo(
+                tokensnapshot.data!, widget.box.id),
             builder: (context, snapshot) {
-              // print(snapshot.data!.name);
               if (snapshot.hasData) {
                 return Container(
                   decoration: BoxDecoration(
@@ -72,7 +71,7 @@ class _BoxCardState extends State<BoxCard> {
                     ),
                     child: Stack(
                       children: <Widget>[
-                        Container(
+                        SizedBox(
                           height: 190.0,
                           width: 340.0,
                           child: Image.network(
@@ -153,8 +152,9 @@ class _BoxCardState extends State<BoxCard> {
                           left: 290.0,
                           top: 5,
                           child: NeuButton(
-                            onTap: buttonPresssed,
-                            isButtonPressed: isButtonPressed,
+                            // onTap: buttonPresssed,
+                            boxid: widget.box.id,
+                            // isButtonPressed: isButtonPressed,
                           ),
                         ),
 
@@ -202,8 +202,8 @@ class _BoxCardState extends State<BoxCard> {
               }
             },
           );
-        } else if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
+        } else if (tokensnapshot.hasError) {
+          return Text('Error: ${tokensnapshot.error}');
         } else {
           return Center(
             child: CircularProgressIndicator(

@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:google_nav_bar/google_nav_bar.dart';
 
+// ignore: must_be_immutable
 class MyBottonNavBar extends StatelessWidget {
   void Function(int)? onTabChange;
-  MyBottonNavBar({super.key, required this.onTabChange});
+  MyBottonNavBar({
+    super.key,
+    required this.onTabChange,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class MyBottonNavBar extends StatelessWidget {
         color: Colors.green.shade800,
       ),
       gap: 8,
-      tabs: [
+      tabs: const [
         //List
         GButton(
           icon: Icons.list,

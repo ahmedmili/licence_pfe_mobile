@@ -6,7 +6,7 @@ class SearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 10.0, right: 10.0),
+      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
       child: Material(
         elevation: 5.0,
         borderRadius: BorderRadius.circular(20.0),

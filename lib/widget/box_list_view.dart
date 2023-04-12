@@ -7,9 +7,9 @@ import 'boxCard.dart';
 import 'foodDetails.dart';
 
 class BoxScreen extends StatefulWidget {
-  BoxScreen({super.key, required this.items, this.directions = "H"});
+  const BoxScreen({super.key, required this.items, this.directions = "H"});
   final List<Box> items;
-  String directions;
+  final String directions;
   @override
   State<BoxScreen> createState() => _BoxScreenState();
 }

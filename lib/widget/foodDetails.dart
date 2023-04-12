@@ -16,16 +16,6 @@ class FoodDetails extends StatefulWidget {
 class _FoodDetailsState extends State<FoodDetails> {
   bool isButtonPressed = false;
 
-  void buttonPresssed() {
-    setState(() {
-      if (isButtonPressed == false) {
-        isButtonPressed = true;
-      } else if (isButtonPressed = true) {
-        isButtonPressed = false;
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final box = widget.box;
@@ -79,8 +69,9 @@ class _FoodDetailsState extends State<FoodDetails> {
               ),
               //like
               NeuButton(
-                onTap: buttonPresssed,
-                isButtonPressed: isButtonPressed,
+                // onTap: buttonPresssed,
+                // isButtonPressed: isButtonPressed,
+                boxid: box.id,
               ),
             ],
           ),
@@ -91,8 +82,8 @@ class _FoodDetailsState extends State<FoodDetails> {
           bottom: 0,
           top: 270 - 20,
           child: Container(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 20),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+            decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20),
                   topLeft: Radius.circular(20),
@@ -106,7 +97,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                     const Icon(
                       CupertinoIcons.cube_box,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     Text(
@@ -116,7 +107,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Column(
@@ -124,13 +115,13 @@ class _FoodDetailsState extends State<FoodDetails> {
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.access_alarm),
-                        SizedBox(
+                        const Icon(Icons.access_alarm),
+                        const SizedBox(
                           width: 5,
                         ),
                         Text(
                           'Available from : ${box.startdate}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                       ],
@@ -139,27 +130,27 @@ class _FoodDetailsState extends State<FoodDetails> {
                       padding: const EdgeInsets.only(left: 30),
                       child: Text(
                         'To : ${box.startdate}',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 14, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 //expandable text widget
                 Row(
                   children: [
-                    Icon(Icons.description_outlined),
-                    SizedBox(
+                    const Icon(Icons.description_outlined),
+                    const SizedBox(
                       width: 5,
                     ),
                     Expanded(
                       child: SingleChildScrollView(
                         child: Text(
                           "Description of this box : ${box.description}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -176,20 +167,20 @@ class _FoodDetailsState extends State<FoodDetails> {
           bottom: 0,
           top: 270 - 20,
           child: Container(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
                   '${box.oldprice} Dt',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     color: Colors.redAccent,
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.lineThrough,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Text(
@@ -200,7 +191,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                     color: Colors.green[800],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
               ],
@@ -210,7 +201,8 @@ class _FoodDetailsState extends State<FoodDetails> {
       ]),
       bottomNavigationBar: Container(
         height: 100,
-        padding: EdgeInsets.only(top: 30, bottom: 30, left: 20, right: 20),
+        padding:
+            const EdgeInsets.only(top: 30, bottom: 30, left: 20, right: 20),
         decoration: BoxDecoration(
           color: Colors.grey[200],
         ),
@@ -220,7 +212,7 @@ class _FoodDetailsState extends State<FoodDetails> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Text(
+          child: const Text(
             "Add To Cart",
             style: TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),

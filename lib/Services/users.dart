@@ -64,4 +64,22 @@ class UserService {
       throw Exception('Failed to fetch products');
     }
   }
+
+  static Future<String> likeOrDislikeBox(token, id) async {
+    final url = Uri.parse('${baseURL}user/boxs/$id/likes');
+    final response = await http.post(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+    );
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = jsonDecode(response.body);
+      final String message = data["message"];
+      return message;
+    } else {
+      throw Exception('Failed to fetch products');
+    }
+  }
 }
