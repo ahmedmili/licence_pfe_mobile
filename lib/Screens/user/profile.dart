@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:saverapp/Screens/user/editprofile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileUser extends StatefulWidget {
-  const ProfileUser({super.key});
+  const ProfileUser({Key? key}) : super(key: key);
 
   @override
   State<ProfileUser> createState() => _ProfileUserState();
@@ -226,18 +227,17 @@ class _ProfileUserState extends State<ProfileUser> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              const ProfileUser(),
+                          builder: (BuildContext context) => EditProfile(),
                         ));
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(left: 240.0),
+                    padding: const EdgeInsets.only(left: 240.0),
                     child: Text(
                       'Edit Your Profile ?',
                       style: TextStyle(
