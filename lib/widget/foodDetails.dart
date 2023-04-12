@@ -66,7 +66,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                     color: Colors.grey[300],
                     borderRadius: BorderRadius.circular(35),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Icon(
                       Icons.arrow_back,
                       size: 20,
@@ -101,7 +101,7 @@ class _FoodDetailsState extends State<FoodDetails> {
               children: [
                 Row(
                   children: [
-                    Icon(
+                    const Icon(
                       CupertinoIcons.cube_box,
                     ),
                     SizedBox(
@@ -109,8 +109,8 @@ class _FoodDetailsState extends State<FoodDetails> {
                     ),
                     Text(
                       box.title,
-                      style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
