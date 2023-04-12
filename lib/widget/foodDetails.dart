@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/partner.dart';
+import 'package:saverapp/Screens/user/detailspartner.dart';
 import '../Models/boxs.dart';
 import 'neonButton.dart';
 
@@ -196,6 +197,48 @@ class _FoodDetailsState extends State<FoodDetails> {
                   color: Colors.grey,
                   thickness: 1,
                 ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              const DetailsPartner(),
+                        ));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              const SizedBox(height: 20),
+                              Icon(Icons.location_on_outlined),
+                              const Text(
+                                "adresse commerce",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 25),
+                            child: Text(
+                              "More information about ${partner.name}",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green[800]),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Icon(Icons.chevron_right),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
