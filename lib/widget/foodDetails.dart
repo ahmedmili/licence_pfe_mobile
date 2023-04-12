@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/partner.dart';
-import 'package:saverapp/Screens/user/detailspartner.dart';
+import 'package:saverapp/widget/partnerDetails.dart';
 import '../Models/boxs.dart';
 import 'neonButton.dart';
 
@@ -203,7 +203,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                         context,
                         MaterialPageRoute(
                           builder: (BuildContext context) =>
-                              const DetailsPartner(),
+                              const PartnerDetails(),
                         ));
                   },
                   child: Row(
