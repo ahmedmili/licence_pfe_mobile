@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:saverapp/Models/boxs.dart';
 import 'package:http/http.dart' as http;
+import 'package:saverapp/Models/partner.dart';
 import 'globals.dart';
 
 class UserService {
@@ -41,6 +42,24 @@ class UserService {
         boxs.add(box);
       }
       return boxs;
+    } else {
+      throw Exception('Failed to fetch products');
+    }
+  }
+
+  static Future<Partner> getBoxPartnerInfo(token, id) async {
+    final url = Uri.parse('${baseURL}user/boxs/boxdetails/$id');
+    final response = await http.get(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+    );
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = jsonDecode(response.body);
+      final boxPartner = Partner.fromJson(data);
+      return boxPartner;
     } else {
       throw Exception('Failed to fetch products');
     }

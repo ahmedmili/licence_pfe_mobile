@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:saverapp/Models/partner.dart';
 import '../Models/boxs.dart';
 import 'neonButton.dart';
 
 class FoodDetails extends StatefulWidget {
-  const FoodDetails({super.key, required this.box});
+  const FoodDetails({super.key, required this.box, required this.partner});
   final Box box;
+  final Partner partner;
 
   @override
   State<FoodDetails> createState() => _FoodDetailsState();
@@ -29,7 +29,9 @@ class _FoodDetailsState extends State<FoodDetails> {
   @override
   Widget build(BuildContext context) {
     final box = widget.box;
-    print(box);
+    final partner = widget.partner;
+    // print(box.id);
+    // print(partner.name);
     return Scaffold(
       body: Stack(children: [
         Positioned(

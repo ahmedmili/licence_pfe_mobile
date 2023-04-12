@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:saverapp/Models/partner.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Models/boxs.dart';
+import '../Services/users.dart';
 import 'boxCard.dart';
 import 'foodDetails.dart';
 
@@ -34,10 +36,19 @@ class _BoxScreenState extends State<BoxScreen> {
       itemBuilder: (context, index) {
         final box = items[index];
         return GestureDetector(
-          onTap: () {
+          onTap: () async {
+            String token = await readToken();
+            Partner partner =
+                await UserService.getBoxPartnerInfo(token, box.id);
+            // ignore: use_build_context_synchronously
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => FoodDetails(box: box)),
+              MaterialPageRoute(
+                builder: (context) => FoodDetails(
+                  box: box,
+                  partner: partner,
+                ),
+              ),
             );
           },
           child: widget.directions == "H"
@@ -45,14 +56,7 @@ class _BoxScreenState extends State<BoxScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(width: 10),
-                    BoxCard(
-                      image: box.image,
-                      title: box.title,
-                      description: box.description,
-                      newPrice: box.newprice,
-                      oldPrice: box.oldprice,
-                      remaining_quantity: box.remaining_quantity,
-                    ),
+                    BoxCard(box: box),
                     const SizedBox(width: 10)
                   ],
                 )
@@ -60,12 +64,7 @@ class _BoxScreenState extends State<BoxScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     BoxCard(
-                      image: box.image,
-                      title: box.title,
-                      description: box.description,
-                      newPrice: box.newprice,
-                      oldPrice: box.oldprice,
-                      remaining_quantity: box.remaining_quantity,
+                      box: box,
                     ),
                     const SizedBox(height: 20)
                   ],
