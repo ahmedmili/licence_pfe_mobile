@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:saverapp/Screens/user/profile.dart';
 import '../../Services/auth.dart';
+import '../partner/profile.dart';
 
 class MeScreen extends StatefulWidget {
   const MeScreen({super.key});
@@ -124,7 +126,9 @@ class CustomListTile {
 
 List<CustomListTile> customListTiles = [
   CustomListTile(
-    cb: () {},
+    cb: () {
+      Get.to(() => const ProfileUser());
+    },
     icon: Icons.person_2_outlined,
     title: "Profile",
   ),
