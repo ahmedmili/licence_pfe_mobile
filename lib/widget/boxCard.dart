@@ -113,14 +113,14 @@ class _BoxCardState extends State<BoxCard> {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  Text(
-                                    widget.box.description,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
+                                  // Text(
+                                  //   widget.box.description,
+                                  //   style: const TextStyle(
+                                  //     color: Colors.white,
+                                  //     fontSize: 18.0,
+                                  //     fontWeight: FontWeight.normal,
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                               const Spacer(),
@@ -207,7 +207,7 @@ class _BoxCardState extends State<BoxCard> {
                               ),
                               Text(
                                 snapshot.data!.name,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold),

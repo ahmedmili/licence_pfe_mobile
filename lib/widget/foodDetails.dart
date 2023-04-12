@@ -77,6 +77,40 @@ class _FoodDetailsState extends State<FoodDetails> {
           ),
         ),
         Positioned(
+          left: 20,
+          right: 20,
+          top: 170,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                width: 70,
+                child: CircleAvatar(
+                  radius: 30,
+                  backgroundImage: NetworkImage(
+                    "http://10.0.2.2:8000/storage/partner_imgs/${partner.image}",
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 2.0,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Text(
+                partner.name,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
+        Positioned(
           left: 0,
           right: 0,
           bottom: 0,
@@ -155,7 +189,12 @@ class _FoodDetailsState extends State<FoodDetails> {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 10),
                   ],
+                ),
+                const Divider(
+                  color: Colors.grey,
+                  thickness: 1,
                 ),
               ],
             ),
