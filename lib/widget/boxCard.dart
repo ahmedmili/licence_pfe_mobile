@@ -185,6 +185,36 @@ class _BoxCardState extends State<BoxCard> {
                             ),
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 40, top: 85),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 70,
+                                child: CircleAvatar(
+                                  radius: 20,
+                                  backgroundImage: NetworkImage(
+                                    "http://10.0.2.2:8000/storage/partner_imgs/${snapshot.data!.image}",
+                                  ),
+                                ),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.black,
+                                    width: 2.0,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                snapshot.data!.name,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
