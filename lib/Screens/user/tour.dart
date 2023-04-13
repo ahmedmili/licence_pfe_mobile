@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/user/cart.dart';
 import 'package:saverapp/Screens/user/filter.dart';
 import 'package:saverapp/widget/bottom_nav_bar.dart';
-import 'package:saverapp/widget/foodCategory.dart';
 
 import '../../widget/adresseField.dart';
 

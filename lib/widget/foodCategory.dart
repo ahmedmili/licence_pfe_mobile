@@ -26,18 +26,13 @@ class _FoodCategoryState extends State<FoodCategory> {
 
   // Future<List<Box>>
   showBoxs(token, category) async {
+    // print(category);
     List<Box> boxs = [];
     await UserService.getAvailableBoxsByCategorys(token, category)
         .then((value) => boxs.addAll(value));
-    // print(boxs[1].id);
     setState(() {
       this.boxs = boxs;
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 
   @override

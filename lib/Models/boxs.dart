@@ -14,20 +14,22 @@ class Box {
   final String category;
   final int partnerId;
 
-  Box({
-    required this.newprice,
-    required this.startdate,
-    required this.enddate,
-    required this.quantity,
-    required this.remaining_quantity,
-    required this.image,
-    required this.category,
-    required this.partnerId,
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.oldprice,
-  });
+  int? likes;
+
+  Box(
+      {required this.newprice,
+      required this.startdate,
+      required this.enddate,
+      required this.quantity,
+      required this.remaining_quantity,
+      required this.image,
+      required this.category,
+      required this.partnerId,
+      required this.id,
+      required this.title,
+      required this.description,
+      required this.oldprice,
+      this.likes});
 
   factory Box.fromJson(Map<String, dynamic> json) {
     return Box(
@@ -43,6 +45,7 @@ class Box {
       partnerId: json['partner_id'],
       title: json['title'],
       oldprice: json['oldprice'],
+      likes: json["likes"].length,
     );
   }
 }

@@ -20,17 +20,7 @@ class BoxCard extends StatefulWidget {
 }
 
 class _BoxCardState extends State<BoxCard> {
-  bool isButtonPressed = false;
-
-  void buttonPresssed(int boxid, String token) {
-    setState(() {
-      if (isButtonPressed == false) {
-        isButtonPressed = true;
-      } else if (isButtonPressed = true) {
-        isButtonPressed = false;
-      }
-    });
-  }
+  // bool isButtonPressed = false;
 
   Future<String> readToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -39,6 +29,7 @@ class _BoxCardState extends State<BoxCard> {
 
   @override
   Widget build(BuildContext context) {
+    bool isliked = widget.box.likes == 1 ? true : false;
     return FutureBuilder(
       future: readToken(),
       builder: (context, tokensnapshot) {
@@ -152,9 +143,8 @@ class _BoxCardState extends State<BoxCard> {
                           left: 290.0,
                           top: 5,
                           child: NeuButton(
-                            // onTap: buttonPresssed,
                             boxid: widget.box.id,
-                            // isButtonPressed: isButtonPressed,
+                            isLiked: isliked,
                           ),
                         ),
 
@@ -185,23 +175,24 @@ class _BoxCardState extends State<BoxCard> {
                             ),
                           ),
                         ),
+
                         Padding(
                           padding: const EdgeInsets.only(right: 40, top: 80),
                           child: Row(
                             children: [
                               Container(
                                 width: 70,
-                                child: CircleAvatar(
-                                  radius: 20,
-                                  backgroundImage: NetworkImage(
-                                    "http://10.0.2.2:8000/storage/partner_imgs/${snapshot.data!.image}",
-                                  ),
-                                ),
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(
                                     color: Colors.black,
                                     width: 2.0,
+                                  ),
+                                ),
+                                child: CircleAvatar(
+                                  radius: 20,
+                                  backgroundImage: NetworkImage(
+                                    "http://10.0.2.2:8000/storage/partner_imgs/${snapshot.data!.image}",
                                   ),
                                 ),
                               ),

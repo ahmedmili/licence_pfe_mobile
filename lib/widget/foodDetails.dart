@@ -15,12 +15,11 @@ class FoodDetails extends StatefulWidget {
 }
 
 class _FoodDetailsState extends State<FoodDetails> {
-  bool isButtonPressed = false;
-
   @override
   Widget build(BuildContext context) {
     final box = widget.box;
     final partner = widget.partner;
+    bool isliked = widget.box.likes == 1 ? true : false;
     // print(box.id);
     // print(partner.name);
     return Scaffold(
@@ -70,9 +69,8 @@ class _FoodDetailsState extends State<FoodDetails> {
               ),
               //like
               NeuButton(
-                // onTap: buttonPresssed,
-                // isButtonPressed: isButtonPressed,
                 boxid: box.id,
+                isLiked: isliked,
               ),
             ],
           ),
