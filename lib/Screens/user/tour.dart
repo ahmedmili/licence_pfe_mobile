@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/user/cart.dart';
 import 'package:saverapp/Screens/user/filter.dart';
 import 'package:saverapp/widget/bottom_nav_bar.dart';
-import 'package:saverapp/widget/foodCategory.dart';
+
+import '../../widget/adresseField.dart';
 
 class TourScreen extends StatefulWidget {
   const TourScreen({super.key});
@@ -32,9 +33,9 @@ class _TourScreenState extends State<TourScreen> {
     return Scaffold(
       body: Column(
         children: [
-          const SizedBox(
-            height: 45,
-          ),
+          const SizedBox(height: 40),
+          const AdresseField(),
+          const SizedBox(height: 10),
           MyBottonNavBar(
             onTabChange: (index) => navigateBottomBar(index),
           ),

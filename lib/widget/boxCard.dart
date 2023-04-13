@@ -29,9 +29,7 @@ class _BoxCardState extends State<BoxCard> {
 
   @override
   Widget build(BuildContext context) {
-    // print("${widget.box.likes}");
     bool isliked = widget.box.likes == 1 ? true : false;
-    // print("${widget.box.id}  =====  ${widget.box.likes}");
     return FutureBuilder(
       future: readToken(),
       builder: (context, tokensnapshot) {
@@ -79,13 +77,13 @@ class _BoxCardState extends State<BoxCard> {
                           child: Container(
                             height: 60.0,
                             width: 340.0,
-                            decoration: const BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [Colors.black, Colors.black12],
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.topCenter,
-                              ),
-                            ),
+                            decoration: const BoxDecoration(color: Colors.white
+                                // gradient: LinearGradient(
+                                //   colors: [Colors.white, Colors.white12],
+                                //   begin: Alignment.bottomCenter,
+                                //   end: Alignment.topCenter,
+                                // ),
+                                ),
                           ),
                         ),
                         Positioned(
@@ -101,19 +99,19 @@ class _BoxCardState extends State<BoxCard> {
                                   Text(
                                     widget.box.title,
                                     style: const TextStyle(
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  Text(
-                                    widget.box.description,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
+                                  // Text(
+                                  //   widget.box.description,
+                                  //   style: const TextStyle(
+                                  //     color: Colors.white,
+                                  //     fontSize: 18.0,
+                                  //     fontWeight: FontWeight.normal,
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                               const Spacer(),
@@ -177,7 +175,37 @@ class _BoxCardState extends State<BoxCard> {
                             ),
                           ),
                         ),
-                        // Text(snapshot.data!.name),
+
+                        Padding(
+                          padding: const EdgeInsets.only(right: 40, top: 80),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 70,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.black,
+                                    width: 2.0,
+                                  ),
+                                ),
+                                child: CircleAvatar(
+                                  radius: 20,
+                                  backgroundImage: NetworkImage(
+                                    "http://10.0.2.2:8000/storage/partner_imgs/${snapshot.data!.image}",
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                snapshot.data!.name,
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),

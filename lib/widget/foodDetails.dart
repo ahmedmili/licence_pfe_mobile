@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/partner.dart';
+import 'package:saverapp/widget/partnerDetails.dart';
 import '../Models/boxs.dart';
 import 'neonButton.dart';
 
@@ -70,6 +71,40 @@ class _FoodDetailsState extends State<FoodDetails> {
               NeuButton(
                 boxid: box.id,
                 isLiked: isliked,
+              ),
+            ],
+          ),
+        ),
+        Positioned(
+          left: 20,
+          right: 20,
+          top: 170,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                width: 70,
+                child: CircleAvatar(
+                  radius: 30,
+                  backgroundImage: NetworkImage(
+                    "http://10.0.2.2:8000/storage/partner_imgs/${partner.image}",
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 2.0,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Text(
+                partner.name,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -153,8 +188,55 @@ class _FoodDetailsState extends State<FoodDetails> {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 10),
                   ],
                 ),
+                const Divider(
+                  color: Colors.grey,
+                  thickness: 1,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              const PartnerDetails(),
+                        ));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              const SizedBox(height: 20),
+                              Icon(Icons.location_on_outlined),
+                              const Text(
+                                "adresse commerce",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 25),
+                            child: Text(
+                              "More information about ${partner.name}",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green[800]),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Icon(Icons.chevron_right),
+                    ],
+                  ),
+                )
               ],
             ),
           ),

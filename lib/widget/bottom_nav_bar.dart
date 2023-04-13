@@ -21,18 +21,20 @@ class MyBottonNavBar extends StatelessWidget {
         color: Colors.green.shade800,
       ),
       gap: 8,
-      tabs: const [
+      tabs: [
         //List
+
         GButton(
           icon: Icons.list,
           text: 'List',
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+          padding: EdgeInsets.symmetric(horizontal: 75, vertical: 4),
         ),
+
         //cart
         GButton(
           icon: CupertinoIcons.map,
           text: 'Cart',
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+          padding: EdgeInsets.symmetric(horizontal: 75, vertical: 4),
         ),
       ],
     );
