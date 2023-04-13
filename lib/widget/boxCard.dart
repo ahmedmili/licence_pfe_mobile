@@ -20,17 +20,7 @@ class BoxCard extends StatefulWidget {
 }
 
 class _BoxCardState extends State<BoxCard> {
-  bool isButtonPressed = false;
-
-  void buttonPresssed(int boxid, String token) {
-    setState(() {
-      if (isButtonPressed == false) {
-        isButtonPressed = true;
-      } else if (isButtonPressed = true) {
-        isButtonPressed = false;
-      }
-    });
-  }
+  // bool isButtonPressed = false;
 
   Future<String> readToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -39,6 +29,9 @@ class _BoxCardState extends State<BoxCard> {
 
   @override
   Widget build(BuildContext context) {
+    // print("${widget.box.likes}");
+    bool isliked = widget.box.likes == 1 ? true : false;
+    // print("${widget.box.id}  =====  ${widget.box.likes}");
     return FutureBuilder(
       future: readToken(),
       builder: (context, tokensnapshot) {
@@ -152,9 +145,8 @@ class _BoxCardState extends State<BoxCard> {
                           left: 290.0,
                           top: 5,
                           child: NeuButton(
-                            // onTap: buttonPresssed,
                             boxid: widget.box.id,
-                            // isButtonPressed: isButtonPressed,
+                            isLiked: isliked,
                           ),
                         ),
 
@@ -185,6 +177,7 @@ class _BoxCardState extends State<BoxCard> {
                             ),
                           ),
                         ),
+                        // Text(snapshot.data!.name),
                       ],
                     ),
                   ),

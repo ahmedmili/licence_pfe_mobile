@@ -32,7 +32,7 @@ class _TourScreenState extends State<TourScreen> {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 45,
           ),
           MyBottonNavBar(

@@ -19,6 +19,7 @@ class UserService {
       final box = List<Box>.from(
         data.map((boxJson) => Box.fromJson(boxJson)),
       );
+
       return box;
     } else {
       throw Exception('Failed to fetch products');
@@ -35,13 +36,14 @@ class UserService {
       },
     );
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-      List<Box> boxs = [];
-      for (var item in data["boxs"]) {
-        Box box = Box.fromJson(item);
-        boxs.add(box);
-      }
-      return boxs;
+      // var data = jsonDecode(response.body);
+      print(jsonDecode(response.body)['boxs'][0]['id']);
+      List<dynamic> data = jsonDecode(response.body)['boxs'];
+      final box = List<Box>.from(
+        data.map((boxJson) => Box.fromJson(boxJson)),
+      );
+
+      return box;
     } else {
       throw Exception('Failed to fetch products');
     }
@@ -61,7 +63,7 @@ class UserService {
       final boxPartner = Partner.fromJson(data);
       return boxPartner;
     } else {
-      throw Exception('Failed to fetch products');
+      throw Exception('Failed to fetch box partner info');
     }
   }
 
@@ -79,7 +81,7 @@ class UserService {
       final String message = data["message"];
       return message;
     } else {
-      throw Exception('Failed to fetch products');
+      throw Exception('Failed to fetch like and dislike data');
     }
   }
 }
