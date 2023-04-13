@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:saverapp/Models/partner.dart';
 import 'package:saverapp/widget/partnerDetails.dart';
 import '../Models/boxs.dart';
+import '../Screens/user/cart.dart';
 import 'neonButton.dart';
 
 class FoodDetails extends StatefulWidget {
@@ -287,7 +288,12 @@ class _FoodDetailsState extends State<FoodDetails> {
           color: Colors.grey[200],
         ),
         child: MaterialButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Cart()),
+            );
+          },
           color: Colors.green[800],
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
