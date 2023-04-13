@@ -69,15 +69,15 @@ class _LoginScreenState extends State<LoginScreen> {
           String role = responseMap['role'];
           _save(token, role);
 
-          if (/*token != null &&*/ token.isNotEmpty) {
+          if (token.isNotEmpty) {
             // Navigator.push(
             //   context,
             //   MaterialPageRoute(
             //       builder: (BuildContext context) =>
             //           const partner_home.HomeScreen()),
             // );
-            // Get.toNamed("/home");
-            Get.back();
+            Get.toNamed("/partnerHome");
+            // Get.back();
             return;
           }
         }
