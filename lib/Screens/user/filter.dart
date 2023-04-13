@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:saverapp/widget/adresseField.dart';
+import 'package:saverapp/widget/filterField.dart';
 
 import '../../widget/foodCategory.dart';
 
@@ -17,6 +17,56 @@ class _FilterState extends State<Filter> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            SizedBox(width: 10),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => const FilterField(),
+                    ));
+              },
+              child: Container(
+                height: 50,
+                width: 50,
+                child: Material(
+                    elevation: 5.0,
+                    borderRadius: BorderRadius.circular(20.0),
+                    child: Icon(
+                      Icons.filter_list,
+                      color: Colors.green[800],
+                    )),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Container(
+              width: 330,
+              child: Material(
+                elevation: 5.0,
+                borderRadius: BorderRadius.circular(20.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 30.0, vertical: 14.0),
+                    hintText: "To Research",
+                    suffixIcon: Material(
+                      elevation: 5.0,
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: Icon(
+                        Icons.search,
+                        color: Colors.green[800],
+                      ),
+                    ),
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
         Container(
           padding: const EdgeInsets.only(top: 40.0),
           child: const FoodCategory(),
