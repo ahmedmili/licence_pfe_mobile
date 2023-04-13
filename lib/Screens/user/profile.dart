@@ -12,7 +12,7 @@ class ProfileUser extends StatefulWidget {
 }
 
 class _ProfileUserState extends State<ProfileUser> {
-  late Map<String, dynamic> user;
+  late Map<String, dynamic> user = {};
 
   Future<String> readToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
