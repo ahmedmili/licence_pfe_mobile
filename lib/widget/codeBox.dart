@@ -31,6 +31,7 @@ class CodeBox extends StatelessWidget {
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
             border: InputBorder.none,
+            counterText: '',
           ),
           focusNode: focusNode,
           onChanged: onTextChanged,
