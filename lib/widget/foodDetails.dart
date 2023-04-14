@@ -299,7 +299,7 @@ class _FoodDetailsState extends State<FoodDetails> {
             borderRadius: BorderRadius.circular(20),
           ),
           child: const Text(
-            "Add To Cart",
+            "TO RESERVE",
             style: TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
           ),
