@@ -19,6 +19,7 @@ class UserService {
       final box = List<Box>.from(
         data.map((boxJson) => Box.fromJson(boxJson)),
       );
+      // print(response.body);
 
       return box;
     } else {
@@ -36,8 +37,6 @@ class UserService {
       },
     );
     if (response.statusCode == 200) {
-      // var data = jsonDecode(response.body);
-      print(jsonDecode(response.body)['boxs'][0]['id']);
       List<dynamic> data = jsonDecode(response.body)['boxs'];
       final box = List<Box>.from(
         data.map((boxJson) => Box.fromJson(boxJson)),
@@ -82,6 +81,43 @@ class UserService {
       return message;
     } else {
       throw Exception('Failed to fetch like and dislike data');
+    }
+  }
+
+  static Future<List<Box>> favorsBoxs(token) async {
+    final url = Uri.parse('${baseURL}user/boxs/favorites');
+    final response = await http.get(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+    );
+    if (response.statusCode == 200) {
+      List<dynamic> data = jsonDecode(response.body)[0];
+      final List<Box> box = [];
+      for (int i = 0; i < data.length; i++) {
+        final newBox = Box(
+          // Add fields here to create the new Box object
+          id: data[i]['id'],
+          description: data[i]['description'],
+          category: data[i]['category'],
+          newprice: data[i]['newprice'],
+          startdate: data[i]['startdate'],
+          enddate: data[i]['enddate'],
+          quantity: data[i]['quantity'],
+          remaining_quantity: data[i]['remaining_quantity'],
+          image: data[i]['image'],
+          partnerId: data[i]['partner_id'],
+          title: data[i]['title'],
+          oldprice: data[i]['oldprice'],
+        );
+        box.add(newBox);
+      }
+      // print(box);
+      return box;
+    } else {
+      throw Exception('Failed to fetch like and favorites data');
     }
   }
 }
