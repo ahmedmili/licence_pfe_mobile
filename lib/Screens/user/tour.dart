@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saverapp/Screens/user/cart.dart';
+import 'package:saverapp/Screens/user/congratulations.dart';
 import 'package:saverapp/Screens/user/filter.dart';
 import 'package:saverapp/widget/bottom_nav_bar.dart';
 
@@ -25,7 +25,7 @@ class _TourScreenState extends State<TourScreen> {
     //filtre page
     const Filter(),
     //cart page
-    const Cart(),
+    const Congratulations(),
   ];
 
   @override
