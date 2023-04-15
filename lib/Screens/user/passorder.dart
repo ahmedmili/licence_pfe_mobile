@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:slide_to_act/slide_to_act.dart';
 
 import '../../widget/partnerDetails.dart';
 import 'congratulations.dart';
@@ -19,6 +20,7 @@ class _PassOrderState extends State<PassOrder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Colors.green[800],
       body: Stack(
         children: [
           // Afficher l'image de fond floue
@@ -57,7 +59,7 @@ class _PassOrderState extends State<PassOrder> {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    top: 400 - 20,
+                    top: 430 - 20,
                     child: Container(
                       padding:
                           const EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -78,11 +80,18 @@ class _PassOrderState extends State<PassOrder> {
                               ),
                               Text(
                                 "Order To Be Picked Up",
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.green[800]),
                               ),
-                              const Icon(
-                                Icons.close,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Icon(
+                                  Icons.close,
+                                ),
                               ),
                             ],
                           ),
@@ -104,78 +113,38 @@ class _PassOrderState extends State<PassOrder> {
                                   ),
                                 ],
                               ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          //expandable text widget
-                          Row(
-                            children: [
-                              const Icon(Icons.description_outlined),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Expanded(
-                                child: SingleChildScrollView(
-                                  child: Text(
-                                    "Description of this box : ",
-                                    style: const TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold),
+                              SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: SlideAction(
+                                  borderRadius: 20,
+                                  elevation: 0,
+                                  innerColor: Colors.green[800],
+                                  outerColor: Colors.grey[300],
+                                  sliderButtonIcon: const Icon(
+                                    CupertinoIcons.cube_box,
+                                    color: Colors.white,
                                   ),
+                                  text: 'Box received',
+                                  textStyle: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.green[800],
+                                      fontSize: 24),
+                                  sliderRotate: false,
+                                  onSubmit: () {
+                                    //do simething
+                                  },
                                 ),
                               ),
-                              const SizedBox(height: 10),
+                              Text(
+                                "The merchant must swipe to validate .",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: Colors.orange[900]),
+                              )
                             ],
                           ),
-                          const Divider(
-                            color: Colors.grey,
-                            thickness: 1,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        const PartnerDetails(),
-                                  ));
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        const SizedBox(height: 20),
-                                        Icon(Icons.location_on_outlined),
-                                        const Text(
-                                          "adresse commerce",
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 25),
-                                      child: Text(
-                                        "More information about ",
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.green[800]),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const Icon(Icons.chevron_right),
-                              ],
-                            ),
-                          )
                         ],
                       ),
                     ),
