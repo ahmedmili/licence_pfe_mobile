@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:saverapp/Screens/partner/home_.dart';
+import 'package:saverapp/Screens/user/passorder.dart';
 
 import '../../widget/partnerDetails.dart';
 
@@ -197,7 +198,7 @@ class _OrderScreenState extends State<OrderScreen> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const HomeScreen()),
+              MaterialPageRoute(builder: (context) => const PassOrder()),
             );
           },
           color: Colors.green[800],
