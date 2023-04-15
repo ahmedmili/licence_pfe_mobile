@@ -68,6 +68,116 @@ class _PassOrderState extends State<PassOrder> {
                         ),
                         color: Colors.white,
                       ),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "Order To Be Picked Up",
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              const Icon(
+                                Icons.close,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      'Validate below and show the screen to the merchant.\nMake sure to confirm only when you are at the merchant\'s shop to collect your box.',
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          //expandable text widget
+                          Row(
+                            children: [
+                              const Icon(Icons.description_outlined),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Expanded(
+                                child: SingleChildScrollView(
+                                  child: Text(
+                                    "Description of this box : ",
+                                    style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                            ],
+                          ),
+                          const Divider(
+                            color: Colors.grey,
+                            thickness: 1,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        const PartnerDetails(),
+                                  ));
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        const SizedBox(height: 20),
+                                        Icon(Icons.location_on_outlined),
+                                        const Text(
+                                          "adresse commerce",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 25),
+                                      child: Text(
+                                        "More information about ",
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.green[800]),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const Icon(Icons.chevron_right),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],
