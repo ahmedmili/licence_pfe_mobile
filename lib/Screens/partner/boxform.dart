@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class BoxFormScreen extends StatefulWidget {
-  const BoxFormScreen({required String title});
+  //const BoxFormScreen({required String title});
 
   @override
   State<BoxFormScreen> createState() => _BoxFormScreenState();
@@ -27,7 +27,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
   DateTime? _startDate;
   DateTime? _endDate;
   String _quantity = '';
-  late File? _image;
+  late File? _image = null;
   String _category = '';
   String _imageName = '';
   late String token;

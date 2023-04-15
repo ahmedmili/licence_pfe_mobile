@@ -16,18 +16,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentIndex = 0;
   late String token;
   late String role;
 
-  static Future<void> doLogout() async {
-    try {
-      await AuthServices.logout();
-      // Do something on success
-    } catch (e) {
-      // Handle error
-    }
-  }
+  // static Future<void> doLogout() async {
+  //   try {
+  //     await AuthServices.logout();
+  //     // Do something on success
+  //   } catch (e) {
+  //     // Handle error
+  //   }
+  // }
 
   Future<void> readToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -46,50 +45,50 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Partner home'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.exit_to_app),
-            onPressed: () async {
-              await readToken();
-              await doLogout();
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => const LoginScreen()),
-                  (route) => false);
-            },
-          )
-        ],
-      ),
-      // body: currentIndex == 0 ? BoxScreen() : ProfileScreen(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => BoxFormScreen(
-                    title: 'Add New Box',
-                  )));
-        },
-        child: Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        notchMargin: 5,
-        elevation: 10,
-        clipBehavior: Clip.antiAlias,
-        shape: const CircularNotchedRectangle(),
-        child: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: '')
-          ],
-          currentIndex: currentIndex,
-          onTap: (val) {
-            setState(() {
-              currentIndex = val;
-            });
-          },
-        ),
-      ),
-    );
+        // appBar: AppBar(
+        //   title: const Text('Partner home'),
+        //   actions: [
+        //     IconButton(
+        //       icon: const Icon(Icons.exit_to_app),
+        //       onPressed: () async {
+        //         await readToken();
+        //         await doLogout();
+        //         Navigator.of(context).pushAndRemoveUntil(
+        //             MaterialPageRoute(builder: (context) => const LoginScreen()),
+        //             (route) => false);
+        //       },
+        //     )
+        //   ],
+        // ),
+        // body: currentIndex == 0 ? BoxScreen() : ProfileScreen(),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () {
+        //     Navigator.of(context).push(MaterialPageRoute(
+        //         builder: (context) => BoxFormScreen(
+        //             //title: 'Add New Box',
+        //             )));
+        //   },
+        //   child: Icon(Icons.add),
+        // ),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        // bottomNavigationBar: BottomAppBar(
+        //   notchMargin: 5,
+        //   elevation: 10,
+        //   clipBehavior: Clip.antiAlias,
+        //   shape: const CircularNotchedRectangle(),
+        // child: BottomNavigationBar(
+        //   items: const [
+        //     BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+        //     BottomNavigationBarItem(icon: Icon(Icons.person), label: '')
+        //   ],
+        //   currentIndex: currentIndex,
+        //   onTap: (val) {
+        //     setState(() {
+        //       currentIndex = val;
+        //     });
+        //   },
+        // ),
+        //   ),
+        );
   }
 }

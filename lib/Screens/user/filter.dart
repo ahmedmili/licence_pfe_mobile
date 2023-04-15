@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:saverapp/widget/filterField.dart';
 
+import '../../Models/category.dart';
+import '../../widget/custom_category_filter.dart';
 import '../../widget/foodCategory.dart';
 
 class Filter extends StatefulWidget {
@@ -36,7 +38,7 @@ class _FilterState extends State<Filter> {
                     elevation: 5.0,
                     borderRadius: BorderRadius.circular(20.0),
                     child: Icon(
-                      Icons.filter_list,
+                      Icons.menu,
                       color: Colors.green[800],
                     )),
               ),
@@ -66,10 +68,6 @@ class _FilterState extends State<Filter> {
               ),
             ),
           ],
-        ),
-        Container(
-          padding: const EdgeInsets.only(top: 40.0),
-          child: const FoodCategory(),
         ),
       ],
     );

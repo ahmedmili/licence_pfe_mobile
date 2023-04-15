@@ -47,12 +47,12 @@ class _BoxCardState extends State<BoxCard> {
                       BoxShadow(
                           color: Colors.grey.shade500,
                           offset: const Offset(0, 0),
-                          blurRadius: 15.0,
+                          blurRadius: 10.0,
                           spreadRadius: 1.0),
                       const BoxShadow(
                           color: Colors.white,
                           offset: Offset(-4, -4),
-                          blurRadius: 15.0,
+                          blurRadius: 10.0,
                           spreadRadius: 1.0),
                     ],
                   ),

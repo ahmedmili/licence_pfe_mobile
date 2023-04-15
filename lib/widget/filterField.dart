@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:saverapp/Models/category.dart';
 import 'package:saverapp/Screens/user/filter.dart';
 import 'package:saverapp/Screens/user/tour.dart';
+
+import 'custom_category_filter.dart';
 
 class FilterField extends StatefulWidget {
   const FilterField({super.key});
@@ -44,9 +47,13 @@ class _FilterFieldState extends State<FilterField> {
               ),
               SizedBox(height: 40),
               Text(
-                "Food Categories",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                "Food Categories :",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Colors.green[800]),
               ),
+              CustomCategoryFilter(categories: Category.categories),
             ],
           ),
         ),

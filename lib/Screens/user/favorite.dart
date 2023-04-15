@@ -21,55 +21,62 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        scrollDirection: Axis.vertical,
+      body: Column(
         children: [
-          Column(
-            children: [
-              FutureBuilder<String>(
-                future: readToken(),
-                builder: (context, tokenSnapshot) {
-                  if (tokenSnapshot.hasData) {
-                    return FutureBuilder<List<Box>>(
-                      future: UserService.favorsBoxs(tokenSnapshot.data!),
-                      builder: (context, snapshot) {
-                        // print(snapshot.data);
-                        if (snapshot.hasData) {
-                          return SizedBox(
-                            height: 800, // or any other fixed height
-
-                            child: BoxScreen(
-                              items: snapshot.data!,
-                              directions: "V",
-                            ),
-                          );
-                        } else if (snapshot.hasError) {
-                          return Text('Error: ${snapshot.error}');
-                        } else {
-                          return Center(
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                  Colors.green[800]!),
-                              strokeWidth: 5,
-                            ),
-                          );
-                        }
-                      },
-                    );
-                  } else if (tokenSnapshot.hasError) {
-                    return Text('Error: ${tokenSnapshot.error}');
-                  } else {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(Colors.green[800]!),
-                        strokeWidth: 5,
-                      ),
-                    );
-                  }
-                },
-              ),
-            ],
+          const SizedBox(height: 50),
+          const Padding(
+            padding: EdgeInsets.only(right: 200),
+            child: Text(
+              "Favorites",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+          ),
+          const SizedBox(height: 15),
+          FutureBuilder<String>(
+            future: readToken(),
+            builder: (context, tokenSnapshot) {
+              if (tokenSnapshot.hasData) {
+                return FutureBuilder<List<Box>>(
+                  future: UserService.favorsBoxs(tokenSnapshot.data!),
+                  builder: (context, snapshot) {
+                    // print(snapshot.data);
+                    if (snapshot.hasData) {
+                      return Expanded(
+                        child: Container(
+                          margin: EdgeInsets.only(left: 35),
+                          // height: 800, // or any other fixed height
+                          width: 340,
+                          child: BoxScreen(
+                            items: snapshot.data!,
+                            directions: "V",
+                          ),
+                        ),
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.green[800]!),
+                          strokeWidth: 5,
+                        ),
+                      );
+                    }
+                  },
+                );
+              } else if (tokenSnapshot.hasError) {
+                return Text('Error: ${tokenSnapshot.error}');
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(Colors.green[800]!),
+                    strokeWidth: 5,
+                  ),
+                );
+              }
+            },
           ),
         ],
       ),
