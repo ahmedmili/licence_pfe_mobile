@@ -23,7 +23,7 @@ class _PassOrderState extends State<PassOrder> {
         children: [
           // Afficher l'image de fond floue
           Positioned.fill(
-            bottom: 270,
+            bottom: 250,
             child: Image.asset(
               "assets/images/food.png",
               height: 2,
@@ -57,7 +57,7 @@ class _PassOrderState extends State<PassOrder> {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    top: 350 - 20,
+                    top: 400 - 20,
                     child: Container(
                       padding:
                           const EdgeInsets.only(left: 20, right: 20, top: 20),
