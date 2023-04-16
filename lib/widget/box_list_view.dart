@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/partner.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../Models/boxs.dart';
 import '../Services/users.dart';
 import 'boxCard.dart';
@@ -22,11 +21,6 @@ class _BoxScreenState extends State<BoxScreen> {
     super.initState();
   }
 
-  Future<String> readToken() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('token') ?? "0";
-  }
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -37,9 +31,7 @@ class _BoxScreenState extends State<BoxScreen> {
         final box = items[index];
         return GestureDetector(
           onTap: () async {
-            String token = await readToken();
-            Partner partner =
-                await UserService.getBoxPartnerInfo(token, box.id);
+            Partner partner = await UserService.getBoxPartnerInfo(box.id);
             // ignore: use_build_context_synchronously
             Navigator.push(
               context,

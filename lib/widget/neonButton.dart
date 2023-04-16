@@ -25,10 +25,6 @@ class _NeuButtonState extends State<NeuButton> {
   }
 
   Future<void> buttonPresssed() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String token = prefs.getString('token') ?? "0";
-    String message = await UserService.likeOrDislikeBox(token, widget.boxid);
-    print(message);
     setState(() {
       isliked = !isliked;
     });

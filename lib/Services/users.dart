@@ -1,11 +1,15 @@
 import 'dart:convert';
+import 'package:get/get.dart';
 import 'package:saverapp/Models/boxs.dart';
 import 'package:http/http.dart' as http;
 import 'package:saverapp/Models/partner.dart';
 import 'globals.dart';
 
+final GlobalController controller = Get.find<GlobalController>();
+
 class UserService {
-  static Future<List<Box>> getAvailableBoxs(token) async {
+  static Future<List<Box>> getAvailableBoxs() async {
+    final token = controller.token;
     final url = Uri.parse('${baseURL}user/availableBoxs');
     final response = await http.get(
       url,
@@ -27,7 +31,8 @@ class UserService {
     }
   }
 
-  static Future<List<Box>> getAvailableBoxsByCategorys(token, category) async {
+  static Future<List<Box>> getAvailableBoxsByCategorys(category) async {
+    final token = controller.token;
     final url = Uri.parse('${baseURL}user/indexByCategory/$category');
     final response = await http.get(
       url,
@@ -48,7 +53,8 @@ class UserService {
     }
   }
 
-  static Future<Partner> getBoxPartnerInfo(token, id) async {
+  static Future<Partner> getBoxPartnerInfo(id) async {
+    final token = controller.token;
     final url = Uri.parse('${baseURL}user/boxs/boxdetails/$id');
     final response = await http.get(
       url,
@@ -66,7 +72,8 @@ class UserService {
     }
   }
 
-  static Future<String> likeOrDislikeBox(token, id) async {
+  static Future<String> likeOrDislikeBox(id) async {
+    final token = controller.token;
     final url = Uri.parse('${baseURL}user/boxs/$id/likes');
     final response = await http.post(
       url,
@@ -84,7 +91,8 @@ class UserService {
     }
   }
 
-  static Future<List<Box>> favorsBoxs(token) async {
+  static Future<List<Box>> favorsBoxs() async {
+    final token = controller.token;
     final url = Uri.parse('${baseURL}user/boxs/favorites');
     final response = await http.get(
       url,

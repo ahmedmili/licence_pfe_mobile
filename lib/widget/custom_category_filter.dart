@@ -20,16 +20,10 @@ class _CustomCategoryFilterState extends State<CustomCategoryFilter> {
   late List<Box> boxs = [];
   List<Category> selectedCategories = [];
 
-  Future<String> readToken() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('token') ?? "0";
-  }
-
   Future<void> showBoxsForSelectedCategories() async {
-    String token = await readToken();
     List<Box> boxs = [];
     for (Category category in selectedCategories) {
-      await UserService.getAvailableBoxsByCategorys(token, category.name)
+      await UserService.getAvailableBoxsByCategorys(category.name)
           .then((value) => boxs.addAll(value));
     }
     setState(() {
@@ -61,7 +55,7 @@ class _CustomCategoryFilterState extends State<CustomCategoryFilter> {
             children: [
               Text(
                 widget.categories[index].name,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 25,
