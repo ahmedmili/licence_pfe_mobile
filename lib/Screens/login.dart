@@ -12,7 +12,7 @@ import '../Services/auth.dart';
 import '../Services/globals.dart';
 import '../widget/rounded_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'partner/home_.dart' as partner_home;
+import 'partner/home_partner.dart' as partner_home;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

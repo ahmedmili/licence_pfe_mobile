@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:saverapp/Screens/partner/home_.dart';
+import 'package:saverapp/Screens/partner/home_partner.dart';
 import 'package:saverapp/Screens/user/passorder.dart';
 
 import '../../widget/partnerDetails.dart';

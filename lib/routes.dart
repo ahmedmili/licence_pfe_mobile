@@ -6,9 +6,11 @@ import 'package:saverapp/Screens/welcome.dart';
 import 'package:saverapp/Screens/partner/register_partner.dart';
 
 import 'package:saverapp/Screens/user/home.dart';
-import 'package:saverapp/Screens/partner/home_.dart' as partnerHome;
+
 import 'package:saverapp/Screens/user/main_page.dart';
 import 'package:saverapp/Screens/user/registeruser.dart';
+
+import 'Screens/partner/home_partner.dart';
 // import 'package:saverapp/middelwares/auth.dart';
 // import 'package:saverapp/middelwares/checkRole.dart';
 
@@ -59,7 +61,7 @@ List<GetPage<dynamic>> routes = [
   ),
   GetPage(
     name: '/partnerHome',
-    page: () => const partnerHome.HomeScreen(),
+    page: () => const HomePartnerScreen(),
     transition: Transition.rightToLeft,
     transitionDuration: const Duration(seconds: 1),
     // middlewares: [

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/partner/partner_boxes.dart';
 
 import 'boxform.dart';
-import 'home_.dart';
+
+import 'home_partner.dart';
 import 'me_partner.dart';
 
 class NavBottomScreen extends StatefulWidget {
@@ -16,14 +17,14 @@ class _NavBottomScreenState extends State<NavBottomScreen> {
   int currentTabIndex = 0;
   late List<Widget> pages;
   late Widget currentPage;
-  late HomeScreen partnerHome;
+  late HomePartnerScreen partnerHome;
   late BoxFormScreen boxformScreen;
   late PartnerBoxes partnerboxesScreen;
   late MePartner mepartnerScreen;
   @override
   void initState() {
     super.initState();
-    partnerHome = const HomeScreen();
+    partnerHome = const HomePartnerScreen();
     boxformScreen = BoxFormScreen();
     partnerboxesScreen = const PartnerBoxes();
     mepartnerScreen = const MePartner();

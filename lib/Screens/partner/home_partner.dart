@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'boxform.dart';
 import '../login.dart';
@@ -7,15 +8,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth.dart';
 import '../../widget/box_list_view.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomePartnerScreen extends StatefulWidget {
+  const HomePartnerScreen({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomePartnerScreenState createState() => _HomePartnerScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomePartnerScreenState extends State<HomePartnerScreen> {
   late String token;
   late String role;
 
