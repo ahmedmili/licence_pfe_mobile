@@ -70,12 +70,6 @@ class _LoginScreenState extends State<LoginScreen> {
           _save(token, role);
 
           if (token.isNotEmpty) {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //       builder: (BuildContext context) =>
-            //           const partner_home.HomeScreen()),
-            // );
             Get.toNamed("/partnerHome");
             // Get.back();
             return;
