@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/partner/partner_boxes.dart';
 
@@ -51,12 +52,14 @@ class _NavBottomScreenState extends State<NavBottomScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_basket),
-            label: 'Tour',
+            icon: Icon(Icons.add),
+            label: 'Add Box',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorite',
+            icon: Icon(
+              CupertinoIcons.cube_box,
+            ),
+            label: 'Your Boxes',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

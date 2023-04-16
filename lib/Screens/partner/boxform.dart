@@ -100,12 +100,6 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
     print(responseMap);
 
     if (response.statusCode == 200) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (BuildContext context) => HomeScreen(),
-        ),
-      );
     } else {
       errorSnackBar(context, responseMap.values.first[0]);
     }
@@ -122,72 +116,116 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: (const Text("Add New Box")),
-        elevation: 0,
-        centerTitle: true,
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              const SizedBox(
-                height: 20,
-              ),
-              TextField(
-                decoration: const InputDecoration(
-                  labelText: 'Title',
-                  contentPadding: EdgeInsets.all(10),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.black)),
+              const SizedBox(height: 50),
+              const Padding(
+                padding: EdgeInsets.only(right: 200),
+                child: Text(
+                  "Add Box :",
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
-                onChanged: (value) {
-                  _title = value;
-                },
               ),
-              const SizedBox(
-                height: 15,
-              ),
-              TextField(
-                decoration: const InputDecoration(
-                  labelText: 'Description',
-                  contentPadding: EdgeInsets.all(10),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.black)),
+              const SizedBox(height: 15),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.green.shade800, width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Title',
+                      ),
+                      onChanged: (value) {
+                        _title = value;
+                      },
+                    ),
+                  ),
                 ),
-                onChanged: (value) {
-                  _description = value;
-                },
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  labelText: 'Old Price',
-                  contentPadding: EdgeInsets.all(10),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.black)),
-                ),
-                onChanged: (value) {
-                  _oldprice = value;
-                },
               ),
               const SizedBox(
                 height: 15,
               ),
-              TextField(
-                decoration: const InputDecoration(
-                  labelText: 'New Price',
-                  contentPadding: EdgeInsets.all(10),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.black)),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.green.shade800, width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Description',
+                      ),
+                      onChanged: (value) {
+                        _description = value;
+                      },
+                    ),
+                  ),
                 ),
-                onChanged: (value) {
-                  _newprice = value;
-                },
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.green.shade800, width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Old Price',
+                      ),
+                      onChanged: (value) {
+                        _oldprice = value;
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.green.shade800, width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'New Price',
+                      ),
+                      onChanged: (value) {
+                        _newprice = value;
+                      },
+                    ),
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 15,
@@ -214,17 +252,29 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                   }
                 },
                 child: AbsorbPointer(
-                  child: TextField(
-                    controller: TextEditingController(
-                      text: _startDate == null
-                          ? ''
-                          : DateFormat('yyyy-MM-dd HH:mm').format(_startDate!),
-                    ),
-                    decoration: const InputDecoration(
-                      labelText: 'Start Date',
-                      contentPadding: EdgeInsets.all(10),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(width: 1, color: Colors.black),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        border:
+                            Border.all(color: Colors.green.shade800, width: 2),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 12.0),
+                        child: TextField(
+                          controller: TextEditingController(
+                            text: _startDate == null
+                                ? ''
+                                : DateFormat('yyyy-MM-dd HH:mm')
+                                    .format(_startDate!),
+                          ),
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Start Date',
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -256,17 +306,29 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                   }
                 },
                 child: AbsorbPointer(
-                  child: TextField(
-                    controller: TextEditingController(
-                      text: _endDate == null
-                          ? ''
-                          : DateFormat('yyyy-MM-dd HH:mm').format(_endDate!),
-                    ),
-                    decoration: const InputDecoration(
-                      labelText: 'End Date',
-                      contentPadding: EdgeInsets.all(10),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(width: 1, color: Colors.black),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        border:
+                            Border.all(color: Colors.green.shade800, width: 2),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 12.0),
+                        child: TextField(
+                          controller: TextEditingController(
+                            text: _endDate == null
+                                ? ''
+                                : DateFormat('yyyy-MM-dd HH:mm')
+                                    .format(_endDate!),
+                          ),
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'End Date',
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -275,22 +337,36 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
               const SizedBox(
                 height: 15,
               ),
-              TextField(
-                decoration: const InputDecoration(
-                  labelText: 'Quantity',
-                  contentPadding: EdgeInsets.all(10),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.black)),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.green.shade800, width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Quantity',
+                      ),
+                      onChanged: (value) {
+                        _quantity = value;
+                      },
+                    ),
+                  ),
                 ),
-                onChanged: (value) {
-                  _quantity = value;
-                },
               ),
               const SizedBox(
                 height: 15,
               ),
               ElevatedButton(
                 onPressed: _pickImage,
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.orange[900],
+                ),
                 child: const Text('Select Image'),
               ),
               Text(_imageName),
@@ -299,23 +375,29 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                 width: double.infinity,
                 height: 150,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
+                  border: Border.all(color: Colors.green.shade800),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: _image == null
-                    ? const Center(child: Text('No image selected'))
+                    ? Center(
+                        child: Text(
+                        'No image selected',
+                        style: TextStyle(
+                            color: Colors.orange[900],
+                            fontWeight: FontWeight.bold),
+                      ))
                     : Image.file(_image!, fit: BoxFit.cover),
               ),
               const SizedBox(
                 height: 15,
               ),
               // Utilisez un DropdownButtonFormField pour sélectionner la catégorie
-              const Text(
+              Text(
                 'Category',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
-                    color: Colors.blue),
+                    color: Colors.green[800]),
               ),
               DropdownButtonFormField(
                 value: _category,
@@ -333,7 +415,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
               ),
 
               const SizedBox(
-                height: 15,
+                height: 25,
               ),
 
               RoundedButton(
