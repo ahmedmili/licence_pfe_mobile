@@ -22,6 +22,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void initState() {
+    super.initState();
+    print("login page");
+  }
+
+  final GlobalController controller = Get.find<GlobalController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); // 1
   String _email = '';
   String _password = '';
@@ -46,8 +53,12 @@ class _LoginScreenState extends State<LoginScreen> {
           // Login successful, navigate to HomeScreen
           String token = responseMap['token'];
           String role = responseMap['role'];
+          controller.setRole(role);
+          controller.setToken(token);
           _save(token, role);
           if (token.isNotEmpty) {
+            // print(role);
+            // print(token);
             Get.toNamed('/main');
             return;
           }
@@ -70,7 +81,9 @@ class _LoginScreenState extends State<LoginScreen> {
           _save(token, role);
 
           if (token.isNotEmpty) {
-            Get.toNamed("/partnerHome");
+            // Get.toNamed("/main");
+            Get.toNamed('/partnerMain');
+
             // Get.back();
             return;
           }

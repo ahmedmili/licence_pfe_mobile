@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:saverapp/Screens/code.dart';
 
 import 'package:saverapp/Screens/login.dart';
+import 'package:saverapp/Screens/partner/nav_bottom.dart';
 import 'package:saverapp/Screens/welcome.dart';
 
 import 'package:saverapp/Screens/partner/register_partner.dart';
@@ -63,6 +64,15 @@ List<GetPage<dynamic>> routes = [
   GetPage(
     name: '/partnerHome',
     page: () => const HomePartnerScreen(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(seconds: 1),
+    // middlewares: [
+    //   AuthMiddleware("partner"),
+    // ],
+  ),
+  GetPage(
+    name: '/partnerMain',
+    page: () => const NavBottomScreen(),
     transition: Transition.rightToLeft,
     transitionDuration: const Duration(seconds: 1),
     // middlewares: [
