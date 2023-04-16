@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
+
 import 'package:saverapp/Screens/code.dart';
+import 'package:saverapp/Services/users.dart';
 
 import '../widget/rounded_button.dart';
 
@@ -13,13 +14,18 @@ class ForgetPassword extends StatefulWidget {
 }
 
 class _ForgetPasswordState extends State<ForgetPassword> {
+  String _email = '';
+  bool isValidEmail(String email) {
+    return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.grey,
         ),
       ),
@@ -63,28 +69,46 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         border: InputBorder.none,
                         hintText: 'Email',
                       ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Email is required';
+                        } else if (!isValidEmail(value)) {
+                          return 'Invalid email format';
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        _email = value;
+                      },
                     ),
                   ),
                 ),
               ),
               const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {},
-                child: RoundedButton(
-                  btnText: 'SEND EMAIL',
-                  onBtnPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => const Code(),
-                        ));
-                  },
-                ),
+              RoundedButton(
+                btnText: 'SEND EMAIL',
+                onBtnPressed: () {
+                  forgetPassword();
+                  // print("object");
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (BuildContext context) => const Code(),
+                  //     ));
+                },
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  forgetPassword() async {
+    Map<String, dynamic> response = await UserService.forgetPassword(_email);
+    if (response["status"] == 200) {
+      print(response);
+      Get.toNamed('/verifPasswordCode');
+    }
   }
 }

@@ -120,4 +120,29 @@ class UserService {
       throw Exception('Failed to fetch like and favorites data');
     }
   }
+
+  static Future<Map<String, dynamic>> forgetPassword(String email) async {
+    String _email = email;
+    late Map<String, dynamic> responseMessage;
+    var body = json.encode({"email": _email});
+    final url = Uri.parse('${baseURL}forgetPassWord');
+    print(url);
+    final response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+    if (response.statusCode == 200) {
+      responseMessage = {
+        "response": json.decode(response.body),
+        "status": response.statusCode
+      };
+    } else {
+      responseMessage = {
+        "response": json.decode(response.body),
+        "status": response.statusCode
+      };
+    }
+    return responseMessage;
+  }
 }

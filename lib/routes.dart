@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:saverapp/Screens/code.dart';
 
 import 'package:saverapp/Screens/login.dart';
 import 'package:saverapp/Screens/welcome.dart';
@@ -65,5 +66,11 @@ List<GetPage<dynamic>> routes = [
     // middlewares: [
     //   AuthMiddleware("partner"),
     // ],
+  ),
+  GetPage(
+    name: '/verifPasswordCode',
+    page: () => const Code(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(seconds: 1),
   ),
 ];
