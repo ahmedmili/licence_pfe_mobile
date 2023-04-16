@@ -42,58 +42,61 @@ class _CodeState extends State<Code> {
         },
       ),
     );
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: const IconThemeData(
-          color: Colors.grey,
+    return Container(
+      height: 2000,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          iconTheme: const IconThemeData(
+            color: Colors.grey,
+          ),
         ),
-      ),
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text("Verification CODE",
-                  style: GoogleFonts.bebasNeue(fontSize: 50)),
-              const SizedBox(height: 20),
-              const Text(
-                "Enter the verification code sent at your email",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: codeBoxes,
-              ),
-              const SizedBox(height: 20),
-              RoundedButton(
-                btnText: 'SEND CODE',
-                onBtnPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => const Code(),
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(height: 10),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
+        body: SafeArea(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("Verification CODE",
+                    style: GoogleFonts.bebasNeue(fontSize: 50)),
+                const SizedBox(height: 20),
+                const Text(
+                  "Enter the verification code sent at your email",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  children: codeBoxes,
+                ),
+                const SizedBox(height: 20),
+                RoundedButton(
+                  btnText: 'SEND CODE',
+                  onBtnPressed: () {
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            const ForgetPassword(),
-                      ));
-                },
-                child: const Text(
-                  'Resend email ?',
-                  style: TextStyle(color: Colors.blue),
+                        builder: (BuildContext context) => const Code(),
+                      ),
+                    );
+                  },
                 ),
-              )
-            ],
+                const SizedBox(height: 10),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              const ForgetPassword(),
+                        ));
+                  },
+                  child: const Text(
+                    'Resend email ?',
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
