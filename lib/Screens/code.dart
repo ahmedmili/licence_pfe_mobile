@@ -30,7 +30,7 @@ class _CodeState extends State<Code> {
   @override
   Widget build(BuildContext context) {
     List<CodeBox> codeBoxes = List.generate(
-      6,
+      4,
       (index) => CodeBox(
         key: Key(index.toString()),
         moveCount: index,
@@ -65,8 +65,11 @@ class _CodeState extends State<Code> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
-                Row(
-                  children: codeBoxes,
+                Padding(
+                  padding: const EdgeInsets.only(left: 50),
+                  child: Row(
+                    children: codeBoxes,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 RoundedButton(
