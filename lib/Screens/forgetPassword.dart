@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:saverapp/Services/globals.dart';
 
-import 'package:saverapp/Screens/code.dart';
+// import 'package:saverapp/Screens/code.dart';
 import 'package:saverapp/Services/users.dart';
 
 import '../widget/rounded_button.dart';
@@ -14,7 +15,8 @@ class ForgetPassword extends StatefulWidget {
 }
 
 class _ForgetPasswordState extends State<ForgetPassword> {
-  String _email = '';
+  final GlobalController controller = Get.find<GlobalController>();
+  late String _email = '';
   bool isValidEmail(String email) {
     return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
   }
@@ -89,12 +91,6 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 btnText: 'SEND EMAIL',
                 onBtnPressed: () {
                   forgetPassword();
-                  // print("object");
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (BuildContext context) => const Code(),
-                  //     ));
                 },
               ),
             ],
@@ -107,7 +103,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   forgetPassword() async {
     Map<String, dynamic> response = await UserService.forgetPassword(_email);
     if (response["status"] == 200) {
-      print(response);
+      controller.setEmail(_email);
+      // print(response);
       Get.toNamed('/verifPasswordCode');
     }
   }

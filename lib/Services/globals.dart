@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const String baseURL = "http://10.0.2.2:8000/api/";
@@ -14,4 +15,14 @@ void errorSnackBar(BuildContext context, String errorMessage) {
     backgroundColor: Colors.red,
   );
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
+}
+
+class GlobalController extends GetxController {
+  var _email = ''.obs;
+
+  String get email => _email.value;
+
+  void setEmail(String email) {
+    _email.value = email;
+  }
 }

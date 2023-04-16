@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:saverapp/Screens/forgetPassword.dart';
+import 'package:saverapp/Services/globals.dart';
 
 import '../widget/codeBox.dart';
 import '../widget/rounded_button.dart';
@@ -29,6 +31,8 @@ class _CodeState extends State<Code> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalController controller = Get.find<GlobalController>();
+    print(controller.email);
     List<CodeBox> codeBoxes = List.generate(
       4,
       (index) => CodeBox(
