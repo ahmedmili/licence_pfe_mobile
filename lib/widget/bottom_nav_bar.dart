@@ -21,7 +21,7 @@ class MyBottonNavBar extends StatelessWidget {
         color: Colors.green.shade800,
       ),
       gap: 8,
-      tabs: [
+      tabs: const [
         //List
 
         GButton(

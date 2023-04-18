@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:saverapp/Models/category.dart';
-import 'package:saverapp/Screens/user/filter.dart';
-import 'package:saverapp/Screens/user/tour.dart';
 
 import 'custom_category_filter.dart';
 
@@ -30,9 +26,9 @@ class _FilterFieldState extends State<FilterField> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 150),
-                    child: const Text(
+                  const Padding(
+                    padding: EdgeInsets.only(left: 150),
+                    child: Text(
                       "Filters",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -42,10 +38,10 @@ class _FilterFieldState extends State<FilterField> {
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: Icon(Icons.close)),
+                      child: const Icon(Icons.close)),
                 ],
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Text(
                 "Food Categories :",
                 style: TextStyle(

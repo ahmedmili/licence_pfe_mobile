@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:saverapp/widget/filterField.dart';
 
-import '../../Models/category.dart';
-import '../../widget/custom_category_filter.dart';
-import '../../widget/foodCategory.dart';
+// import '../../Models/category.dart';
+// import '../../widget/custom_category_filter.dart';
+// import '../../widget/foodCategory.dart';
 
 class Filter extends StatefulWidget {
   const Filter({super.key});
@@ -22,7 +20,7 @@ class _FilterState extends State<Filter> {
         const SizedBox(height: 10),
         Row(
           children: [
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -31,7 +29,7 @@ class _FilterState extends State<Filter> {
                       builder: (BuildContext context) => const FilterField(),
                     ));
               },
-              child: Container(
+              child: SizedBox(
                 height: 50,
                 width: 50,
                 child: Material(
@@ -44,7 +42,7 @@ class _FilterState extends State<Filter> {
               ),
             ),
             const SizedBox(width: 10),
-            Container(
+            SizedBox(
               width: 330,
               child: Material(
                 elevation: 5.0,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get/get.dart';
+import 'package:saverapp/Services/globals.dart';
 import '../Models/boxs.dart';
 import '../Models/category.dart';
 import '../Services/users.dart';
@@ -17,7 +18,9 @@ class CustomCategoryFilter extends StatefulWidget {
 }
 
 class _CustomCategoryFilterState extends State<CustomCategoryFilter> {
-  late List<Box> boxs = [];
+  final GlobalController controller = Get.find<GlobalController>();
+
+  // late List<Box> boxs = [];
   List<Category> selectedCategories = [];
 
   Future<void> showBoxsForSelectedCategories() async {
@@ -26,9 +29,13 @@ class _CustomCategoryFilterState extends State<CustomCategoryFilter> {
       await UserService.getAvailableBoxsByCategorys(category.name)
           .then((value) => boxs.addAll(value));
     }
-    setState(() {
-      this.boxs = boxs;
-    });
+    controller.setBoxsList(boxs);
+    var testinngBox = controller.boxsList;
+    print(testinngBox[0].id);
+    // print(boxs);
+    // setState(() {
+    //   this.boxs = boxs;
+    // });
   }
 
   @override
@@ -68,6 +75,7 @@ class _CustomCategoryFilterState extends State<CustomCategoryFilter> {
                           .where((category) => category.isSelected)
                           .toList();
                       showBoxsForSelectedCategories();
+                      // print(boxs?[0].id);
                     });
                   },
                 ),

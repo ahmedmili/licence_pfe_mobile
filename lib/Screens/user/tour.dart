@@ -24,7 +24,7 @@ class _TourScreenState extends State<TourScreen> {
   final List<Widget> _pages = [
     //filtre page
     const Filter(),
-    //cart page
+    // cart page
     const Congratulations(),
   ];
 

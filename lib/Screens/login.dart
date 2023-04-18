@@ -57,8 +57,6 @@ class _LoginScreenState extends State<LoginScreen> {
           controller.setToken(token);
           _save(token, role);
           if (token.isNotEmpty) {
-            // print(role);
-            // print(token);
             Get.toNamed('/main');
             return;
           }
