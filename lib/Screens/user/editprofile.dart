@@ -17,6 +17,7 @@ class _EditProfileState extends State<EditProfile> {
   late TextEditingController nameController;
   late TextEditingController emailController;
   late TextEditingController phoneController;
+  late TextEditingController newPasswordController;
 
   @override
   void initState() {
@@ -25,6 +26,7 @@ class _EditProfileState extends State<EditProfile> {
     nameController = TextEditingController();
     emailController = TextEditingController();
     phoneController = TextEditingController();
+    newPasswordController = TextEditingController();
     readToken().then((token) {
       getUserInfo(token);
     });
@@ -59,6 +61,38 @@ class _EditProfileState extends State<EditProfile> {
         const SnackBar(content: Text('User details updated successfully')),
       );
     } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Failed to update user details. Please try again.'),
+        ),
+      );
+    }
+  }
+
+  Future<void> updatePassword() async {
+    final url = Uri.parse('http://10.0.2.2:8000/api/user/user/password');
+    final token = await readToken();
+    final response = await http.put(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: json.encode({
+        'password': newPasswordController.text,
+      }),
+    );
+
+    if (response.statusCode == 202) {
+      setState(() {
+        user = json.decode(response.body);
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('User Password updated successfully')),
+      );
+    } else {
+      print('Response status code: ${response.statusCode}');
+      print('Response body: ${response.body}');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Failed to update user details. Please try again.'),
@@ -199,6 +233,50 @@ class _EditProfileState extends State<EditProfile> {
                     );
                   },
                   child: Text('Save Changes'),
+                ),
+              ),
+              //change password
+              const SizedBox(height: 20),
+              Text(
+                "Change Password",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.green[800]),
+              ),
+              SizedBox(height: 20),
+              Container(
+                padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                child: Material(
+                  elevation: 5.0,
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: TextFormField(
+                    controller: newPasswordController,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 14.0),
+                      prefixIcon: Icon(Icons.lock),
+                      labelText: 'New password',
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+              Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green[800], // Couleur de fond du bouton
+                    onPrimary: Colors.white, // Couleur du texte du bouton
+                  ),
+                  onPressed: () {
+                    updatePassword();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfileUser()),
+                    );
+                  },
+                  child: Text('Save Password'),
                 ),
               ),
             ],
