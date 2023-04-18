@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:saverapp/Services/auth.dart';
 import 'package:saverapp/Services/globals.dart';
 
 // import 'package:saverapp/Screens/code.dart';
@@ -101,7 +102,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   }
 
   forgetPassword() async {
-    Map<String, dynamic> response = await UserService.forgetPassword(_email);
+    Map<String, dynamic> response = await AuthServices.forgetPassword(_email);
     if (response["status"] == 200) {
       controller.setEmail(_email);
       // print(response);

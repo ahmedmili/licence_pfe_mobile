@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:saverapp/Screens/change_password.dart';
 import 'package:saverapp/Screens/code.dart';
 
 import 'package:saverapp/Screens/login.dart';
@@ -82,6 +83,12 @@ List<GetPage<dynamic>> routes = [
   GetPage(
     name: '/verifPasswordCode',
     page: () => const Code(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(seconds: 1),
+  ),
+  GetPage(
+    name: '/changePassword',
+    page: () => const ChangePassword(),
     transition: Transition.rightToLeft,
     transitionDuration: const Duration(seconds: 1),
   ),

@@ -1,8 +1,11 @@
 import 'dart:convert';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'globals.dart';
 import 'dart:io';
+
+final GlobalController controller = Get.find<GlobalController>();
 
 class AuthServices {
   static Future<http.Response> register(String name, String email, String phone,
@@ -36,14 +39,8 @@ class AuthServices {
       String openingtime,
       String closingtime,
       int roleId) async {
-    // var stream = http.ByteStream(image.openRead());
-    // var length = await image.length();
     var uri = Uri.parse('${baseURL}user/registerpartner');
     var request = http.MultipartRequest("POST", uri);
-
-    // ignore: unnecessary_new
-    // var multipartFile = new http.MultipartFile('image', stream, length,
-    //     filename: basename(image.path));
 
     Map<String, String> data = {
       "name": name,
@@ -59,17 +56,14 @@ class AuthServices {
 
     request.fields.addAll(data);
     request.files.add(await http.MultipartFile.fromPath('image', image.path));
-    // request.files.add(multipartFile);
     request.headers.addAll(headers);
 
     var response = await request.send();
     var responseString = await response.stream.bytesToString();
-    // print(responseString);
     if (response.statusCode == 200) {
       return http.Response(responseString, response.statusCode);
     } else {
       throw responseString;
-      // throw Exception('Failed to load data from API');
     }
   }
 
@@ -80,22 +74,18 @@ class AuthServices {
       "password": password,
     };
     var body = json.encode(data);
-    var url = Uri.parse('${baseURL}$userType/login');
+    var url = Uri.parse('$baseURL$userType/login');
     http.Response response = await http.post(
       url,
       headers: headers,
       body: body,
     );
-    // print(response.body);
     return response;
   }
 
   static Future<http.Response> logout() async {
-    print("logged out Service");
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var token = prefs.getString('token');
+    var token = controller.token;
     var url = Uri.parse('${baseURL}user/logout');
-    // print(token);
     http.Response response = await http.post(
       url,
       headers: {
@@ -103,9 +93,56 @@ class AuthServices {
         'Authorization': 'Bearer $token'
       },
     );
-    if (response.body != null && response.body.isNotEmpty) {
-      // print(response.body);
-    }
+    if (response.body.isNotEmpty) {}
     return response;
+  }
+
+  static Future<Map<String, dynamic>> forgetPassword(String email) async {
+    String _email = email;
+    late Map<String, dynamic> responseMessage;
+    var body = json.encode({"email": _email});
+    final url = Uri.parse('${baseURL}forgetPassWord');
+    final response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+    if (response.statusCode == 200) {
+      responseMessage = {
+        "response": json.decode(response.body),
+        "status": response.statusCode
+      };
+    } else {
+      responseMessage = {
+        "response": json.decode(response.body),
+        "status": response.statusCode
+      };
+    }
+    return responseMessage;
+  }
+
+  static Future<Map<String, dynamic>> sendVerifCode(String verifCode) async {
+    var email = controller.email;
+
+    late Map<String, dynamic> responseMessage;
+    var body = json.encode({
+      "code": verifCode,
+      "email": email,
+    });
+    final url = Uri.parse('${baseURL}verifCode');
+    final response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+    if (response.statusCode == 200) {
+      responseMessage = {
+        "response": json.decode(response.body),
+      };
+    } else {
+      print(response.body);
+      responseMessage = {"status": response.statusCode};
+    }
+    return responseMessage;
   }
 }

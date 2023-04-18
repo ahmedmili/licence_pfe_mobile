@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class CodeBox extends StatelessWidget {
   final int moveCount;
@@ -21,13 +18,14 @@ class CodeBox extends StatelessWidget {
       height: 50,
       width: 50,
       padding: const EdgeInsets.all(4),
+      transform: Matrix4.translationValues(50.0, moveCount * 0.0, 50.0),
       child: Material(
         elevation: 3.0,
         color: Colors.grey[300],
         borderRadius: BorderRadius.circular(10.0),
         child: TextField(
           maxLength: 1,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
             border: InputBorder.none,
@@ -37,7 +35,6 @@ class CodeBox extends StatelessWidget {
           onChanged: onTextChanged,
         ),
       ),
-      transform: Matrix4.translationValues(50.0, moveCount * 0.0, 50.0),
     );
   }
 }

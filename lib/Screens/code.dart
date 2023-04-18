@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:saverapp/Screens/change_password.dart';
-import 'package:saverapp/Screens/forgetPassword.dart';
+
+import 'package:saverapp/Services/auth.dart';
 import 'package:saverapp/Services/globals.dart';
 
 import '../widget/codeBox.dart';
@@ -33,7 +33,33 @@ class _CodeState extends State<Code> {
   @override
   Widget build(BuildContext context) {
     final GlobalController controller = Get.find<GlobalController>();
-    print(controller.email);
+    final List verifCodeList = ["", "", "", ""];
+    verifCode() async {
+      var code = verifCodeList.join("");
+      if (code.isEmpty) {
+        Get.snackbar(
+          backgroundColor: const Color.fromRGBO(243, 75, 63, 0.644),
+          "error",
+          "please fill the code area",
+        );
+      } else {
+        var response = await AuthServices.sendVerifCode(code);
+        if (response["response"]?["status"] == 200) {
+          Get.snackbar("success", response["response"]["message"],
+              backgroundColor: const Color.fromARGB(255, 38, 209, 44));
+          Get.toNamed("changePassword");
+          // print(response["response"]["message"]);
+        } else {
+          Get.snackbar(
+            backgroundColor: const Color.fromRGBO(243, 75, 63, 0.644),
+            "error",
+            "error pls try again",
+          );
+        }
+      }
+    }
+
+    // print(controller.email);
     List<CodeBox> codeBoxes = List.generate(
       4,
       (index) => CodeBox(
@@ -41,13 +67,14 @@ class _CodeState extends State<Code> {
         moveCount: index,
         focusNode: focusNodes[index],
         onTextChanged: (text) {
+          verifCodeList[index] = text;
           if (text.length == 1 && index < 5) {
             focusNodes[index + 1].requestFocus();
           }
         },
       ),
     );
-    return Container(
+    return SizedBox(
       height: 2000,
       child: Scaffold(
         appBar: AppBar(
@@ -80,24 +107,13 @@ class _CodeState extends State<Code> {
                 RoundedButton(
                   btnText: 'SEND CODE',
                   onBtnPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            const ChangePassword(),
-                      ),
-                    );
+                    verifCode();
                   },
                 ),
                 const SizedBox(height: 10),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              const ForgetPassword(),
-                        ));
+                    Navigator.pop(context);
                   },
                   child: const Text(
                     'Resend email ?',
