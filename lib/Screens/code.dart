@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:saverapp/Screens/change_password.dart';
 import 'package:saverapp/Screens/forgetPassword.dart';
 import 'package:saverapp/Services/globals.dart';
 
@@ -82,7 +83,8 @@ class _CodeState extends State<Code> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (BuildContext context) => const Code(),
+                        builder: (BuildContext context) =>
+                            const ChangePassword(),
                       ),
                     );
                   },
