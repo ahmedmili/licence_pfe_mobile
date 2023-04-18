@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:saverapp/Screens/user/editprofile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'me.dart';
+
 class ProfileUser extends StatefulWidget {
   const ProfileUser({Key? key}) : super(key: key);
 
@@ -63,7 +65,10 @@ class _ProfileUserState extends State<ProfileUser> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MeScreen()),
+                    );
                   },
                   child: Row(
                     children: [
