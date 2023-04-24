@@ -110,7 +110,7 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
                         const SizedBox(height: 15.0),
                         SizedBox(
                           height: 200, // or any other fixed height
-                          child: BoxScreen(items: snapshot.data!),
+                          child: BoxScreenPartner(items: snapshot.data!),
                         ),
                       ],
                     );

@@ -10,7 +10,7 @@ final GlobalController controller = Get.find<GlobalController>();
 class PartnersService {
   static Future<List<Box>> getPartnerBoxes() async {
     final token = controller.token;
-    // print(token);
+    print(token);
     final url = Uri.parse('${baseURL}partner/getPartnerBoxs');
     final response = await http.get(
       url,
@@ -19,6 +19,7 @@ class PartnersService {
         'Authorization': 'Bearer $token'
       },
     );
+    print(response.body);
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body)["Boxs"];
       final List<Box> box = [];

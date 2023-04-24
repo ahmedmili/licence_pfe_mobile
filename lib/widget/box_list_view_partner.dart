@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/partner.dart';
+import 'package:saverapp/widget/boxCardPartner.dart';
 import '../Models/boxs.dart';
 import '../Services/users.dart';
 import 'boxCard.dart';
@@ -49,14 +50,14 @@ class _BoxScreenPartnerState extends State<BoxScreenPartner> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(width: 10),
-                    BoxCard(box: box),
+                    BoxCardPartner(box: box),
                     const SizedBox(width: 10)
                   ],
                 )
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    BoxCard(
+                    BoxCardPartner(
                       box: box,
                     ),
                     const SizedBox(height: 20)
