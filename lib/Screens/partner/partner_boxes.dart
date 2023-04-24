@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:saverapp/Services/partners.dart';
+import 'package:saverapp/widget/box_list_view_partner.dart';
 
 import '../../Models/boxs.dart';
 import '../../Services/users.dart';
@@ -73,7 +74,7 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
                         const SizedBox(height: 15.0),
                         SizedBox(
                           height: 200, // or any other fixed height
-                          child: BoxScreen(items: snapshot.data!),
+                          child: BoxScreenPartner(items: snapshot.data!),
                         ),
                         Container(
                           margin: const EdgeInsets.only(bottom: 10),

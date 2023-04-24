@@ -87,11 +87,15 @@ class _FilterState extends State<Filter> {
         //////////
 
         Expanded(
-          child: BoxScreen(
-            items: controller.boxsList,
-            directions: "v",
+          child: Container(
+            margin: const EdgeInsets.only(left: 8),
+            width: 340,
+            child: BoxScreen(
+              items: controller.boxsList,
+              directions: "v",
+            ),
           ),
-        )
+        ),
       ],
     );
   }
