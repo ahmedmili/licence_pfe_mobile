@@ -10,30 +10,38 @@ final GlobalController controller = Get.find<GlobalController>();
 class PartnersService {
   static Future<List<Box>> getPartnerBoxes() async {
     final token = controller.token;
-    if (token == null) {
-      throw Exception('Token is null');
-    }
-    final url = Uri.parse('${baseURL}partner/partnerboxes');
+    // print(token);
+    final url = Uri.parse('${baseURL}partner/getPartnerBoxs');
     final response = await http.get(
       url,
       headers: {
         "Content-Type": "application/json",
-        if (token != null) 'Authorization': 'Bearer $token'
+        'Authorization': 'Bearer $token'
       },
     );
     if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      if (data is List<dynamic>) {
-        final box = List<Box>.from(
-          data.map((boxJson) => Box.fromJson(boxJson)),
+      final data = jsonDecode(response.body)["Boxs"];
+      final List<Box> box = [];
+      for (int i = 0; i < data.length; i++) {
+        final newBox = Box(
+          // Add fields here to create the new Box object
+          id: data[i]['id'],
+          description: data[i]['description'],
+          category: data[i]['category'],
+          newprice: data[i]['newprice'],
+          startdate: data[i]['startdate'],
+          enddate: data[i]['enddate'],
+          quantity: data[i]['quantity'],
+          remaining_quantity: data[i]['remaining_quantity'],
+          image: data[i]['image'],
+          partnerId: data[i]['partner_id'],
+          title: data[i]['title'],
+          oldprice: data[i]['oldprice'],
         );
-        return box;
-      } else if (data is Map<String, dynamic>) {
-        final box = Box.fromJson(data);
-        return [box];
-      } else {
-        throw Exception('Failed to fetch partner boxes');
+
+        box.add(newBox);
       }
+      return box;
     } else {
       throw Exception('Failed to fetch partner boxes');
     }

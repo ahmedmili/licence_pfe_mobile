@@ -35,6 +35,7 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
                 future: PartnersService.getPartnerBoxes(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
+                    // print(snapshot.data![0].id);
                     return Column(
                       children: [
                         const SizedBox(
