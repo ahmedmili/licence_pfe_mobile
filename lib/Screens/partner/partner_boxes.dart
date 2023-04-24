@@ -34,7 +34,7 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
               FutureBuilder<List<Box>>(
                 future: PartnersService.getPartnerBoxesAccepted(),
                 builder: (context, snapshot) {
-                  if (snapshot.hasData) {
+                  if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                     return Column(
                       children: [
                         const SizedBox(
@@ -81,20 +81,14 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
                   } else if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   } else {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(Colors.green[800]!),
-                        strokeWidth: 5,
-                      ),
-                    );
+                    return const SizedBox.shrink();
                   }
                 },
               ),
               FutureBuilder<List<Box>>(
                 future: PartnersService.getPartnerBoxesPending(),
                 builder: (context, snapshot) {
-                  if (snapshot.hasData) {
+                  if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                     return Column(
                       children: [
                         const SizedBox(height: 15),
@@ -137,20 +131,14 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
                   } else if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   } else {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(Colors.green[800]!),
-                        strokeWidth: 5,
-                      ),
-                    );
+                    return const SizedBox.shrink();
                   }
                 },
               ),
               FutureBuilder<List<Box>>(
                 future: PartnersService.getPartnerBoxsFinished(),
                 builder: (context, snapshot) {
-                  if (snapshot.hasData) {
+                  if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                     return Column(
                       children: [
                         const SizedBox(height: 15),
@@ -193,20 +181,14 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
                   } else if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   } else {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(Colors.green[800]!),
-                        strokeWidth: 5,
-                      ),
-                    );
+                    return const SizedBox.shrink();
                   }
                 },
               ),
               FutureBuilder<List<Box>>(
                 future: PartnersService.getPartnerBoxsExpired(),
                 builder: (context, snapshot) {
-                  if (snapshot.hasData) {
+                  if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                     return Column(
                       children: [
                         const SizedBox(height: 15),
@@ -249,20 +231,14 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
                   } else if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   } else {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(Colors.green[800]!),
-                        strokeWidth: 5,
-                      ),
-                    );
+                    return const SizedBox.shrink();
                   }
                 },
               ),
               FutureBuilder<List<Box>>(
                 future: PartnersService.getPartnerBoxsRejected(),
                 builder: (context, snapshot) {
-                  if (snapshot.hasData) {
+                  if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                     return Column(
                       children: [
                         const SizedBox(height: 15),
@@ -305,13 +281,7 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
                   } else if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   } else {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(Colors.green[800]!),
-                        strokeWidth: 5,
-                      ),
-                    );
+                    return const SizedBox.shrink();
                   }
                 },
               ),
