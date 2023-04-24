@@ -62,7 +62,7 @@ class _NavBottomScreenState extends State<NavBottomScreen> {
             label: 'Your Boxes',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.person_3_outlined),
             label: 'Me',
           ),
         ],
