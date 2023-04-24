@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/boxs.dart';
-import 'package:saverapp/Models/partner.dart';
-import '../Services/users.dart';
-
-import 'neonButton.dart';
 
 // ignore: must_be_immutable
 class BoxCardPartner extends StatefulWidget {
@@ -21,7 +17,6 @@ class BoxCardPartner extends StatefulWidget {
 class _BoxCardPartnerState extends State<BoxCardPartner> {
   @override
   Widget build(BuildContext context) {
-    bool isliked = widget.box.likes == 1 ? true : false;
     // return FutureBuilder<Box>(
     // future: UserService.getBoxPartnerInfo(widget.box.id),
     // builder: (context, snapshot) {
@@ -114,20 +109,12 @@ class _BoxCardPartnerState extends State<BoxCardPartner> {
                 ],
               ),
             ),
-            Positioned(
-              left: 290.0,
-              top: 5,
-              child: NeuButton(
-                boxid: widget.box.id,
-                isLiked: isliked,
-              ),
-            ),
 
             //quantity
             Container(
               margin: const EdgeInsets.only(left: 5, top: 5),
               height: 30,
-              width: 100,
+              width: 130,
               decoration: BoxDecoration(
                 color: Colors.grey[300],
                 borderRadius: BorderRadius.circular(35),
@@ -141,7 +128,7 @@ class _BoxCardPartnerState extends State<BoxCardPartner> {
               ),
               child: Center(
                 child: Text(
-                  '${widget.box.remaining_quantity.toString()} to save',
+                  'Stay ${widget.box.remaining_quantity.toString()} to save',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
