@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Services/users.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class NeuButton extends StatefulWidget {
   const NeuButton({
@@ -25,14 +24,11 @@ class _NeuButtonState extends State<NeuButton> {
   }
 
   Future<void> buttonPresssed() async {
+    await UserService.likeOrDislikeBox(widget.boxid);
+
     setState(() {
       isliked = !isliked;
     });
-  }
-
-  Future<String> readToken() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('token') ?? "0";
   }
 
   @override

@@ -20,7 +20,6 @@ class CustomCategoryFilter extends StatefulWidget {
 class _CustomCategoryFilterState extends State<CustomCategoryFilter> {
   final GlobalController controller = Get.find<GlobalController>();
 
-  // late List<Box> boxs = [];
   List<Category> selectedCategories = [];
 
   Future<void> showBoxsForSelectedCategories() async {
@@ -31,7 +30,7 @@ class _CustomCategoryFilterState extends State<CustomCategoryFilter> {
     }
     controller.setBoxsList(boxs);
     var testinngBox = controller.boxsList;
-    print(testinngBox[0].id);
+    // print(testinngBox[0].id);
     // print(boxs);
     // setState(() {
     //   this.boxs = boxs;

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:saverapp/Models/boxs.dart';
+import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/widget/filterField.dart';
+import 'package:saverapp/widget/box_list_view.dart';
 
 // import '../../Models/category.dart';
 // import '../../widget/custom_category_filter.dart';
@@ -13,8 +17,21 @@ class Filter extends StatefulWidget {
 }
 
 class _FilterState extends State<Filter> {
+  final GlobalController controller = Get.find<GlobalController>();
+  late List<Box> items;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   setState(() {
+  //     items = controller.boxsList;
+  //   });
+  // }
+
+  // bool listLength = controller.boxsList.isNotEmpty ? true : false;
   @override
   Widget build(BuildContext context) {
+    print(controller.boxsList.length);
     return Column(
       children: [
         const SizedBox(height: 10),
@@ -67,6 +84,14 @@ class _FilterState extends State<Filter> {
             ),
           ],
         ),
+        //////////
+
+        Expanded(
+          child: BoxScreen(
+            items: controller.boxsList,
+            directions: "v",
+          ),
+        )
       ],
     );
   }
