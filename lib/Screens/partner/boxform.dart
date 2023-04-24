@@ -123,7 +123,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
             children: [
               const SizedBox(height: 50),
               const Padding(
-                padding: EdgeInsets.only(right: 200),
+                padding: EdgeInsets.only(right: 250),
                 child: Text(
                   "Add Box :",
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),

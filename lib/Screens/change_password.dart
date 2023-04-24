@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:saverapp/Screens/login.dart';
 import 'package:saverapp/Screens/user/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -72,6 +73,7 @@ class _ChangePasswordState extends State<ChangePassword> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
+          height: 2000,
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,10 +84,10 @@ class _ChangePasswordState extends State<ChangePassword> {
 
               Row(
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     width: 120,
                   ),
-                  const Text(
+                  Text(
                     "New Password",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   )
@@ -131,7 +133,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const HomeScreen()),
+                          builder: (context) => const LoginScreen()),
                     );
                   },
                   child: Text('Save Password'),

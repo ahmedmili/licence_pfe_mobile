@@ -76,6 +76,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
           String token = responseMap['token'];
           String role = responseMap['role'];
+          controller.setRole(role);
+          controller.setToken(token);
           _save(token, role);
 
           if (token.isNotEmpty) {
