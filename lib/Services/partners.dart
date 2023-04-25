@@ -205,4 +205,19 @@ class PartnersService {
       throw Exception('Failed to fetch partner boxes');
     }
   }
+
+//logout
+  static Future<http.Response> logout() async {
+    var token = controller.token;
+    var url = Uri.parse('${baseURL}partner/logout');
+    http.Response response = await http.post(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+    );
+    if (response.body.isNotEmpty) {}
+    return response;
+  }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Screens/partner/profile.dart';
-import '../../Services/auth.dart';
+import '../../Services/partners.dart';
 
 class MePartner extends StatefulWidget {
   const MePartner({super.key});
@@ -148,7 +148,7 @@ List<CustomListTile> customListTiles = [
   CustomListTile(
     cb: () async {
       // print("Help");
-      var res = await AuthServices.logout();
+      var res = await PartnersService.logout();
       if (res.statusCode == 200) {
         Get.toNamed("/");
       }
