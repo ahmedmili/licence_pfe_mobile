@@ -49,9 +49,9 @@ class _ProfilePartnerState extends State<ProfilePartner> {
   @override
   Widget build(BuildContext context) {
     if (user == null) {
-      return Center(child: CircularProgressIndicator());
+      return const Center(child: CircularProgressIndicator());
     } else {
-      print("http://10.0.2.2:8000/storage/partner_imgs/${user['image']}");
+      // print("http://10.0.2.2:8000/storage/partner_imgs/${user['image']}");
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
