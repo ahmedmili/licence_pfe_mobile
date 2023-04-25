@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:saverapp/Screens/partner/me_partner.dart';
-import 'package:saverapp/Screens/user/editprofile.dart';
+import 'package:saverapp/Screens/partner/editprofile_partner.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePartner extends StatefulWidget {
@@ -93,13 +92,11 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                 const SizedBox(
                   height: 10,
                 ),
-                Text(
+                const Text(
                   "My Account Details ",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                const SizedBox(height: 20),
                 Stack(
                   children: <Widget>[
                     Container(
@@ -128,7 +125,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                                   ),
                                   Text(
                                     'Name: ${user['name']}',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16),
                                   ),
@@ -144,9 +141,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                const SizedBox(height: 20),
                 Stack(
                   children: <Widget>[
                     Container(
@@ -191,9 +186,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                const SizedBox(height: 20),
                 Stack(
                   children: <Widget>[
                     Container(
@@ -430,7 +423,8 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (BuildContext context) => EditProfile(),
+                          builder: (BuildContext context) =>
+                              const EditProfilePartner(),
                         ));
                   },
                   child: Padding(
