@@ -1,12 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
+import 'package:saverapp/Screens/partner/profile.dart';
 import '../../Services/auth.dart';
-import '../user/profile.dart';
 
 class MePartner extends StatefulWidget {
   const MePartner({super.key});
@@ -130,7 +126,7 @@ class CustomListTile {
 List<CustomListTile> customListTiles = [
   CustomListTile(
     cb: () {
-      Get.to(() => const ProfileUser());
+      Get.to(() => const ProfilePartner());
     },
     icon: Icons.person_2_outlined,
     title: "Profile",
