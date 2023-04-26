@@ -19,6 +19,8 @@ void errorSnackBar(BuildContext context, String errorMessage) {
 }
 
 class GlobalController extends GetxController {
+  // variables declaration
+
   final _email = ''.obs;
   final _token = ''.obs;
   final _role = ''.obs;
@@ -36,14 +38,16 @@ class GlobalController extends GetxController {
     description: "",
     oldprice: "",
   );
-  late List<Box> _boxsList;
 
+  late List<Box> _boxsList;
+// getters
   String get email => _email.value;
   String get token => _token.value;
   String get role => _role.value;
 
   List<Box> get boxsList => _boxsList;
 
+// setters
   void setEmail(String email) {
     _email.value = email;
   }

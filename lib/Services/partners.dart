@@ -10,7 +10,6 @@ final GlobalController controller = Get.find<GlobalController>();
 class PartnersService {
   static Future<List<Box>> getPartnerBoxesAccepted() async {
     final token = controller.token;
-    print(token);
     final url = Uri.parse('${baseURL}partner/getPartnerBoxsAccepted');
     final response = await http.get(
       url,
@@ -19,7 +18,6 @@ class PartnersService {
         'Authorization': 'Bearer $token'
       },
     );
-    print(response.body);
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body)["Boxs"];
       final List<Box> box = [];
@@ -50,7 +48,6 @@ class PartnersService {
 
   static Future<List<Box>> getPartnerBoxesPending() async {
     final token = controller.token;
-    print(token);
     final url = Uri.parse('${baseURL}partner/getPartnerBoxsPending');
     final response = await http.get(
       url,
@@ -59,7 +56,6 @@ class PartnersService {
         'Authorization': 'Bearer $token'
       },
     );
-    print(response.body);
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body)["Boxs"];
       final List<Box> box = [];
@@ -90,7 +86,6 @@ class PartnersService {
 
   static Future<List<Box>> getPartnerBoxsExpired() async {
     final token = controller.token;
-    print(token);
     final url = Uri.parse('${baseURL}partner/getPartnerBoxsExpired');
     final response = await http.get(
       url,
@@ -99,7 +94,6 @@ class PartnersService {
         'Authorization': 'Bearer $token'
       },
     );
-    print(response.body);
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body)["Boxs"];
       final List<Box> box = [];
@@ -168,7 +162,6 @@ class PartnersService {
 
   static Future<List<Box>> getPartnerBoxsRejected() async {
     final token = controller.token;
-    print(token);
     final url = Uri.parse('${baseURL}partner/getPartnerBoxsRejected');
     final response = await http.get(
       url,
@@ -177,7 +170,6 @@ class PartnersService {
         'Authorization': 'Bearer $token'
       },
     );
-    print(response.body);
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body)["Boxs"];
       final List<Box> box = [];
@@ -219,5 +211,36 @@ class PartnersService {
     );
     if (response.body.isNotEmpty) {}
     return response;
+  }
+
+  static Future<Partner> getUserInfo() async {
+    var token = controller.token;
+
+    var url = Uri.parse('http://10.0.2.2:8000/api/partner/user');
+    var response = await http.get(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+    );
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body)["partner"];
+
+      final partner = Partner(
+        // Add fields here to create the new Box object
+        name: data['name'],
+        description: data['description'],
+        category: data['category'],
+        email: data['email'],
+        phone: data['phone'],
+        openingtime: data['openingtime'],
+        closingtime: data['closingtime'],
+        image: data['image'],
+      );
+      return partner;
+    } else {
+      throw Exception('Failed to load user info');
+    }
   }
 }
