@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
+import 'package:saverapp/Screens/login.dart';
 
 import '../Services/globals.dart';
 
@@ -58,6 +59,20 @@ class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Padding(
+          padding: EdgeInsets.only(left: 40),
+          child: Text(
+            "New Password",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.grey,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
           height: 2000,
@@ -65,21 +80,6 @@ class _ChangePasswordState extends State<ChangePassword> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 120,
-                  ),
-                  Text(
-                    "New Password",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  )
-                ],
-              ),
-
               //change password
               const SizedBox(height: 100),
               Text(
@@ -134,6 +134,11 @@ class _ChangePasswordState extends State<ChangePassword> {
                   ),
                   onPressed: () {
                     updatePassword();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()),
+                    );
                   },
                   child: const Text('Save Password'),
                 ),

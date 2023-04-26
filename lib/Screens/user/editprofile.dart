@@ -166,7 +166,7 @@ class _EditProfileState extends State<EditProfile> {
                 height: 20,
               ),
               Container(
-                padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                 child: Material(
                   elevation: 5.0,
                   borderRadius: BorderRadius.circular(20.0),
@@ -190,8 +190,8 @@ class _EditProfileState extends State<EditProfile> {
                   borderRadius: BorderRadius.circular(20.0),
                   child: TextFormField(
                     controller: emailController,
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(
+                    decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 14.0),
                       prefixIcon: Icon(Icons.email),
                       labelText: 'Email',
@@ -202,14 +202,14 @@ class _EditProfileState extends State<EditProfile> {
               ),
               const SizedBox(height: 20),
               Container(
-                padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                 child: Material(
                   elevation: 5.0,
                   borderRadius: BorderRadius.circular(20.0),
                   child: TextFormField(
                     controller: phoneController,
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(
+                    decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 14.0),
                       prefixIcon: Icon(Icons.phone),
                       labelText: 'Phone',
@@ -229,10 +229,11 @@ class _EditProfileState extends State<EditProfile> {
                     updateUser();
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ProfileUser()),
+                      MaterialPageRoute(
+                          builder: (context) => const ProfileUser()),
                     );
                   },
-                  child: Text('Save Changes'),
+                  child: const Text('Save Changes'),
                 ),
               ),
               //change password
@@ -242,7 +243,7 @@ class _EditProfileState extends State<EditProfile> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: Colors.green[800]),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 padding: EdgeInsets.only(left: 10.0, right: 10.0),
                 child: Material(
