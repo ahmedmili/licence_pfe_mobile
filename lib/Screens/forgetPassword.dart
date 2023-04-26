@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Services/auth.dart';
 import 'package:saverapp/Services/globals.dart';
-
-// import 'package:saverapp/Screens/code.dart';
-import 'package:saverapp/Services/users.dart';
-
 import '../widget/rounded_button.dart';
 
 class ForgetPassword extends StatefulWidget {

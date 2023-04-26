@@ -1,68 +1,55 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:saverapp/Screens/login.dart';
-import 'package:saverapp/Screens/user/home.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:http/http.dart' as http;
+
+import '../Services/globals.dart';
 
 class ChangePassword extends StatefulWidget {
-  const ChangePassword({super.key});
+  const ChangePassword({Key? key}) : super(key: key);
 
   @override
   State<ChangePassword> createState() => _ChangePasswordState();
 }
 
 class _ChangePasswordState extends State<ChangePassword> {
-  late Map<String, dynamic> user;
-
   late TextEditingController newPasswordController;
-
-  get http => null;
+  late TextEditingController emailController;
 
   @override
   void initState() {
     super.initState();
-    user = {};
-
+    emailController = TextEditingController();
     newPasswordController = TextEditingController();
-    readToken().then((token) {});
-  }
-
-  Future<String> readToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('token') ?? '0';
   }
 
   Future<void> updatePassword() async {
-    final url = Uri.parse('http://10.0.2.2:8000/api/user/user/password');
-    final token = await readToken();
-    final response = await http.put(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
-      body: json.encode({
-        'password': newPasswordController.text,
-      }),
-    );
+    final email = emailController.text;
+    final password = newPasswordController.text;
 
-    if (response.statusCode == 202) {
-      setState(() {
-        user = json.decode(response.body);
-      });
+    // Send a PUT request to the backend to update the password
+    final response = await http.put(
+      Uri.parse('${baseURL}user/passwordeux'),
+      body: {
+        'email': email,
+        'password': password,
+      },
+    );
+    print(response.body);
+    if (response.statusCode == 200) {
+      // Password updated successfully, show a success message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('User Password updated successfully')),
+        const SnackBar(content: Text('Password updated successfully')),
       );
     } else {
-      print('Response status code: ${response.statusCode}');
-      print('Response body: ${response.body}');
+      // Password update failed, show an error message
+      final errorMessage = response.body;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Failed to update user details. Please try again.'),
+        SnackBar(
+          content: Text(errorMessage),
+          backgroundColor: Colors.red,
         ),
       );
     }
@@ -81,7 +68,6 @@ class _ChangePasswordState extends State<ChangePassword> {
               const SizedBox(
                 height: 30,
               ),
-
               Row(
                 children: [
                   SizedBox(
@@ -101,17 +87,35 @@ class _ChangePasswordState extends State<ChangePassword> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: Colors.green[800]),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
-                padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                child: Material(
+                  elevation: 5.0,
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: TextFormField(
+                    controller: emailController,
+                    decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 14.0),
+                      prefixIcon: Icon(Icons.lock),
+                      labelText: 'Email',
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Container(
+                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                 child: Material(
                   elevation: 5.0,
                   borderRadius: BorderRadius.circular(20.0),
                   child: TextFormField(
                     controller: newPasswordController,
                     obscureText: true,
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(
+                    decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 14.0),
                       prefixIcon: Icon(Icons.lock),
                       labelText: 'New password',
@@ -130,13 +134,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                   ),
                   onPressed: () {
                     updatePassword();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginScreen()),
-                    );
                   },
-                  child: Text('Save Password'),
+                  child: const Text('Save Password'),
                 ),
               ),
             ],
