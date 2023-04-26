@@ -106,7 +106,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
   }
 
   Future<void> updatePassword() async {
-    final url = Uri.parse('http://10.0.2.2:8000/api/user/user/password');
+    final url = Uri.parse('http://10.0.2.2:8000/api/partner/changepassword');
     final token = await readToken();
     final response = await http.put(
       url,
@@ -119,7 +119,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
       }),
     );
 
-    if (response.statusCode == 202) {
+    if (response.statusCode == 200) {
       setState(() {
         user = json.decode(response.body);
       });
