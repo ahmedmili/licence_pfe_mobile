@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:saverapp/Models/partner.dart';
+import 'package:saverapp/Screens/partner/foodDetails_partner.dart';
 import 'package:saverapp/widget/boxCardPartner.dart';
 import '../Models/boxs.dart';
-import '../Services/users.dart';
-import 'boxCard.dart';
-import 'foodDetails.dart';
 
 class BoxScreenPartner extends StatefulWidget {
   const BoxScreenPartner(
@@ -35,15 +32,14 @@ class _BoxScreenPartnerState extends State<BoxScreenPartner> {
           onTap: () async {
             // Partner partner = await UserService.getBoxPartnerInfo(box.id);
             // ignore: use_build_context_synchronously
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => FoodDetails(
-            //       box: box,
-            //       partner: partner,
-            //     ),
-            //   ),
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => FoodDetailsPartner(
+                  box: box,
+                ),
+              ),
+            );
           },
           child: widget.directions == "H"
               ? Row(
