@@ -88,9 +88,56 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
                       width: 5,
                     ),
                     Text(
-                      box.title,
+                      'Title : ${box.title}',
                       style: const TextStyle(
                           fontSize: 14, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.fastfood_outlined,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      'Category : ${box.category}',
+                      style: const TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.add_shopping_cart),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          'Initial quantity : ${box.quantity}',
+                          style: const TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30),
+                      child: Text(
+                        'Remaining quantity : ${box.remaining_quantity}',
+                        style: const TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ],
                 ),
@@ -195,18 +242,13 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
           color: Colors.grey[200],
         ),
         child: MaterialButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Congratulations()),
-            );
-          },
+          onPressed: () {},
           color: Colors.green[800],
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
           child: const Text(
-            "TO RESERVE",
+            "Edit This Box",
             style: TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
           ),
