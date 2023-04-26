@@ -10,14 +10,14 @@ import '../../Services/globals.dart';
 import '../../widget/rounded_button.dart';
 import 'package:http/http.dart' as http;
 
-class BoxFormScreen extends StatefulWidget {
+class EditBox extends StatefulWidget {
   //const BoxFormScreen({required String title});
 
   @override
-  State<BoxFormScreen> createState() => _BoxFormScreenState();
+  State<EditBox> createState() => _EditBoxState();
 }
 
-class _BoxFormScreenState extends State<BoxFormScreen> {
+class _EditBoxState extends State<EditBox> {
   String _title = '';
   String _description = '';
   String _oldprice = '';
@@ -123,7 +123,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
               const Padding(
                 padding: EdgeInsets.only(right: 250),
                 child: Text(
-                  "Add Box :",
+                  "Edit Box :",
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -417,7 +417,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
               ),
 
               RoundedButton(
-                btnText: 'Create Box',
+                btnText: 'Save Changes',
                 onBtnPressed: () => createBoxPressed(),
               ),
 

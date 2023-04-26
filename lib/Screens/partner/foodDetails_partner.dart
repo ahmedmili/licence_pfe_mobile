@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:saverapp/Screens/partner/editBox_partner.dart';
 import '../../Models/boxs.dart';
-import '../user/congratulations.dart';
 
 class FoodDetailsPartner extends StatefulWidget {
   const FoodDetailsPartner({super.key, required this.box});
@@ -242,7 +242,12 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
           color: Colors.grey[200],
         ),
         child: MaterialButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => EditBox()),
+            );
+          },
           color: Colors.green[800],
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
