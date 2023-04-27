@@ -39,7 +39,7 @@ class GlobalController extends GetxController {
     oldprice: "",
   );
 
-  late List<Box> _boxsList;
+  late List<Box> _boxsList = [];
 // getters
   String get email => _email.value;
   String get token => _token.value;
@@ -62,5 +62,6 @@ class GlobalController extends GetxController {
 
   void setBoxsList(List<Box> boxsList) {
     _boxsList = boxsList;
+    update();
   }
 }

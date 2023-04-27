@@ -150,7 +150,7 @@ List<CustomListTile> customListTiles = [
       // print("Help");
       var res = await PartnersService.logout();
       if (res.statusCode == 200) {
-        Get.toNamed("/");
+        Get.offAllNamed("/");
       }
     },
     title: "Logout",

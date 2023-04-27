@@ -5,10 +5,6 @@ import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/widget/filterField.dart';
 import 'package:saverapp/widget/box_list_view.dart';
 
-// import '../../Models/category.dart';
-// import '../../widget/custom_category_filter.dart';
-// import '../../widget/foodCategory.dart';
-
 class Filter extends StatefulWidget {
   const Filter({super.key});
 
@@ -20,18 +16,8 @@ class _FilterState extends State<Filter> {
   final GlobalController controller = Get.find<GlobalController>();
   late List<Box> items;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   setState(() {
-  //     items = controller.boxsList;
-  //   });
-  // }
-
-  // bool listLength = controller.boxsList.isNotEmpty ? true : false;
   @override
   Widget build(BuildContext context) {
-    print(controller.boxsList.length);
     return Column(
       children: [
         const SizedBox(height: 10),
@@ -40,11 +26,12 @@ class _FilterState extends State<Filter> {
             const SizedBox(width: 10),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => const FilterField(),
-                    ));
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //       builder: (BuildContext context) => const FilterField(),
+                //     ));
+                Get.to(const FilterField());
               },
               child: SizedBox(
                 height: 50,
@@ -87,13 +74,25 @@ class _FilterState extends State<Filter> {
         //////////
 
         Expanded(
-          child: Container(
-            margin: const EdgeInsets.only(left: 8),
-            width: 340,
-            child: BoxScreen(
-              items: controller.boxsList,
-              directions: "v",
-            ),
+          child: GetBuilder<GlobalController>(
+            init: GlobalController(),
+            builder: (c) {
+              print(c.boxsList.length);
+
+              if (c.boxsList.isEmpty) {
+                return const Text("no data found");
+              } else {
+                return Container(
+                  margin: const EdgeInsets.only(left: 8),
+                  width: 340,
+                  child: BoxScreen(
+                    items: c.boxsList,
+                    directions: "v",
+                  ),
+                );
+              }
+            },
+            // child:
           ),
         ),
       ],
