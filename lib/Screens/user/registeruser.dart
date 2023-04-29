@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:saverapp/Screens/user/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth.dart';
 import '../../Services/globals.dart';
@@ -38,8 +39,12 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
         if (response.statusCode == 201) {
           String token = responseMap['token'];
           _save(token);
-
-          Get.toNamed("/home");
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => LoginScreen(),
+              ));
+          // Get.toNamed("/home");
         } else {
           String errorMessage = responseMap.values.first[0].toString();
           // ignore: use_build_context_synchronously
