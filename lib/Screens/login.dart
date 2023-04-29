@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
           controller.setToken(token);
           _save(token, role);
           if (token.isNotEmpty) {
-            Get.toNamed('/main');
+            Get.offAllNamed('/main');
             return;
           }
         }
@@ -82,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
           if (token.isNotEmpty) {
             // Get.toNamed("/main");
-            Get.toNamed('/partnerMain');
+            Get.offAllNamed('/partnerMain');
 
             // Get.back();
             return;

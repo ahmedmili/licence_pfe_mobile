@@ -52,15 +52,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                                   headers: {
                                     "Keep-Alive": "timeout=20",
                                   },
-                                )
-                                // NetworkImage(
-                                //   "http://10.0.2.2:8000/storage/partner_imgs/${snapshot.data!.image}",
-                                //   headers: {
-                                //     "Keep-Alive": "timeout=30",
-                                //   },
-                                // ),
-                                // "http://10.0.2.2:8000/storage/partner_imgs/${snapshot.data!.image}"),
-                                ),
+                                )),
                           ),
                         ],
                       ),
