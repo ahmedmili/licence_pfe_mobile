@@ -88,6 +88,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 btnText: 'SEND EMAIL',
                 onBtnPressed: () {
                   forgetPassword();
+                  Get.toNamed('/verifPasswordCode', arguments: _email);
                 },
               ),
             ],

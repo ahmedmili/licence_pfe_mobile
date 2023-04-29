@@ -32,6 +32,7 @@ class _CodeState extends State<Code> {
 
   @override
   Widget build(BuildContext context) {
+    final String email = Get.arguments;
     final GlobalController controller = Get.find<GlobalController>();
     final List verifCodeList = ["", "", "", ""];
     verifCode() async {
@@ -47,7 +48,7 @@ class _CodeState extends State<Code> {
         if (response["response"]?["status"] == 200) {
           Get.snackbar("success", response["response"]["message"],
               backgroundColor: const Color.fromARGB(255, 38, 209, 44));
-          Get.toNamed("changePassword");
+          Get.toNamed("changePassword", arguments: email);
           // print(response["response"]["message"]);
         } else {
           Get.snackbar(
