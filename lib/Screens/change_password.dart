@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -32,7 +31,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
     // Send a PUT request to the backend to update the password
     final response = await http.put(
-      Uri.parse('${baseURL}user/passwordeux'),
+      Uri.parse('${baseURL}admin/passwordeux'),
       body: {
         'email': email,
         'password': password,
