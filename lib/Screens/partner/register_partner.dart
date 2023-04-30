@@ -5,13 +5,12 @@ import 'package:intl/intl.dart';
 import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:saverapp/Screens/login.dart';
+import 'package:saverapp/Screens/waiting.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth.dart';
 import '../../Services/globals.dart';
 import '../../widget/rounded_button.dart';
-import '../user/home.dart';
-import '../login.dart';
-
 import 'package:http/http.dart' as http;
 
 class RegisterPartnerScreen extends StatefulWidget {
@@ -158,7 +157,13 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
       if (response.statusCode == 200) {
         String token = responseMap['token'];
         _save(token);
-        Get.offAll(const HomeScreen());
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => const Waiting(),
+          ),
+        );
       } else {
         errorSnackBar(context, responseMap.values.first[0]);
       }

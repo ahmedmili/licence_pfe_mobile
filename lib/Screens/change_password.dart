@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:saverapp/Screens/login.dart';
 import '../Services/globals.dart';
@@ -22,12 +25,12 @@ class _ChangePasswordState extends State<ChangePassword> {
   }
 
   Future<void> updatePassword() async {
-    final email = emailController.text;
+    final String email = Get.arguments;
     final password = newPasswordController.text;
 
     // Send a PUT request to the backend to update the password
     final response = await http.put(
-      Uri.parse('${baseURL}user/passwordeux'),
+      Uri.parse('${baseURL}admin/passwordeux'),
       body: {
         'email': email,
         'password': password,
@@ -52,6 +55,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
   @override
   Widget build(BuildContext context) {
+    final String email = Get.arguments;
     return Scaffold(
       appBar: AppBar(
         title: const Padding(
@@ -76,30 +80,33 @@ class _ChangePasswordState extends State<ChangePassword> {
             children: [
               //change password
               const SizedBox(height: 100),
-              Text(
-                "Change Password",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.green[800]),
-              ),
-              const SizedBox(height: 20),
-              Container(
-                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                child: Material(
-                  elevation: 5.0,
-                  borderRadius: BorderRadius.circular(20.0),
-                  child: TextFormField(
-                    controller: emailController,
-                    decoration: const InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
-                          horizontal: 30.0, vertical: 14.0),
-                      prefixIcon: Icon(Icons.lock),
-                      labelText: 'Email',
-                      border: InputBorder.none,
-                    ),
-                  ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Text(
+                  "Change Password",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.green[800]),
                 ),
               ),
               const SizedBox(height: 20),
+              // Container(
+              //   padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+              //   child: Material(
+              //     elevation: 5.0,
+              //     borderRadius: BorderRadius.circular(20.0),
+              //     child: TextFormField(
+              //       controller: emailController,
+              //       decoration: const InputDecoration(
+              //         contentPadding: EdgeInsets.symmetric(
+              //             horizontal: 30.0, vertical: 14.0),
+              //         prefixIcon: Icon(Icons.lock),
+              //         labelText: 'Email',
+              //         border: InputBorder.none,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                 child: Material(

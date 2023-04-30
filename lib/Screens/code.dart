@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:saverapp/Services/auth.dart';
+import 'package:saverapp/Services/globals.dart';
 
 import '../widget/codeBox.dart';
 import '../widget/rounded_button.dart';
@@ -31,6 +32,8 @@ class _CodeState extends State<Code> {
 
   @override
   Widget build(BuildContext context) {
+    final String email = Get.arguments;
+
     final List verifCodeList = ["", "", "", ""];
     verifCode() async {
       var code = verifCodeList.join("");
@@ -45,7 +48,7 @@ class _CodeState extends State<Code> {
         if (response["response"]?["status"] == 200) {
           Get.snackbar("success", response["response"]["message"],
               backgroundColor: const Color.fromARGB(255, 38, 209, 44));
-          Get.toNamed("changePassword");
+          Get.toNamed("changePassword", arguments: email);
           // print(response["response"]["message"]);
         } else {
           Get.snackbar(
