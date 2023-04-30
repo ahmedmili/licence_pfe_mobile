@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:saverapp/Services/auth.dart';
-import 'package:saverapp/Services/globals.dart';
 
 import '../widget/codeBox.dart';
 import '../widget/rounded_button.dart';
@@ -32,7 +31,6 @@ class _CodeState extends State<Code> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalController controller = Get.find<GlobalController>();
     final List verifCodeList = ["", "", "", ""];
     verifCode() async {
       var code = verifCodeList.join("");

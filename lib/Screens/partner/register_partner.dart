@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class RegisterPartnerScreen extends StatefulWidget {
   const RegisterPartnerScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _RegisterPartnerScreenState createState() => _RegisterPartnerScreenState();
 }
 
@@ -26,11 +28,9 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
   String _email = '';
   String _phone = '';
   String _password = '';
-  late File? _image = null;
+  late File? _image;
   String _category = 'hi';
-  // TimeOfDay _openingtime = TimeOfDay(hour: 8, minute: 30);
   String _openingtime = "";
-  // TimeOfDay _closingtime = TimeOfDay(hour: 9, minute: 30);
   late String _closingtime = "";
   final int _roleId = 3;
   String _imageName = '';
@@ -103,28 +103,26 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
         _imageName = path.basename(pickedFile.path);
-      } else {
-        print('No image selected.');
-      }
+      } else {}
     });
   }
 
-  Widget _buildImagePicker() {
-    return GestureDetector(
-      onTap: _pickImage,
-      child: Container(
-        width: double.infinity,
-        height: 150,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: _image == null
-            ? const Center(child: Text('Select Image'))
-            : Image.file(_image!, fit: BoxFit.cover),
-      ),
-    );
-  }
+  // Widget _buildImagePicker() {
+  //   return GestureDetector(
+  //     onTap: _pickImage,
+  //     child: Container(
+  //       width: double.infinity,
+  //       height: 150,
+  //       decoration: BoxDecoration(
+  //         border: Border.all(color: Colors.grey),
+  //         borderRadius: BorderRadius.circular(10),
+  //       ),
+  //       child: _image == null
+  //           ? const Center(child: Text('Select Image'))
+  //           : Image.file(_image!, fit: BoxFit.cover),
+  //     ),
+  //   );
+  // }
 
   _save(String token) async {
     final prefs = await SharedPreferences.getInstance();
@@ -160,12 +158,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
       if (response.statusCode == 200) {
         String token = responseMap['token'];
         _save(token);
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => HomeScreen(),
-          ),
-        );
+        Get.offAll(const HomeScreen());
       } else {
         errorSnackBar(context, responseMap.values.first[0]);
       }

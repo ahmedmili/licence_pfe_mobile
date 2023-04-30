@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Screens/user/profile.dart';
 import '../../Services/auth.dart';
-import '../partner/profile.dart';
 
 class MeScreen extends StatefulWidget {
   const MeScreen({super.key});
@@ -133,25 +132,20 @@ List<CustomListTile> customListTiles = [
     title: "Profile",
   ),
   CustomListTile(
-    cb: () {
-      print("Location");
-    },
+    cb: () {},
     icon: Icons.location_on_outlined,
     title: "Location",
   ),
   CustomListTile(
-    cb: () {
-      print("Help");
-    },
+    cb: () {},
     title: "Help",
     icon: CupertinoIcons.chat_bubble_2,
   ),
   CustomListTile(
     cb: () async {
-      // print("Help");
       var res = await AuthServices.logout();
       if (res.statusCode == 200) {
-        Get.toNamed("/");
+        Get.offAllNamed("/");
       }
     },
     title: "Logout",

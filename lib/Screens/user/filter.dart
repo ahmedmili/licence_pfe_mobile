@@ -26,11 +26,6 @@ class _FilterState extends State<Filter> {
             const SizedBox(width: 10),
             GestureDetector(
               onTap: () {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //       builder: (BuildContext context) => const FilterField(),
-                //     ));
                 Get.to(const FilterField());
               },
               child: SizedBox(
@@ -71,14 +66,10 @@ class _FilterState extends State<Filter> {
             ),
           ],
         ),
-        //////////
-
         Expanded(
           child: GetBuilder<GlobalController>(
             init: GlobalController(),
             builder: (c) {
-              print(c.boxsList.length);
-
               if (c.boxsList.isEmpty) {
                 return const Text("no data found");
               } else {

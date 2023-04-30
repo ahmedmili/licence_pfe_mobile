@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -127,8 +129,8 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
         const SnackBar(content: Text('User Password updated successfully')),
       );
     } else {
-      print('Response status code: ${response.statusCode}');
-      print('Response body: ${response.body}');
+      // print('Response status code: ${response.statusCode}');
+      // print('Response body: ${response.body}');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Failed to update user details. Please try again.'),
@@ -210,7 +212,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
               ),
               const SizedBox(height: 20),
               Container(
-                padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                 child: Material(
                   elevation: 5.0,
                   borderRadius: BorderRadius.circular(20.0),
@@ -332,8 +334,8 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   child: TextFormField(
                     controller: newPasswordController,
                     obscureText: true,
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(
+                    decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 14.0),
                       prefixIcon: Icon(Icons.lock),
                       labelText: 'New password',

@@ -4,30 +4,22 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:saverapp/Screens/user/main_page.dart';
 import 'forgetPassword.dart';
-import 'partner/register_partner.dart';
-import 'user/registeruser.dart';
+
 import '../Services/auth.dart';
 import '../Services/globals.dart';
 import '../widget/rounded_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'partner/home_partner.dart' as partner_home;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  @override
-  void initState() {
-    super.initState();
-    print("login page");
-  }
-
   final GlobalController controller = Get.find<GlobalController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); // 1
   String _email = '';
@@ -112,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Form(
         key: _formKey,
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Center(
             child: ListView(
@@ -127,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 10,
                     ),
                     const Text(
-                      "Welcome back , you\'ve been missed !",
+                      "Welcome back , you've been missed !",
                       style: TextStyle(
                         fontSize: 20,
                       ),

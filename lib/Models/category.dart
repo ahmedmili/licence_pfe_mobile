@@ -1,9 +1,10 @@
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class Category extends Equatable {
   final String name;
   final int index;
-  bool isSelected;
+  late bool isSelected;
 
   Category({
     required this.name,

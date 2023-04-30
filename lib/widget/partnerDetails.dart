@@ -1,6 +1,6 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class PartnerDetails extends StatefulWidget {
   const PartnerDetails({super.key});
@@ -12,6 +12,6 @@ class PartnerDetails extends StatefulWidget {
 class _PartnerDetailsState extends State<PartnerDetails> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }

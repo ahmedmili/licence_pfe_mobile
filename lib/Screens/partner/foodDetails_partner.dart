@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/partner/editBox_partner.dart';
@@ -245,7 +247,7 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => EditBox()),
+              MaterialPageRoute(builder: (context) => const EditBox()),
             );
           },
           color: Colors.green[800],

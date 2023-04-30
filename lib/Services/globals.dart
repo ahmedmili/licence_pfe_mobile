@@ -5,7 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 const String baseURL = "http://10.0.2.2:8000/api/";
 
-final prefs = SharedPreferences.getInstance();
 Map<String, String> headers = {
   "Content-Type": "application/json",
 };
@@ -24,6 +23,7 @@ class GlobalController extends GetxController {
   final _email = ''.obs;
   final _token = ''.obs;
   final _role = ''.obs;
+  final _firstLogin = true.obs;
   final box = Box(
     newprice: "",
     startdate: "",
@@ -44,6 +44,7 @@ class GlobalController extends GetxController {
   String get email => _email.value;
   String get token => _token.value;
   String get role => _role.value;
+  bool get firstLogin => _firstLogin.value;
 
   List<Box> get boxsList => _boxsList;
 
@@ -54,14 +55,58 @@ class GlobalController extends GetxController {
 
   void setToken(String token) {
     _token.value = token;
+    update();
   }
 
   void setRole(String role) {
     _role.value = role;
   }
 
+  void setFirstLogin(bool firstLogin) {
+    _firstLogin.value = firstLogin;
+  }
+
   void setBoxsList(List<Box> boxsList) {
     _boxsList = boxsList;
     update();
+  }
+
+  //global methodes ..
+  Future<void> readToken() async {
+    // print("checking for token ...");
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString("token");
+    if (token != null) {
+      // print("token $token");
+      setToken(token);
+    } else {
+      // print("token = Null");
+      setToken("");
+    }
+  }
+
+  Future<void> readRole() async {
+    // print("checking for role ...");
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var role = prefs.getString("role");
+    if (role != null) {
+      // print("role = $role");
+      setRole(role);
+    } else {
+      // print("role = Null");
+      setRole("");
+    }
+  }
+
+  Future<void> checkFirstLogin() async {
+    // print("checking for first login ...");
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var fLogin = prefs.getBool("firstLogin");
+    if (fLogin != null) {
+      setFirstLogin(fLogin);
+    } else {
+      setFirstLogin(true);
+    }
+    // print(firstLogin);
   }
 }

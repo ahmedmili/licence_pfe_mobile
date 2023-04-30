@@ -1,6 +1,6 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class EditBox extends StatefulWidget {
   const EditBox({super.key});
@@ -12,6 +12,6 @@ class EditBox extends StatefulWidget {
 class _EditBoxState extends State<EditBox> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }

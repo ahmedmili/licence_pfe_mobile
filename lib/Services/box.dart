@@ -38,7 +38,6 @@ class BoxServices {
 
     var response = await request.send();
     var responseString = await response.stream.bytesToString();
-    print(responseString);
     if (response.statusCode == 200) {
       return http.Response(responseString, response.statusCode);
     } else {

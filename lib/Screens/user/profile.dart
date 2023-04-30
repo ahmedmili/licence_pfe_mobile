@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:saverapp/Screens/user/editprofile.dart';
@@ -50,212 +51,204 @@ class _ProfileUserState extends State<ProfileUser> {
 
   @override
   Widget build(BuildContext context) {
-    if (user == null) {
-      return Center(child: CircularProgressIndicator());
-    } else {
-      return Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 30,
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 30,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(const MeScreen());
+                },
+                child: Row(
+                  children: const [
+                    Icon(Icons.arrow_back),
+                    SizedBox(
+                      width: 100,
+                    ),
+                    Text(
+                      "My Profile",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    )
+                  ],
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Text(
+                "My Account Details ",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Stack(
+                children: <Widget>[
+                  Container(
+                    height: 50,
+                    width: 500,
+                    padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                    child: Material(
+                      elevation: 5.0,
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 17),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.person,
+                                  color: Colors.green[800],
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  'Name: ${user['name']}',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Stack(
+                children: <Widget>[
+                  Container(
+                    height: 50,
+                    width: 500,
+                    padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                    child: Material(
+                      elevation: 5.0,
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 17),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.email,
+                                  color: Colors.green[800],
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  'Email: ${user['email']}',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Stack(
+                children: <Widget>[
+                  Container(
+                    height: 50,
+                    width: 500,
+                    padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                    child: Material(
+                      elevation: 5.0,
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 17),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.phone,
+                                  color: Colors.green[800],
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  "Phone: ${user['phone']}",
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const MeScreen()),
-                    );
-                  },
-                  child: Row(
-                    children: [
-                      const Icon(Icons.arrow_back),
-                      const SizedBox(
-                        width: 100,
-                      ),
-                      const Text(
-                        "My Profile",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      )
-                    ],
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => const EditProfile(),
+                      ));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 240.0),
+                  child: Text(
+                    'Edit Your Profile ?',
+                    style: TextStyle(
+                        color: Colors.green[800], fontWeight: FontWeight.bold),
                   ),
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  "My Account Details ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Stack(
-                  children: <Widget>[
-                    Container(
-                      height: 50,
-                      width: 500,
-                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                      child: Material(
-                        elevation: 5.0,
-                        borderRadius: BorderRadius.circular(20.0),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 17),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.person,
-                                    color: Colors.green[800],
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    'Name: ${user['name']}',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16),
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Stack(
-                  children: <Widget>[
-                    Container(
-                      height: 50,
-                      width: 500,
-                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                      child: Material(
-                        elevation: 5.0,
-                        borderRadius: BorderRadius.circular(20.0),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 17),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.email,
-                                    color: Colors.green[800],
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    'Email: ${user['email']}',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16),
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Stack(
-                  children: <Widget>[
-                    Container(
-                      height: 50,
-                      width: 500,
-                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                      child: Material(
-                        elevation: 5.0,
-                        borderRadius: BorderRadius.circular(20.0),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 17),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.phone,
-                                    color: Colors.green[800],
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    "Phone: ${user['phone']}",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16),
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => EditProfile(),
-                        ));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 240.0),
-                    child: Text(
-                      'Edit Your Profile ?',
-                      style: TextStyle(
-                          color: Colors.green[800],
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-      );
-    }
+      ),
+    );
   }
 }

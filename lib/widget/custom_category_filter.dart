@@ -14,6 +14,7 @@ class CustomCategoryFilter extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CustomCategoryFilterState createState() => _CustomCategoryFilterState();
 }
 
@@ -29,12 +30,6 @@ class _CustomCategoryFilterState extends State<CustomCategoryFilter> {
           .then((value) => boxs.addAll(value));
     }
     controller.setBoxsList(boxs);
-    var testinngBox = controller.boxsList;
-    // print(testinngBox[0].id);
-    // print(boxs);
-    // setState(() {
-    //   this.boxs = boxs;
-    // });
   }
 
   @override
@@ -74,7 +69,6 @@ class _CustomCategoryFilterState extends State<CustomCategoryFilter> {
                           .where((category) => category.isSelected)
                           .toList();
                       showBoxsForSelectedCategories();
-                      // print(boxs?[0].id);
                     });
                   },
                 ),

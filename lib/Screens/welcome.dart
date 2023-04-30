@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:saverapp/Screens/login.dart';
-import 'package:saverapp/Screens/partner/register_partner.dart';
-import 'package:saverapp/Screens/user/registeruser.dart';
 
 import '../widget/rounded_button.dart';
 

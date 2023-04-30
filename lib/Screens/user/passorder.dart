@@ -2,12 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:slide_to_act/slide_to_act.dart';
 
-import '../../widget/partnerDetails.dart';
-import 'congratulations.dart';
+import 'package:slide_to_act/slide_to_act.dart';
 
 class PassOrder extends StatefulWidget {
   const PassOrder({super.key});
@@ -102,18 +98,18 @@ class _PassOrderState extends State<PassOrder> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Row(
-                                children: [
+                                children: const [
                                   Expanded(
                                     child: Text(
                                       'Validate below and show the screen to the merchant.\nMake sure to confirm only when you are at the merchant\'s shop to collect your box.',
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: SlideAction(

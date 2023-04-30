@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 import 'globals.dart';
 import 'dart:io';
 
@@ -98,9 +97,9 @@ class AuthServices {
   }
 
   static Future<Map<String, dynamic>> forgetPassword(String email) async {
-    String _email = email;
+    String email0 = email;
     late Map<String, dynamic> responseMessage;
-    var body = json.encode({"email": _email});
+    var body = json.encode({"email": email0});
     final url = Uri.parse('${baseURL}forgetPassWord');
     final response = await http.post(
       url,
@@ -140,7 +139,6 @@ class AuthServices {
         "response": json.decode(response.body),
       };
     } else {
-      print(response.body);
       responseMessage = {"status": response.statusCode};
     }
     return responseMessage;

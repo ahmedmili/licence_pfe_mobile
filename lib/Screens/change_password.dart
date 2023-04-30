@@ -1,11 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
 import 'package:saverapp/Screens/login.dart';
-
 import '../Services/globals.dart';
 
 class ChangePassword extends StatefulWidget {
@@ -38,7 +33,6 @@ class _ChangePasswordState extends State<ChangePassword> {
         'password': password,
       },
     );
-    print(response.body);
     if (response.statusCode == 200) {
       // Password updated successfully, show a success message
       ScaffoldMessenger.of(context).showSnackBar(

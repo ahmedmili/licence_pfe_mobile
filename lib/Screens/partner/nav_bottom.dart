@@ -26,7 +26,7 @@ class _NavBottomScreenState extends State<NavBottomScreen> {
   void initState() {
     super.initState();
     partnerHome = const HomePartnerScreen();
-    boxformScreen = BoxFormScreen();
+    boxformScreen = const BoxFormScreen();
     partnerboxesScreen = const PartnerBoxes();
     mepartnerScreen = const MePartner();
     pages = [partnerHome, boxformScreen, partnerboxesScreen, mepartnerScreen];

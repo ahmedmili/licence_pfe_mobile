@@ -11,6 +11,8 @@ import '../../widget/rounded_button.dart';
 import 'package:http/http.dart' as http;
 
 class BoxFormScreen extends StatefulWidget {
+  const BoxFormScreen({super.key});
+
   //const BoxFormScreen({required String title});
 
   @override
@@ -25,7 +27,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
   DateTime? _startDate;
   DateTime? _endDate;
   String _quantity = '';
-  late File? _image = null;
+  late File? _image;
   String _category = '';
   String _imageName = '';
   late String token;
@@ -51,28 +53,26 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
         _imageName = path.basename(pickedFile.path);
-      } else {
-        print('No image selected.');
-      }
+      } else {}
     });
   }
 
-  Widget _buildImagePicker() {
-    return GestureDetector(
-      onTap: _pickImage,
-      child: Container(
-        width: double.infinity,
-        height: 150,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: _image == null
-            ? const Center(child: Text('Select Image'))
-            : Image.file(_image!, fit: BoxFit.cover),
-      ),
-    );
-  }
+  // Widget _buildImagePicker() {
+  //   return GestureDetector(
+  //     onTap: _pickImage,
+  //     child: Container(
+  //       width: double.infinity,
+  //       height: 150,
+  //       decoration: BoxDecoration(
+  //         border: Border.all(color: Colors.grey),
+  //         borderRadius: BorderRadius.circular(10),
+  //       ),
+  //       child: _image == null
+  //           ? const Center(child: Text('Select Image'))
+  //           : Image.file(_image!, fit: BoxFit.cover),
+  //     ),
+  //   );
+  // }
 
   @override
   void initState() {
@@ -95,7 +95,6 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
       token,
     );
     Map<String, dynamic> responseMap = jsonDecode(response.body);
-    print(responseMap);
 
     if (response.statusCode == 200) {
     } else {

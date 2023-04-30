@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:saverapp/Services/partners.dart';
 import 'package:saverapp/widget/box_list_view_partner.dart';
-
 import '../../Models/boxs.dart';
-import '../../Services/users.dart';
-import '../../widget/adresseField.dart';
-import '../../widget/box_list_view.dart';
 import '../../widget/searchField.dart';
 
 class PartnerBoxes extends StatefulWidget {

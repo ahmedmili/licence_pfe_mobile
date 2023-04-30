@@ -132,22 +132,17 @@ List<CustomListTile> customListTiles = [
     title: "Profile",
   ),
   CustomListTile(
-    cb: () {
-      print("Location");
-    },
+    cb: () {},
     icon: Icons.location_on_outlined,
     title: "Location",
   ),
   CustomListTile(
-    cb: () {
-      print("Help");
-    },
+    cb: () {},
     title: "Help",
     icon: CupertinoIcons.chat_bubble_2,
   ),
   CustomListTile(
     cb: () async {
-      // print("Help");
       var res = await PartnersService.logout();
       if (res.statusCode == 200) {
         Get.offAllNamed("/");

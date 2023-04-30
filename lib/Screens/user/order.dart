@@ -1,8 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:saverapp/Screens/partner/home_partner.dart';
 import 'package:saverapp/Screens/user/passorder.dart';
 
 import '../../widget/partnerDetails.dart';
@@ -22,7 +19,7 @@ class _OrderScreenState extends State<OrderScreen> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 70),
               child: Text(
                 "Your Order",
@@ -33,7 +30,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                child: Icon(Icons.close))
+                child: const Icon(Icons.close))
           ],
         ),
         backgroundColor: Colors.transparent,
@@ -80,8 +77,8 @@ class _OrderScreenState extends State<OrderScreen> {
                       padding: const EdgeInsets.all(20.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Padding(
+                        children: const [
+                          Padding(
                             padding: EdgeInsets.only(left: 10),
                             child: Text(
                               "Total",
@@ -89,7 +86,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                   fontWeight: FontWeight.bold, fontSize: 14),
                             ),
                           ),
-                          const Text(
+                          Text(
                             "price",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 14),
@@ -168,12 +165,12 @@ class _OrderScreenState extends State<OrderScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
-                          children: [
-                            const Icon(Icons.access_alarm),
-                            const SizedBox(width: 5),
+                          children: const [
+                            Icon(Icons.access_alarm),
+                            SizedBox(width: 5),
                             Text(
                               'collect : Date',
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 14, fontWeight: FontWeight.bold),
                             ),
                           ],

@@ -1,4 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:saverapp/Models/category.dart';
 
 import 'custom_category_filter.dart';
@@ -36,7 +39,7 @@ class _FilterFieldState extends State<FilterField> {
                   ),
                   GestureDetector(
                       onTap: () {
-                        Navigator.pop(context);
+                        Get.back();
                       },
                       child: const Icon(Icons.close)),
                 ],

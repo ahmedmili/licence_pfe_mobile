@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'boxform.dart';
-import '../login.dart';
-import 'profile.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../Services/auth.dart';
-import '../../widget/box_list_view.dart';
 
 class HomePartnerScreen extends StatefulWidget {
   const HomePartnerScreen({super.key});
@@ -16,35 +9,9 @@ class HomePartnerScreen extends StatefulWidget {
 }
 
 class _HomePartnerScreenState extends State<HomePartnerScreen> {
-  late String token;
-  late String role;
-
-  // static Future<void> doLogout() async {
-  //   try {
-  //     await AuthServices.logout();
-  //     // Do something on success
-  //   } catch (e) {
-  //     // Handle error
-  //   }
-  // }
-
-  Future<void> readToken() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      token = prefs.getString('token') ?? "0";
-      role = prefs.getString('role') ?? "user";
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    readToken();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
         // appBar: AppBar(
         //   title: const Text('Partner home'),
         //   actions: [

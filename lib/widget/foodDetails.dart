@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/partner.dart';
@@ -85,17 +87,17 @@ class _FoodDetailsState extends State<FoodDetails> {
             children: [
               Container(
                 width: 70,
-                child: CircleAvatar(
-                  radius: 30,
-                  backgroundImage: NetworkImage(
-                    "http://10.0.2.2:8000/storage/partner_imgs/${partner.image}",
-                  ),
-                ),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
                     color: Colors.black,
                     width: 2.0,
+                  ),
+                ),
+                child: CircleAvatar(
+                  radius: 30,
+                  backgroundImage: NetworkImage(
+                    "http://10.0.2.2:8000/storage/partner_imgs/${partner.image}",
                   ),
                 ),
               ),
@@ -212,10 +214,10 @@ class _FoodDetailsState extends State<FoodDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
-                            children: [
-                              const SizedBox(height: 20),
+                            children: const [
+                              SizedBox(height: 20),
                               Icon(Icons.location_on_outlined),
-                              const Text(
+                              Text(
                                 "adresse commerce",
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.bold),
