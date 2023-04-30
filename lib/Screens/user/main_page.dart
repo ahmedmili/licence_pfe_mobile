@@ -30,6 +30,13 @@ class _MainScreenState extends State<MainScreen> {
     currentPage = homeScreen;
   }
 
+  void navigateToTourScreen() {
+    setState(() {
+      currentTabIndex = 1; // Index de l'écran "TourScreen"
+      currentPage = pages[currentTabIndex];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
