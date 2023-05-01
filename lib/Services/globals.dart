@@ -73,40 +73,22 @@ class GlobalController extends GetxController {
 
   //global methodes ..
   Future<void> readToken() async {
-    // print("checking for token ...");
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
     if (token != null) {
-      // print("token $token");
       setToken(token);
     } else {
-      // print("token = Null");
       setToken("");
     }
   }
 
   Future<void> readRole() async {
-    // print("checking for role ...");
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var role = prefs.getString("role");
     if (role != null) {
-      // print("role = $role");
       setRole(role);
     } else {
-      // print("role = Null");
       setRole("");
     }
-  }
-
-  Future<void> checkFirstLogin() async {
-    // print("checking for first login ...");
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var fLogin = prefs.getBool("firstLogin");
-    if (fLogin != null) {
-      setFirstLogin(fLogin);
-    } else {
-      setFirstLogin(true);
-    }
-    // print(firstLogin);
   }
 }

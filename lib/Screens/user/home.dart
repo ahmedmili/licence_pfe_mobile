@@ -4,6 +4,7 @@ import 'package:saverapp/widget/adresseField.dart';
 import 'package:saverapp/widget/box_list_view.dart';
 import 'package:saverapp/widget/searchField.dart';
 import '../../Services/users.dart';
+import '../../widget/preferencesField.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -66,11 +67,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const SizedBox(height: 15.0),
                         SizedBox(
-                          height: 200, // or any other fixed height
+                          height: 210, // or any other fixed height
                           child: BoxScreen(items: snapshot.data!),
                         ),
                         Container(
-                          margin: const EdgeInsets.only(bottom: 10),
+                          margin: const EdgeInsets.only(bottom: 5),
                           padding:
                               const EdgeInsets.only(left: 20.0, right: 15.0),
                           child: Row(
@@ -95,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: Colors.green[800],
                                   ),
                                 ],
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -118,7 +119,23 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   }
                 },
-              )
+              ),
+              // const SizedBox(height: 10),
+              // Container(
+              //   padding: const EdgeInsets.only(left: 20.0, right: 40.0),
+              //   child: Column(
+              //     children: [
+              //       Text(
+              //         "Surprise boxes tailored to your preferences",
+              //         style:
+              //             TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              //       ),
+              //       SizedBox(height: 15),
+              //       PreferencesField(),
+              //       SizedBox(height: 20),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ],

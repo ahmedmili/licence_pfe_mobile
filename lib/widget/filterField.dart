@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Models/category.dart';
 
+import '../Models/partner_category.dart';
 import 'custom_category_filter.dart';
 
 class FilterField extends StatefulWidget {
