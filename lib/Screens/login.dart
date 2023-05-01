@@ -101,6 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("login page token = ${controller.token}");
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
