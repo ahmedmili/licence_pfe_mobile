@@ -53,29 +53,28 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 200,
                           child: BoxScreen(items: snapshot.data!),
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 5),
-                          padding:
-                              const EdgeInsets.only(left: 20.0, right: 15.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              const Text(
+                        Column(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(bottom: 5),
+                              padding: const EdgeInsets.only(
+                                  left: 20.0, right: 15.0),
+                              child: const Text(
                                 "All boxes available",
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 15.0),
-                        Container(
-                          width: 340,
-                          height: 200,
-                          child: BoxScreen(
-                            items: snapshot.data!,
-                            directions: "v",
-                          ),
+                            ),
+                            const SizedBox(height: 15.0),
+                            Container(
+                              width: 340,
+                              height: 200,
+                              child: BoxScreen(
+                                items: snapshot.data!,
+                                directions: "v",
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     );
