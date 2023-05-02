@@ -29,49 +29,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   if (snapshot.hasData) {
                     return Column(
                       children: [
-                        const SizedBox(height: 25.0),
+                        const SizedBox(height: 20.0),
                         const AdresseField(),
                         const SizedBox(
-                          height: 20,
-                        ),
-                        const SearchField(),
-                        const SizedBox(height: 30.0),
-                        Container(
-                          padding:
-                              const EdgeInsets.only(left: 20.0, right: 15.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              const Text(
-                                "All boxes available",
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "View all",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.green[800]),
-                                  ),
-                                  Icon(
-                                    Icons.arrow_forward,
-                                    color: Colors.green[800],
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 15.0),
-                        SizedBox(
-                          height: 210, // or any other fixed height
-                          child: BoxScreen(items: snapshot.data!),
+                          height: 10,
                         ),
                         Container(
-                          margin: const EdgeInsets.only(bottom: 5),
                           padding:
                               const EdgeInsets.only(left: 20.0, right: 15.0),
                           child: Row(
@@ -82,28 +45,37 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "View all",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.green[800]),
-                                  ),
-                                  Icon(
-                                    Icons.arrow_forward,
-                                    color: Colors.green[800],
-                                  ),
-                                ],
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 10.0),
+                        SizedBox(
+                          height: 200,
+                          child: BoxScreen(items: snapshot.data!),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 5),
+                          padding:
+                              const EdgeInsets.only(left: 20.0, right: 15.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              const Text(
+                                "All boxes available",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
                         ),
                         const SizedBox(height: 15.0),
-                        SizedBox(
-                          height: 200, // or any other fixed height
-                          child: BoxScreen(items: snapshot.data!),
+                        Container(
+                          width: 340,
+                          height: 200,
+                          child: BoxScreen(
+                            items: snapshot.data!,
+                            directions: "v",
+                          ),
                         ),
                       ],
                     );
@@ -120,22 +92,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                 },
               ),
-              // const SizedBox(height: 10),
-              // Container(
-              //   padding: const EdgeInsets.only(left: 20.0, right: 40.0),
-              //   child: Column(
-              //     children: [
-              //       Text(
-              //         "Surprise boxes tailored to your preferences",
-              //         style:
-              //             TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              //       ),
-              //       SizedBox(height: 15),
-              //       PreferencesField(),
-              //       SizedBox(height: 20),
-              //     ],
-              //   ),
-              // ),
             ],
           ),
         ],
