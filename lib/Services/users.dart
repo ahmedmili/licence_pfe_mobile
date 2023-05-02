@@ -53,6 +53,30 @@ class UserService {
     }
   }
 
+  static Future<List<Box>> getAvailableBoxsByPartnerCategorys(
+      partnercategory) async {
+    final token = controller.token;
+    final url =
+        Uri.parse('${baseURL}user/indexByPartnerCategory/$partnercategory');
+    final response = await http.get(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+    );
+    if (response.statusCode == 200) {
+      List<dynamic> data = jsonDecode(response.body)['boxs'];
+      final box = List<Box>.from(
+        data.map((boxJson) => Box.fromJson(boxJson)),
+      );
+
+      return box;
+    } else {
+      throw Exception('Failed to fetch products');
+    }
+  }
+
   static Future<Partner> getBoxPartnerInfo(id) async {
     final token = controller.token;
     final url = Uri.parse('${baseURL}user/boxs/boxdetails/$id');

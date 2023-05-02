@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
@@ -27,7 +29,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
   DateTime? _startDate;
   DateTime? _endDate;
   String _quantity = '';
-  late File? _image;
+  late File? _image = null;
   String _category = '';
   String _imageName = '';
   late String token;
@@ -57,23 +59,6 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
     });
   }
 
-  // Widget _buildImagePicker() {
-  //   return GestureDetector(
-  //     onTap: _pickImage,
-  //     child: Container(
-  //       width: double.infinity,
-  //       height: 150,
-  //       decoration: BoxDecoration(
-  //         border: Border.all(color: Colors.grey),
-  //         borderRadius: BorderRadius.circular(10),
-  //       ),
-  //       child: _image == null
-  //           ? const Center(child: Text('Select Image'))
-  //           : Image.file(_image!, fit: BoxFit.cover),
-  //     ),
-  //   );
-  // }
-
   @override
   void initState() {
     super.initState();
@@ -97,6 +82,9 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
     Map<String, dynamic> responseMap = jsonDecode(response.body);
 
     if (response.statusCode == 200) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Box added successfully')),
+      );
     } else {
       errorSnackBar(context, responseMap.values.first[0]);
     }

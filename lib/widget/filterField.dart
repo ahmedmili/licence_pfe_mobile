@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Models/category.dart';
 
+import '../Models/boxs.dart';
 import '../Models/partner_category.dart';
+import '../Services/globals.dart';
+import '../Services/users.dart';
 import 'custom_category_filter.dart';
+import 'custom_partner_category_filter.dart';
 
 class FilterField extends StatefulWidget {
   const FilterField({super.key});
@@ -45,15 +49,30 @@ class _FilterFieldState extends State<FilterField> {
                       child: const Icon(Icons.close)),
                 ],
               ),
-              const SizedBox(height: 40),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 "Food Categories :",
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Colors.green[800]),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Colors.green,
+                ),
               ),
-              CustomCategoryFilter(categories: Category.categories),
+              const SizedBox(height: 10),
+              // CustomCategoryFilter(categories: Category.categories),
+              const SizedBox(height: 20),
+              const Text(
+                "Partner Categories :",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Colors.green,
+                ),
+              ),
+              const SizedBox(height: 10),
+              CustomPartnerCategoryFilter(
+                partnercategories: PartnerCategory.partnercategories,
+              ),
             ],
           ),
         ),

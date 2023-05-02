@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Screens/partner/profile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/partners.dart';
 
 class MePartner extends StatefulWidget {
@@ -143,8 +144,14 @@ List<CustomListTile> customListTiles = [
   ),
   CustomListTile(
     cb: () async {
+      SharedPreferences _pref = await SharedPreferences.getInstance();
       var res = await PartnersService.logout();
       if (res.statusCode == 200) {
+        _pref.setString("token", "");
+        _pref.setString("role", "");
+        controller.setToken("");
+        controller.setRole("");
+
         Get.offAllNamed("/");
       }
     },
