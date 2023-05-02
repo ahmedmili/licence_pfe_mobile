@@ -6,6 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:saverapp/Screens/partner/partner_boxes.dart';
+import 'package:saverapp/Screens/user/main_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/box.dart';
 import '../../Services/globals.dart';
@@ -85,6 +87,8 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Box added successfully')),
       );
+      // Navigate to PartnerBoxes screen
+      Get.toNamed("partnerMain");
     } else {
       errorSnackBar(context, responseMap.values.first[0]);
     }
