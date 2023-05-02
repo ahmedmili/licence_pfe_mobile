@@ -19,6 +19,8 @@ class FilterField extends StatefulWidget {
 }
 
 class _FilterFieldState extends State<FilterField> {
+  bool _isFoodCategoriesExpanded = false;
+  bool _isPartnerCategoriesExpanded = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,30 +51,67 @@ class _FilterFieldState extends State<FilterField> {
                       child: const Icon(Icons.close)),
                 ],
               ),
-              const SizedBox(height: 20),
-              const Text(
-                "Food Categories :",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: Colors.green,
+              const SizedBox(height: 40),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _isFoodCategoriesExpanded = !_isFoodCategoriesExpanded;
+                  });
+                },
+                child: Row(
+                  children: [
+                    Text(
+                      "Food Categories :",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.green[800],
+                      ),
+                    ),
+                    const SizedBox(width: 200),
+                    Icon(
+                      _isFoodCategoriesExpanded
+                          ? Icons.arrow_drop_down
+                          : Icons.arrow_drop_up,
+                      color: Colors.green[800],
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(height: 10),
-              // CustomCategoryFilter(categories: Category.categories),
+              if (_isFoodCategoriesExpanded)
+                CustomCategoryFilter(categories: Category.categories),
               const SizedBox(height: 20),
-              const Text(
-                "Partner Categories :",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: Colors.green,
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _isPartnerCategoriesExpanded =
+                        !_isPartnerCategoriesExpanded;
+                  });
+                },
+                child: Row(
+                  children: [
+                    Text(
+                      "Partner Categories :",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.green[800],
+                      ),
+                    ),
+                    const SizedBox(width: 180),
+                    Icon(
+                      _isPartnerCategoriesExpanded
+                          ? Icons.arrow_drop_down
+                          : Icons.arrow_drop_up,
+                      color: Colors.green[800],
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(height: 10),
-              CustomPartnerCategoryFilter(
-                partnercategories: PartnerCategory.partnercategories,
-              ),
+              if (_isPartnerCategoriesExpanded)
+                CustomPartnerCategoryFilter(
+                  partnercategories: PartnerCategory.partnercategories,
+                ),
             ],
           ),
         ),
