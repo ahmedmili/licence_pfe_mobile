@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Models/category.dart';
 
-import '../Models/boxs.dart';
 import '../Models/partner_category.dart';
-import '../Services/globals.dart';
-import '../Services/users.dart';
+
 import 'custom_category_filter.dart';
 import 'custom_partner_category_filter.dart';
 
