@@ -8,6 +8,7 @@ import 'package:saverapp/Models/category.dart';
 
 import '../Models/partner_category.dart';
 
+import 'MoneyFilterWidget.dart';
 import 'custom_category_filter.dart';
 import 'custom_partner_category_filter.dart';
 
@@ -164,6 +165,7 @@ class _FilterFieldState extends State<FilterField> {
                                     PartnerCategory.partnercategories,
                               ),
                             ),
+                          Expanded(child: const MoneyFilter()),
                         ],
                       ),
                     ),
