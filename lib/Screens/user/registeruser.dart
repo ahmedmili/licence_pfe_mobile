@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:saverapp/Screens/user/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth.dart';
 import '../../widget/rounded_button.dart';
@@ -34,29 +33,22 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
 
       Map responseMap = jsonDecode(response.body);
 
-      if (responseMap != null) {
-        if (response.statusCode == 201) {
-          String token = responseMap['token'];
-          _save(token);
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => LoginScreen(),
-              ));
-          // Get.toNamed("/home");
-        } else {
-          String errorMessage = responseMap.values.first[0].toString();
-          // ignore: use_build_context_synchronously
-          // errorSnackBar(context, errorMessage);
-          Get.snackbar("Error", errorMessage);
-        }
+      if (response.statusCode == 201) {
+        String token = responseMap['token'];
+        _save(token);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => LoginScreen(),
+            ));
+        // Get.toNamed("/home");
       } else {
         String errorMessage = responseMap.values.first[0].toString();
         // ignore: use_build_context_synchronously
         // errorSnackBar(context, errorMessage);
         Get.snackbar("Error", errorMessage);
       }
-    } else {
+
       // errorSnackBar(context, 'Email not valid');
       Get.snackbar("Error", "Email not valid");
     }

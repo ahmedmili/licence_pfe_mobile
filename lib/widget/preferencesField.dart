@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:saverapp/Screens/user/tour.dart';
+// ignore_for_file: file_names
 
-import '../Screens/user/congratulations.dart';
+import 'package:flutter/material.dart';
+
+import 'package:saverapp/Screens/user/tour.dart';
 
 class PreferencesField extends StatelessWidget {
   const PreferencesField({super.key});

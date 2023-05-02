@@ -1,13 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:saverapp/Screens/partner/partner_boxes.dart';
-import 'package:saverapp/Screens/user/main_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/box.dart';
 import '../../Services/globals.dart';
@@ -31,7 +28,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
   DateTime? _startDate;
   DateTime? _endDate;
   String _quantity = '';
-  late File? _image = null;
+  late File? _image;
   String _category = '';
   String _imageName = '';
   late String token;

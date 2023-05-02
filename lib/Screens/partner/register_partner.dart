@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
@@ -27,7 +26,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
   String _email = '';
   String _phone = '';
   String _password = '';
-  late File? _image = null;
+  late File? _image;
   String _category = 'hi';
   String _openingtime = "";
   late String _closingtime = "";

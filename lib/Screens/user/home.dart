@@ -4,7 +4,6 @@ import 'package:saverapp/widget/adresseField.dart';
 import 'package:saverapp/widget/box_list_view.dart';
 import 'package:saverapp/widget/searchField.dart';
 import '../../Services/users.dart';
-import '../../widget/preferencesField.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:saverapp/Screens/user/congratulations.dart';
 import 'package:saverapp/Screens/user/filter.dart';
 import 'package:saverapp/widget/bottom_nav_bar.dart';
+import 'package:saverapp/widget/google_map.dart';
 
 import '../../widget/adresseField.dart';
 
@@ -25,7 +25,8 @@ class _TourScreenState extends State<TourScreen> {
     //filtre page
     const Filter(),
     // cart page
-    const Congratulations(),
+    const MapSample(),
+    // const Congratulations(),
   ];
 
   @override

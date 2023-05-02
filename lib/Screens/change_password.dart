@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -55,7 +53,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
   @override
   Widget build(BuildContext context) {
-    final String email = Get.arguments;
+    // final String email = Get.arguments;
     return Scaffold(
       appBar: AppBar(
         title: const Padding(

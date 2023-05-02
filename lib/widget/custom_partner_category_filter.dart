@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Services/globals.dart';
 import '../Models/boxs.dart';
-import '../Models/category.dart';
 import '../Models/partner_category.dart';
 import '../Services/users.dart';
 
