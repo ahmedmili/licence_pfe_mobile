@@ -13,27 +13,21 @@ class _MoneyFilterState extends State<MoneyFilter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            RangeSlider(
-              values: _currentRangeValues,
-              min: 0,
-              max: 5000,
-              divisions: 10,
-              labels: RangeLabels(
-                _currentRangeValues.start.toString(),
-                _currentRangeValues.end.toString(),
-              ),
-              onChanged: (RangeValues values) {
-                setState(() {
-                  _currentRangeValues = values;
-                });
-              },
-            ),
-          ],
+      body: Container(
+        child: RangeSlider(
+          values: _currentRangeValues,
+          min: 0,
+          max: 5000,
+          divisions: 10,
+          labels: RangeLabels(
+            _currentRangeValues.start.toString(),
+            _currentRangeValues.end.toString(),
+          ),
+          onChanged: (RangeValues values) {
+            setState(() {
+              _currentRangeValues = values;
+            });
+          },
         ),
       ),
     );

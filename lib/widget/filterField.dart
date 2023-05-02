@@ -97,6 +97,16 @@ class _FilterFieldState extends State<FilterField> {
                                   child: const Icon(Icons.close)),
                             ],
                           ),
+                          Text(
+                            "Price :",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.green[800],
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Container(height: 30, child: const MoneyFilter()),
                           const SizedBox(height: 40),
                           GestureDetector(
                             onTap: () {
@@ -165,7 +175,6 @@ class _FilterFieldState extends State<FilterField> {
                                     PartnerCategory.partnercategories,
                               ),
                             ),
-                          Expanded(child: const MoneyFilter()),
                         ],
                       ),
                     ),
