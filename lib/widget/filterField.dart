@@ -69,13 +69,13 @@ class _FilterFieldState extends State<FilterField> {
                           topRight: Radius.circular(20),
                           topLeft: Radius.circular(20),
                         ),
-                        color: Colors.red,
+                        color: Colors.white,
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(
-                            height: 30,
+                            height: 15,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
