@@ -125,8 +125,10 @@ class _FilterFieldState extends State<FilterField> {
                             ),
                           ),
                           if (_isFoodCategoriesExpanded)
-                            CustomCategoryFilter(
-                                categories: Category.categories),
+                            Expanded(
+                              child: CustomCategoryFilter(
+                                  categories: Category.categories),
+                            ),
                           const SizedBox(height: 20),
                           GestureDetector(
                             onTap: () {
@@ -156,9 +158,11 @@ class _FilterFieldState extends State<FilterField> {
                             ),
                           ),
                           if (_isPartnerCategoriesExpanded)
-                            CustomPartnerCategoryFilter(
-                              partnercategories:
-                                  PartnerCategory.partnercategories,
+                            Expanded(
+                              child: CustomPartnerCategoryFilter(
+                                partnercategories:
+                                    PartnerCategory.partnercategories,
+                              ),
                             ),
                         ],
                       ),
