@@ -77,6 +77,30 @@ class UserService {
     }
   }
 
+  //filter price :
+  static Future<List<Box>> filterPrice(double min, double max) async {
+    final token = controller.token;
+    final url = Uri.parse('${baseURL}user/filterprice');
+    final response = await http.post(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+      body: json.encode({'min': min, 'max': max}),
+    );
+    if (response.statusCode == 200) {
+      List<dynamic> data = jsonDecode(response.body)['boxs'];
+      final box = List<Box>.from(
+        data.map((boxJson) => Box.fromJson(boxJson)),
+      );
+
+      return box;
+    } else {
+      throw Exception('Failed to fetch products');
+    }
+  }
+
   static Future<Partner> getBoxPartnerInfo(id) async {
     final token = controller.token;
     final url = Uri.parse('${baseURL}user/boxs/boxdetails/$id');

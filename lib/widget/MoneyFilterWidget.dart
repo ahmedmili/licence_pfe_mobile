@@ -8,7 +8,7 @@ class MoneyFilter extends StatefulWidget {
 }
 
 class _MoneyFilterState extends State<MoneyFilter> {
-  RangeValues _currentRangeValues = const RangeValues(0, 1000);
+  RangeValues _currentRangeValues = const RangeValues(0, 100);
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,10 @@ class _MoneyFilterState extends State<MoneyFilter> {
         child: RangeSlider(
           values: _currentRangeValues,
           min: 0,
-          max: 5000,
+          max: 100,
           divisions: 10,
+          activeColor: Colors.green[800],
+          inactiveColor: Colors.grey,
           labels: RangeLabels(
             _currentRangeValues.start.toString(),
             _currentRangeValues.end.toString(),
