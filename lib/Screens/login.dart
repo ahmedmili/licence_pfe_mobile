@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:saverapp/Services/geoLocator.dart';
 import 'forgetPassword.dart';
 
 import '../Services/auth.dart';
@@ -21,6 +22,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalController controller = Get.find<GlobalController>();
+  final GeoLocatorController geoController = Get.find<GeoLocatorController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); // 1
   String _email = '';
   String _password = '';
@@ -101,7 +103,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print("login page token = ${controller.token}");
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -290,6 +291,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 60,
                 ),
+                // FutureBuilder(
+                //   builder: (context, snapshot) {
+                //     // print(snapshot);
+                //     return Text(geoController.lat.toString());
+                //   },
+                //   future: geoController.getLocation(),
+                // )
               ],
             ),
           ),
