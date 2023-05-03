@@ -8,6 +8,7 @@ import 'package:saverapp/Screens/partner/register_partner.dart';
 import 'package:saverapp/Screens/user/home.dart';
 import 'package:saverapp/Screens/user/main_page.dart';
 import 'package:saverapp/Screens/user/registeruser.dart';
+import 'package:saverapp/widget/google_map.dart';
 import 'Screens/partner/home_partner.dart';
 
 import 'package:saverapp/middelwares/auth.dart';
@@ -72,6 +73,12 @@ List<GetPage<dynamic>> routes = [
   GetPage(
     name: '/changePassword',
     page: () => const ChangePassword(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(seconds: 1),
+  ),
+  GetPage(
+    name: '/maps',
+    page: () => const MapSample(),
     transition: Transition.rightToLeft,
     transitionDuration: const Duration(seconds: 1),
   ),
