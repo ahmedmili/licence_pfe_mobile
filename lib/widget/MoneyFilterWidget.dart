@@ -17,7 +17,6 @@ class _MoneyFilterState extends State<MoneyFilter> {
       body: Column(
         children: [
           Container(
-            width: 340,
             child: RangeSlider(
               values: _currentRangeValues,
               min: 0,
