@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:saverapp/Models/partner.dart';
+import 'package:saverapp/widget/neonButtonPartner.dart';
+
+import 'neonButton.dart';
 
 class PartnerDetails extends StatefulWidget {
   const PartnerDetails({super.key});
@@ -39,31 +42,42 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                 children: <Widget>[
                   const SizedBox(height: 20),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        height: 60,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 2.0,
+                      Row(
+                        children: [
+                          Container(
+                            height: 60,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 2.0,
+                              ),
+                            ),
+                            child: CircleAvatar(
+                              radius: 20,
+                              backgroundImage: NetworkImage(
+                                "http://10.0.2.2:8000/storage/partner_imgs/${partner.image}",
+                                headers: {
+                                  "Keep-Alive": "timeout=20",
+                                },
+                              ),
+                            ),
                           ),
-                        ),
-                        child: CircleAvatar(
-                          radius: 20,
-                          backgroundImage: NetworkImage(
-                            "http://10.0.2.2:8000/storage/partner_imgs/${partner.image}",
-                            headers: {
-                              "Keep-Alive": "timeout=20",
-                            },
+                          Text(
+                            "${partner.name}",
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
                           ),
-                        ),
+                        ],
                       ),
-                      Text(
-                        "${partner.name}",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                      //like
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 20, right: 20, top: 10, bottom: 20),
+                        child: const NeuButtonPartner(),
                       ),
                     ],
                   ),
