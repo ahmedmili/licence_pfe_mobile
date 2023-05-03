@@ -9,10 +9,12 @@ void main() async {
   Get.put(GeoLocatorController());
 
   GlobalController controller = Get.find<GlobalController>();
+  GeoLocatorController geoController = Get.find<GeoLocatorController>();
 
   // WidgetsFlutterBinding.ensureInitialized();
   await controller.readRole();
   await controller.readToken();
+  await geoController.getLocation();
   runApp(const MyApp());
 }
 

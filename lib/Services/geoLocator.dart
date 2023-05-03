@@ -37,7 +37,7 @@ class GeoLocatorController extends GetxController {
 
   Future<String> getLocation() async {
     var location = await _determinePosition();
-    // print(location);
+    print(location);
     lat.value = location.latitude.toString();
     long.value = location.longitude.toString();
     update();
