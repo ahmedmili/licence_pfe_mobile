@@ -1,4 +1,5 @@
 class Partner {
+  final int id;
   final String name;
   final String description;
   final String email;
@@ -7,19 +8,22 @@ class Partner {
   final String category;
   final String openingtime;
   final String closingtime;
+  int? likes;
 
-  Partner({
-    required this.name,
-    required this.description,
-    required this.email,
-    required this.phone,
-    required this.image,
-    required this.category,
-    required this.openingtime,
-    required this.closingtime,
-  });
+  Partner(
+      {required this.id,
+      required this.name,
+      required this.description,
+      required this.email,
+      required this.phone,
+      required this.image,
+      required this.category,
+      required this.openingtime,
+      required this.closingtime,
+      this.likes});
   factory Partner.fromJson(Map<String, dynamic> json) {
     return Partner(
+      id: json['id'],
       name: json['name'],
       description: json['description'],
       email: json['email'],
@@ -28,6 +32,7 @@ class Partner {
       category: json['category'],
       openingtime: json['openingtime'],
       closingtime: json['closingtime'],
+      //likes: json["likes"].length,
     );
   }
 }
