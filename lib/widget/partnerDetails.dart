@@ -62,8 +62,8 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       ),
                       Text(
                         "${partner.name}",
-                        style:
-                            TextStyle(fontSize: 1, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
