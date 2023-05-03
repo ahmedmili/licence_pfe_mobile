@@ -56,62 +56,136 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                           ),
                         ),
                       ),
-                      Text(
+                      const Text(
                         "name",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 40),
                   Row(
                     children: [
-                      const SizedBox(
-                        width: 20,
+                      const SizedBox(width: 20),
+                      Icon(
+                        Icons.store,
+                        color: Colors.green[800],
                       ),
-                      const Text(
-                        "Category",
+                      const SizedBox(width: 5),
+                      Text(
+                        "Category :",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Colors.green[800]),
                       ),
                     ],
                   ),
                   const SizedBox(height: 20),
                   Row(
                     children: [
-                      const SizedBox(
-                        width: 20,
+                      const SizedBox(width: 20),
+                      Icon(
+                        Icons.description_outlined,
+                        color: Colors.green[800],
                       ),
-                      const Text(
+                      const SizedBox(width: 5),
+                      Text(
                         "Description",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Colors.green[800]),
                       ),
                     ],
                   ),
                   const SizedBox(height: 20),
                   Row(
                     children: [
-                      const SizedBox(
-                        width: 20,
+                      const SizedBox(width: 20),
+                      Icon(
+                        Icons.phone_outlined,
+                        color: Colors.green[800],
                       ),
-                      const Text(
-                        "Phone",
+                      const SizedBox(width: 5),
+                      Text(
+                        "Phone :",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Colors.green[800]),
                       ),
                     ],
                   ),
                   const SizedBox(height: 20),
                   Row(
                     children: [
-                      const SizedBox(
-                        width: 20,
+                      const SizedBox(width: 20),
+                      Icon(
+                        Icons.email_outlined,
+                        color: Colors.green[800],
                       ),
-                      const Text(
-                        "Email",
+                      const SizedBox(width: 5),
+                      Text(
+                        "Email :",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Colors.green[800]),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      const SizedBox(width: 20),
+                      Icon(
+                        Icons.access_alarm_outlined,
+                        color: Colors.green[800],
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        "Opening Time :",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Colors.green[800]),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      const SizedBox(width: 20),
+                      Icon(
+                        Icons.access_time_filled,
+                        color: Colors.green[800],
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        "Closing Time :",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Colors.green[800]),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      const SizedBox(width: 20),
+                      Icon(
+                        Icons.location_on_outlined,
+                        color: Colors.green[800],
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        "Address :",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Colors.green[800]),
                       ),
                     ],
                   ),
