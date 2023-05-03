@@ -80,14 +80,14 @@ class UserService {
   //filter price :
   static Future<List<Box>> filterPrice(double min, double max) async {
     final token = controller.token;
-    final url = Uri.parse('${baseURL}user/filterprice');
-    final response = await http.post(
+    final url = Uri.parse('${baseURL}user/filterprice/?min=$min&max=$max');
+    final response = await http.get(
       url,
       headers: {
         "Content-Type": "application/json",
         'Authorization': 'Bearer $token'
       },
-      body: json.encode({'min': min, 'max': max}),
+      //body: json.encode({'min': min, 'max': max}),
     );
     if (response.statusCode == 200) {
       List<dynamic> data = jsonDecode(response.body)['boxs'];
