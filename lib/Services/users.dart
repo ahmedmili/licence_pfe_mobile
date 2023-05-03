@@ -176,4 +176,23 @@ class UserService {
       throw Exception('Failed to fetch like and favorites data');
     }
   }
+
+  static Future<String> likeOrDislikePartner(id) async {
+    final token = controller.token;
+    final url = Uri.parse('${baseURL}user/boxs/$id/likes');
+    final response = await http.post(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+    );
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = jsonDecode(response.body);
+      final String message = data["message"];
+      return message;
+    } else {
+      throw Exception('Failed to fetch like and dislike data');
+    }
+  }
 }

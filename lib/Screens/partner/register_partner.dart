@@ -26,7 +26,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
   String _email = '';
   String _phone = '';
   String _password = '';
-  late File? _image;
+  late File? _image = null;
   String _category = 'hi';
   String _openingtime = "";
   late String _closingtime = "";
