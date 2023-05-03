@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:saverapp/Models/boxs.dart';
+import 'package:saverapp/Services/geoLocator.dart';
 import 'package:saverapp/widget/adresseField.dart';
 import 'package:saverapp/widget/box_list_view.dart';
-import 'package:saverapp/widget/searchField.dart';
 import '../../Services/users.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  GeoLocatorController geoController = Get.find<GeoLocatorController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     return Column(
                       children: [
                         const SizedBox(height: 20.0),
-                        const AdresseField(),
+                        AdresseField(adress: geoController.adress.value),
                         const SizedBox(
                           height: 10,
                         ),
@@ -38,8 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               const EdgeInsets.only(left: 20.0, right: 15.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              const Text(
+                            children: const <Widget>[
+                              Text(
                                 "Recommended for you",
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold),
@@ -65,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                             const SizedBox(height: 15.0),
-                            Container(
+                            SizedBox(
                               width: 340,
                               height: 200,
                               child: BoxScreen(

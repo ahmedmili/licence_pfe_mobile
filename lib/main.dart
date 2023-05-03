@@ -15,6 +15,7 @@ void main() async {
   await controller.readRole();
   await controller.readToken();
   await geoController.getLocation();
+  await geoController.getAddressFromLatLng();
   runApp(const MyApp());
 }
 

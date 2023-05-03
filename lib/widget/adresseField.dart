@@ -3,8 +3,9 @@
 import 'package:flutter/material.dart';
 
 class AdresseField extends StatefulWidget {
-  const AdresseField({super.key});
+  const AdresseField({super.key, required this.adress});
 
+  final String adress;
   @override
   State<AdresseField> createState() => _AdresseFieldState();
 }
@@ -48,6 +49,7 @@ class _AdresseFieldState extends State<AdresseField> {
                       const SizedBox(
                         width: 10,
                       ),
+                      Text(widget.adress)
                     ],
                   ),
                   Padding(
