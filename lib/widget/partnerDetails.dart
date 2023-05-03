@@ -31,12 +31,38 @@ class _PartnerDetailsState extends State<PartnerDetails> {
               elevation: 5.0,
               borderRadius: BorderRadius.circular(20.0),
               child: Padding(
-                padding: const EdgeInsets.only(left: 17),
+                padding: const EdgeInsets.only(left: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     const SizedBox(
                       height: 15,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 60,
+                          width: 150,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.0,
+                            ),
+                          ),
+                          child: CircleAvatar(
+                            radius: 20,
+                            backgroundImage: NetworkImage(
+                              "http://10.0.2.2:8000/storage/partner_imgs/",
+                              headers: {
+                                "Keep-Alive": "timeout=20",
+                              },
+                            ),
+                          ),
+                        ),
+                        Text("name"),
+                      ],
                     ),
                     Row(
                       children: [
