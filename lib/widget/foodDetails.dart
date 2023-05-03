@@ -2,6 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:saverapp/Models/partner.dart';
 import 'package:saverapp/widget/partnerDetails.dart';
 import '../Models/boxs.dart';
@@ -200,12 +202,13 @@ class _FoodDetailsState extends State<FoodDetails> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              const PartnerDetails(),
-                        ));
+                    Get.toNamed('/partnerdetails', arguments: partner);
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (BuildContext context) =>
+                    //           const PartnerDetails(),
+                    //     ));
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

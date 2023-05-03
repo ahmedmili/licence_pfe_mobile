@@ -2,6 +2,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:saverapp/Models/partner.dart';
 
 class PartnerDetails extends StatefulWidget {
   const PartnerDetails({super.key});
@@ -13,6 +16,7 @@ class PartnerDetails extends StatefulWidget {
 class _PartnerDetailsState extends State<PartnerDetails> {
   @override
   Widget build(BuildContext context) {
+    final Partner partner = Get.arguments;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -49,17 +53,17 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                         child: CircleAvatar(
                           radius: 20,
                           backgroundImage: NetworkImage(
-                            "http://10.0.2.2:8000/storage/partner_imgs/",
+                            "http://10.0.2.2:8000/storage/partner_imgs/${partner.image}",
                             headers: {
                               "Keep-Alive": "timeout=20",
                             },
                           ),
                         ),
                       ),
-                      const Text(
-                        "name",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                      Text(
+                        "${partner.name}",
+                        style:
+                            TextStyle(fontSize: 1, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -73,11 +77,12 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        "Category :",
+                        "Category : ${partner.category}",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.green[800]),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          //color: Colors.green[800]
+                        ),
                       ),
                     ],
                   ),
@@ -91,11 +96,11 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        "Description",
+                        "Description : ${partner.description}",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.green[800]),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
                     ],
                   ),
@@ -109,11 +114,11 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        "Phone :",
+                        "Phone : ${partner.phone}",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.green[800]),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
                     ],
                   ),
@@ -127,11 +132,11 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        "Email :",
+                        "Email : ${partner.email}",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.green[800]),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
                     ],
                   ),
@@ -145,11 +150,11 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        "Opening Time :",
+                        "Opening Time : ${partner.openingtime}",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.green[800]),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
                     ],
                   ),
@@ -163,11 +168,11 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        "Closing Time :",
+                        "Closing Time : ${partner.closingtime}",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.green[800]),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
                     ],
                   ),
@@ -183,9 +188,9 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       Text(
                         "Address :",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.green[800]),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
                     ],
                   ),
