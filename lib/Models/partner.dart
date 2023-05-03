@@ -1,4 +1,5 @@
 class Partner {
+  final int id;
   final String name;
   final String description;
   final String email;
@@ -9,6 +10,7 @@ class Partner {
   final String closingtime;
 
   Partner({
+    required this.id,
     required this.name,
     required this.description,
     required this.email,
@@ -20,6 +22,7 @@ class Partner {
   });
   factory Partner.fromJson(Map<String, dynamic> json) {
     return Partner(
+      id: json['id'],
       name: json['name'],
       description: json['description'],
       email: json['email'],

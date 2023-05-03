@@ -229,6 +229,7 @@ class PartnersService {
 
       final partner = Partner(
         // Add fields here to create the new Box object
+        id: data['id'],
         name: data['name'],
         description: data['description'],
         category: data['category'],
