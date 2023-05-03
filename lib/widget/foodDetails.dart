@@ -2,6 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:saverapp/Models/partner.dart';
 import 'package:saverapp/widget/partnerDetails.dart';
 import '../Models/boxs.dart';
@@ -82,34 +84,39 @@ class _FoodDetailsState extends State<FoodDetails> {
           left: 20,
           right: 20,
           top: 170,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                width: 70,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 2.0,
+          child: GestureDetector(
+            onTap: () {
+              Get.toNamed('/partnerdetails', arguments: partner);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  width: 70,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 2.0,
+                    ),
+                  ),
+                  child: CircleAvatar(
+                    radius: 30,
+                    backgroundImage: NetworkImage(
+                      "http://10.0.2.2:8000/storage/partner_imgs/${partner.image}",
+                    ),
                   ),
                 ),
-                child: CircleAvatar(
-                  radius: 30,
-                  backgroundImage: NetworkImage(
-                    "http://10.0.2.2:8000/storage/partner_imgs/${partner.image}",
-                  ),
+                const SizedBox(width: 10),
+                Text(
+                  partner.name,
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold),
                 ),
-              ),
-              const SizedBox(width: 10),
-              Text(
-                partner.name,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         Positioned(
@@ -200,12 +207,13 @@ class _FoodDetailsState extends State<FoodDetails> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              const PartnerDetails(),
-                        ));
+                    Get.toNamed('/partnerdetails', arguments: partner);
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (BuildContext context) =>
+                    //           const PartnerDetails(),
+                    //     ));
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
