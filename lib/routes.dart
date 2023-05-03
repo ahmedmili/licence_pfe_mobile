@@ -21,7 +21,7 @@ List<GetPage<dynamic>> routes = [
     page: () => const Welcome(),
     transition: Transition.fadeIn,
     transitionDuration: const Duration(seconds: 1),
-    //middlewares: [AuthMiddleware("any")],
+    middlewares: [AuthMiddleware("any")],
   ),
   GetPage(
     name: '/login',
