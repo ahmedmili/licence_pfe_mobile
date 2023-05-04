@@ -20,6 +20,9 @@ class _PartnerDetailsState extends State<PartnerDetails> {
   @override
   Widget build(BuildContext context) {
     final Partner partner = Get.arguments;
+    bool isliked = partner.likes == 1 ? true : false;
+    print(isliked);
+    print(partner.id);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -77,7 +80,10 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       Padding(
                         padding: const EdgeInsets.only(
                             left: 20, right: 20, top: 10, bottom: 20),
-                        child: const NeuButtonPartner(),
+                        child: NeuButtonPartner(
+                          isLiked: isliked,
+                          partnerid: partner.id,
+                        ),
                       ),
                     ],
                   ),
