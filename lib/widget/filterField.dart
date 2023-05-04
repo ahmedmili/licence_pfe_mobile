@@ -106,7 +106,10 @@ class _FilterFieldState extends State<FilterField> {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          Container(height: 30, child: const MoneyFilter()),
+                          Container(
+                              height: 48,
+                              width: 400,
+                              child: const MoneyFilter()),
                           const SizedBox(height: 40),
                           GestureDetector(
                             onTap: () {
