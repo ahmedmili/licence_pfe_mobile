@@ -179,7 +179,7 @@ class UserService {
 
   static Future<String> likeOrDislikePartner(id) async {
     final token = controller.token;
-    final url = Uri.parse('${baseURL}user/boxs/$id/likes');
+    final url = Uri.parse('${baseURL}user/partners/$id/likes');
     final response = await http.post(
       url,
       headers: {
