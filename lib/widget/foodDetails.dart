@@ -25,8 +25,7 @@ class _FoodDetailsState extends State<FoodDetails> {
     final box = widget.box;
     final partner = widget.partner;
     bool isliked = widget.box.likes == 1 ? true : false;
-    // print(box.id);
-    // print(partner.name);
+
     return Scaffold(
       body: Stack(children: [
         Positioned(
@@ -208,12 +207,6 @@ class _FoodDetailsState extends State<FoodDetails> {
                 GestureDetector(
                   onTap: () {
                     Get.toNamed('/partnerdetails', arguments: partner);
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (BuildContext context) =>
-                    //           const PartnerDetails(),
-                    //     ));
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

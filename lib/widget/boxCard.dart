@@ -24,6 +24,7 @@ class _BoxCardState extends State<BoxCard> {
   @override
   Widget build(BuildContext context) {
     bool isliked = widget.box.likes == 1 ? true : false;
+    // print(isliked);
     return FutureBuilder<Partner>(
       future: UserService.getBoxPartnerInfo(widget.box.id),
       builder: (context, snapshot) {

@@ -18,7 +18,7 @@ class NeuButtonPartner extends StatefulWidget {
 }
 
 class _NeuButtonPartnerState extends State<NeuButtonPartner> {
-  bool isliked = false;
+  late bool isliked;
   @override
   void initState() {
     super.initState();
@@ -27,7 +27,7 @@ class _NeuButtonPartnerState extends State<NeuButtonPartner> {
 
   Future<void> buttonPresssed() async {
     await UserService.likeOrDislikePartner(widget.partnerid);
-
+    print(widget.isLiked);
     setState(() {
       isliked = !isliked;
     });

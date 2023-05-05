@@ -27,7 +27,7 @@ class _NeuButtonState extends State<NeuButton> {
 
   Future<void> buttonPresssed() async {
     await UserService.likeOrDislikeBox(widget.boxid);
-
+    print(!isliked);
     setState(() {
       isliked = !isliked;
     });

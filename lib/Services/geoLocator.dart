@@ -55,12 +55,12 @@ class GeoLocatorController extends GetxController {
     if (response.statusCode == 200) {
       final decoded = json.decode(response.body);
       if (decoded["status"] == "OK") {
-        print(decoded["results"][0]);
+        // print(decoded["results"][0]);
         adress.value = decoded["results"][0]["formatted_address"];
 
         return decoded["results"][0]["formatted_address"];
       } else {
-        print(response.body);
+        // print(response.body);
         throw Exception("Failed to get address");
       }
     } else {

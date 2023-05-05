@@ -21,8 +21,8 @@ class _PartnerDetailsState extends State<PartnerDetails> {
   Widget build(BuildContext context) {
     final Partner partner = Get.arguments;
     bool isliked = partner.likes == 1 ? true : false;
-    print(isliked);
-    print(partner.id);
+    // print(isliked);
+    // print(partner.id);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,

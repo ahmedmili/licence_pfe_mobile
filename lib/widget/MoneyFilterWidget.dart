@@ -32,27 +32,15 @@ class _MoneyFilterState extends State<MoneyFilter> {
               });
 
               UserService.filterPrice(values.start, values.end).then((data) {
-                if (data != null) {
-                  print(data.length);
-                  controller.setBoxsList(data);
-                }
+                // print(data.length);
+                controller.setBoxsList(data);
               });
             },
             onChanged: (RangeValues values) {
               // print("loadeing");
-              //   setState(() {
-              //     _currentRangeValues = values;
-              //   });
-
-              //   UserService.filterPrice(values.start, values.end).then((data) {
-              //     if (data != null) {
-              //       // print(data.length);
-              //       controller.setBoxsList(data);
-              //     }
-              //   });
             },
           ),
-          Expanded(
+          const Expanded(
             child: Center(
               child: Text("Loading..."),
             ),

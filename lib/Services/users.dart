@@ -83,7 +83,7 @@ class UserService {
     bool isLoaded = false;
 
     final url = Uri.parse('${baseURL}user/filterprice/?min=$min&max=$max');
-    print("test");
+    // print("test");
     final response = await http.get(
       url,
       headers: {
@@ -116,6 +116,7 @@ class UserService {
     );
     if (response.statusCode == 200) {
       Map<String, dynamic> data = jsonDecode(response.body);
+      print(data);
       final boxPartner = Partner.fromJson(data);
       return boxPartner;
     } else {

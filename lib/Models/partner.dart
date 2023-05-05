@@ -33,7 +33,7 @@ class Partner {
       category: json['category'],
       openingtime: json['openingtime'],
       closingtime: json['closingtime'],
-      likes: json["likes"]?.length,
+      likes: json["is_liked"],
     );
   }
 }
