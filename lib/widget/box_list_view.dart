@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:saverapp/Models/partner.dart';
 import '../Models/boxs.dart';
+import '../Services/globals.dart';
 import '../Services/users.dart';
 import 'boxCard.dart';
 import 'foodDetails.dart';
@@ -23,6 +26,7 @@ class _BoxScreenState extends State<BoxScreen> {
 
   @override
   Widget build(BuildContext context) {
+    GlobalController globalController = Get.find();
     return ListView.builder(
       scrollDirection:
           widget.directions == "H" ? Axis.horizontal : Axis.vertical,
@@ -31,7 +35,9 @@ class _BoxScreenState extends State<BoxScreen> {
         final box = items[index];
         return GestureDetector(
           onTap: () async {
+            // Partner partner = globalController.partner;
             Partner partner = await UserService.getBoxPartnerInfo(box.id);
+            print('partner ${partner.id} likes ? ${partner.likes}');
             // ignore: use_build_context_synchronously
             Navigator.push(
               context,
