@@ -22,17 +22,9 @@ class NeuButtonPartner extends StatefulWidget {
 class _NeuButtonPartnerState extends State<NeuButtonPartner> {
   GlobalController controller = Get.find();
 
-  // late bool isliked;
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   isliked = controller.partner.likes;
-  // }
-
   Future<void> buttonPresssed() async {
     await UserService.likeOrDislikePartner(controller.partner.id);
 
-    // print(widget.isLiked);
     setState(() {
       controller.partner.likes = !controller.partner.likes!;
     });
@@ -49,29 +41,25 @@ class _NeuButtonPartnerState extends State<NeuButtonPartner> {
         decoration: BoxDecoration(
           color: Colors.grey[300],
           borderRadius: BorderRadius.circular(35),
-          boxShadow:
-              // widget.isLiked
-              controller.partner.likes!
-                  ? [
-                      BoxShadow(
-                          color: Colors.grey.shade500,
-                          offset: const Offset(6, 6),
-                          blurRadius: 15.0,
-                          spreadRadius: 1.0),
-                      const BoxShadow(
-                          color: Colors.white,
-                          offset: Offset(-6, -6),
-                          blurRadius: 15.0,
-                          spreadRadius: 1.0),
-                    ]
-                  : [],
+          boxShadow: controller.partner.likes!
+              ? [
+                  BoxShadow(
+                      color: Colors.grey.shade500,
+                      offset: const Offset(6, 6),
+                      blurRadius: 15.0,
+                      spreadRadius: 1.0),
+                  const BoxShadow(
+                      color: Colors.white,
+                      offset: Offset(-6, -6),
+                      blurRadius: 15.0,
+                      spreadRadius: 1.0),
+                ]
+              : [],
         ),
         child: Icon(
           Icons.favorite,
           size: 20,
-          color:
-              //  widget.isLiked
-              controller.partner.likes! ? Colors.red[400] : Colors.grey,
+          color: controller.partner.likes! ? Colors.red[400] : Colors.grey,
         ),
       ),
     );

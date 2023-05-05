@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:saverapp/Models/partner.dart';
 import 'package:saverapp/Services/globals.dart';
 import '../Models/boxs.dart';
@@ -26,6 +29,7 @@ class _BoxScreenState extends State<BoxScreen> {
   @override
   Widget build(BuildContext context) {
     GlobalController controller = Get.find();
+
     return ListView.builder(
       scrollDirection:
           widget.directions == "H" ? Axis.horizontal : Axis.vertical,
@@ -34,10 +38,11 @@ class _BoxScreenState extends State<BoxScreen> {
         final box = items[index];
         return GestureDetector(
           onTap: () async {
+            // Partner partner = globalController.partner;
             Partner partner = await UserService.getBoxPartnerInfo(box.id);
+
             controller.partner = partner;
 
-            // ignore: use_build_context_synchronously
             Navigator.push(
               context,
               MaterialPageRoute(
