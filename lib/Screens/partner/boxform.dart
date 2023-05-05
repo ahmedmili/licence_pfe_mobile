@@ -28,7 +28,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
   DateTime? _startDate;
   DateTime? _endDate;
   String _quantity = '';
-  late File? _image;
+  late File? _image = null;
   String _category = '';
   String _imageName = '';
   late String token;
