@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/Services/users.dart';
 
 class NeuButtonPartner extends StatefulWidget {
@@ -26,8 +28,10 @@ class _NeuButtonPartnerState extends State<NeuButtonPartner> {
   }
 
   Future<void> buttonPresssed() async {
-    await UserService.likeOrDislikePartner(widget.partnerid);
+    GlobalController globalController = Get.find();
 
+    await UserService.likeOrDislikePartner(widget.partnerid);
+    globalController.partner.likes = 1;
     setState(() {
       isliked = !isliked;
     });
