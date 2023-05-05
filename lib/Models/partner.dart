@@ -8,7 +8,7 @@ class Partner {
   final String category;
   final String openingtime;
   final String closingtime;
-  int? likes;
+  bool? likes;
 
   Partner(
       {required this.id,
@@ -33,7 +33,7 @@ class Partner {
       category: json['category'],
       openingtime: json['openingtime'],
       closingtime: json['closingtime'],
-      likes: json["is_liked"],
+      likes: json["is_liked"] == 1 ? true : false,
     );
   }
 }

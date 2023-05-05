@@ -1,13 +1,10 @@
 // ignore_for_file: file_names
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:saverapp/Models/partner.dart';
+import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/widget/neonButtonPartner.dart';
-
-import 'neonButton.dart';
 
 class PartnerDetails extends StatefulWidget {
   const PartnerDetails({super.key});
@@ -17,12 +14,14 @@ class PartnerDetails extends StatefulWidget {
 }
 
 class _PartnerDetailsState extends State<PartnerDetails> {
+  GlobalController controller = Get.find();
   @override
   Widget build(BuildContext context) {
-    final Partner partner = Get.arguments;
-    bool isliked = partner.likes == 1 ? true : false;
-    // print(isliked);
-    // print(partner.id);
+    // final Partner partner = Get.arguments;
+    // bool isliked = controller.partner.likes == 1 ? true : false;
+
+    print(controller.partner.likes);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -62,7 +61,7 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                             child: CircleAvatar(
                               radius: 20,
                               backgroundImage: NetworkImage(
-                                "http://10.0.2.2:8000/storage/partner_imgs/${partner.image}",
+                                "http://10.0.2.2:8000/storage/partner_imgs/${controller.partner.image}",
                                 headers: {
                                   "Keep-Alive": "timeout=20",
                                 },
@@ -70,20 +69,17 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                             ),
                           ),
                           Text(
-                            "${partner.name}",
-                            style: TextStyle(
+                            controller.partner.name,
+                            style: const TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
                       //like
-                      Padding(
-                        padding: const EdgeInsets.only(
+                      const Padding(
+                        padding: EdgeInsets.only(
                             left: 20, right: 20, top: 10, bottom: 20),
-                        child: NeuButtonPartner(
-                          isLiked: isliked,
-                          partnerid: partner.id,
-                        ),
+                        child: NeuButtonPartner(),
                       ),
                     ],
                   ),
@@ -97,8 +93,8 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        "Category : ${partner.category}",
-                        style: TextStyle(
+                        "Category : ${controller.partner.category}",
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                           //color: Colors.green[800]
@@ -116,8 +112,8 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        "Description : ${partner.description}",
-                        style: TextStyle(
+                        "Description : ${controller.partner.description}",
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
@@ -134,8 +130,8 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        "Phone : ${partner.phone}",
-                        style: TextStyle(
+                        "Phone : ${controller.partner.phone}",
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
@@ -152,8 +148,8 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        "Email : ${partner.email}",
-                        style: TextStyle(
+                        "Email : ${controller.partner.email}",
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
@@ -170,8 +166,8 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        "Opening Time : ${partner.openingtime}",
-                        style: TextStyle(
+                        "Opening Time : ${controller.partner.openingtime}",
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
@@ -188,8 +184,8 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        "Closing Time : ${partner.closingtime}",
-                        style: TextStyle(
+                        "Closing Time : ${controller.partner.closingtime}",
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
@@ -205,7 +201,7 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                         color: Colors.green[800],
                       ),
                       const SizedBox(width: 5),
-                      Text(
+                      const Text(
                         "Address :",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,

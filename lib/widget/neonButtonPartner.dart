@@ -1,35 +1,40 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/Services/users.dart';
 
 class NeuButtonPartner extends StatefulWidget {
   const NeuButtonPartner({
     super.key,
-    required this.partnerid,
-    required this.isLiked,
+    // required this.partnerid,
+    // required this.isLiked,
   });
   // final onTap;
-  final int partnerid;
-  final bool isLiked;
+  // final int partnerid;
+  // final bool isLiked;
 
   @override
   State<NeuButtonPartner> createState() => _NeuButtonPartnerState();
 }
 
 class _NeuButtonPartnerState extends State<NeuButtonPartner> {
-  late bool isliked;
-  @override
-  void initState() {
-    super.initState();
-    isliked = widget.isLiked;
-  }
+  GlobalController controller = Get.find();
+
+  // late bool isliked;
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   isliked = controller.partner.likes;
+  // }
 
   Future<void> buttonPresssed() async {
-    await UserService.likeOrDislikePartner(widget.partnerid);
-    print(widget.isLiked);
+    await UserService.likeOrDislikePartner(controller.partner.id);
+
+    // print(widget.isLiked);
     setState(() {
-      isliked = !isliked;
+      controller.partner.likes = !controller.partner.likes!;
     });
   }
 
@@ -46,7 +51,7 @@ class _NeuButtonPartnerState extends State<NeuButtonPartner> {
           borderRadius: BorderRadius.circular(35),
           boxShadow:
               // widget.isLiked
-              isliked
+              controller.partner.likes!
                   ? [
                       BoxShadow(
                           color: Colors.grey.shade500,
@@ -66,7 +71,7 @@ class _NeuButtonPartnerState extends State<NeuButtonPartner> {
           size: 20,
           color:
               //  widget.isLiked
-              isliked ? Colors.red[400] : Colors.grey,
+              controller.partner.likes! ? Colors.red[400] : Colors.grey,
         ),
       ),
     );
