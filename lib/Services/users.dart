@@ -80,7 +80,10 @@ class UserService {
   //filter price :
   static Future<List<Box>> filterPrice(double min, double max) async {
     final token = controller.token;
+    bool isLoaded = false;
+
     final url = Uri.parse('${baseURL}user/filterprice/?min=$min&max=$max');
+    print("test");
     final response = await http.get(
       url,
       headers: {

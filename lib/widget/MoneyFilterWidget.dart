@@ -10,7 +10,6 @@ class MoneyFilter extends StatefulWidget {
 
 class _MoneyFilterState extends State<MoneyFilter> {
   RangeValues _currentRangeValues = const RangeValues(0, 100);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,17 +26,30 @@ class _MoneyFilterState extends State<MoneyFilter> {
               _currentRangeValues.start.toString(),
               _currentRangeValues.end.toString(),
             ),
-            onChanged: (RangeValues values) {
+            onChangeEnd: (RangeValues values) {
               setState(() {
                 _currentRangeValues = values;
               });
 
               UserService.filterPrice(values.start, values.end).then((data) {
                 if (data != null) {
-                  print(data[0].id);
+                  print(data.length);
                   controller.setBoxsList(data);
                 }
               });
+            },
+            onChanged: (RangeValues values) {
+              // print("loadeing");
+              //   setState(() {
+              //     _currentRangeValues = values;
+              //   });
+
+              //   UserService.filterPrice(values.start, values.end).then((data) {
+              //     if (data != null) {
+              //       // print(data.length);
+              //       controller.setBoxsList(data);
+              //     }
+              //   });
             },
           ),
           Expanded(
