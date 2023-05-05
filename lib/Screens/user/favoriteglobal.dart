@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:saverapp/Screens/user/favorite_partner.dart';
 import 'package:saverapp/Screens/user/filter.dart';
 import 'package:saverapp/Services/geoLocator.dart';
 import 'package:saverapp/widget/bottom_nav_bar.dart';
@@ -28,11 +29,10 @@ class _FavoriteGlobalState extends State<FavoriteGlobal> {
 
   //pages to display
   final List<Widget> _pages = [
-    //filtre page
-    const Filter(),
-    // cart page
+    //favorite partner page
+    const FavoritePartner(),
+    //favorite boxes
     const FavoriteScreen(),
-    // const Congratulations(),
   ];
 
   @override

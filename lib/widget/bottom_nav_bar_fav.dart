@@ -22,19 +22,18 @@ class MyBottonNavBarFav extends StatelessWidget {
       ),
       gap: 8,
       tabs: const [
-        //List
-
+        //Favorite Partner
         GButton(
-          icon: Icons.list,
+          icon: Icons.store,
           text: 'Favorite Partners',
-          padding: EdgeInsets.symmetric(horizontal: 75, vertical: 4),
+          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 4),
         ),
 
-        //cart
+        //Favorite Box
         GButton(
-          icon: CupertinoIcons.map,
+          icon: CupertinoIcons.cube_box,
           text: 'Favorite Boxes',
-          padding: EdgeInsets.symmetric(horizontal: 75, vertical: 4),
+          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 4),
         ),
       ],
     );
