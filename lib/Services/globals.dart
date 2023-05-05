@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:saverapp/Models/boxs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Models/partner.dart';
+
 const String baseURL = "http://10.0.2.2:8000/api/";
 // const String baseURL = "http://192.168.1.16:8000/api/";
 
@@ -38,6 +40,18 @@ class GlobalController extends GetxController {
     title: "",
     description: "",
     oldprice: "",
+  );
+
+  final partner = Partner(
+    name: "",
+    description: "",
+    email: "",
+    image: "",
+    category: "",
+    id: 0,
+    phone: 0,
+    openingtime: "",
+    closingtime: "",
   );
 
   late List<Box> _boxsList = [];
