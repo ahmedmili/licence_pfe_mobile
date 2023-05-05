@@ -21,6 +21,7 @@ class Partner {
       required this.openingtime,
       required this.closingtime,
       this.likes});
+
   factory Partner.fromJson(Map<String, dynamic> json) {
     return Partner(
       id: json['id'],
@@ -32,7 +33,7 @@ class Partner {
       category: json['category'],
       openingtime: json['openingtime'],
       closingtime: json['closingtime'],
-      //likes: json["likes"].length,
+      likes: json["likes"]?.length,
     );
   }
 }

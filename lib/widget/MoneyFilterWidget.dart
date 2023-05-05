@@ -16,37 +16,33 @@ class _MoneyFilterState extends State<MoneyFilter> {
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            child: RangeSlider(
-              values: _currentRangeValues,
-              min: 0,
-              max: 100,
-              divisions: 10,
-              activeColor: Colors.green[800],
-              inactiveColor: Colors.grey,
-              labels: RangeLabels(
-                _currentRangeValues.start.toString(),
-                _currentRangeValues.end.toString(),
-              ),
-              onChanged: (RangeValues values) {
-                setState(() {
-                  _currentRangeValues = values;
-                });
-              },
+          RangeSlider(
+            values: _currentRangeValues,
+            min: 0,
+            max: 100,
+            divisions: 100,
+            activeColor: Colors.green[800],
+            inactiveColor: Colors.grey,
+            labels: RangeLabels(
+              _currentRangeValues.start.toString(),
+              _currentRangeValues.end.toString(),
             ),
+            onChanged: (RangeValues values) {
+              setState(() {
+                _currentRangeValues = values;
+              });
+
+              UserService.filterPrice(values.start, values.end).then((data) {
+                if (data != null) {
+                  print(data[0].id);
+                  controller.setBoxsList(data);
+                }
+              });
+            },
           ),
           Expanded(
-            child: FutureBuilder(
-              future: UserService.filterPrice(5.00, 20.00),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  print(snapshot.data![1].id);
-                  controller.setBoxsList(snapshot.data!);
-                  return Text("data");
-                } else {
-                  return Text("no data");
-                }
-              },
+            child: Center(
+              child: Text("Loading..."),
             ),
           ),
         ],

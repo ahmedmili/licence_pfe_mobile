@@ -6,12 +6,12 @@ import 'package:saverapp/Services/users.dart';
 class NeuButtonPartner extends StatefulWidget {
   const NeuButtonPartner({
     super.key,
-    // required this.boxid,
-    // required this.isLiked,
+    required this.partnerid,
+    required this.isLiked,
   });
   // final onTap;
-  // final int boxid;
-  // final bool isLiked;
+  final int partnerid;
+  final bool isLiked;
 
   @override
   State<NeuButtonPartner> createState() => _NeuButtonPartnerState();
@@ -22,21 +22,21 @@ class _NeuButtonPartnerState extends State<NeuButtonPartner> {
   @override
   void initState() {
     super.initState();
-    // isliked = widget.isLiked;
+    isliked = widget.isLiked;
   }
 
-  // Future<void> buttonPresssed() async {
-  //   await UserService.likeOrDislikeBox(widget.boxid);
+  Future<void> buttonPresssed() async {
+    await UserService.likeOrDislikePartner(widget.partnerid);
 
-  //   setState(() {
-  //     isliked = !isliked;
-  //   });
-  // }
+    setState(() {
+      isliked = !isliked;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: () => buttonPresssed(),
+      onTap: () => buttonPresssed(),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         height: 40,

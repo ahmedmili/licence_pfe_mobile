@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/user/home.dart';
 import 'package:saverapp/Screens/user/tour.dart';
 import 'favorite.dart';
+import 'favoriteglobal.dart';
 import 'me.dart';
 
 class MainScreen extends StatefulWidget {
@@ -17,14 +18,14 @@ class _MainScreenState extends State<MainScreen> {
   late Widget currentPage;
   late HomeScreen homeScreen;
   late TourScreen tourScreen;
-  late FavoriteScreen favoritecreen;
+  late FavoriteGlobal favoritecreen;
   late MeScreen meScreen;
   @override
   void initState() {
     super.initState();
     homeScreen = const HomeScreen();
     tourScreen = const TourScreen();
-    favoritecreen = const FavoriteScreen();
+    favoritecreen = const FavoriteGlobal();
     meScreen = const MeScreen();
     pages = [homeScreen, tourScreen, favoritecreen, meScreen];
     currentPage = homeScreen;
