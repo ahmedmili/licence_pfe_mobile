@@ -38,14 +38,15 @@ class _PartnerCardState extends State<PartnerCard> {
       children: <Widget>[
         favoredPartners.isNotEmpty
             ? Container(
-                height: 250,
+                height: 500,
                 width: 450,
                 child: ListView.builder(
                   itemCount: favoredPartners.length,
                   itemBuilder: (context, index) {
                     final partner = favoredPartners[index];
-                    return Stack(
+                    return Column(
                       children: <Widget>[
+                        SizedBox(height: 20),
                         Container(
                           height: 220,
                           width: 450,
