@@ -103,6 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    bool _obscureText = true;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -183,12 +184,25 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 12.0),
+                      padding: EdgeInsets.only(left: 12.0),
                       child: TextFormField(
-                        obscureText: true,
-                        decoration: const InputDecoration(
+                        obscureText: _obscureText,
+                        decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Password',
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _obscureText = !_obscureText;
+                              });
+                            },
+                            child: Icon(
+                              _obscureText
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: Colors.grey,
+                            ),
+                          ),
                         ),
                         validator: (value) {
                           if (value!.isEmpty) {
