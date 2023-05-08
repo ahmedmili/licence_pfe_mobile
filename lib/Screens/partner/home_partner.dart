@@ -19,6 +19,13 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
       body: Column(
         children: [
           const SizedBox(height: 50),
+          const Padding(
+            padding: EdgeInsets.only(right: 190),
+            child: Text(
+              "Orders :",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
           FutureBuilder<List<Order>>(
             future: PartnersService.getPartnerOrders(),
             builder: (context, snapshot) {

@@ -1,6 +1,7 @@
 class Order {
   final int command_id;
-  final String user;
+  final String user_name;
+  final int user_phone;
   final String box_name;
   final String box_image;
   final int quantity;
@@ -10,7 +11,8 @@ class Order {
 
   Order({
     required this.command_id,
-    required this.user,
+    required this.user_name,
+    required this.user_phone,
     required this.box_name,
     required this.box_image,
     required this.quantity,
@@ -22,7 +24,8 @@ class Order {
   factory Order.fromJson(Map<String, dynamic> json) {
     return Order(
       command_id: json['command_id'],
-      user: json['user'],
+      user_name: json['user_name'],
+      user_phone: json['user_phone'],
       box_name: json['box_name'],
       box_image: json['box_image'],
       quantity: json['quantity'],

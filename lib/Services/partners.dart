@@ -267,7 +267,8 @@ class PartnersService {
           //print(data[i]['box_image']);
           final newOrder = Order(
             command_id: data[i]['command_id'],
-            user: data[i]['user'],
+            user_name: data[i]['user_name'],
+            user_phone: data[i]['user_phone'],
             box_name: data[i]['box_name'],
             quantity: data[i]['quantity'],
             box_image: data[i]['box_image'],

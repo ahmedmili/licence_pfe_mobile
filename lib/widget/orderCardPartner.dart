@@ -41,7 +41,7 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
         child: Stack(
           children: <Widget>[
             SizedBox(
-              height: 190.0,
+              height: 210.0,
               width: 320.0,
               child: Image.network(
                 "http://10.0.2.2:8000/storage/boxs_imgs/${widget.order.box_image}",
@@ -53,8 +53,8 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
               left: 0.0,
               bottom: 0.0,
               child: Container(
-                height: 60.0,
-                width: 340.0,
+                height: 110.0,
+                width: 320.0,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                 ),
@@ -64,44 +64,81 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
               left: 10.0,
               bottom: 10.0,
               right: 10.0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text(
-                        widget.order.box_name,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            widget.order.box_name,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Column(
+                        children: <Widget>[
+                          Text(
+                            '${widget.order.oldprice} Dt',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              color: Colors.redAccent,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.lineThrough,
+                            ),
+                          ),
+                          Text(
+                            '${widget.order.newprice} Dt',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.green[800],
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  const Spacer(),
-                  Column(
-                    children: <Widget>[
-                      Text(
-                        '${widget.order.oldprice} Dt',
-                        style: const TextStyle(
-                          fontSize: 18,
-                          color: Colors.redAccent,
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.lineThrough,
-                        ),
+                  const Divider(
+                    color: Colors.grey,
+                    thickness: 1,
+                  ),
+                  Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 220),
+                            child: Text(
+                              widget.order.user_name,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            '${widget.order.user_phone.toString()}',
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        '${widget.order.newprice} Dt',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green[800],
-                        ),
-                      ),
+                      Icon(Icons.phone, color: Colors.green[800]),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

@@ -46,7 +46,7 @@ class _OrderScreenPartnerState extends State<OrderScreenPartner> {
                   children: [
                     const SizedBox(height: 20),
                     OrderCardPartner(order: order),
-                    const SizedBox(height: 20)
+                    const SizedBox(height: 20),
                   ],
                 ),
         );
