@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:saverapp/Models/order.dart';
 import 'package:saverapp/Screens/user/passorder.dart';
 
 import '../../widget/partnerDetails.dart';
 
 class OrderDetailsScreen extends StatefulWidget {
-  const OrderDetailsScreen({super.key});
+  const OrderDetailsScreen({super.key, required this.order});
+  final Order order;
 
   @override
   State<OrderDetailsScreen> createState() => _OrderDetailsScreenState();
@@ -14,6 +16,7 @@ class OrderDetailsScreen extends StatefulWidget {
 class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   @override
   Widget build(BuildContext context) {
+    final order = widget.order;
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -26,11 +29,6 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                 style: TextStyle(color: Colors.black),
               ),
             ),
-            GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: const Icon(Icons.close))
           ],
         ),
         backgroundColor: Colors.transparent,
@@ -42,7 +40,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
       body: Stack(
         children: <Widget>[
           Container(
-            height: 450,
+            height: 570,
             width: 450,
             padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 30),
             child: Material(
@@ -57,43 +55,140 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                       height: 15,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              CupertinoIcons.cube_box,
+                              color: Colors.green[800],
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              order.box_name,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
                       children: [
                         Icon(
-                          CupertinoIcons.cube_box,
+                          Icons.store,
                           color: Colors.green[800],
                         ),
                         const SizedBox(
                           width: 5,
                         ),
-                        const Text(
-                          "Title Box",
+                        Text(
+                          order.box_category,
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
+                              fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                       ],
                     ),
                     const SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Text(
-                              "Total",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 14),
-                            ),
-                          ),
-                          Text(
-                            "price",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 14),
-                          ),
-                        ],
-                      ),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.description_outlined,
+                          color: Colors.green[800],
+                        ),
+                        const SizedBox(width: 5),
+                        Text(
+                          order.box_description,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
+                      ],
                     ),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.access_alarm,
+                          color: Colors.green[800],
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          "${order.box_startdate} -> ${order.box_enddate}",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 14),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Box Price :",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
+                            Text(
+                              "${order.newprice} Dt",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  color: Colors.green[800]),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(width: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Quantity :",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
+                            Text(
+                              "${order.quantity} ",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                  color: Colors.green[800]),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(width: 35),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Total :",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
+                            Text(
+                              "${order.price} Dt",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.green[800]),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
                     const Padding(
                       padding: EdgeInsets.only(right: 15.0),
                       child: Divider(
@@ -101,56 +196,65 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         thickness: 1,
                       ),
                     ),
-                    const SizedBox(height: 10),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  const PartnerDetails(),
-                            ));
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  const SizedBox(height: 20),
-                                  Icon(
-                                    Icons.location_on_outlined,
-                                    color: Colors.green[800],
-                                  ),
-                                  const SizedBox(width: 5),
-                                  const Text(
-                                    "adresse commerce",
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 30),
-                                child: Text(
-                                  "More information about ",
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.green[800]),
+                    const SizedBox(height: 5),
+                    Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                const SizedBox(height: 20),
+                                Icon(
+                                  Icons.person,
+                                  color: Colors.green[800],
                                 ),
-                              ),
-                            ],
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(20.0),
-                            child: Icon(Icons.chevron_right),
-                          ),
-                        ],
-                      ),
+                                const SizedBox(width: 5),
+                                Text(
+                                  order.user_name,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              children: [
+                                const SizedBox(height: 20),
+                                Icon(
+                                  Icons.email,
+                                  color: Colors.green[800],
+                                ),
+                                const SizedBox(width: 5),
+                                Text(
+                                  order.user_email,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              children: [
+                                const SizedBox(height: 20),
+                                Icon(
+                                  Icons.phone,
+                                  color: Colors.green[800],
+                                ),
+                                const SizedBox(width: 5),
+                                Text(
+                                  "${order.user_phone}",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 10),
                     const Padding(
@@ -165,15 +269,38 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
-                          children: const [
-                            Icon(Icons.access_alarm),
-                            SizedBox(width: 5),
+                          children: [
+                            Icon(
+                              Icons.qr_code,
+                              color: Colors.green[800],
+                            ),
+                            SizedBox(width: 2),
                             Text(
-                              'collect : Date',
+                              'It is necessary that the owner of order scan this code.',
                               style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold),
+                                  fontSize: 13, fontWeight: FontWeight.bold),
                             ),
                           ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 130, top: 30),
+                          child: Container(
+                              height: 100,
+                              width: 100,
+                              child: Image(
+                                  image:
+                                      AssetImage("assets/images/Qrcode.png"))),
+                        ),
+                        const SizedBox(height: 25),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 110),
+                          child: Text(
+                            " Order Created at : ${order.created_at}",
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.green[800]),
+                          ),
                         ),
                       ],
                     ),
@@ -183,31 +310,6 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: Container(
-        height: 100,
-        padding:
-            const EdgeInsets.only(top: 30, bottom: 30, left: 20, right: 20),
-        decoration: BoxDecoration(
-          color: Colors.grey[200],
-        ),
-        child: MaterialButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const PassOrder()),
-            );
-          },
-          color: Colors.green[800],
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: const Text(
-            "Click To Collect Your Box",
-            style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
-          ),
-        ),
       ),
     );
   }

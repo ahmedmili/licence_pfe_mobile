@@ -257,7 +257,7 @@ class PartnersService {
           'Authorization': 'Bearer $token'
         },
       );
-      print("test");
+      //print("test");
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         // print(data[0]["command_id"]);
@@ -268,13 +268,20 @@ class PartnersService {
           final newOrder = Order(
             command_id: data[i]['command_id'],
             user_name: data[i]['user_name'],
+            user_email: data[i]['user_email'],
             user_phone: data[i]['user_phone'],
             box_name: data[i]['box_name'],
+            box_category: data[i]['box_category'],
+            box_description: data[i]['box_description'],
+            box_startdate: data[i]['box_startdate'],
+            box_enddate: data[i]['box_enddate'],
             quantity: data[i]['quantity'],
             box_image: data[i]['box_image'],
             oldprice: data[i]['oldprice'],
             newprice: data[i]['newprice'],
+            price: data[i]['price'],
             remaining_quantity: data[i]['remaining_quantity'],
+            created_at: data[i]['created_at'],
           );
           orders.add(newOrder);
         }

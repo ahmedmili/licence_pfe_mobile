@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/order.dart';
-import 'package:saverapp/Screens/partner/foodDetails_partner.dart';
-import 'package:saverapp/widget/boxCardPartner.dart';
 import 'package:saverapp/widget/orderDetails.dart';
-import '../Models/boxs.dart';
 import 'orderCardPartner.dart';
 
 class OrderScreenPartner extends StatefulWidget {
@@ -33,7 +30,9 @@ class _OrderScreenPartnerState extends State<OrderScreenPartner> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => OrderDetailsScreen(),
+                builder: (context) => OrderDetailsScreen(
+                  order: order,
+                ),
               ),
             );
           },
