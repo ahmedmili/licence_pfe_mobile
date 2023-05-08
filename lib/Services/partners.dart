@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:saverapp/Models/boxs.dart';
 import 'package:http/http.dart' as http;
 import 'package:saverapp/Models/partner.dart';
+import '../Models/order.dart';
 import 'globals.dart';
 
 final GlobalController controller = Get.find<GlobalController>();
@@ -242,6 +243,47 @@ class PartnersService {
       return partner;
     } else {
       throw Exception('Failed to load user info');
+    }
+  }
+
+  static Future<List<Order>> getPartnerOrders() async {
+    try {
+      final token = controller.token;
+      final url = Uri.parse('${baseURL}partner/getPartnerOrders');
+      final response = await http.get(
+        url,
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer $token'
+        },
+      );
+      print("test");
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        // print(data[0]["command_id"]);
+        // print(data.length);
+        final List<Order> orders = [];
+        for (int i = 0; i < data.length; i++) {
+          //print(data[i]['box_image']);
+          final newOrder = Order(
+            command_id: data[i]['command_id'],
+            user: data[i]['user'],
+            box_name: data[i]['box_name'],
+            quantity: data[i]['quantity'],
+            box_image: data[i]['box_image'],
+            oldprice: data[i]['oldprice'],
+            newprice: data[i]['newprice'],
+            remaining_quantity: data[i]['remaining_quantity'],
+          );
+          orders.add(newOrder);
+        }
+        return orders;
+      } else {
+        throw Exception('Failed to fetch partner orders');
+      }
+    } catch (error) {
+      print('Error fetching partner orders: $error');
+      rethrow; // Propagate the error
     }
   }
 }
