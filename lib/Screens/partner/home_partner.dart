@@ -37,7 +37,6 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
                     width: 340,
                     child: OrderScreenPartner(
                       items: snapshot.data!,
-                      directions: "H",
                     ),
                   ),
                 );
