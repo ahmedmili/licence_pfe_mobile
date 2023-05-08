@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:saverapp/Screens/partner/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/partners.dart';
+import '../../widget/Location_dropDawn.dart';
 
 class MePartner extends StatefulWidget {
   const MePartner({super.key});
@@ -82,7 +83,24 @@ class _MePartnerState extends State<MePartner> {
                 ),
               );
             },
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          const SizedBox(
+              child: Card(
+            elevation: 4,
+            shadowColor: Colors.black12,
+            child: ListTile(
+              leading: Icon(
+                Icons.location_on_outlined,
+              ),
+              title: Text("Location"),
+              trailing: PopupLocationMenu(),
+            ),
           )
+              // child: PopupLocationMenu()),
+              ),
         ],
       ),
     );
@@ -132,13 +150,18 @@ List<CustomListTile> customListTiles = [
     icon: Icons.person_2_outlined,
     title: "Profile",
   ),
+  // CustomListTile(
+  //   cb: () {
+  //     // return const Text("00");
+  //   },
+  //   icon: Icons.location_on_outlined,
+  //   title: "Location",
+  // ),
+  // ExponsionPanel
   CustomListTile(
-    cb: () {},
-    icon: Icons.location_on_outlined,
-    title: "Location",
-  ),
-  CustomListTile(
-    cb: () {},
+    cb: () {
+      // return const Text("darta");
+    },
     title: "Help",
     icon: CupertinoIcons.chat_bubble_2,
   ),
