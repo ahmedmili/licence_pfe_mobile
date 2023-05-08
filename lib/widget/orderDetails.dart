@@ -19,19 +19,15 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
     final order = widget.order;
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 70),
-              child: Text(
-                "Order Details",
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-          ],
+        title: Padding(
+          padding: const EdgeInsets.only(left: 55),
+          child: Text(
+            "Order Details ",
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
+          ),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.green[800],
         elevation: 0,
         iconTheme: const IconThemeData(
           color: Colors.grey,
