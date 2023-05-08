@@ -17,14 +17,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
       body: Column(
         children: [
           const SizedBox(height: 50),
-          const Padding(
-            padding: EdgeInsets.only(right: 200),
-            child: Text(
-              "Favorites",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-          ),
-          const SizedBox(height: 15),
           FutureBuilder<List<Box>>(
             future: UserService.favorsBoxs(),
             builder: (context, snapshot) {

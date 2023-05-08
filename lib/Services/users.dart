@@ -199,4 +199,40 @@ class UserService {
       throw Exception('Failed to fetch like and dislike data');
     }
   }
+
+//Fav Partners
+  static Future<List<Partner>> favorsPartners() async {
+    final token = controller.token;
+    final url = Uri.parse('${baseURL}user/partners/favorites');
+    final response = await http.get(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+    );
+    if (response.statusCode == 200) {
+      List<dynamic> data = jsonDecode(response.body)[0];
+      final List<Partner> partner = [];
+      for (int i = 0; i < data.length; i++) {
+        final newPartner = Partner(
+          // Add fields here to create the new Box object
+          id: data[i]['id'],
+          description: data[i]['description'],
+          category: data[i]['category'],
+          name: data[i]['name'],
+          email: data[i]['email'],
+          phone: data[i]['phone'],
+          image: data[i]['image'],
+          openingtime: data[i]['openingtime'],
+          closingtime: data[i]['closingtime'],
+        );
+        partner.add(newPartner);
+      }
+      print(partner);
+      return partner;
+    } else {
+      throw Exception('Failed to fetch like and favorites data');
+    }
+  }
 }
