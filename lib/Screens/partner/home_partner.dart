@@ -21,10 +21,11 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
           padding: const EdgeInsets.only(left: 20),
           child: Text(
             "Orders :",
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
           ),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.green[800],
         elevation: 0,
         iconTheme: const IconThemeData(
           color: Colors.grey,
