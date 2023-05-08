@@ -16,16 +16,23 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: Text(
+            "Orders :",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.grey,
+        ),
+      ),
       body: Column(
         children: [
-          const SizedBox(height: 50),
-          const Padding(
-            padding: EdgeInsets.only(right: 190),
-            child: Text(
-              "Orders :",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
+          const SizedBox(height: 10),
           FutureBuilder<List<Order>>(
             future: PartnersService.getPartnerOrders(),
             builder: (context, snapshot) {
