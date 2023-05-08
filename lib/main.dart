@@ -11,11 +11,14 @@ void main() async {
   GlobalController controller = Get.find<GlobalController>();
   GeoLocatorController geoController = Get.find<GeoLocatorController>();
 
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
+
   await controller.readRole();
   await controller.readToken();
-  await geoController.getLocation();
-  await geoController.getAddressFromLatLng();
+  Future.delayed(const Duration(milliseconds: 500), () async {
+    await geoController.getLocation();
+    await geoController.getAddressFromLatLng();
+  }); //0.5 seconds
   runApp(const MyApp());
 }
 

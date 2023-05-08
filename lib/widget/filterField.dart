@@ -51,7 +51,8 @@ class _FilterFieldState extends State<FilterField> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Navigator.pop(context);
+                            // Navigator.pop(context);
+                            Get.back();
                           },
                         ),
                       ],
@@ -106,10 +107,11 @@ class _FilterFieldState extends State<FilterField> {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          Container(
-                              height: 48,
-                              width: 400,
-                              child: const MoneyFilter()),
+                          const SizedBox(
+                            height: 48,
+                            width: 400,
+                            child: MoneyFilter(),
+                          ),
                           const SizedBox(height: 40),
                           GestureDetector(
                             onTap: () {
