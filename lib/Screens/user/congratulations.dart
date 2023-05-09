@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:saverapp/Models/boxs.dart';
+import 'package:saverapp/Models/partner.dart';
 
 import 'package:saverapp/Screens/user/order.dart';
 
@@ -8,7 +9,8 @@ import '../../widget/rounded_button.dart';
 
 class Congratulations extends StatefulWidget {
   final Box box;
-  const Congratulations({super.key, required this.box});
+  final Partner partner;
+  const Congratulations({super.key, required this.box, required this.partner});
 
   @override
   State<Congratulations> createState() => _CongratulationsState();
@@ -84,8 +86,9 @@ class _CongratulationsState extends State<Congratulations> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      OrderScreen(box: widget.box)),
+                                  builder: (context) => OrderScreen(
+                                      box: widget.box,
+                                      partner: widget.partner)),
                             );
                           },
                         ),

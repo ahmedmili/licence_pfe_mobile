@@ -295,7 +295,8 @@ class _FoodDetailsState extends State<FoodDetails> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => Congratulations(box: box)),
+                  builder: (context) =>
+                      Congratulations(box: box, partner: partner)),
             );
           },
           color: Colors.green[800],
