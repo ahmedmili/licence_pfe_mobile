@@ -241,7 +241,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  SizedBox(width: 85),
+                                  SizedBox(width: 40),
                                   GestureDetector(
                                     onTap: () {
                                       Navigator.push(
@@ -254,16 +254,16 @@ class _OrderScreenState extends State<OrderScreen> {
                                     child: Row(
                                       children: [
                                         Text(
-                                          "Show more",
+                                          "Show \nmore",
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: Colors.green[800],
-                                              fontSize: 14),
+                                              fontSize: 12),
                                         ),
                                         Icon(
                                           Icons.arrow_forward,
                                           color: Colors.green[800],
-                                          size: 40,
+                                          size: 35,
                                         ),
                                       ],
                                     ),

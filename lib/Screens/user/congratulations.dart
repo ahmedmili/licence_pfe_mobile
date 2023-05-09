@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:saverapp/Models/boxs.dart';
 import 'package:saverapp/Models/partner.dart';
 
 import 'package:saverapp/Screens/user/order.dart';
 
+import '../../Services/globals.dart';
 import '../../widget/rounded_button.dart';
+import 'package:http/http.dart' as http;
+
+final GlobalController controller = Get.find<GlobalController>();
 
 class Congratulations extends StatefulWidget {
   final Box box;
@@ -17,6 +23,25 @@ class Congratulations extends StatefulWidget {
 }
 
 class _CongratulationsState extends State<Congratulations> {
+  void placeOrder() async {
+    final token = controller.token;
+    String apiUrl = '${baseURL}user/orders/addorder';
+    String body = '{"box_id": "${widget.box.id}", "quantity": 1}';
+
+    http.Response response = await http.post(Uri.parse(apiUrl),
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer $token'
+        },
+        body: body);
+
+    if (response.statusCode == 200) {
+      print("test");
+    } else {
+      print("test2");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     print(widget.box.category);
@@ -81,14 +106,15 @@ class _CongratulationsState extends State<Congratulations> {
                                 color: Colors.green[800],
                                 fontWeight: FontWeight.bold),
                           ),
-                          onPressed: () {
+                          onPressed: () async {
                             Navigator.of(context).pop();
+                            placeOrder();
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => OrderScreen(
-                                      box: widget.box,
-                                      partner: widget.partner)),
+                                builder: (context) => OrderScreen(
+                                    box: widget.box, partner: widget.partner),
+                              ),
                             );
                           },
                         ),
