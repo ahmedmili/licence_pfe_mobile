@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:saverapp/Models/boxs.dart';
 
 import 'package:saverapp/Screens/user/order.dart';
 
 import '../../widget/rounded_button.dart';
 
 class Congratulations extends StatefulWidget {
-  const Congratulations({super.key});
+  final Box box;
+  const Congratulations({super.key, required this.box});
 
   @override
   State<Congratulations> createState() => _CongratulationsState();
@@ -15,16 +17,17 @@ class Congratulations extends StatefulWidget {
 class _CongratulationsState extends State<Congratulations> {
   @override
   Widget build(BuildContext context) {
+    print(widget.box.category);
     return Scaffold(
       appBar: AppBar(
         title: const Padding(
           padding: EdgeInsets.only(left: 40),
           child: Text(
             "Confirm Reservation",
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.white),
           ),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.green[800],
         elevation: 0,
         iconTheme: const IconThemeData(
           color: Colors.grey,
@@ -81,7 +84,8 @@ class _CongratulationsState extends State<Congratulations> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const OrderScreen()),
+                                  builder: (context) =>
+                                      OrderScreen(box: widget.box)),
                             );
                           },
                         ),

@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/user/passorder.dart';
 
+import '../../Models/boxs.dart';
 import '../../widget/partnerDetails.dart';
 
 class OrderScreen extends StatefulWidget {
-  const OrderScreen({super.key});
+  final Box box;
+  const OrderScreen({super.key, required this.box});
 
   @override
   State<OrderScreen> createState() => _OrderScreenState();
@@ -23,7 +25,7 @@ class _OrderScreenState extends State<OrderScreen> {
               padding: EdgeInsets.only(left: 70),
               child: Text(
                 "Your Order",
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             GestureDetector(
@@ -33,7 +35,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 child: const Icon(Icons.close))
           ],
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.green[800],
         elevation: 0,
         iconTheme: const IconThemeData(
           color: Colors.grey,
@@ -65,8 +67,8 @@ class _OrderScreenState extends State<OrderScreen> {
                         const SizedBox(
                           width: 5,
                         ),
-                        const Text(
-                          "Title Box",
+                        Text(
+                          "Title Box : ${widget.box.title}",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 18),
                         ),
