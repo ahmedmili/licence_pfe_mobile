@@ -306,26 +306,24 @@ class _OrderScreenState extends State<OrderScreen> {
                           Row(
                             children: [
                               Icon(
-                                Icons.qr_code,
+                                Icons.camera_alt,
                                 color: Colors.green[800],
                               ),
                               SizedBox(width: 2),
                               Text(
-                                'It is necessary that the owner of order scan this code.',
+                                'Open your camera and scan the QrCode.',
                                 style: TextStyle(
                                     fontSize: 13, fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 130, top: 30),
-                            child: Container(
-                                height: 100,
-                                width: 100,
-                                child: Image(
-                                    image: AssetImage(
-                                        "assets/images/Qrcode.png"))),
-                          ),
+                              padding:
+                                  const EdgeInsets.only(left: 130, top: 30),
+                              child: Icon(
+                                Icons.camera_alt,
+                                size: 100,
+                              )),
                         ],
                       ),
                     ],
