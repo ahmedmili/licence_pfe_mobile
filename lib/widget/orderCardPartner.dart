@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/boxs.dart';
 import 'package:saverapp/Models/order.dart';
+import 'package:saverapp/Services/globals.dart';
 
 class OrderCardPartner extends StatefulWidget {
   OrderCardPartner({
@@ -44,7 +45,7 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
               height: 210.0,
               width: 320.0,
               child: Image.network(
-                "http://192.168.100.34:8000/storage/boxs_imgs/${widget.order.box_image}",
+                "http://$localhost:8000/storage/boxs_imgs/${widget.order.box_image}",
                 fit: BoxFit.cover,
                 height: 150,
               ),

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:saverapp/Screens/user/editprofile.dart';
+import 'package:saverapp/Services/globals.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'me.dart';
@@ -31,7 +32,7 @@ class _ProfileUserState extends State<ProfileUser> {
   }
 
   Future<void> getUserInfo(token) async {
-    var url = Uri.parse('http://192.168.100.34:8000/api/user/user');
+    var url = Uri.parse('http://$baseURL:8000/api/user/user');
     var response = await http.get(
       url,
       headers: {

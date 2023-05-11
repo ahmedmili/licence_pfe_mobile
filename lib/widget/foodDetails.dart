@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:saverapp/Models/partner.dart';
+import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/widget/partnerDetails.dart';
 import '../Models/boxs.dart';
 import '../Screens/user/congratulations.dart';
@@ -38,7 +39,7 @@ class _FoodDetailsState extends State<FoodDetails> {
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: NetworkImage(
-                    "http://192.168.100.34:8000/storage/boxs_imgs/${box.image}"),
+                    "http://$localhost:8000/storage/boxs_imgs/${box.image}"),
               ),
             ),
           ),
