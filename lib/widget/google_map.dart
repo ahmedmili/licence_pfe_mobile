@@ -49,7 +49,6 @@ class MapSampleState extends State<MapSample> {
 
   @override
   Widget build(BuildContext context) {
-    print(_initialPosition.target);
     return Scaffold(
       body: GoogleMap(
         mapType: MapType.normal,

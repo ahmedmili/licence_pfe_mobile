@@ -1,9 +1,8 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/order.dart';
-import 'package:saverapp/Screens/user/passorder.dart';
-
-import '../../widget/partnerDetails.dart';
 
 class OrderDetailsScreen extends StatefulWidget {
   const OrderDetailsScreen({super.key, required this.order});
@@ -19,8 +18,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
     final order = widget.order;
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(left: 55),
+        title: const Padding(
+          padding: EdgeInsets.only(left: 55),
           child: Text(
             "Order Details ",
             style: TextStyle(
@@ -64,7 +63,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             ),
                             Text(
                               order.box_name,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             ),
                           ],
@@ -83,7 +82,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         ),
                         Text(
                           order.box_category,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                       ],
@@ -98,7 +97,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         const SizedBox(width: 5),
                         Text(
                           order.box_description,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                       ],
@@ -115,7 +114,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         ),
                         Text(
                           "${order.box_startdate} -> ${order.box_enddate}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14),
                         ),
                       ],
@@ -126,7 +125,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(
+                            const Text(
                               "Box Price :",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -146,7 +145,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(
+                            const Text(
                               "Quantity :",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -166,7 +165,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(
+                            const Text(
                               "Total :",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -208,7 +207,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                 const SizedBox(width: 5),
                                 Text(
                                   order.user_name,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -225,7 +224,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                 const SizedBox(width: 5),
                                 Text(
                                   order.user_email,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -242,7 +241,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                 const SizedBox(width: 5),
                                 Text(
                                   "${order.user_phone}",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -270,8 +269,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                               Icons.qr_code,
                               color: Colors.green[800],
                             ),
-                            SizedBox(width: 2),
-                            Text(
+                            const SizedBox(width: 2),
+                            const Text(
                               'It is necessary that the owner of order scan this code.',
                               style: TextStyle(
                                   fontSize: 13, fontWeight: FontWeight.bold),
@@ -283,7 +282,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                           child: Container(
                               height: 100,
                               width: 100,
-                              child: Image(
+                              child: const Image(
                                   image:
                                       AssetImage("assets/images/Qrcode.png"))),
                         ),

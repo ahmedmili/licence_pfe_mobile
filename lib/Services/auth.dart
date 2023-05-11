@@ -23,7 +23,6 @@ class AuthServices {
       headers: headers,
       body: body,
     );
-    // print(response.body);
     return response;
   }
 

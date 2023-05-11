@@ -20,12 +20,10 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           FutureBuilder<List<Box>>(
             future: UserService.favorsBoxs(),
             builder: (context, snapshot) {
-              // print(snapshot.data);
               if (snapshot.hasData) {
                 return Expanded(
                   child: Container(
                     margin: const EdgeInsets.only(left: 35),
-                    // height: 800, // or any other fixed height
                     width: 340,
                     child: BoxScreen(
                       items: snapshot.data!,

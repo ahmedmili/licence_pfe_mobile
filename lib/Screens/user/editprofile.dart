@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:saverapp/Screens/user/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -88,17 +89,10 @@ class _EditProfileState extends State<EditProfile> {
       setState(() {
         user = json.decode(response.body);
       });
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('User Password updated successfully')),
-      );
+
+      Get.snackbar("success", 'User Password updated successfully');
     } else {
-      // print('Response status code: ${response.statusCode}');
-      // print('Response body: ${response.body}');
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Failed to update user details. Please try again.'),
-        ),
-      );
+      Get.snackbar("error", 'Failed to update user details. Please try again.');
     }
   }
 

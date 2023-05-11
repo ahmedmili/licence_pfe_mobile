@@ -141,21 +141,13 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
         geoController.adress.value,
       );
       Map<String, dynamic> responseMap = jsonDecode(response.body);
-      // print(responseMap);
 
       if (response.statusCode == 200) {
         String token = responseMap['token'];
         _save(token);
 
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (BuildContext context) => const Waiting(),
-        //   ),
-        // );
         Get.to(const Waiting());
       } else {
-        // errorSnackBar(context, responseMap.values.first[0]);
         Get.snackbar("error", responseMap.values.first[0]);
       }
     } else {
@@ -410,7 +402,6 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               const SizedBox(
                 height: 15,
               ),
-              // const Text("controller"),
               MaterialButton(
                 onPressed: () {},
                 color: Colors.orange[900],
@@ -430,9 +421,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               const SizedBox(
                 height: 15,
               ),
-              // Text(geoController.lat.value.toString()),
-              // Text(geoController.long.value.toString()),
-              // Text(geoController.adress.value),
+
               Obx(() => Text(geoController.adress.value)),
               const SizedBox(
                 height: 15,

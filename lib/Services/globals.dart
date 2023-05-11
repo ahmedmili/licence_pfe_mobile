@@ -28,20 +28,20 @@ class GlobalController extends GetxController {
   final _role = ''.obs;
   final _firstLogin = true.obs;
 
-  final box = Box(
-    newprice: "",
-    startdate: "",
-    enddate: "",
-    quantity: 0,
-    remaining_quantity: 0,
-    image: "",
-    category: "",
-    partnerId: 0,
-    id: 0,
-    title: "",
-    description: "",
-    oldprice: "",
-  );
+  // final box = Box(
+  //   newprice: "",
+  //   startdate: "",
+  //   enddate: "",
+  //   quantity: 0,
+  //   remaining_quantity: 0,
+  //   image: "",
+  //   category: "",
+  //   partnerId: 0,
+  //   id: 0,
+  //   title: "",
+  //   description: "",
+  //   oldprice: "",
+  // );
 
   var partner = Partner(
     name: "",
@@ -53,6 +53,9 @@ class GlobalController extends GetxController {
     phone: 0,
     closingtime: "",
     openingtime: "",
+    lat: 0,
+    long: 0,
+    adress: "",
     likes: false,
   );
 

@@ -32,13 +32,10 @@ class _MoneyFilterState extends State<MoneyFilter> {
               });
 
               UserService.filterPrice(values.start, values.end).then((data) {
-                // print(data.length);
                 controller.setBoxsList(data);
               });
             },
-            onChanged: (RangeValues values) {
-              // print("loadeing");
-            },
+            onChanged: (RangeValues values) {},
           ),
           const Expanded(
             child: Center(

@@ -17,8 +17,8 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(left: 20),
+        title: const Padding(
+          padding: EdgeInsets.only(left: 20),
           child: Text(
             "Orders :",
             style: TextStyle(
@@ -37,7 +37,6 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
           FutureBuilder<List<Order>>(
             future: PartnersService.getPartnerOrders(),
             builder: (context, snapshot) {
-              // print(snapshot.data);
               if (snapshot.hasData) {
                 return Expanded(
                   child: Container(

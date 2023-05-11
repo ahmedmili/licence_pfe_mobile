@@ -1,10 +1,11 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
-import 'package:saverapp/Models/boxs.dart';
 import 'package:saverapp/Models/partner.dart';
 import '../Services/users.dart';
 
 class PartnerCard extends StatefulWidget {
-  PartnerCard({
+  const PartnerCard({
     super.key,
   });
 
