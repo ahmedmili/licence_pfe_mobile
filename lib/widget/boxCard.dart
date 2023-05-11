@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/boxs.dart';
 import 'package:saverapp/Models/partner.dart';
+import 'package:saverapp/Services/globals.dart';
 import '../Services/users.dart';
 
 import 'neonButton.dart';
@@ -55,7 +56,7 @@ class _BoxCardState extends State<BoxCard> {
                     height: 190.0,
                     width: 340.0,
                     child: Image.network(
-                      "http://192.168.100.34:8000/storage/boxs_imgs/${widget.box.image}",
+                      "http://$localhost:8000/storage/boxs_imgs/${widget.box.image}",
                       fit: BoxFit.cover,
                       height: 150,
                     ),
@@ -169,7 +170,7 @@ class _BoxCardState extends State<BoxCard> {
                           child: CircleAvatar(
                             radius: 20,
                             backgroundImage: NetworkImage(
-                              "http://192.168.100.34:8000/storage/partner_imgs/${snapshot.data!.image}",
+                              "http://$localhost:8000/storage/partner_imgs/${snapshot.data!.image}",
                             ),
                           ),
                         ),
