@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Screens/user/favorite_partner.dart';
-import 'package:saverapp/Screens/user/filter.dart';
 import 'package:saverapp/Services/geoLocator.dart';
-import 'package:saverapp/widget/bottom_nav_bar.dart';
-import 'package:saverapp/widget/google_map.dart';
 
-import '../../widget/adresseField.dart';
 import '../../widget/bottom_nav_bar_fav.dart';
 import 'favorite.dart';
 

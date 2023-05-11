@@ -81,13 +81,11 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
     Map<String, dynamic> responseMap = jsonDecode(response.body);
 
     if (response.statusCode == 200) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Box added successfully')),
-      );
+      Get.snackbar("sucess", "Box added successfully");
       // Navigate to PartnerBoxes screen
       Get.toNamed("partnerMain");
     } else {
-      errorSnackBar(context, responseMap.values.first[0]);
+      Get.snackbar("error", responseMap.values.first[0]);
     }
   }
 

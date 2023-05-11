@@ -23,7 +23,6 @@ class UserService {
       final box = List<Box>.from(
         data.map((boxJson) => Box.fromJson(boxJson)),
       );
-      // print(response.body);
 
       return box;
     } else {
@@ -83,7 +82,6 @@ class UserService {
     bool isLoaded = false;
 
     final url = Uri.parse('${baseURL}user/filterprice/?min=$min&max=$max');
-    // print("test");
     final response = await http.get(
       url,
       headers: {
@@ -116,7 +114,6 @@ class UserService {
     );
     if (response.statusCode == 200) {
       Map<String, dynamic> data = jsonDecode(response.body);
-      print(data);
       final boxPartner = Partner.fromJson(data);
       return boxPartner;
     } else {
@@ -174,7 +171,6 @@ class UserService {
         );
         box.add(newBox);
       }
-      // print(box);
       return box;
     } else {
       throw Exception('Failed to fetch like and favorites data');
@@ -226,10 +222,12 @@ class UserService {
           image: data[i]['image'],
           openingtime: data[i]['openingtime'],
           closingtime: data[i]['closingtime'],
+          long: data[i]['long'],
+          lat: data[i]['lat'],
+          adress: data[i]['adress'],
         );
         partner.add(newPartner);
       }
-      print(partner);
       return partner;
     } else {
       throw Exception('Failed to fetch like and favorites data');

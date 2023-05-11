@@ -8,19 +8,26 @@ class Partner {
   final String category;
   final String openingtime;
   final String closingtime;
+  double? lat;
+  double? long;
+  String? adress;
   bool? likes;
 
-  Partner(
-      {required this.id,
-      required this.name,
-      required this.description,
-      required this.email,
-      required this.phone,
-      required this.image,
-      required this.category,
-      required this.openingtime,
-      required this.closingtime,
-      this.likes});
+  Partner({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.email,
+    required this.phone,
+    required this.image,
+    required this.category,
+    required this.openingtime,
+    required this.closingtime,
+    required this.lat,
+    required this.long,
+    this.adress,
+    this.likes,
+  });
 
   factory Partner.fromJson(Map<String, dynamic> json) {
     return Partner(
@@ -33,6 +40,9 @@ class Partner {
       category: json['category'],
       openingtime: json['openingtime'],
       closingtime: json['closingtime'],
+      long: json['long'],
+      lat: json['lat'],
+      adress: json['adress'],
       likes: json["is_liked"] == 1 ? true : false,
     );
   }

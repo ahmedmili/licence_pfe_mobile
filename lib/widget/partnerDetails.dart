@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:saverapp/Models/partner.dart';
 import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/widget/neonButtonPartner.dart';
 
@@ -17,11 +16,6 @@ class _PartnerDetailsState extends State<PartnerDetails> {
   GlobalController controller = Get.find();
   @override
   Widget build(BuildContext context) {
-    // final Partner partner = Get.arguments;
-    // bool isliked = controller.partner.likes == 1 ? true : false;
-
-    //print(controller.partner.likes);
-
     return Scaffold(
       appBar: AppBar(
         title: Row(

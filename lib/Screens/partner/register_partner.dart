@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages, avoid_init_to_null
+
 import 'dart:convert';
 import 'dart:io';
 import 'package:get/get.dart';
@@ -121,9 +123,6 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
   }
 
   Future<void> createAccountPressed() async {
-    // print("long === ${geoController.long.value}");
-    // print("lat === ${geoController.lat.value}");
-    // print("adress === ${geoController.adress.value}");
     bool emailValid = RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(_email);
@@ -144,16 +143,13 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
         geoController.adress.value,
       );
       Map<String, dynamic> responseMap = jsonDecode(response.body);
-      // print(responseMap);
 
       if (response.statusCode == 200) {
-        print(responseMap);
         String token = responseMap['token'];
         _save(token);
 
         Get.to(const Waiting());
       } else {
-        // errorSnackBar(context, responseMap.values.first[0]);
         Get.snackbar("error", responseMap.values.first[0]);
       }
     } else {
@@ -408,7 +404,6 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               const SizedBox(
                 height: 15,
               ),
-              // const Text("controller"),
               MaterialButton(
                 onPressed: () {},
                 color: Colors.orange[900],
@@ -428,9 +423,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               const SizedBox(
                 height: 15,
               ),
-              Text(geoController.lat.value.toString()),
-              Text(geoController.long.value.toString()),
-              Text(geoController.adress.value),
+
               Obx(() => Text(geoController.adress.value)),
               const SizedBox(
                 height: 15,

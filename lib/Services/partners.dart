@@ -227,7 +227,6 @@ class PartnersService {
     );
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body)["partner"];
-
       final partner = Partner(
         // Add fields here to create the new Box object
         id: data['id'],
@@ -239,6 +238,9 @@ class PartnersService {
         openingtime: data['openingtime'],
         closingtime: data['closingtime'],
         image: data['image'],
+        lat: data['lat'],
+        long: data['long'],
+        adress: data['adress'],
       );
       return partner;
     } else {
@@ -257,14 +259,11 @@ class PartnersService {
           'Authorization': 'Bearer $token'
         },
       );
-      //print("test");
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        // print(data[0]["command_id"]);
-        // print(data.length);
+
         final List<Order> orders = [];
         for (int i = 0; i < data.length; i++) {
-          //print(data[i]['box_image']);
           final newOrder = Order(
             command_id: data[i]['command_id'],
             user_name: data[i]['user_name'],
