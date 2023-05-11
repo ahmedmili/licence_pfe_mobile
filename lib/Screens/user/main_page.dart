@@ -70,7 +70,23 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
       ),
-      body: currentPage,
+      body: Stack(
+        children: [
+          currentPage,
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: 60,
+              color: Colors.green[800],
+              child: Center(
+                child: Text("test"),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
