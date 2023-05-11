@@ -29,7 +29,7 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: NetworkImage(
-                    "http://10.0.2.2:8000/storage/boxs_imgs/${box.image}"),
+                    "http://192.168.100.34:8000/storage/boxs_imgs/${box.image}"),
               ),
             ),
           ),

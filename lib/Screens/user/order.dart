@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:saverapp/Models/partner.dart';
-import 'package:saverapp/Screens/user/passorder.dart';
-
 import '../../Models/boxs.dart';
 import '../../widget/partnerDetails.dart';
 
@@ -16,6 +15,7 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
+  var qrstr = "let's Scan it";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +76,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               ),
                               Text(
                                 widget.box.title,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 18),
                               ),
                             ],
@@ -95,7 +95,7 @@ class _OrderScreenState extends State<OrderScreen> {
                           ),
                           Text(
                             widget.box.category,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                         ],
@@ -110,7 +110,7 @@ class _OrderScreenState extends State<OrderScreen> {
                           const SizedBox(width: 5),
                           Text(
                             widget.box.description,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                         ],
@@ -127,7 +127,7 @@ class _OrderScreenState extends State<OrderScreen> {
                           ),
                           Text(
                             "${widget.box.startdate} -> ${widget.box.enddate}",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 14),
                           ),
                         ],
@@ -138,7 +138,7 @@ class _OrderScreenState extends State<OrderScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Text(
+                              const Text(
                                 "Box Price :",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -158,7 +158,7 @@ class _OrderScreenState extends State<OrderScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Text(
+                              const Text(
                                 "Quantity :",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -178,7 +178,7 @@ class _OrderScreenState extends State<OrderScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Text(
+                              const Text(
                                 "Total :",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -220,13 +220,13 @@ class _OrderScreenState extends State<OrderScreen> {
                                   const SizedBox(width: 5),
                                   Text(
                                     widget.partner.name,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 10),
+                              //         const SizedBox(height: 10),
                               Row(
                                 children: [
                                   const SizedBox(height: 20),
@@ -237,11 +237,11 @@ class _OrderScreenState extends State<OrderScreen> {
                                   const SizedBox(width: 5),
                                   Text(
                                     widget.partner.email,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  SizedBox(width: 40),
+                                  const SizedBox(width: 40),
                                   GestureDetector(
                                     onTap: () {
                                       Navigator.push(
@@ -281,7 +281,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                   const SizedBox(width: 5),
                                   Text(
                                     "${widget.partner.phone}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -309,8 +309,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                 Icons.camera_alt,
                                 color: Colors.green[800],
                               ),
-                              SizedBox(width: 2),
-                              Text(
+                              const SizedBox(width: 2),
+                              const Text(
                                 'Open your camera and scan the QrCode.',
                                 style: TextStyle(
                                     fontSize: 13, fontWeight: FontWeight.bold),
@@ -318,12 +318,17 @@ class _OrderScreenState extends State<OrderScreen> {
                             ],
                           ),
                           Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 130, top: 30),
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 100,
-                              )),
+                            padding: const EdgeInsets.only(left: 100, top: 50),
+                            child: ElevatedButton(
+                              onPressed: scanQr,
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.green[800],
+                              ),
+                              child: const Text(
+                                ('SCANNER QRCODE'),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -335,5 +340,26 @@ class _OrderScreenState extends State<OrderScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> scanQr() async {
+    try {
+      FlutterBarcodeScanner.scanBarcode('#2A99CF', 'cancel', true, ScanMode.QR)
+          .then((value) {
+        print(" value ====== $value");
+
+        //**
+        //
+        //
+        // */
+        setState(() {
+          qrstr = value;
+        });
+      });
+    } catch (e) {
+      setState(() {
+        qrstr = 'unable to read this';
+      });
+    }
   }
 }

@@ -38,7 +38,7 @@ class _FoodDetailsState extends State<FoodDetails> {
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: NetworkImage(
-                    "http://10.0.2.2:8000/storage/boxs_imgs/${box.image}"),
+                    "http://192.168.100.34:8000/storage/boxs_imgs/${box.image}"),
               ),
             ),
           ),
@@ -102,7 +102,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                   child: CircleAvatar(
                     radius: 30,
                     backgroundImage: NetworkImage(
-                      "http://10.0.2.2:8000/storage/partner_imgs/${partner.image}",
+                      "http://192.168.100.34:8000/storage/partner_imgs/${partner.image}",
                     ),
                   ),
                 ),

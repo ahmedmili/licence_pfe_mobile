@@ -38,7 +38,7 @@ class _PartnerCardState extends State<PartnerCard> {
     return Stack(
       children: <Widget>[
         favoredPartners.isNotEmpty
-            ? Container(
+            ? SizedBox(
                 height: 500,
                 width: 450,
                 child: ListView.builder(
@@ -47,7 +47,7 @@ class _PartnerCardState extends State<PartnerCard> {
                     final partner = favoredPartners[index];
                     return Column(
                       children: <Widget>[
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         Container(
                           height: 220,
                           width: 450,
@@ -83,7 +83,7 @@ class _PartnerCardState extends State<PartnerCard> {
                                             child: CircleAvatar(
                                               radius: 20,
                                               backgroundImage: NetworkImage(
-                                                "http://10.0.2.2:8000/storage/partner_imgs/${partner.image}",
+                                                "http://192.168.100.34:8000/storage/partner_imgs/${partner.image}",
                                                 headers: {
                                                   "Keep-Alive": "timeout=20",
                                                 },
@@ -93,7 +93,7 @@ class _PartnerCardState extends State<PartnerCard> {
                                           const SizedBox(width: 10),
                                           Text(
                                             partner.name,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -136,7 +136,7 @@ class _PartnerCardState extends State<PartnerCard> {
                                       const SizedBox(width: 10),
                                       Text(
                                         "${partner.phone}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -151,7 +151,7 @@ class _PartnerCardState extends State<PartnerCard> {
                                       const SizedBox(width: 10),
                                       Text(
                                         partner.email,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -166,7 +166,7 @@ class _PartnerCardState extends State<PartnerCard> {
                                       const SizedBox(width: 10),
                                       Text(
                                         "${partner.openingtime} -> ${partner.closingtime}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
                                         ),

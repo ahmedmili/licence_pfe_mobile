@@ -40,7 +40,8 @@ class _EditProfileState extends State<EditProfile> {
   }
 
   Future<void> updateUser() async {
-    final url = Uri.parse('http://10.0.2.2:8000/api/user/users/${user['id']}');
+    final url =
+        Uri.parse('http://192.168.100.34:8000/api/user/users/${user['id']}');
     final token = await readToken();
     final response = await http.patch(
       url,
@@ -72,7 +73,7 @@ class _EditProfileState extends State<EditProfile> {
   }
 
   Future<void> updatePassword() async {
-    final url = Uri.parse('http://10.0.2.2:8000/api/user/user/password');
+    final url = Uri.parse('http://192.168.100.34:8000/api/user/user/password');
     final token = await readToken();
     final response = await http.put(
       url,
@@ -97,7 +98,7 @@ class _EditProfileState extends State<EditProfile> {
   }
 
   Future<void> getUserInfo(dynamic token) async {
-    final url = Uri.parse('http://10.0.2.2:8000/api/user/user');
+    final url = Uri.parse('http://192.168.100.34:8000/api/user/user');
     final response = await http.get(
       url,
       headers: {

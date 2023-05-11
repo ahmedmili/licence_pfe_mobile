@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages, avoid_init_to_null
+
 import 'dart:convert';
 import 'dart:io';
 import 'package:get/get.dart';
