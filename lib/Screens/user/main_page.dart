@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/user/home.dart';
 import 'package:saverapp/Screens/user/tour.dart';
+import '../../Models/order.dart';
+import '../../Services/partners.dart';
+import '../../widget/order_list_view_partner.dart';
 import 'favorite.dart';
 import 'favoriteglobal.dart';
 import 'me.dart';
@@ -80,11 +83,30 @@ class _MainScreenState extends State<MainScreen> {
             child: Container(
               height: 60,
               color: Colors.green[800],
-              child: Center(
+              child: const Center(
                 child: Text("test"),
               ),
             ),
           ),
+          FutureBuilder<List<Order>>(
+              future: PartnersService.getUserOrders(),
+              builder: (context, snapshot) {
+                print(snapshot.data![0].box_category);
+                if (snapshot.hasData) {
+                  return Text("data1");
+                  // return Expanded(
+                  //   child: Container(
+                  //     margin: const EdgeInsets.only(left: 35),
+                  //     width: 340,
+                  //     child: OrderScreenPartner(
+                  //       items: snapshot.data!,
+                  //     ),
+                  //   ),
+                  // );
+                } else {
+                  return Text("data2");
+                }
+              }),
         ],
       ),
     );
