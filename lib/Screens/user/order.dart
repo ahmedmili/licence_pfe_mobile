@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:saverapp/Models/partner.dart';
-import 'package:saverapp/Screens/user/passorder.dart';
-
 import '../../Models/boxs.dart';
 import '../../widget/partnerDetails.dart';
 
@@ -16,6 +15,7 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
+  var qrstr = "let's Scan it";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -226,7 +226,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 10),
+                              //         const SizedBox(height: 10),
                               Row(
                                 children: [
                                   const SizedBox(height: 20),
@@ -318,12 +318,17 @@ class _OrderScreenState extends State<OrderScreen> {
                             ],
                           ),
                           Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 130, top: 30),
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 100,
-                              )),
+                            padding: const EdgeInsets.only(left: 100, top: 50),
+                            child: ElevatedButton(
+                              onPressed: scanQr,
+                              child: Text(
+                                ('SCANNER QRCODE'),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.green[800],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -335,5 +340,20 @@ class _OrderScreenState extends State<OrderScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> scanQr() async {
+    try {
+      FlutterBarcodeScanner.scanBarcode('#2A99CF', 'cancel', true, ScanMode.QR)
+          .then((value) {
+        setState(() {
+          qrstr = value;
+        });
+      });
+    } catch (e) {
+      setState(() {
+        qrstr = 'unable to read this';
+      });
+    }
   }
 }

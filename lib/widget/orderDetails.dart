@@ -1,9 +1,8 @@
+import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/order.dart';
-import 'package:saverapp/Screens/user/passorder.dart';
-
-import '../../widget/partnerDetails.dart';
+import 'package:saverapp/widget/rounded_button.dart';
 
 class OrderDetailsScreen extends StatefulWidget {
   const OrderDetailsScreen({super.key, required this.order});
@@ -14,8 +13,10 @@ class OrderDetailsScreen extends StatefulWidget {
 }
 
 class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
+  //var qrstr = 'Add Data';
   @override
   Widget build(BuildContext context) {
+    final qrstr = "${widget.order.command_id}";
     final order = widget.order;
     return Scaffold(
       appBar: AppBar(
@@ -279,13 +280,52 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 130, top: 30),
-                          child: Container(
-                              height: 100,
-                              width: 100,
-                              child: Image(
-                                  image:
-                                      AssetImage("assets/images/Qrcode.png"))),
+                          padding: const EdgeInsets.only(
+                              left: 70, top: 30, right: 70),
+                          child: RoundedButton(
+                            btnText: 'SHOW QRCODE',
+                            onBtnPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    content: Column(
+                                      children: [
+                                        BarcodeWidget(
+                                          data: qrstr,
+                                          barcode: Barcode.qrCode(),
+                                          color: Colors.black,
+                                          // height: 300,
+                                          width: 300,
+                                        ),
+                                      ],
+                                    ),
+                                    // actions: <Widget>[
+                                    //   TextButton(
+                                    //     child: Text(
+                                    //       'OK',
+                                    //       style: TextStyle(
+                                    //           color: Colors.green[800],
+                                    //           fontWeight: FontWeight.bold),
+                                    //     ),
+                                    //     onPressed: () async {
+                                    //       Navigator.of(context).pop();
+                                    //       placeOrder();
+                                    //       Navigator.push(
+                                    //         context,
+                                    //         MaterialPageRoute(
+                                    //           builder: (context) => OrderScreen(
+                                    //               box: widget.box, partner: widget.partner),
+                                    //         ),
+                                    //       );
+                                    //     },
+                                    //   ),
+                                    // ],
+                                  );
+                                },
+                              );
+                            },
+                          ),
                         ),
                         const SizedBox(height: 25),
                         Padding(
