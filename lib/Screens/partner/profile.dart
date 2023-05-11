@@ -48,7 +48,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                             child: CircleAvatar(
                                 radius: 50,
                                 backgroundImage: NetworkImage(
-                                  "http://10.0.2.2:8000/storage/partner_imgs/${snapshot.data!.image}",
+                                  "http://192.168.100.34:8000/storage/partner_imgs/${snapshot.data!.image}",
                                   headers: {
                                     "Keep-Alive": "timeout=20",
                                   },

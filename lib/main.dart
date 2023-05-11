@@ -15,20 +15,21 @@ void main() async {
 
   await controller.readRole();
   await controller.readToken();
+
   Future.delayed(const Duration(milliseconds: 500), () async {
     await geoController.getLocation();
     await geoController.getAddressFromLatLng();
   }); //0.5 seconds
-  runApp(const MyApp());
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // Get.put(GlobalController());
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',

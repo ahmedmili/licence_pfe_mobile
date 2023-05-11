@@ -50,7 +50,7 @@ class _BoxCardPartnerState extends State<BoxCardPartner> {
               height: 190.0,
               width: 340.0,
               child: Image.network(
-                "http://10.0.2.2:8000/storage/boxs_imgs/${widget.box.image}",
+                "http://192.168.100.34:8000/storage/boxs_imgs/${widget.box.image}",
                 fit: BoxFit.cover,
                 height: 150,
               ),

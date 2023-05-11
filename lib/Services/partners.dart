@@ -217,7 +217,7 @@ class PartnersService {
   static Future<Partner> getUserInfo() async {
     var token = controller.token;
 
-    var url = Uri.parse('http://10.0.2.2:8000/api/partner/user');
+    var url = Uri.parse('http://192.168.100.34:8000/api/partner/user');
     var response = await http.get(
       url,
       headers: {

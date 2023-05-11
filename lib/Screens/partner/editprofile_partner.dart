@@ -48,7 +48,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
   }
 
   Future<void> getUserInfo(dynamic token) async {
-    final url = Uri.parse('http://10.0.2.2:8000/api/partner/user');
+    final url = Uri.parse('http://192.168.100.34:8000/api/partner/user');
     final response = await http.get(
       url,
       headers: {
@@ -76,7 +76,8 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
   }
 
   Future<void> updateUser() async {
-    final url = Uri.parse('http://10.0.2.2:8000/api/user/users/${user['id']}');
+    final url =
+        Uri.parse('http://192.168.100.34:8000/api/user/users/${user['id']}');
     final token = await readToken();
     final response = await http.patch(
       url,
@@ -108,7 +109,8 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
   }
 
   Future<void> updatePassword() async {
-    final url = Uri.parse('http://10.0.2.2:8000/api/partner/changepassword');
+    final url =
+        Uri.parse('http://192.168.100.34:8000/api/partner/changepassword');
     final token = await readToken();
     final response = await http.put(
       url,
