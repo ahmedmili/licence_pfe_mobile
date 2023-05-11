@@ -57,19 +57,19 @@ class _MainScreenState extends State<MainScreen> {
         selectedItemColor: Colors.green[800],
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home_outlined),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_basket),
-            label: 'Tour',
+            icon: Icon(Icons.settings),
+            label: 'Preferences',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            icon: Icon(Icons.favorite_border),
             label: 'Favorite',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.person_outlined),
             label: 'Me',
           ),
         ],
