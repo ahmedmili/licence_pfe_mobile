@@ -1,16 +1,19 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:saverapp/Screens/login.dart';
 import 'package:saverapp/Screens/waiting.dart';
+import 'package:saverapp/Services/geoLocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth.dart';
 import '../../Services/globals.dart';
 import '../../widget/rounded_button.dart';
 import 'package:http/http.dart' as http;
+import '../../widget/Location_dropDawn.dart';
 
 class RegisterPartnerScreen extends StatefulWidget {
   const RegisterPartnerScreen({Key? key}) : super(key: key);
@@ -33,6 +36,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
   final int _roleId = 3;
   String _imageName = '';
 
+  GeoLocatorController geoController = Get.find();
   void _showTimePicker() async {
     TimeOfDay? pickedTime = await showTimePicker(
         context: context,
@@ -105,23 +109,6 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
     });
   }
 
-  // Widget _buildImagePicker() {
-  //   return GestureDetector(
-  //     onTap: _pickImage,
-  //     child: Container(
-  //       width: double.infinity,
-  //       height: 150,
-  //       decoration: BoxDecoration(
-  //         border: Border.all(color: Colors.grey),
-  //         borderRadius: BorderRadius.circular(10),
-  //       ),
-  //       child: _image == null
-  //           ? const Center(child: Text('Select Image'))
-  //           : Image.file(_image!, fit: BoxFit.cover),
-  //     ),
-  //   );
-  // }
-
   _save(String token) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString("token", token);
@@ -137,19 +124,22 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
     bool emailValid = RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(_email);
-    // print(_closingtime);
     if (emailValid) {
       http.Response response = await AuthServices.registerpartner(
-          _name,
-          _description,
-          _email,
-          _phone,
-          _password,
-          _image!,
-          _category,
-          _openingtime,
-          _closingtime,
-          _roleId);
+        _name,
+        _description,
+        _email,
+        _phone,
+        _password,
+        _image!,
+        _category,
+        _openingtime,
+        _closingtime,
+        _roleId,
+        double.parse(geoController.long.value),
+        double.parse(geoController.lat.value),
+        geoController.adress.value,
+      );
       Map<String, dynamic> responseMap = jsonDecode(response.body);
       // print(responseMap);
 
@@ -157,14 +147,16 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
         String token = responseMap['token'];
         _save(token);
 
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => const Waiting(),
-          ),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (BuildContext context) => const Waiting(),
+        //   ),
+        // );
+        Get.to(const Waiting());
       } else {
-        errorSnackBar(context, responseMap.values.first[0]);
+        // errorSnackBar(context, responseMap.values.first[0]);
+        Get.snackbar("error", responseMap.values.first[0]);
       }
     } else {
       errorSnackBar(context, 'email not valid');
@@ -332,7 +324,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               ElevatedButton(
                 onPressed: _pickImage,
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.orange[900],
+                  backgroundColor: Colors.orange[900],
                 ),
                 child: const Text('Select Image'),
               ),
@@ -418,6 +410,33 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               const SizedBox(
                 height: 15,
               ),
+              // const Text("controller"),
+              MaterialButton(
+                onPressed: () {},
+                color: Colors.orange[900],
+                child: SizedBox(
+                  height: 50,
+                  width: 145,
+                  child: Row(
+                    children: const [
+                      Text("Get Position",
+                          style: TextStyle(color: Colors.white, fontSize: 15)),
+                      Expanded(child: SizedBox()),
+                      PopupLocationMenu(),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              // Text(geoController.lat.value.toString()),
+              // Text(geoController.long.value.toString()),
+              // Text(geoController.adress.value),
+              Obx(() => Text(geoController.adress.value)),
+              const SizedBox(
+                height: 15,
+              ),
 
               RoundedButton(
                 btnText: 'Send Request',
@@ -430,11 +449,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
 
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => const LoginScreen(),
-                      ));
+                  Get.to(const LoginScreen());
                 },
                 child: const Text(
                   'Already have an account ? Login',

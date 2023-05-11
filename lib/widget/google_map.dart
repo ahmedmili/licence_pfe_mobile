@@ -37,12 +37,8 @@ class MapSampleState extends State<MapSample> {
   }
 
   Future<void> _getCurrentLocation() async {
-    // await geoController.getLocation();
     LatLng currentLocation = LatLng(double.parse(geoController.lat.value),
         double.parse(geoController.long.value));
-    // print("long : ${geoController.long.value}");
-    // print("lat : ${geoController.lat.value}");
-    // print("position =  $currentLocation");
     setState(() {
       _initialPosition = CameraPosition(
         target: currentLocation,

@@ -31,12 +31,12 @@ class GeoLocatorController extends GetxController {
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
+
     return await Geolocator.getCurrentPosition();
   }
 
   Future<String> getLocation() async {
     var location = await _determinePosition();
-    // print(location);
     lat.value = location.latitude.toString();
     long.value = location.longitude.toString();
     update();
@@ -55,12 +55,10 @@ class GeoLocatorController extends GetxController {
     if (response.statusCode == 200) {
       final decoded = json.decode(response.body);
       if (decoded["status"] == "OK") {
-        // print(decoded["results"][0]);
         adress.value = decoded["results"][0]["formatted_address"];
 
         return decoded["results"][0]["formatted_address"];
       } else {
-        // print(response.body);
         throw Exception("Failed to get address");
       }
     } else {

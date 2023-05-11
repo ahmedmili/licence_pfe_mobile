@@ -28,16 +28,20 @@ class AuthServices {
   }
 
   static Future<http.Response> registerpartner(
-      String name,
-      String description,
-      String email,
-      String phone,
-      String password,
-      File image,
-      String category,
-      String openingtime,
-      String closingtime,
-      int roleId) async {
+    String name,
+    String description,
+    String email,
+    String phone,
+    String password,
+    File image,
+    String category,
+    String openingtime,
+    String closingtime,
+    int roleId,
+    double long,
+    double lat,
+    String adress,
+  ) async {
     var uri = Uri.parse('${baseURL}user/registerpartner');
     var request = http.MultipartRequest("POST", uri);
 
