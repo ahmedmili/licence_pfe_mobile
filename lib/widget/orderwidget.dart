@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/order.dart';
 import 'package:saverapp/Services/globals.dart';
+import 'package:saverapp/dimensions.dart';
 
 class OrderwidgetPartner extends StatefulWidget {
   OrderwidgetPartner({
@@ -22,18 +23,18 @@ class _OrderwidgetPartnerState extends State<OrderwidgetPartner> {
       left: 0,
       right: 0,
       child: Container(
-        height: 60,
+        height: Dimensions.height60,
         color: Colors.green[800],
         child: Center(
           child: Row(
             children: [
               Container(
-                width: 70,
+                width: Dimensions.width70,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
                     color: Colors.black,
-                    width: 2.0,
+                    width: Dimensions.width10 / 5,
                   ),
                 ),
                 child: CircleAvatar(
@@ -45,7 +46,7 @@ class _OrderwidgetPartnerState extends State<OrderwidgetPartner> {
               ),
               Column(
                 children: [
-                  const SizedBox(height: 5),
+                  SizedBox(height: Dimensions.height10 / 2),
                   const Text(
                     "Your Order",
                     style: TextStyle(
@@ -53,17 +54,17 @@ class _OrderwidgetPartnerState extends State<OrderwidgetPartner> {
                         fontWeight: FontWeight.bold,
                         fontSize: 18),
                   ),
-                  const SizedBox(height: 5),
+                  SizedBox(height: Dimensions.height10 / 2),
                   Text(
                     "The collection begins : ${widget.order.box_startdate}",
-                    style: const TextStyle(
+                    style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 14),
+                        fontSize: Dimensions.font28 / 2),
                   ),
                 ],
               ),
-              const SizedBox(width: 15),
+              SizedBox(width: Dimensions.width10),
               const Icon(
                 Icons.chevron_right,
                 color: Colors.white,
