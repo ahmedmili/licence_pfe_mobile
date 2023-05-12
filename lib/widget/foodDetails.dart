@@ -103,7 +103,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                   child: CircleAvatar(
                     radius: 30,
                     backgroundImage: NetworkImage(
-                      "http://192.168.100.34:8000/storage/partner_imgs/${partner.image}",
+                      "http://$localhost:8000/storage/partner_imgs/${partner.image}",
                     ),
                   ),
                 ),

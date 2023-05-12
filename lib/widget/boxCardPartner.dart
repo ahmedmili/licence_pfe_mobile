@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/boxs.dart';
+import 'package:saverapp/Services/globals.dart';
 
 // ignore: must_be_immutable
 class BoxCardPartner extends StatefulWidget {
@@ -50,7 +51,7 @@ class _BoxCardPartnerState extends State<BoxCardPartner> {
               height: 190.0,
               width: 340.0,
               child: Image.network(
-                "http://192.168.100.34:8000/storage/boxs_imgs/${widget.box.image}",
+                "http://$localhost:8000/storage/boxs_imgs/${widget.box.image}",
                 fit: BoxFit.cover,
                 height: 150,
               ),
