@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Models/boxs.dart';
 import 'package:saverapp/Services/globals.dart';
+import 'package:saverapp/dimensions.dart';
 import 'package:saverapp/widget/filterField.dart';
 import 'package:saverapp/widget/box_list_view.dart';
 
@@ -29,8 +30,8 @@ class _FilterState extends State<Filter> {
                 Get.to(const FilterField());
               },
               child: SizedBox(
-                height: 50,
-                width: 50,
+                height: Dimensions.height50,
+                width: Dimensions.width50,
                 child: Material(
                     elevation: 5.0,
                     borderRadius: BorderRadius.circular(20.0),
@@ -40,12 +41,12 @@ class _FilterState extends State<Filter> {
                     )),
               ),
             ),
-            const SizedBox(width: 10),
+            SizedBox(width: Dimensions.width10),
             SizedBox(
               width: 330,
               child: Material(
                 elevation: 5.0,
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
                 child: TextField(
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(
