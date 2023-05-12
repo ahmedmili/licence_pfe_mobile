@@ -20,40 +20,40 @@ class _WelcomeState extends State<Welcome> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: DimensionS.height30 * 2),
+            SizedBox(height: Dimensions.height30 * 2),
             Center(
               child: Image.asset(
                 "assets/images/food.png",
-                width: DimensionS.width20 * 10,
-                height: DimensionS.height20 * 10,
+                width: Dimensions.width20 * 10,
+                height: Dimensions.height20 * 10,
               ),
             ),
-            SizedBox(height: DimensionS.height20),
+            SizedBox(height: Dimensions.height20),
             Text(
               "Welcome to SaverFood",
               //   style: GoogleFonts.bebasNeue(fontSize: 40),
             ),
-            SizedBox(height: DimensionS.height10),
+            SizedBox(height: Dimensions.height10),
             Text(
               "Let's take you with us !",
               style: TextStyle(
-                fontSize: DimensionS.font20,
+                fontSize: Dimensions.font20,
               ),
             ),
-            SizedBox(height: DimensionS.height50),
+            SizedBox(height: Dimensions.height50),
             RoundedButton(
               btnText: 'LOGIN',
               onBtnPressed: () => Get.toNamed("/login"),
             ),
-            SizedBox(height: DimensionS.height30),
+            SizedBox(height: Dimensions.height30),
             Container(
-              height: DimensionS.height30 * 2,
+              height: Dimensions.height30 * 2,
               width: 320,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(DimensionS.radius20),
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
                 border: Border.all(
                   color: Colors.green.shade800,
-                  width: DimensionS.width10 / 5,
+                  width: Dimensions.width10 / 5,
                   style: BorderStyle.solid,
                 ),
               ),
@@ -67,7 +67,7 @@ class _WelcomeState extends State<Welcome> {
                       child: Text(
                         "Register As Partner",
                         style: TextStyle(
-                            fontSize: DimensionS.font28 / 2,
+                            fontSize: Dimensions.font28 / 2,
                             color: Colors.green.shade800,
                             fontWeight: FontWeight.bold),
                       ),
@@ -75,18 +75,18 @@ class _WelcomeState extends State<Welcome> {
                   ),
                   VerticalDivider(
                     color: Colors.green[800],
-                    width: DimensionS.width20,
+                    width: Dimensions.width20,
                   ),
                   GestureDetector(
                     onTap: () {
                       Get.toNamed("/registerUser");
                     },
                     child: Padding(
-                      padding: EdgeInsets.only(right: DimensionS.width10),
+                      padding: EdgeInsets.only(right: Dimensions.width10),
                       child: Text(
                         "Register As User",
                         style: TextStyle(
-                            fontSize: DimensionS.font28 / 2,
+                            fontSize: Dimensions.font28 / 2,
                             color: Colors.green.shade800,
                             fontWeight: FontWeight.bold),
                       ),
