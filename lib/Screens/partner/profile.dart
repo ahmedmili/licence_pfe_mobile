@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/partner/editprofile_partner.dart';
+import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/Services/partners.dart';
 
 class ProfilePartner extends StatefulWidget {
@@ -48,7 +49,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                             child: CircleAvatar(
                                 radius: 50,
                                 backgroundImage: NetworkImage(
-                                  "http://192.168.100.34:8000/storage/partner_imgs/${snapshot.data!.image}",
+                                  "http://$localhost:8000/storage/partner_imgs/${snapshot.data!.image}",
                                   headers: {
                                     "Keep-Alive": "timeout=20",
                                   },

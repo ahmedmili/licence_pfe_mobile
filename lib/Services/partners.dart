@@ -293,4 +293,55 @@ class PartnersService {
       rethrow; // Propagate the error
     }
   }
+
+  static Future<List<Order>> getUserOrders() async {
+    try {
+      final token = controller.token;
+      final url = Uri.parse('${baseURL}user/getUserOrders');
+      final response = await http.get(
+        url,
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer $token'
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+
+        final List<Order> orders = [];
+        // print(data[0]['boxs'][0]["title"]);
+        // print(data[0]["user"]["id"]);
+        for (int i = 0; i < data.length; i++) {
+          // print(i);
+          final newOrder = Order(
+            command_id: data[i]["boxs"][0]["pivot"]["command_id"],
+            user_name: data[i]["user"]["name"],
+            user_email: data[i]["user"]["email"],
+            user_phone: data[i]["user"]["phone"],
+            box_name: data[i]['boxs'][0]["title"],
+            box_category: data[i]["boxs"][0]["category"],
+            box_description: data[i]["boxs"][0]["description"],
+            box_startdate: data[i]["boxs"][0]["startdate"],
+            box_enddate: data[i]["boxs"][0]["enddate"],
+            quantity: data[i]["boxs"][0]["pivot"]["quantity"],
+            box_image: data[i]["boxs"][0]["image"],
+            oldprice: data[i]["boxs"][0]["oldprice"],
+            newprice: data[i]["boxs"][0]["newprice"],
+            price: data[i]["price"],
+            remaining_quantity: data[i]["boxs"][0]['remaining_quantity'],
+            created_at: data[i]['created_at'],
+          );
+          // print(newOrder.box_category);
+          orders.add(newOrder);
+        }
+        return orders;
+      } else {
+        throw Exception('Failed to fetch partner orders');
+      }
+    } catch (error) {
+      print('Error fetching partner orders: $error');
+      rethrow;
+    }
+  }
 }

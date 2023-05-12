@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/partner/editBox_partner.dart';
+import 'package:saverapp/Services/globals.dart';
 import '../../Models/boxs.dart';
 
 class FoodDetailsPartner extends StatefulWidget {
@@ -29,7 +30,7 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: NetworkImage(
-                    "http://192.168.100.34:8000/storage/boxs_imgs/${box.image}"),
+                    "http://$localhost:8000/storage/boxs_imgs/${box.image}"),
               ),
             ),
           ),

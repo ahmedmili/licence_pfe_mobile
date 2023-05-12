@@ -74,7 +74,7 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                               child: CircleAvatar(
                                 radius: 20,
                                 backgroundImage: NetworkImage(
-                                  "http://192.168.100.34:8000/storage/partner_imgs/${controller.partner.image}",
+                                  "http://$localhost:8000/storage/partner_imgs/${controller.partner.image}",
                                   headers: {
                                     "Keep-Alive": "timeout=20",
                                   },

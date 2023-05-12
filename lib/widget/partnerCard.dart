@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/partner.dart';
+import 'package:saverapp/Services/globals.dart';
 import '../Services/users.dart';
 
 class PartnerCard extends StatefulWidget {
@@ -83,7 +84,7 @@ class _PartnerCardState extends State<PartnerCard> {
                                             child: CircleAvatar(
                                               radius: 20,
                                               backgroundImage: NetworkImage(
-                                                "http://192.168.100.34:8000/storage/partner_imgs/${partner.image}",
+                                                "http://$localhost:8000/storage/partner_imgs/${partner.image}",
                                                 headers: {
                                                   "Keep-Alive": "timeout=20",
                                                 },
