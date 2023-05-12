@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Models/partner.dart';
 
-//const String localhost = "10.0.2.2";
+// const String localhost = "10.0.2.2";
 const String baseURL = "http://$localhost:8000/api/";
 const String localhost = "192.168.100.34";
 // const String baseURL = "http://$localhost:8000/api/";
@@ -29,21 +29,6 @@ class GlobalController extends GetxController {
   final _token = ''.obs;
   final _role = ''.obs;
   final _firstLogin = true.obs;
-
-  // final box = Box(
-  //   newprice: "",
-  //   startdate: "",
-  //   enddate: "",
-  //   quantity: 0,
-  //   remaining_quantity: 0,
-  //   image: "",
-  //   category: "",
-  //   partnerId: 0,
-  //   id: 0,
-  //   title: "",
-  //   description: "",
-  //   oldprice: "",
-  // );
 
   var partner = Partner(
     name: "",
