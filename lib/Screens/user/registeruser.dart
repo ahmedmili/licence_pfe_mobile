@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:saverapp/dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth.dart';
 import '../../widget/rounded_button.dart';
@@ -74,22 +75,18 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              const SizedBox(
-                height: 10,
-              ),
+              SizedBox(height: Dimensions.height10),
               Padding(
-                padding: const EdgeInsets.only(right: 60),
+                padding: EdgeInsets.only(right: Dimensions.width30 * 2),
                 child: Text(
-                  "Create your profile to save food : ",
+                  "Create your profile to save food :",
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: Dimensions.font20,
                       fontWeight: FontWeight.bold,
                       color: Colors.green[800]),
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              SizedBox(height: Dimensions.height30),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(

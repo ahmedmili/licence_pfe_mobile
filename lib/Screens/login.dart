@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:saverapp/Services/geoLocator.dart';
+import 'package:saverapp/dimensions.dart';
 import 'forgetPassword.dart';
 
 import '../Services/auth.dart';
@@ -125,13 +126,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Text("HELLO AGAIN !",
                         style: GoogleFonts.bebasNeue(fontSize: 52)),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
+                    SizedBox(height: Dimensions.height10),
+                    Text(
                       "Welcome back , you've been missed !",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: Dimensions.font20,
                       ),
                     ),
                     const SizedBox(
@@ -171,9 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: Dimensions.height10),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5.0),
                   child: Container(
@@ -217,9 +214,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: Dimensions.height10),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
