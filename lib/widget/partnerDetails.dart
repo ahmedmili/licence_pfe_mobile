@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Services/globals.dart';
+import 'package:saverapp/dimensions.dart';
 import 'package:saverapp/widget/neonButtonPartner.dart';
 
 class PartnerDetails extends StatefulWidget {
@@ -21,8 +22,8 @@ class _PartnerDetailsState extends State<PartnerDetails> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 50),
+            Padding(
+              padding: EdgeInsets.only(left: Dimensions.width50),
               child: Text(
                 "Commerce Details",
                 style: TextStyle(color: Colors.white),
@@ -42,12 +43,12 @@ class _PartnerDetailsState extends State<PartnerDetails> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 30),
+        padding: EdgeInsets.only(top: Dimensions.height30),
         child: Stack(
           children: <Widget>[
             Container(
-              height: 500,
-              width: 400,
+              height: Dimensions.height50 * 10,
+              width: Dimensions.width50 * 10,
               padding: const EdgeInsets.only(left: 35.0, right: 25.0, top: 0),
               child: Material(
                 elevation: 5.0,
@@ -55,15 +56,15 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    const SizedBox(height: 20),
+                    SizedBox(height: Dimensions.height20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
                             Container(
-                              height: 60,
-                              width: 100,
+                              height: Dimensions.height30 * 2,
+                              width: Dimensions.width50 * 2,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border: Border.all(
@@ -96,15 +97,15 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 40),
+                    SizedBox(height: Dimensions.height20 * 2),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: Dimensions.width20),
                         Icon(
                           Icons.store,
                           color: Colors.green[800],
                         ),
-                        const SizedBox(width: 5),
+                        SizedBox(width: Dimensions.width10 / 2),
                         Text(
                           "Category : ${controller.partner.category}",
                           style: const TextStyle(
@@ -133,7 +134,7 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: Dimensions.height20),
                     Row(
                       children: [
                         const SizedBox(width: 20),
@@ -151,25 +152,25 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: Dimensions.height20),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: Dimensions.width20),
                         Icon(
                           Icons.email_outlined,
                           color: Colors.green[800],
                         ),
-                        const SizedBox(width: 5),
+                        SizedBox(width: Dimensions.width10 / 2),
                         Text(
                           "Email : ${controller.partner.email}",
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                            fontSize: Dimensions.font16,
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: Dimensions.height20),
                     Row(
                       children: [
                         const SizedBox(width: 20),
@@ -177,7 +178,7 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                           Icons.access_alarm_outlined,
                           color: Colors.green[800],
                         ),
-                        const SizedBox(width: 5),
+                        SizedBox(width: Dimensions.width10 / 2),
                         Text(
                           "Opening Time : ${controller.partner.openingtime}",
                           style: const TextStyle(
@@ -187,38 +188,38 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: Dimensions.height20),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: Dimensions.width20),
                         Icon(
                           Icons.access_time_filled,
                           color: Colors.green[800],
                         ),
-                        const SizedBox(width: 5),
+                        SizedBox(width: Dimensions.width10 / 2),
                         Text(
                           "Closing Time : ${controller.partner.closingtime}",
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                            fontSize: Dimensions.font16,
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: Dimensions.height10),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: Dimensions.width20),
                         Icon(
                           Icons.location_on_outlined,
                           color: Colors.green[800],
                         ),
                         const SizedBox(width: 5),
-                        const Text(
+                        Text(
                           "Address :",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                            fontSize: Dimensions.font16,
                           ),
                         ),
                       ],

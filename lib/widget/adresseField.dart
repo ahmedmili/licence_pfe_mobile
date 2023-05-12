@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:saverapp/dimensions.dart';
 
 class AdresseField extends StatefulWidget {
   const AdresseField({super.key, required this.adress});
@@ -16,29 +17,26 @@ class _AdresseFieldState extends State<AdresseField> {
     return Stack(
       children: <Widget>[
         Container(
-          height: 70,
-          width: 450,
-          padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+          height: Dimensions.height70,
+          width: Dimensions.width50 * 9,
+          padding: EdgeInsets.only(
+              left: Dimensions.width10, right: Dimensions.width10),
           child: Material(
             elevation: 5.0,
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(Dimensions.radius20),
             child: Padding(
               padding: const EdgeInsets.only(left: 17),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  const SizedBox(
-                    height: 15,
-                  ),
+                  SizedBox(height: Dimensions.height15),
                   Row(
                     children: [
                       Icon(
                         Icons.location_on,
                         color: Colors.green[800],
                       ),
-                      const SizedBox(
-                        width: 5,
-                      ),
+                      SizedBox(width: Dimensions.height10 / 2),
                       Expanded(
                         child: SingleChildScrollView(
                           child: Text(
@@ -50,22 +48,19 @@ class _AdresseFieldState extends State<AdresseField> {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        width: 15,
-                      ),
+                      SizedBox(width: Dimensions.width15),
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 30),
+                    padding: EdgeInsets.only(left: Dimensions.width30),
                     child: Text(
                       "Less than 6 Km",
                       style: TextStyle(
                           //fontWeight: FontWeight.bold,
                           color: Colors.green[800],
-                          fontSize: 14),
+                          fontSize: Dimensions.font28 / 2),
                     ),
                   ),
-                  //Text(widget.adress),
                 ],
               ),
             ),

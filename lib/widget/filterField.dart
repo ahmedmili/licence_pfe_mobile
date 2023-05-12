@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Models/category.dart';
+import 'package:saverapp/dimensions.dart';
 
 import '../Models/partner_category.dart';
 
@@ -43,8 +44,8 @@ class _FilterFieldState extends State<FilterField> {
               child: Stack(
                 children: [
                   Positioned(
-                    left: 20,
-                    right: 20,
+                    left: Dimensions.width20,
+                    right: Dimensions.width20,
                     top: 35,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,14 +77,13 @@ class _FilterFieldState extends State<FilterField> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          SizedBox(height: Dimensions.height15),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Padding(
-                                padding: EdgeInsets.only(left: 150),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    left: Dimensions.width50 * 3),
                                 child: Text(
                                   "Filters",
                                   style: TextStyle(
@@ -106,13 +106,13 @@ class _FilterFieldState extends State<FilterField> {
                               color: Colors.green[800],
                             ),
                           ),
-                          const SizedBox(height: 10),
-                          const SizedBox(
+                          SizedBox(height: Dimensions.height10),
+                          SizedBox(
                             height: 48,
-                            width: 400,
+                            width: Dimensions.width50 * 8,
                             child: MoneyFilter(),
                           ),
-                          const SizedBox(height: 40),
+                          SizedBox(height: Dimensions.height20 * 2),
                           GestureDetector(
                             onTap: () {
                               setState(() {
@@ -130,7 +130,7 @@ class _FilterFieldState extends State<FilterField> {
                                     color: Colors.green[800],
                                   ),
                                 ),
-                                const SizedBox(width: 200),
+                                SizedBox(width: Dimensions.width45 * 4),
                                 Icon(
                                   _isFoodCategoriesExpanded
                                       ? Icons.arrow_drop_down
@@ -163,7 +163,7 @@ class _FilterFieldState extends State<FilterField> {
                                     color: Colors.green[800],
                                   ),
                                 ),
-                                const SizedBox(width: 180),
+                                SizedBox(width: Dimensions.width40 * 4),
                                 Icon(
                                   _isPartnerCategoriesExpanded
                                       ? Icons.arrow_drop_down

@@ -31,7 +31,7 @@ class _WelcomeState extends State<Welcome> {
             SizedBox(height: Dimensions.height20),
             Text(
               "Welcome to SaverFood",
-              //   style: GoogleFonts.bebasNeue(fontSize: 40),
+              style: GoogleFonts.bebasNeue(fontSize: 40),
             ),
             SizedBox(height: Dimensions.height10),
             Text(
