@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:saverapp/dimensions.dart';
 
 import '../widget/rounded_button.dart';
 
@@ -19,48 +20,40 @@ class _WelcomeState extends State<Welcome> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const SizedBox(
-              height: 60,
-            ),
+            SizedBox(height: DimensionS.height30 * 2),
             Center(
               child: Image.asset(
                 "assets/images/food.png",
-                width: 200,
-                height: 200,
+                width: DimensionS.width20 * 10,
+                height: DimensionS.height20 * 10,
               ),
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(height: DimensionS.height20),
+            Text(
+              "Welcome to SaverFood",
+              //   style: GoogleFonts.bebasNeue(fontSize: 40),
             ),
-            Text("Welcome to SaverFood",
-                style: GoogleFonts.bebasNeue(fontSize: 40)),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
+            SizedBox(height: DimensionS.height10),
+            Text(
               "Let's take you with us !",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: DimensionS.font20,
               ),
             ),
-            const SizedBox(
-              height: 50,
-            ),
+            SizedBox(height: DimensionS.height50),
             RoundedButton(
               btnText: 'LOGIN',
               onBtnPressed: () => Get.toNamed("/login"),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            SizedBox(height: DimensionS.height30),
             Container(
-              height: 60,
+              height: DimensionS.height30 * 2,
               width: 320,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(DimensionS.radius20),
                 border: Border.all(
                   color: Colors.green.shade800,
-                  width: 2.0,
+                  width: DimensionS.width10 / 5,
                   style: BorderStyle.solid,
                 ),
               ),
@@ -74,7 +67,7 @@ class _WelcomeState extends State<Welcome> {
                       child: Text(
                         "Register As Partner",
                         style: TextStyle(
-                            fontSize: 14,
+                            fontSize: DimensionS.font28 / 2,
                             color: Colors.green.shade800,
                             fontWeight: FontWeight.bold),
                       ),
@@ -82,18 +75,18 @@ class _WelcomeState extends State<Welcome> {
                   ),
                   VerticalDivider(
                     color: Colors.green[800],
-                    width: 20.0,
+                    width: DimensionS.width20,
                   ),
                   GestureDetector(
                     onTap: () {
                       Get.toNamed("/registerUser");
                     },
                     child: Padding(
-                      padding: const EdgeInsets.only(right: 10.0),
+                      padding: EdgeInsets.only(right: DimensionS.width10),
                       child: Text(
                         "Register As User",
                         style: TextStyle(
-                            fontSize: 14,
+                            fontSize: DimensionS.font28 / 2,
                             color: Colors.green.shade800,
                             fontWeight: FontWeight.bold),
                       ),

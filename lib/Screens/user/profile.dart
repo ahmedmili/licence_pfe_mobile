@@ -32,7 +32,7 @@ class _ProfileUserState extends State<ProfileUser> {
   }
 
   Future<void> getUserInfo(token) async {
-    var url = Uri.parse('http://$baseURL:8000/api/user/user');
+    var url = Uri.parse('$baseURL/user/user');
     var response = await http.get(
       url,
       headers: {
