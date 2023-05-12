@@ -36,7 +36,6 @@ class _TourScreenState extends State<TourScreen> {
   @override
   void initState() {
     super.initState();
-    // String adress = geoController.getAddressFromLatLng(37.4219983, -122.084);
   }
 
   @override

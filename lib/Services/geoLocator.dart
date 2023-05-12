@@ -55,9 +55,12 @@ class GeoLocatorController extends GetxController {
     if (response.statusCode == 200) {
       final decoded = json.decode(response.body);
       if (decoded["status"] == "OK") {
-        adress.value = decoded["results"][0]["formatted_address"];
-
-        return decoded["results"][0]["formatted_address"];
+        final String street = decoded["results"][0]["address_components"][1]
+            ["short_name"]; // street name
+        final String city = decoded["results"][0]["address_components"][3]
+            ["short_name"]; //City name
+        adress.value = "$street , $city";
+        return adress.value.toString();
       } else {
         throw Exception("Failed to get address");
       }
