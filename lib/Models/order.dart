@@ -1,4 +1,5 @@
 class Order {
+  int? partner_id;
   final int command_id;
   final String user_name;
   final String user_email;
@@ -17,6 +18,7 @@ class Order {
   final int remaining_quantity;
 
   Order({
+    this.partner_id,
     required this.command_id,
     required this.user_name,
     required this.user_email,
@@ -37,6 +39,7 @@ class Order {
 
   factory Order.fromJson(Map<String, dynamic> json) {
     return Order(
+      partner_id: json['command_id'],
       command_id: json['command_id'],
       user_name: json['user_name'],
       user_email: json['user_email'],

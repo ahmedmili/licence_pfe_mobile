@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -5,6 +7,7 @@ import 'package:saverapp/Models/partner.dart';
 import 'package:saverapp/dimensions.dart';
 import '../../Models/boxs.dart';
 import '../../widget/partnerDetails.dart';
+import '../../Services/users.dart';
 
 class OrderScreen extends StatefulWidget {
   final Box box;
@@ -26,7 +29,7 @@ class _OrderScreenState extends State<OrderScreen> {
           children: [
             Padding(
               padding: EdgeInsets.only(left: Dimensions.width70),
-              child: Text(
+              child: const Text(
                 "Your Order",
                 style: TextStyle(color: Colors.white),
               ),
@@ -200,7 +203,7 @@ class _OrderScreenState extends State<OrderScreen> {
                       SizedBox(height: Dimensions.height10),
                       Padding(
                         padding: EdgeInsets.only(right: Dimensions.width15),
-                        child: Divider(
+                        child: const Divider(
                           color: Colors.grey,
                           thickness: 1,
                         ),
@@ -294,7 +297,7 @@ class _OrderScreenState extends State<OrderScreen> {
                       SizedBox(height: Dimensions.height10),
                       Padding(
                         padding: EdgeInsets.only(right: Dimensions.width15),
-                        child: Divider(
+                        child: const Divider(
                           color: Colors.grey,
                           thickness: 1,
                         ),
@@ -348,15 +351,12 @@ class _OrderScreenState extends State<OrderScreen> {
     try {
       FlutterBarcodeScanner.scanBarcode('#2A99CF', 'cancel', true, ScanMode.QR)
           .then((value) {
-        print(" value ====== $value");
 
-        //**
-        //
-        //
-        // */
         setState(() {
           qrstr = value;
         });
+        Map<String, dynamic> jsonDta = jsonDecode(value);
+        UserService.verifAndTakeOrder(jsonDta);
       });
     } catch (e) {
       setState(() {

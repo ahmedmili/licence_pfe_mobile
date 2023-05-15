@@ -127,7 +127,7 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
                             ),
                           ),
                           Text(
-                            '${widget.order.user_phone.toString()}',
+                            widget.order.user_phone.toString(),
                             style: const TextStyle(
                               color: Colors.black,
                               fontSize: 18.0,
