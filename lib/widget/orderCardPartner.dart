@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/order.dart';
 import 'package:saverapp/Services/globals.dart';
+import 'package:saverapp/dimensions.dart';
 
 class OrderCardPartner extends StatefulWidget {
   OrderCardPartner({
@@ -41,12 +42,12 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
         child: Stack(
           children: <Widget>[
             SizedBox(
-              height: 210.0,
-              width: 320.0,
+              height: Dimensions.height70 * 3,
+              width: Dimensions.width40 * 8,
               child: Image.network(
                 "http://$localhost:8000/storage/boxs_imgs/${widget.order.box_image}",
                 fit: BoxFit.cover,
-                height: 150,
+                height: Dimensions.height50 * 3,
               ),
             ),
             Positioned(
@@ -54,16 +55,16 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
               bottom: 0.0,
               child: Container(
                 height: 110.0,
-                width: 320.0,
+                width: Dimensions.width40 * 8,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                 ),
               ),
             ),
             Positioned(
-              left: 10.0,
-              bottom: 10.0,
-              right: 10.0,
+              left: Dimensions.width10,
+              bottom: Dimensions.height10 / 2,
+              right: Dimensions.width10,
               child: Column(
                 children: [
                   Row(
@@ -74,9 +75,9 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
                         children: <Widget>[
                           Text(
                             widget.order.box_name,
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Colors.black,
-                              fontSize: 18.0,
+                              fontSize: Dimensions.font18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -87,8 +88,8 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
                         children: <Widget>[
                           Text(
                             '${widget.order.oldprice} Dt',
-                            style: const TextStyle(
-                              fontSize: 18,
+                            style: TextStyle(
+                              fontSize: Dimensions.font18,
                               color: Colors.redAccent,
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.lineThrough,
@@ -97,7 +98,7 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
                           Text(
                             '${widget.order.newprice} Dt',
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: Dimensions.font18,
                               fontWeight: FontWeight.bold,
                               color: Colors.green[800],
                             ),
@@ -116,21 +117,22 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(right: 220),
+                            padding:
+                                EdgeInsets.only(right: Dimensions.width20 * 10),
                             child: Text(
                               widget.order.user_name,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 18.0,
+                                fontSize: Dimensions.font18,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                           Text(
                             '${widget.order.user_phone.toString()}',
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Colors.black,
-                              fontSize: 18.0,
+                              fontSize: Dimensions.font18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -145,9 +147,10 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
 
             //quantity
             Container(
-              margin: const EdgeInsets.only(left: 5, top: 5),
-              height: 30,
-              width: 130,
+              margin: EdgeInsets.only(
+                  left: Dimensions.width10 / 2, top: Dimensions.height10 / 2),
+              height: Dimensions.height30,
+              width: Dimensions.width70 * 2,
               decoration: BoxDecoration(
                 color: Colors.grey[300],
                 borderRadius: BorderRadius.circular(35),
@@ -163,7 +166,7 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
                 child: Text(
                   'Stay ${widget.order.remaining_quantity.toString()} to save',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: Dimensions.font18,
                     fontWeight: FontWeight.bold,
                     color: Colors.green[800],
                   ),

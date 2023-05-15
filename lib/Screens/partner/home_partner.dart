@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/order.dart';
+import 'package:saverapp/dimensions.dart';
 
 import '../../Services/partners.dart';
 import '../../widget/order_list_view_partner.dart';
@@ -17,8 +18,8 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Padding(
-          padding: EdgeInsets.only(left: 20),
+        title: Padding(
+          padding: EdgeInsets.only(left: Dimensions.width20),
           child: Text(
             "Orders :",
             style: TextStyle(
@@ -33,7 +34,7 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
       ),
       body: Column(
         children: [
-          const SizedBox(height: 10),
+          SizedBox(height: Dimensions.height10),
           FutureBuilder<List<Order>>(
             future: PartnersService.getPartnerOrders(),
             builder: (context, snapshot) {

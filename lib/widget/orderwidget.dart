@@ -38,7 +38,7 @@ class _OrderwidgetPartnerState extends State<OrderwidgetPartner> {
                   ),
                 ),
                 child: CircleAvatar(
-                  radius: 20,
+                  radius: Dimensions.radius20,
                   backgroundImage: NetworkImage(
                     "http://$localhost:8000/storage/boxs_imgs/${widget.order.box_image}",
                   ),

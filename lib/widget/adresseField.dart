@@ -17,7 +17,7 @@ class _AdresseFieldState extends State<AdresseField> {
     return Stack(
       children: <Widget>[
         Container(
-          height: Dimensions.height70,
+          height: Dimensions.height50 * 2,
           width: Dimensions.width50 * 9,
           padding: EdgeInsets.only(
               left: Dimensions.width10, right: Dimensions.width10),

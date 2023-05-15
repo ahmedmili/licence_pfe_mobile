@@ -2,6 +2,7 @@ import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/order.dart';
+import 'package:saverapp/dimensions.dart';
 import 'package:saverapp/widget/rounded_button.dart';
 
 class OrderDetailsScreen extends StatefulWidget {
@@ -72,16 +73,14 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: Dimensions.height10),
                     Row(
                       children: [
                         Icon(
                           Icons.store,
                           color: Colors.green[800],
                         ),
-                        const SizedBox(
-                          width: 5,
-                        ),
+                        SizedBox(width: Dimensions.width10 / 2),
                         Text(
                           order.box_category,
                           style: const TextStyle(
@@ -104,7 +103,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: Dimensions.height10),
                     Row(
                       children: [
                         Icon(
@@ -121,57 +120,57 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: Dimensions.height10),
                     Row(
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            const Text(
+                            Text(
                               "Box Price :",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 14,
+                                fontSize: Dimensions.font28 / 2,
                               ),
                             ),
                             Text(
                               "${order.newprice} Dt",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 16,
+                                  fontSize: Dimensions.font16,
                                   color: Colors.green[800]),
                             ),
                           ],
                         ),
-                        const SizedBox(width: 20),
+                        SizedBox(width: Dimensions.width20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            const Text(
+                            Text(
                               "Quantity :",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 14,
+                                fontSize: Dimensions.font28 / 2,
                               ),
                             ),
                             Text(
                               "${order.quantity} ",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 14,
+                                  fontSize: Dimensions.font28 / 2,
                                   color: Colors.green[800]),
                             ),
                           ],
                         ),
-                        const SizedBox(width: 35),
+                        SizedBox(width: Dimensions.width20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            const Text(
+                            Text(
                               "Total :",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 14,
+                                fontSize: Dimensions.font28 / 2,
                               ),
                             ),
                             Text(
@@ -185,7 +184,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: Dimensions.height10),
                     const Padding(
                       padding: EdgeInsets.only(right: 15.0),
                       child: Divider(
@@ -193,7 +192,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         thickness: 1,
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    SizedBox(height: Dimensions.height10 / 2),
                     Row(
                       children: [
                         Column(
@@ -201,33 +200,33 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                           children: [
                             Row(
                               children: [
-                                const SizedBox(height: 20),
+                                SizedBox(height: Dimensions.height20),
                                 Icon(
                                   Icons.person,
                                   color: Colors.green[800],
                                 ),
-                                const SizedBox(width: 5),
+                                SizedBox(width: Dimensions.width10 / 2),
                                 Text(
                                   order.user_name,
-                                  style: const TextStyle(
-                                      fontSize: 16,
+                                  style: TextStyle(
+                                      fontSize: Dimensions.font16,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 10),
+                            SizedBox(height: Dimensions.height10),
                             Row(
                               children: [
-                                const SizedBox(height: 20),
+                                SizedBox(height: Dimensions.height20),
                                 Icon(
                                   Icons.email,
                                   color: Colors.green[800],
                                 ),
-                                const SizedBox(width: 5),
+                                SizedBox(width: Dimensions.width10 / 2),
                                 Text(
                                   order.user_email,
-                                  style: const TextStyle(
-                                      fontSize: 16,
+                                  style: TextStyle(
+                                      fontSize: Dimensions.font16,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ],
@@ -261,7 +260,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         thickness: 1,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: Dimensions.height10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -271,11 +270,12 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                               Icons.qr_code,
                               color: Colors.green[800],
                             ),
-                            const SizedBox(width: 2),
-                            const Text(
+                            SizedBox(width: Dimensions.height10 / 5),
+                            Text(
                               'It is necessary that the owner of order scan this code.',
                               style: TextStyle(
-                                  fontSize: 13, fontWeight: FontWeight.bold),
+                                  fontSize: Dimensions.font24 / 2,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -289,47 +289,34 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
+                                    contentPadding: EdgeInsets.all(
+                                        0), // Supprime les paddings par défaut
                                     content: Column(
                                       children: [
-                                        BarcodeWidget(
-                                          data: qrstr,
-                                          barcode: Barcode.qrCode(),
-                                          color: Colors.black,
-                                          // height: 300,
-                                          width: 300,
+                                        SizedBox(height: 10),
+                                        Container(
+                                          width: 100,
+                                          height: 250,
+                                          child: BarcodeWidget(
+                                            data: qrstr,
+                                            barcode: Barcode.qrCode(),
+                                            color: Colors.black,
+                                            width: Dimensions.width50 * 6,
+                                          ),
                                         ),
+                                        SizedBox(height: 10),
                                       ],
                                     ),
-                                    // actions: <Widget>[
-                                    //   TextButton(
-                                    //     child: Text(
-                                    //       'OK',
-                                    //       style: TextStyle(
-                                    //           color: Colors.green[800],
-                                    //           fontWeight: FontWeight.bold),
-                                    //     ),
-                                    //     onPressed: () async {
-                                    //       Navigator.of(context).pop();
-                                    //       placeOrder();
-                                    //       Navigator.push(
-                                    //         context,
-                                    //         MaterialPageRoute(
-                                    //           builder: (context) => OrderScreen(
-                                    //               box: widget.box, partner: widget.partner),
-                                    //         ),
-                                    //       );
-                                    //     },
-                                    //   ),
-                                    // ],
                                   );
                                 },
                               );
                             },
                           ),
                         ),
-                        const SizedBox(height: 25),
+                        SizedBox(height: Dimensions.height25),
                         Padding(
-                          padding: const EdgeInsets.only(left: 110),
+                          padding:
+                              EdgeInsets.only(left: Dimensions.width50 * 2),
                           child: Text(
                             " Order Created at : ${order.created_at}",
                             style: TextStyle(

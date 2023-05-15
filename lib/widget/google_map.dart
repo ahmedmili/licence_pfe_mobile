@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:saverapp/Services/geoLocator.dart';
+import 'package:saverapp/widget/position.dart';
 
 class MapSample extends StatefulWidget {
   const MapSample({super.key});
@@ -77,23 +78,87 @@ class MapSampleState extends State<MapSample> {
   };
   @override
   Widget build(BuildContext context) {
+    RangeValues _currentRangeValues = const RangeValues(0, 100);
     return Scaffold(
-      body: GoogleMap(
-        mapType: MapType.normal,
-        initialCameraPosition: _initialPosition,
-        markers: _markers,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-        cameraTargetBounds: CameraTargetBounds(
-          LatLngBounds(
-            southwest:
-                const LatLng(35.8011, 10.6092), // Southwest corner of Sousse
-            northeast:
-                const LatLng(35.8881, 10.6924), // Northeast corner of Sousse
+      body: Stack(
+        children: [
+          GoogleMap(
+            mapType: MapType.normal,
+            initialCameraPosition: _initialPosition,
+            markers: _markers,
+            onMapCreated: (GoogleMapController controller) {
+              _controller.complete(controller);
+            },
+            cameraTargetBounds: CameraTargetBounds(
+              LatLngBounds(
+                southwest: const LatLng(
+                    35.8011, 10.6092), // Southwest corner of Sousse
+                northeast: const LatLng(
+                    35.8881, 10.6924), // Northeast corner of Sousse
+              ),
+            ),
+            circles: _circles,
           ),
-        ),
-        circles: _circles,
+          Positioned(
+            top: 300.0,
+            left: 0,
+            child: Container(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(20),
+                  ),
+                  color: Colors.white),
+              child: Column(
+                children: [
+                  const Center(
+                    child: Text(
+                      "select distance",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  RangeSlider(
+                    values: _currentRangeValues,
+                    min: 0,
+                    max: 100,
+                    divisions: 100,
+                    activeColor: Colors.green[800],
+                    inactiveColor: Colors.grey,
+                    labels: RangeLabels(
+                      _currentRangeValues.start.toString(),
+                      _currentRangeValues.end.toString(),
+                    ),
+                    onChangeEnd: (RangeValues values) {
+                      setState(() {
+                        _currentRangeValues = values;
+                      });
+                    },
+                    onChanged: (RangeValues values) {},
+                  ),
+                  Container(
+                    width: 200,
+                    child: MaterialButton(
+                      onPressed: () {},
+                      color: Colors.green[800],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: const Text(
+                        "APPLY",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToTheLake,
