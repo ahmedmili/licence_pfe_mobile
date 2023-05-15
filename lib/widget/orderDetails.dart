@@ -17,7 +17,9 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   //var qrstr = 'Add Data';
   @override
   Widget build(BuildContext context) {
-    final qrstr = "${widget.order.command_id}";
+    var data = {widget.order.command_id, widget.order.partner_id};
+    // final qrstr = "${widget.order.command_id}";
+    final qrstr = "$data";
     final order = widget.order;
     return Scaffold(
       appBar: AppBar(

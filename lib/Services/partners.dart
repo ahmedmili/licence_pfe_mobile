@@ -265,6 +265,7 @@ class PartnersService {
         final List<Order> orders = [];
         for (int i = 0; i < data.length; i++) {
           final newOrder = Order(
+            partner_id: data[i]['partner_id'],
             command_id: data[i]['command_id'],
             user_name: data[i]['user_name'],
             user_email: data[i]['user_email'],

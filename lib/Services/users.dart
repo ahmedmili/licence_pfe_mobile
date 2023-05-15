@@ -233,4 +233,26 @@ class UserService {
       throw Exception('Failed to fetch like and favorites data');
     }
   }
+
+//QrCode verification
+  static Future<void> verifAndTakeOrder(Map<String, dynamic> data) async {
+    final token = controller.token;
+
+    final url = Uri.parse(
+        '${baseURL}user/orders/verif'); //http://127.0.0.1:8000/api/user/orders/verif
+    final response = await http.post(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+      body: jsonEncode(data),
+    );
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = jsonDecode(response.body);
+      print("dataaa ==  $data");
+    } else {
+      throw Exception('Failed to fetch like and favorites data');
+    }
+  }
 }

@@ -30,7 +30,7 @@ class _CreateScreenState extends State<CreateScreen> {
                   qrstr = val;
                 });
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: 'Enter your data here',
                   border: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blue, width: 2))),
