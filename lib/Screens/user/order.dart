@@ -48,11 +48,11 @@ class _OrderScreenState extends State<OrderScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 2),
+        padding: const EdgeInsets.only(top: 2, left: 10, right: 10),
         child: Stack(
           children: <Widget>[
             Container(
-              height: Dimensions.height50 * 11,
+              height: Dimensions.height60 * 11,
               width: Dimensions.width40 * 12,
               padding: EdgeInsets.only(
                   left: 15.0, right: 15.0, top: Dimensions.height30),
@@ -112,7 +112,7 @@ class _OrderScreenState extends State<OrderScreen> {
                             Icons.description_outlined,
                             color: Colors.green[800],
                           ),
-                          const SizedBox(width: 5),
+                          SizedBox(width: Dimensions.width10 / 2),
                           Text(
                             widget.box.description,
                             style: const TextStyle(
@@ -351,7 +351,6 @@ class _OrderScreenState extends State<OrderScreen> {
     try {
       FlutterBarcodeScanner.scanBarcode('#2A99CF', 'cancel', true, ScanMode.QR)
           .then((value) {
-
         setState(() {
           qrstr = value;
         });
