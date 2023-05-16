@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:typed_data';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:saverapp/Services/geoLocator.dart';
+import 'package:saverapp/Services/users.dart';
 import 'package:saverapp/dimensions.dart';
 import 'package:saverapp/widget/position.dart';
 import 'package:saverapp/widget/positionField.dart';
@@ -23,7 +23,7 @@ class MapSampleState extends State<MapSample> {
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
   static LatLng _center = const LatLng(0, 0);
-
+  List<dynamic> partnersList = [""];
   CameraPosition _initialPosition = const CameraPosition(
     target: LatLng(0, 0),
     zoom: 14.4746,
@@ -38,6 +38,15 @@ class MapSampleState extends State<MapSample> {
   @override
   void initState() {
     super.initState();
+    UserService.getNearByPartners(
+      double.parse(geoController.lat.value),
+      double.parse(geoController.long.value),
+      561.68,
+      unity: "km",
+    ).then((value) {
+      partnersList.clear();
+      partnersList.add(value);
+    });
     _getCurrentLocation();
   }
 
@@ -49,7 +58,7 @@ class MapSampleState extends State<MapSample> {
           double.parse(geoController.long.value)); // current position
       _initialPosition = CameraPosition(
         target: currentLocation,
-        zoom: 14.4746,
+        zoom: 13,
       );
     });
   }
@@ -64,7 +73,7 @@ class MapSampleState extends State<MapSample> {
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
       markerId: const MarkerId('user_position'),
       position: _center,
-      infoWindow: const InfoWindow(title: 'your poseition'),
+      infoWindow: const InfoWindow(title: 'your position'),
     ),
   };
 
@@ -78,9 +87,21 @@ class MapSampleState extends State<MapSample> {
       strokeWidth: 2,
     ),
   };
+
   @override
   Widget build(BuildContext context) {
     RangeValues _currentRangeValues = const RangeValues(0, 100);
+    // UserService.getNearByPartners(
+    //   double.parse(geoController.lat.value),
+    //   double.parse(geoController.long.value),
+    //   561.68,
+    //   unity: "km",
+    // ).then((value) {
+    //   partnersList.clear();
+    //   partnersList.add(value);
+    // });
+
+    print("partner list :: $partnersList");
     return Scaffold(
       body: Stack(
         children: [
