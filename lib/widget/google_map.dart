@@ -6,6 +6,9 @@ import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:saverapp/Services/geoLocator.dart';
 import 'package:saverapp/Services/users.dart';
+import 'package:saverapp/dimensions.dart';
+import 'package:saverapp/widget/position.dart';
+import 'package:saverapp/widget/positionField.dart';
 
 class MapSample extends StatefulWidget {
   const MapSample({super.key});
@@ -119,65 +122,7 @@ class MapSampleState extends State<MapSample> {
             ),
             circles: _circles,
           ),
-          Positioned(
-            top: 300.0,
-            left: 0,
-            child: Container(
-              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20),
-                    topLeft: Radius.circular(20),
-                  ),
-                  color: Colors.white),
-              child: Column(
-                children: [
-                  const Center(
-                    child: Text(
-                      "select distance",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  RangeSlider(
-                    values: _currentRangeValues,
-                    min: 0,
-                    max: 100,
-                    divisions: 100,
-                    activeColor: Colors.green[800],
-                    inactiveColor: Colors.grey,
-                    labels: RangeLabels(
-                      _currentRangeValues.start.toString(),
-                      _currentRangeValues.end.toString(),
-                    ),
-                    onChangeEnd: (RangeValues values) {
-                      setState(() {
-                        _currentRangeValues = values;
-                      });
-                    },
-                    onChanged: (RangeValues values) {},
-                  ),
-                  Container(
-                    width: 200,
-                    child: MaterialButton(
-                      onPressed: () {},
-                      color: Colors.green[800],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: const Text(
-                        "APPLY",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          Positioned(top: 10, left: 15, right: 15, child: PositionField()),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
