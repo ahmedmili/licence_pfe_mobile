@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/user/home.dart';
 import 'package:saverapp/Screens/user/tour.dart';
-import '../../Models/order.dart';
-import '../../Services/partners.dart';
-import '../../widget/order_list_view_partner.dart';
-import '../../widget/orderwidget_list.dart';
-import '../../widget/position.dart';
-import 'favorite.dart';
 import 'favoriteglobal.dart';
 import 'me.dart';
 
