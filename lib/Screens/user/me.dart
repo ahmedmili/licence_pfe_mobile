@@ -133,16 +133,6 @@ List<CustomListTile> customListTiles = [
     title: "Profile",
   ),
   CustomListTile(
-    cb: () {},
-    icon: Icons.location_on_outlined,
-    title: "Location",
-  ),
-  CustomListTile(
-    cb: () {},
-    title: "Help",
-    icon: CupertinoIcons.chat_bubble_2,
-  ),
-  CustomListTile(
     cb: () async {
       SharedPreferences _pref = await SharedPreferences.getInstance();
       var res = await AuthServices.logout();
