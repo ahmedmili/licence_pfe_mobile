@@ -17,7 +17,7 @@ class _AdresseFieldState extends State<AdresseField> {
     return Stack(
       children: <Widget>[
         Container(
-          height: Dimensions.height50 * 2,
+          height: Dimensions.height45 * 2,
           width: Dimensions.width50 * 9,
           padding: EdgeInsets.only(
               left: Dimensions.width10, right: Dimensions.width10),
@@ -56,7 +56,6 @@ class _AdresseFieldState extends State<AdresseField> {
                     child: Text(
                       "Less than 6 Km",
                       style: TextStyle(
-                          //fontWeight: FontWeight.bold,
                           color: Colors.green[800],
                           fontSize: Dimensions.font28 / 2),
                     ),

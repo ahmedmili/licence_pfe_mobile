@@ -8,6 +8,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:saverapp/Services/geoLocator.dart';
 import 'package:saverapp/dimensions.dart';
 import 'package:saverapp/widget/position.dart';
+import 'package:saverapp/widget/positionField.dart';
 
 class MapSample extends StatefulWidget {
   const MapSample({super.key});
@@ -100,78 +101,14 @@ class MapSampleState extends State<MapSample> {
             ),
             circles: _circles,
           ),
-          Positioned(
-            bottom: 0,
-            top: 300,
-            left: 0,
-            child: Container(
-              padding: EdgeInsets.only(
-                left: 110,
-                right: 110,
-              ),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(Dimensions.radius20),
-                    topLeft: Radius.circular(Dimensions.radius20),
-                  ),
-                  color: Colors.white),
-              child: Column(
-                children: [
-                  SizedBox(height: Dimensions.height20),
-                  const Center(
-                    child: Text(
-                      "select distance",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  RangeSlider(
-                    values: _currentRangeValues,
-                    min: 0,
-                    max: 100,
-                    divisions: 100,
-                    activeColor: Colors.green[800],
-                    inactiveColor: Colors.grey,
-                    labels: RangeLabels(
-                      _currentRangeValues.start.toString(),
-                      _currentRangeValues.end.toString(),
-                    ),
-                    onChangeEnd: (RangeValues values) {
-                      setState(() {
-                        _currentRangeValues = values;
-                      });
-                    },
-                    onChanged: (RangeValues values) {},
-                  ),
-                  Container(
-                    width: Dimensions.width50 * 4,
-                    child: MaterialButton(
-                      onPressed: () {},
-                      color: Colors.green[800],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: const Text(
-                        "APPLY",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: Dimensions.height10),
-                ],
-              ),
-            ),
-          ),
+          Positioned(top: 10, left: 15, right: 15, child: PositionField()),
         ],
       ),
-      // floatingActionButton: FloatingActionButton.extended(
-      //   onPressed: _goToTheLake,
-      //   label: const Text('To the lake!'),
-      //   icon: const Icon(Icons.directions_boat),
-      // ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _goToTheLake,
+        label: const Text('To the lake!'),
+        icon: const Icon(Icons.directions_boat),
+      ),
     );
   }
 
