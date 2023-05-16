@@ -295,10 +295,10 @@ class PartnersService {
     }
   }
 
-  static Future<List<Order>> getUserOrders() async {
+  static Future<List<Order>> getUserOrders(String status) async {
     try {
       final token = controller.token;
-      final url = Uri.parse('${baseURL}user/getUserOrders');
+      final url = Uri.parse('${baseURL}user/getUserOrders/$status');
       final response = await http.get(
         url,
         headers: {
