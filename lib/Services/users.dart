@@ -279,6 +279,7 @@ class UserService {
       // print(data);
     } else {
       print(response.statusCode);
+
       throw Exception('Failed to  data');
     }
   }
