@@ -1,13 +1,11 @@
 import 'dart:async';
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:saverapp/Services/geoLocator.dart';
 import 'package:saverapp/Services/users.dart';
-import 'package:saverapp/dimensions.dart';
-import 'package:saverapp/widget/position.dart';
+
 import 'package:saverapp/widget/positionField.dart';
 
 class MapSample extends StatefulWidget {
@@ -38,16 +36,53 @@ class MapSampleState extends State<MapSample> {
   @override
   void initState() {
     super.initState();
-    UserService.getNearByPartners(
+    // UserService.getNearByPartners(
+    //   double.parse(geoController.lat.value),
+    //   double.parse(geoController.long.value),
+    //   5610000.68,
+    //   unity: "km",
+    // ).then((value) {
+    //   // print("data length = ${value.length}");
+    //   partnersList.clear();
+    //   value.forEach((element) {
+    //     setState(() {
+    //       partnersList.add(element);
+    //     });
+    //   });
+    // });
+    _getNearPartners();
+    _getCurrentLocation();
+  }
+
+  Future<void> _getNearPartners() async {
+    await UserService.getNearByPartners(
       double.parse(geoController.lat.value),
       double.parse(geoController.long.value),
-      561.68,
+      560.68,
       unity: "km",
     ).then((value) {
-      partnersList.clear();
-      partnersList.add(value);
+      // print("data length = ${value.length}");
+      if (value.isNotEmpty) {
+        partnersList.clear();
+        // value.forEach((element) {
+        for (int i = 0; i < value.length; i++) {
+          var m = Marker(
+            markerId: MarkerId(value[i]["name"]),
+            position: LatLng(
+              double.parse(value[i]['lat'].toString()),
+              double.parse(value[i]['long'].toString()),
+              // value[i]["long"],
+            ),
+            infoWindow: InfoWindow(title: value[i]["name"]),
+          );
+          setState(() {
+            partnersList.add(value[i]);
+            _markers.add(m);
+          });
+        }
+        // });
+      }
     });
-    _getCurrentLocation();
   }
 
   Future<void> _getCurrentLocation() async {
@@ -64,11 +99,6 @@ class MapSampleState extends State<MapSample> {
   }
 
   final Set<Marker> _markers = {
-    const Marker(
-      markerId: MarkerId('great_mosque'),
-      position: LatLng(35.8288, 10.6396),
-      infoWindow: InfoWindow(title: 'Great Mosque of Sousse'),
-    ),
     Marker(
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
       markerId: const MarkerId('user_position'),
@@ -91,16 +121,6 @@ class MapSampleState extends State<MapSample> {
   @override
   Widget build(BuildContext context) {
     RangeValues _currentRangeValues = const RangeValues(0, 100);
-    // UserService.getNearByPartners(
-    //   double.parse(geoController.lat.value),
-    //   double.parse(geoController.long.value),
-    //   561.68,
-    //   unity: "km",
-    // ).then((value) {
-    //   partnersList.clear();
-    //   partnersList.add(value);
-    // });
-
     print("partner list :: $partnersList");
     return Scaffold(
       body: Stack(
@@ -112,29 +132,30 @@ class MapSampleState extends State<MapSample> {
             onMapCreated: (GoogleMapController controller) {
               _controller.complete(controller);
             },
-            cameraTargetBounds: CameraTargetBounds(
-              LatLngBounds(
-                southwest: const LatLng(
-                    35.8011, 10.6092), // Southwest corner of Sousse
-                northeast: const LatLng(
-                    35.8881, 10.6924), // Northeast corner of Sousse
-              ),
-            ),
+            // cameraTargetBounds: CameraTargetBounds(
+            //   LatLngBounds(
+            //     southwest: const LatLng(
+            //         35.8011, 10.6092), // Southwest corner of Sousse
+            //     northeast: const LatLng(
+            //         35.8881, 10.6924), // Northeast corner of Sousse
+            //   ),
+            // ),
             circles: _circles,
           ),
-          Positioned(top: 10, left: 15, right: 15, child: PositionField()),
+          const Positioned(
+              top: 10, left: 15, right: 15, child: PositionField()),
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: const Text('To the lake!'),
-        icon: const Icon(Icons.directions_boat),
-      ),
+      // floatingActionButton: FloatingActionButton.extended(
+      //   onPressed: _goToTheLake,
+      //   label: const Text('To the lake!'),
+      //   icon: const Icon(Icons.directions_boat),
+      // ),
     );
   }
 
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_lakePosition));
-  }
+  // Future<void> _goToTheLake() async {
+  //   final GoogleMapController controller = await _controller.future;
+  //   controller.animateCamera(CameraUpdate.newCameraPosition(_lakePosition));
+  // }
 }
