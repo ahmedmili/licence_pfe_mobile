@@ -70,6 +70,10 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Favorite',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: 'Orders',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.person_outlined),
             label: 'Me',
           ),
