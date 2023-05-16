@@ -41,7 +41,9 @@ class _OrderwidgetScreenPartnerState extends State<OrderwidgetScreenPartner> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 10),
               OrderwidgetPartner(order: order),
+              const SizedBox(height: 10),
             ],
           ),
         );

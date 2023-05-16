@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/user/home.dart';
+import 'package:saverapp/Screens/user/order.dart';
+import 'package:saverapp/Screens/user/orderPage.dart';
 import 'package:saverapp/Screens/user/tour.dart';
 import 'favoriteglobal.dart';
 import 'me.dart';
@@ -18,6 +20,7 @@ class _MainScreenState extends State<MainScreen> {
   late HomeScreen homeScreen;
   late TourScreen tourScreen;
   late FavoriteGlobal favoritecreen;
+  late OrderPage orderScreen;
   late MeScreen meScreen;
   @override
   void initState() {
@@ -25,8 +28,9 @@ class _MainScreenState extends State<MainScreen> {
     homeScreen = const HomeScreen();
     tourScreen = const TourScreen();
     favoritecreen = const FavoriteGlobal();
+    orderScreen = const OrderPage();
     meScreen = const MeScreen();
-    pages = [homeScreen, tourScreen, favoritecreen, meScreen];
+    pages = [homeScreen, tourScreen, favoritecreen, orderScreen, meScreen];
     currentPage = homeScreen;
   }
 
@@ -64,7 +68,7 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Favorite',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
+            icon: Icon(Icons.shopping_cart_outlined),
             label: 'Orders',
           ),
           BottomNavigationBarItem(
@@ -76,26 +80,6 @@ class _MainScreenState extends State<MainScreen> {
       body: Stack(
         children: [
           currentPage,
-          // FutureBuilder<List<Order>>(
-          //     future: PartnersService.getUserOrders(),
-          //     builder: (context, snapshot) {
-          //       //print(snapshot.data![0].box_category);
-          //       if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-          //         return Positioned(
-          //           top: 535,
-          //           bottom: 0,
-          //           left: 0,
-          //           right: 0,
-          //           child: Container(
-          //             child: OrderwidgetScreenPartner(
-          //               items: snapshot.data!,
-          //             ),
-          //           ),
-          //         );
-          //       } else {
-          //         return Text("No data available");
-          //       }
-          //     }),
         ],
       ),
     );
