@@ -173,7 +173,7 @@ class UserService {
       }
       return box;
     } else {
-      throw Exception('Failed to fetch like and favorites data');
+      throw Exception('Failed to fetch  favorites data');
     }
   }
 
@@ -230,7 +230,7 @@ class UserService {
       }
       return partner;
     } else {
-      throw Exception('Failed to fetch like and favorites data');
+      throw Exception('Failed to fetch favors partners data');
     }
   }
 
@@ -238,8 +238,7 @@ class UserService {
   static Future<void> verifAndTakeOrder(Map<String, dynamic> data) async {
     final token = controller.token;
 
-    final url = Uri.parse(
-        '${baseURL}user/orders/verif'); //http://127.0.0.1:8000/api/user/orders/verif
+    final url = Uri.parse('${baseURL}user/orders/verif');
     final response = await http.post(
       url,
       headers: {
@@ -252,7 +251,35 @@ class UserService {
       Map<String, dynamic> data = jsonDecode(response.body);
       print("dataaa ==  $data");
     } else {
-      throw Exception('Failed to fetch like and favorites data');
+      throw Exception('Failed to verif QrCode');
+    }
+  }
+
+  static Future<List<dynamic>> getNearByPartners(
+    double long,
+    double lat,
+    double dist, {
+    String? unity = "km",
+  }) async {
+    final token = controller.token;
+
+    final url =
+        Uri.parse('${baseURL}user/getNearbyPartners/$lat&$long&$dist&$unity');
+    final response = await http.get(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+    );
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = jsonDecode(response.body);
+      // print(data["partsList"][0]);
+      return data["partnerList"];
+      // print(data);
+    } else {
+      print(response.statusCode);
+      throw Exception('Failed to  data');
     }
   }
 }
