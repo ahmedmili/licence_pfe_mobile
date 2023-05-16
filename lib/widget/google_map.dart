@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:saverapp/Services/geoLocator.dart';
+import 'package:saverapp/dimensions.dart';
 import 'package:saverapp/widget/position.dart';
 
 class MapSample extends StatefulWidget {
@@ -100,18 +101,23 @@ class MapSampleState extends State<MapSample> {
             circles: _circles,
           ),
           Positioned(
-            top: 300.0,
+            bottom: 0,
+            top: 300,
             left: 0,
             child: Container(
-              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-              decoration: const BoxDecoration(
+              padding: EdgeInsets.only(
+                left: 110,
+                right: 110,
+              ),
+              decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20),
-                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(Dimensions.radius20),
+                    topLeft: Radius.circular(Dimensions.radius20),
                   ),
                   color: Colors.white),
               child: Column(
                 children: [
+                  SizedBox(height: Dimensions.height20),
                   const Center(
                     child: Text(
                       "select distance",
@@ -138,7 +144,7 @@ class MapSampleState extends State<MapSample> {
                     onChanged: (RangeValues values) {},
                   ),
                   Container(
-                    width: 200,
+                    width: Dimensions.width50 * 4,
                     child: MaterialButton(
                       onPressed: () {},
                       color: Colors.green[800],
@@ -154,17 +160,18 @@ class MapSampleState extends State<MapSample> {
                       ),
                     ),
                   ),
+                  SizedBox(height: Dimensions.height10),
                 ],
               ),
             ),
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: const Text('To the lake!'),
-        icon: const Icon(Icons.directions_boat),
-      ),
+      // floatingActionButton: FloatingActionButton.extended(
+      //   onPressed: _goToTheLake,
+      //   label: const Text('To the lake!'),
+      //   icon: const Icon(Icons.directions_boat),
+      // ),
     );
   }
 
