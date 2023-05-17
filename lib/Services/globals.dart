@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../Models/partner.dart';
 
 const String baseURL = "http://$localhost:8000/api/";
-const String localhost = "192.168.100.20";
+const String localhost = "192.168.100.18";
 Map<String, String> headers = {
   "Content-Type": "application/json",
 };
