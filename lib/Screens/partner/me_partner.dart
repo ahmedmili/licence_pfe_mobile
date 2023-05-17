@@ -158,13 +158,7 @@ List<CustomListTile> customListTiles = [
   //   title: "Location",
   // ),
   // ExponsionPanel
-  CustomListTile(
-    cb: () {
-      // return const Text("darta");
-    },
-    title: "Help",
-    icon: CupertinoIcons.chat_bubble_2,
-  ),
+
   CustomListTile(
     cb: () async {
       SharedPreferences _pref = await SharedPreferences.getInstance();

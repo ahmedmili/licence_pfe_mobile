@@ -150,7 +150,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                 ),
                               ),
                               Text(
-                                "${widget.box.newprice} Dt",
+                                "${widget.box.newprice}Dt",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -158,7 +158,6 @@ class _OrderScreenState extends State<OrderScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(width: Dimensions.width10 / 2),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -178,7 +177,6 @@ class _OrderScreenState extends State<OrderScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(width: Dimensions.width10 / 2),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -190,10 +188,10 @@ class _OrderScreenState extends State<OrderScreen> {
                                 ),
                               ),
                               Text(
-                                "${widget.box.newprice} Dt",
+                                "${widget.box.newprice}Dt",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     color: Colors.green[800]),
                               ),
                             ],
@@ -244,7 +242,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                         fontSize: Dimensions.font16,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  SizedBox(width: Dimensions.width30),
+                                  SizedBox(width: Dimensions.width10),
                                   GestureDetector(
                                     onTap: () {
                                       Navigator.push(
@@ -273,7 +271,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: Dimensions.height20),
+                              SizedBox(height: Dimensions.height10),
                               Row(
                                 children: [
                                   SizedBox(height: Dimensions.height20),

@@ -17,7 +17,7 @@ class _AdresseFieldState extends State<AdresseField> {
     return Stack(
       children: <Widget>[
         Container(
-          height: Dimensions.height45 * 2,
+          height: Dimensions.height40 * 2,
           width: Dimensions.width50 * 9,
           padding: EdgeInsets.only(
               left: Dimensions.width10, right: Dimensions.width10),
@@ -29,7 +29,7 @@ class _AdresseFieldState extends State<AdresseField> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(height: Dimensions.height15),
+                  SizedBox(height: Dimensions.height10),
                   Row(
                     children: [
                       Icon(

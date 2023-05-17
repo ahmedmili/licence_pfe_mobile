@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/box.dart';
 import '../../Services/globals.dart';
+import '../../dimensions.dart';
 import '../../widget/rounded_button.dart';
 import 'package:http/http.dart' as http;
 
@@ -100,20 +101,27 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Padding(
+          padding: EdgeInsets.only(left: Dimensions.width20),
+          child: const Text(
+            "Add Box :",
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
+          ),
+        ),
+        backgroundColor: Colors.green[800],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.grey,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              const SizedBox(height: 50),
-              const Padding(
-                padding: EdgeInsets.only(right: 250),
-                child: Text(
-                  "Add Box :",
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-              ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
