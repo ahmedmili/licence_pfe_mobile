@@ -14,6 +14,14 @@ class PartnerBoxes extends StatefulWidget {
 }
 
 class _PartnerBoxesState extends State<PartnerBoxes> {
+  String _selectedStatus = "ACCEPTED";
+
+  void _onStatusSelected(String status) {
+    setState(() {
+      _selectedStatus = status;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -42,112 +50,52 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
         children: [
           Column(
             children: [
-              // Container(
-              //   height: 100,
-              //   child: SingleChildScrollView(
-              //     scrollDirection: Axis.horizontal,
-              //     child: Row(
-              //       children: [
-              //         StatusWidget(status: "ACCEPTED"),
-              //         const SizedBox(width: 0),
-              //         StatusWidget(status: "PENDING"),
-              //         const SizedBox(width: 0),
-              //         StatusWidget(status: "FINISHED"),
-              //         const SizedBox(width: 0),
-              //         StatusWidget(status: "EXPIRED"),
-              //         const SizedBox(width: 0),
-              //         StatusWidget(status: "REJECTED"),
-              //       ],
-              //     ),
-              //   ),
-              // ),
+              Container(
+                height: 100,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      StatusWidget(
+                        status: "ACCEPTED",
+                        isSelected: _selectedStatus == "ACCEPTED",
+                        onStatusSelected: _onStatusSelected,
+                      ),
+                      const SizedBox(width: 0),
+                      StatusWidget(
+                        status: "PENDING",
+                        isSelected: _selectedStatus == "PENDING",
+                        onStatusSelected: _onStatusSelected,
+                      ),
+                      const SizedBox(width: 0),
+                      StatusWidget(
+                        status: "FINISHED",
+                        isSelected: _selectedStatus == "FINISHED",
+                        onStatusSelected: _onStatusSelected,
+                      ),
+                      const SizedBox(width: 0),
+                      StatusWidget(
+                        status: "REJECTED",
+                        isSelected: _selectedStatus == "REJECTED",
+                        onStatusSelected: _onStatusSelected,
+                      ),
+                      const SizedBox(width: 0),
+                      StatusWidget(
+                        status: "EXPIRED",
+                        isSelected: _selectedStatus == "EXPIRED",
+                        onStatusSelected: _onStatusSelected,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               FutureBuilder<List<Box>>(
-                future: PartnersService.PartnerBoxsbystatus("ACCEPTED"),
+                future: PartnersService.PartnerBoxsbystatus(_selectedStatus),
                 builder: (context, snapshot) {
                   if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                     return Column(
                       children: [
                         const SizedBox(height: 20),
-                        SizedBox(
-                          height: 200, // or any other fixed height
-                          child: BoxScreenPartner(items: snapshot.data!),
-                        ),
-                      ],
-                    );
-                  } else if (snapshot.hasError) {
-                    return Text('Error: ${snapshot.error}');
-                  } else {
-                    return const SizedBox.shrink();
-                  }
-                },
-              ),
-              FutureBuilder<List<Box>>(
-                future: PartnersService.PartnerBoxsbystatus("PENDING"),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-                    return Column(
-                      children: [
-                        const SizedBox(height: 15),
-                        SizedBox(
-                          height: 200, // or any other fixed height
-                          child: BoxScreenPartner(items: snapshot.data!),
-                        ),
-                      ],
-                    );
-                  } else if (snapshot.hasError) {
-                    return Text('Error: ${snapshot.error}');
-                  } else {
-                    return const SizedBox.shrink();
-                  }
-                },
-              ),
-              FutureBuilder<List<Box>>(
-                future: PartnersService.PartnerBoxsbystatus("FINISHED"),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-                    return Column(
-                      children: [
-                        const SizedBox(height: 15),
-                        SizedBox(
-                          height: 200, // or any other fixed height
-                          child: BoxScreenPartner(items: snapshot.data!),
-                        ),
-                      ],
-                    );
-                  } else if (snapshot.hasError) {
-                    return Text('Error: ${snapshot.error}');
-                  } else {
-                    return const SizedBox.shrink();
-                  }
-                },
-              ),
-              FutureBuilder<List<Box>>(
-                future: PartnersService.PartnerBoxsbystatus("EXPIRED"),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-                    return Column(
-                      children: [
-                        const SizedBox(height: 15),
-                        SizedBox(
-                          height: 200,
-                          child: BoxScreenPartner(items: snapshot.data!),
-                        ),
-                      ],
-                    );
-                  } else if (snapshot.hasError) {
-                    return Text('Error: ${snapshot.error}');
-                  } else {
-                    return const SizedBox.shrink();
-                  }
-                },
-              ),
-              FutureBuilder<List<Box>>(
-                future: PartnersService.PartnerBoxsbystatus("REJECTED"),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-                    return Column(
-                      children: [
-                        const SizedBox(height: 15),
                         SizedBox(
                           height: 200,
                           child: BoxScreenPartner(items: snapshot.data!),
