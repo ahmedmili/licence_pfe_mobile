@@ -42,25 +42,25 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
         children: [
           Column(
             children: [
-              Container(
-                height: 100,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      StatusWidget(status: "ACCEPTED"),
-                      const SizedBox(width: 0),
-                      StatusWidget(status: "PENDING"),
-                      const SizedBox(width: 0),
-                      StatusWidget(status: "FINISHED"),
-                      const SizedBox(width: 0),
-                      StatusWidget(status: "EXPIRED"),
-                      const SizedBox(width: 0),
-                      StatusWidget(status: "REJECTED"),
-                    ],
-                  ),
-                ),
-              ),
+              // Container(
+              //   height: 100,
+              //   child: SingleChildScrollView(
+              //     scrollDirection: Axis.horizontal,
+              //     child: Row(
+              //       children: [
+              //         StatusWidget(status: "ACCEPTED"),
+              //         const SizedBox(width: 0),
+              //         StatusWidget(status: "PENDING"),
+              //         const SizedBox(width: 0),
+              //         StatusWidget(status: "FINISHED"),
+              //         const SizedBox(width: 0),
+              //         StatusWidget(status: "EXPIRED"),
+              //         const SizedBox(width: 0),
+              //         StatusWidget(status: "REJECTED"),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               FutureBuilder<List<Box>>(
                 future: PartnersService.PartnerBoxsbystatus("ACCEPTED"),
                 builder: (context, snapshot) {
