@@ -10,8 +10,9 @@ class GeoLocatorController extends GetxController {
   final lat = "".obs;
   final long = "".obs;
   final adress = "".obs;
+  RxInt distance = 1.obs;
   static LatLng center = const LatLng(0, 0);
-  final Set<Marker> markers = {
+  RxSet<Marker> markers = {
     Marker(
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
       markerId: const MarkerId('user_position'),
@@ -45,7 +46,7 @@ class GeoLocatorController extends GetxController {
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
-
+    update();
     return await Geolocator.getCurrentPosition();
   }
 

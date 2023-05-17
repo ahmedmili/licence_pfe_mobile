@@ -291,11 +291,10 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
-                                    contentPadding: EdgeInsets.all(
-                                        0), // Supprime les paddings par défaut
+                                    contentPadding: const EdgeInsets.all(0),
                                     content: Column(
                                       children: [
-                                        SizedBox(height: 10),
+                                        const SizedBox(height: 10),
                                         Container(
                                           width: 100,
                                           height: 250,
@@ -306,7 +305,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                             width: Dimensions.width50 * 6,
                                           ),
                                         ),
-                                        SizedBox(height: 10),
+                                        const SizedBox(height: 10),
                                       ],
                                     ),
                                   );

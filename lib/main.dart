@@ -31,6 +31,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      // supportedLocales: context.supportedLocales,
+      // localizationsDelegates: context.localizationDelegates,
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       getPages: routes,
