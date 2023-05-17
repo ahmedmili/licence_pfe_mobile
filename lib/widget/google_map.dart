@@ -36,20 +36,7 @@ class MapSampleState extends State<MapSample> {
   @override
   void initState() {
     super.initState();
-    // UserService.getNearByPartners(
-    //   double.parse(geoController.lat.value),
-    //   double.parse(geoController.long.value),
-    //   5610000.68,
-    //   unity: "km",
-    // ).then((value) {
-    //   // print("data length = ${value.length}");
-    //   partnersList.clear();
-    //   value.forEach((element) {
-    //     setState(() {
-    //       partnersList.add(element);
-    //     });
-    //   });
-    // });
+
     _getNearPartners();
     _getCurrentLocation();
   }
@@ -58,26 +45,25 @@ class MapSampleState extends State<MapSample> {
     await UserService.getNearByPartners(
       double.parse(geoController.lat.value),
       double.parse(geoController.long.value),
-      560.68,
+      1,
       unity: "km",
     ).then((value) {
-      // print("data length = ${value.length}");
       if (value.isNotEmpty) {
         partnersList.clear();
-        // value.forEach((element) {
+        geoController.markers.clear();
         for (int i = 0; i < value.length; i++) {
           var m = Marker(
             markerId: MarkerId(value[i]["name"]),
             position: LatLng(
               double.parse(value[i]['lat'].toString()),
               double.parse(value[i]['long'].toString()),
-              // value[i]["long"],
             ),
             infoWindow: InfoWindow(title: value[i]["name"]),
           );
           setState(() {
             partnersList.add(value[i]);
-            _markers.add(m);
+            geoController.addMarker(m);
+            // _markers.add(m);
           });
         }
         // });
@@ -98,20 +84,21 @@ class MapSampleState extends State<MapSample> {
     });
   }
 
-  final Set<Marker> _markers = {
-    Marker(
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
-      markerId: const MarkerId('user_position'),
-      position: _center,
-      infoWindow: const InfoWindow(title: 'your position'),
-    ),
-  };
+  // final Set<Marker> _markers = {
+  //   Marker(
+  //     icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
+  //     markerId: const MarkerId('user_position'),
+  //     position: _center,
+  //     infoWindow: const InfoWindow(title: 'your position'),
+  //   ),
+  // };
 
   final Set<Circle> _circles = {
     Circle(
       circleId: const CircleId('center'),
       center: _center,
       radius: 2000, // In meters
+
       fillColor: Colors.blue.withOpacity(0.1),
       strokeColor: Colors.blue.withOpacity(0.5),
       strokeWidth: 2,
@@ -122,13 +109,14 @@ class MapSampleState extends State<MapSample> {
   Widget build(BuildContext context) {
     RangeValues _currentRangeValues = const RangeValues(0, 100);
     print("partner list :: $partnersList");
+    print("partner list :: ${geoController.markers.length}");
     return Scaffold(
       body: Stack(
         children: [
           GoogleMap(
             mapType: MapType.normal,
             initialCameraPosition: _initialPosition,
-            markers: _markers,
+            markers: geoController.markers,
             onMapCreated: (GoogleMapController controller) {
               _controller.complete(controller);
             },

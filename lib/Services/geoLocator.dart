@@ -2,6 +2,7 @@
 
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -9,6 +10,19 @@ class GeoLocatorController extends GetxController {
   final lat = "".obs;
   final long = "".obs;
   final adress = "".obs;
+  static LatLng center = const LatLng(0, 0);
+  final Set<Marker> markers = {
+    Marker(
+      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
+      markerId: const MarkerId('user_position'),
+      position: const LatLng(0, 0),
+      infoWindow: const InfoWindow(title: 'your position'),
+    ),
+  }.obs;
+
+  addMarker(Marker m) {
+    markers.add(m);
+  }
 
   // get user location from gps (lat,long)
   Future<Position> _determinePosition() async {
@@ -39,6 +53,7 @@ class GeoLocatorController extends GetxController {
     var location = await _determinePosition();
     lat.value = location.latitude.toString();
     long.value = location.longitude.toString();
+    center = LatLng(location.latitude, location.longitude);
     update();
     return location.altitude.toString();
   }
