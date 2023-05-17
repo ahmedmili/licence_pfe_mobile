@@ -34,15 +34,13 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
       ),
       body: Column(
         children: [
-          SizedBox(height: Dimensions.height10),
+          // SizedBox(height: Dimensions.height10),
           FutureBuilder<List<Order>>(
             future: PartnersService.getPartnerOrders(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Expanded(
                   child: Container(
-                    margin: const EdgeInsets.only(left: 35),
-                    width: 340,
                     child: OrderScreenPartner(
                       items: snapshot.data!,
                     ),

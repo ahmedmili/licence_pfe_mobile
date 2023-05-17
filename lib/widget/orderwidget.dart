@@ -22,7 +22,7 @@ class _OrderwidgetPartnerState extends State<OrderwidgetPartner> {
       padding: EdgeInsets.all(10),
       child: Container(
         height: Dimensions.height50 * 2,
-        width: Dimensions.width60 * 9,
+        width: Dimensions.width50 * 9,
         child: Material(
           elevation: 5.0,
           borderRadius: BorderRadius.circular(Dimensions.radius20),
@@ -67,7 +67,7 @@ class _OrderwidgetPartnerState extends State<OrderwidgetPartner> {
                     "Collection begins : ${widget.order.box_startdate}",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontSize: 14,
                     ),
                   ),
                 ],

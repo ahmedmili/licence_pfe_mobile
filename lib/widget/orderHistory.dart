@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import '../../Models/order.dart';
 import '../../Services/partners.dart';
 import '../../widget/orderwidget_list.dart';
@@ -21,7 +22,12 @@ class _OrderHistoryState extends State<OrderHistory> {
               items: snapshot.data!,
             );
           } else {
-            return const Text("No data available");
+            return Center(
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.green[800]!),
+                strokeWidth: 5,
+              ),
+            );
           }
         });
   }

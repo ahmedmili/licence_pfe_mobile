@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
@@ -26,7 +27,12 @@ class _OrderPageState extends State<OrderPage> {
               items: snapshot.data!,
             );
           } else {
-            return const Text("No data available");
+            return Center(
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.green[800]!),
+                strokeWidth: 5,
+              ),
+            );
           }
         });
   }

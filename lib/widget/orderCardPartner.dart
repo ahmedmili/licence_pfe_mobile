@@ -18,162 +18,131 @@ class OrderCardPartner extends StatefulWidget {
 class _OrderCardPartnerState extends State<OrderCardPartner> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-              color: Colors.grey.shade500,
-              offset: const Offset(0, 0),
-              blurRadius: 10.0,
-              spreadRadius: 1.0),
-          const BoxShadow(
-              color: Colors.white,
-              offset: Offset(-4, -4),
-              blurRadius: 10.0,
-              spreadRadius: 1.0),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(10.0),
-        ),
-        child: Stack(
-          children: <Widget>[
-            SizedBox(
-              height: Dimensions.height70 * 3,
-              width: Dimensions.width40 * 8,
-              child: Image.network(
-                "http://$localhost:8000/storage/boxs_imgs/${widget.order.box_image}",
-                fit: BoxFit.cover,
-                height: Dimensions.height50 * 3,
-              ),
-            ),
-            Positioned(
-              left: 0.0,
-              bottom: 0.0,
-              child: Container(
-                height: 110.0,
-                width: Dimensions.width40 * 8,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Positioned(
-              left: Dimensions.width10,
-              bottom: Dimensions.height10 / 2,
-              right: Dimensions.width10,
-              child: Column(
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Container(
+        height: 130,
+        width: 400,
+        child: Material(
+          elevation: 5.0,
+          borderRadius: BorderRadius.circular(Dimensions.radius20),
+          child: Column(
+            children: [
+              Row(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            widget.order.box_name,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: Dimensions.font18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+                  Padding(
+                    padding: EdgeInsets.only(left: 10, top: 10),
+                    child: Container(
+                      width: 70,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.green.shade800,
+                          width: 2.0,
+                        ),
                       ),
-                      const Spacer(),
-                      Column(
-                        children: <Widget>[
-                          Text(
-                            '${widget.order.oldprice} Dt',
-                            style: TextStyle(
-                              fontSize: Dimensions.font18,
-                              color: Colors.redAccent,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.lineThrough,
-                            ),
-                          ),
-                          Text(
-                            '${widget.order.newprice} Dt',
-                            style: TextStyle(
-                              fontSize: Dimensions.font18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.green[800],
-                            ),
-                          ),
-                        ],
+                      child: CircleAvatar(
+                        radius: 20,
+                        backgroundImage: NetworkImage(
+                          "http://$localhost:8000/storage/boxs_imgs/${widget.order.box_image}",
+                        ),
                       ),
-                    ],
+                    ),
                   ),
-                  const Divider(
-                    color: Colors.grey,
-                    thickness: 1,
-                  ),
-                  Row(
+                  const SizedBox(width: 20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      SizedBox(height: 15),
+                      Row(
                         children: [
-                          Padding(
-                            padding:
-                                EdgeInsets.only(right: Dimensions.width20 * 10),
-                            child: Text(
-                              widget.order.user_name,
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: Dimensions.font18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
+                          Icon(Icons.person_2_outlined,
+                              color: Colors.green.shade800),
                           Text(
-                            widget.order.user_phone.toString(),
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: Dimensions.font18,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            "${widget.order.user_name}",
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.phone, color: Colors.green.shade800),
+                          Text(
+                            "${widget.order.user_phone}",
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 40),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 15),
+                      Row(
+                        children: [
+                          Icon(Icons.production_quantity_limits,
+                              color: Colors.green.shade800),
+                          Text(
+                            "${widget.order.quantity}",
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.money, color: Colors.green.shade800),
+                          Text(
+                            "${widget.order.price}",
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 60),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.chevron_right,
+                            size: 40,
                           ),
                         ],
                       ),
-                      Icon(Icons.phone, color: Colors.green[800]),
                     ],
                   ),
                 ],
               ),
-            ),
-
-            //quantity
-            Container(
-              margin: EdgeInsets.only(
-                  left: Dimensions.width10 / 2, top: Dimensions.height10 / 2),
-              height: Dimensions.height30,
-              width: Dimensions.width70 * 2,
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(35),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey.shade500,
-                      offset: const Offset(6, 6),
-                      blurRadius: 15.0,
-                      spreadRadius: 1.0),
-                ],
-              ),
-              child: Center(
-                child: Text(
-                  'Stay ${widget.order.remaining_quantity.toString()} to save',
-                  style: TextStyle(
-                    fontSize: Dimensions.font18,
-                    fontWeight: FontWeight.bold,
+              SizedBox(height: Dimensions.height10),
+              Row(
+                children: [
+                  SizedBox(width: 15),
+                  Icon(
+                    Icons.access_alarm,
                     color: Colors.green[800],
                   ),
-                ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    "${widget.order.box_startdate} -> ${widget.order.box_enddate}",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 14),
+                  ),
+                ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
