@@ -98,10 +98,14 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                           color: Colors.green[800],
                         ),
                         const SizedBox(width: 5),
-                        Text(
-                          order.box_description,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
+                        Expanded(
+                          child: SingleChildScrollView(
+                            child: Text(
+                              order.box_description,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                          ),
                         ),
                       ],
                     ),
