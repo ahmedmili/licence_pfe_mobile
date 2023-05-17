@@ -45,15 +45,15 @@ class _BoxScreenPartnerState extends State<BoxScreenPartner> {
               ? Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(width: 10),
+                    const SizedBox(height: 10),
                     BoxCardPartner(box: box),
-                    const SizedBox(width: 10)
+                    const SizedBox(height: 10),
                   ],
                 )
               : Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(width: 10),
+                    const SizedBox(height: 10),
                     BoxCardPartner(box: box),
                     const SizedBox(height: 10)
                   ],
