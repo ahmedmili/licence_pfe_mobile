@@ -53,10 +53,9 @@ class _BoxScreenPartnerState extends State<BoxScreenPartner> {
               : Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    BoxCardPartner(
-                      box: box,
-                    ),
-                    const SizedBox(height: 20)
+                    const SizedBox(width: 10),
+                    BoxCardPartner(box: box),
+                    const SizedBox(height: 10)
                   ],
                 ),
         );

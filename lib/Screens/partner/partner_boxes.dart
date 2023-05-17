@@ -92,7 +92,7 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
               if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                 return Expanded(
                   child: Container(
-                    margin: const EdgeInsets.only(left: 35),
+                    margin: const EdgeInsets.all(30),
                     width: 340,
                     child: BoxScreenPartner(
                       items: snapshot.data!,
