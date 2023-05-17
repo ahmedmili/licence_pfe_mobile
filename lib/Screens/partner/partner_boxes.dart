@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:saverapp/Services/partners.dart';
 import 'package:saverapp/widget/box_list_view_partner.dart';
 import '../../Models/boxs.dart';
+import '../../dimensions.dart';
 import '../../widget/searchField.dart';
 
 class PartnerBoxes extends StatefulWidget {
@@ -20,6 +21,21 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Padding(
+          padding: EdgeInsets.only(left: Dimensions.width20),
+          child: const Text(
+            "Your Boxes :",
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
+          ),
+        ),
+        backgroundColor: Colors.green[800],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.grey,
+        ),
+      ),
       body: ListView(
         scrollDirection: Axis.vertical,
         children: [
@@ -31,11 +47,7 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
                   if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                     return Column(
                       children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        const SearchField(),
-                        const SizedBox(height: 30.0),
+                        const SizedBox(height: 20),
                         Container(
                           padding:
                               const EdgeInsets.only(left: 20.0, right: 15.0),
