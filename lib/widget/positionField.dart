@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:saverapp/dimensions.dart';
+
+import '../Services/geoLocator.dart';
 
 class PositionField extends StatefulWidget {
   const PositionField({super.key});
@@ -9,8 +12,10 @@ class PositionField extends StatefulWidget {
 }
 
 class _PositionFieldState extends State<PositionField> {
+  GeoLocatorController geoController = Get.find<GeoLocatorController>();
+
   @override
-  RangeValues _currentRangeValues = const RangeValues(0, 100);
+  RangeValues _currentRangeValues = const RangeValues(1, 100);
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
@@ -36,22 +41,26 @@ class _PositionFieldState extends State<PositionField> {
                   ),
                 ),
                 RangeSlider(
-                  values: _currentRangeValues,
-                  min: 0,
+                  values: RangeValues(1.0, _currentRangeValues.end),
+                  min: 1.0,
                   max: 100,
                   divisions: 100,
                   activeColor: Colors.green[800],
                   inactiveColor: Colors.grey,
                   labels: RangeLabels(
-                    _currentRangeValues.start.toString(),
+                    "1.0",
                     _currentRangeValues.end.toString(),
                   ),
                   onChangeEnd: (RangeValues values) {
+                    setState(() {});
+                    print(values.end);
+                    geoController.distance.value = values.end.toInt();
+                  },
+                  onChanged: (RangeValues values) {
                     setState(() {
                       _currentRangeValues = values;
                     });
                   },
-                  onChanged: (RangeValues values) {},
                 ),
               ],
             ),
