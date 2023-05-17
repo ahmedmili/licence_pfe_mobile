@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/order.dart';
 import 'package:saverapp/dimensions.dart';
+import 'package:saverapp/widget/statuswidget.dart';
 
 import '../../Services/partners.dart';
 import '../../widget/order_list_view_partner.dart';
@@ -34,7 +35,16 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
       ),
       body: Column(
         children: [
-          // SizedBox(height: Dimensions.height10),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              StatusWidget(status: "PENDING"),
+              const SizedBox(width: 0),
+              StatusWidget(status: "SUCCESS"),
+              const SizedBox(width: 0),
+              StatusWidget(status: "CANCEL"),
+            ],
+          ),
           FutureBuilder<List<Order>>(
             future: PartnersService.getPartnerOrders(),
             builder: (context, snapshot) {
