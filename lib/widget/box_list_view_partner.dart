@@ -5,7 +5,7 @@ import '../Models/boxs.dart';
 
 class BoxScreenPartner extends StatefulWidget {
   const BoxScreenPartner(
-      {super.key, required this.items, this.directions = "H"});
+      {super.key, required this.items, this.directions = "V"});
   final List<Box> items;
   final String directions;
   @override
@@ -41,8 +41,8 @@ class _BoxScreenPartnerState extends State<BoxScreenPartner> {
               ),
             );
           },
-          child: widget.directions == "H"
-              ? Row(
+          child: widget.directions == "V"
+              ? Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(width: 10),
@@ -50,7 +50,7 @@ class _BoxScreenPartnerState extends State<BoxScreenPartner> {
                     const SizedBox(width: 10)
                   ],
                 )
-              : Column(
+              : Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     BoxCardPartner(

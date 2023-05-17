@@ -20,7 +20,7 @@ class _StatusWidgetState extends State<StatusWidget> {
       children: <Widget>[
         Container(
           height: 50,
-          width: 135,
+          width: 150,
           padding: EdgeInsets.only(left: 5, right: 5),
           child: Material(
             elevation: 5.0,

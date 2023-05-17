@@ -35,25 +35,28 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
       ),
       body: Column(
         children: [
-          const SizedBox(height: 10),
-          Row(
-            children: [
-              StatusWidget(status: "PENDING"),
-              const SizedBox(width: 0),
-              StatusWidget(status: "SUCCESS"),
-              const SizedBox(width: 0),
-              StatusWidget(status: "CANCEL"),
-            ],
+          Container(
+            height: 100,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  StatusWidget(status: "PENDING"),
+                  const SizedBox(width: 0),
+                  StatusWidget(status: "SUCCESS"),
+                  const SizedBox(width: 0),
+                  StatusWidget(status: "CANCEL"),
+                ],
+              ),
+            ),
           ),
           FutureBuilder<List<Order>>(
             future: PartnersService.getPartnerOrders(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Expanded(
-                  child: Container(
-                    child: OrderScreenPartner(
-                      items: snapshot.data!,
-                    ),
+                  child: OrderScreenPartner(
+                    items: snapshot.data!,
                   ),
                 );
               } else if (snapshot.hasError) {
