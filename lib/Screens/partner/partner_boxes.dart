@@ -90,14 +90,15 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
             future: PartnersService.PartnerBoxsbystatus(_selectedStatus),
             builder: (context, snapshot) {
               if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-                return Column(
-                  children: [
-                    const SizedBox(height: 20),
-                    SizedBox(
-                      height: 200,
-                      child: BoxScreenPartner(items: snapshot.data!),
+                return Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 35),
+                    width: 340,
+                    child: BoxScreenPartner(
+                      items: snapshot.data!,
+                      directions: "V",
                     ),
-                  ],
+                  ),
                 );
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
