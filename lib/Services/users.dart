@@ -274,9 +274,8 @@ class UserService {
     );
     if (response.statusCode == 200) {
       Map<String, dynamic> data = jsonDecode(response.body);
-      // print(data["partsList"][0]);
+      // print(data["partnerList"]);
       return data["partnerList"];
-      // print(data);
     } else {
       print(response.statusCode);
 

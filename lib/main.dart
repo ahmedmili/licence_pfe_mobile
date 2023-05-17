@@ -21,16 +21,18 @@ void main() async {
     await geoController.getAddressFromLatLng();
   }); //0.5 seconds
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      // supportedLocales: context.supportedLocales,
+      // localizationsDelegates: context.localizationDelegates,
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       getPages: routes,
