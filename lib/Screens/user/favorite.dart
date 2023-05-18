@@ -20,7 +20,15 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           FutureBuilder<List<Box>>(
             future: UserService.favorsBoxs(),
             builder: (context, snapshot) {
-              if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(Colors.green[800]!),
+                    strokeWidth: 5,
+                  ),
+                );
+              } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                 return Expanded(
                   child: Container(
                     margin: const EdgeInsets.only(left: 35),
@@ -40,7 +48,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                         height: 200,
                         width: 200,
                         child: Image(
-                          image: AssetImage("assets/images/coeur.png"),
+                          image: AssetImage("assets/images/favoris.png"),
                         ),
                       ),
                       const SizedBox(height: 5),
@@ -48,7 +56,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                         "No favorites found.",
                         style: TextStyle(
                             fontSize: 20,
-                            color: Colors.green.shade800,
+                            color: Colors.orange.shade900,
                             fontWeight: FontWeight.bold),
                       )
                     ],

@@ -154,14 +154,14 @@ List<CustomListTile> customListTiles = [
     cb: () async {
       SharedPreferences _pref = await SharedPreferences.getInstance();
       var res = await PartnersService.logout();
-      if (res.statusCode == 200) {
-        _pref.setString("token", "");
-        _pref.setString("role", "");
-        controller.setToken("");
-        controller.setRole("");
+      // if (res.statusCode == 200) {
+      _pref.setString("token", "");
+      _pref.setString("role", "");
+      controller.setToken("");
+      controller.setRole("");
 
-        Get.offAllNamed("/");
-      }
+      Get.offAllNamed("/");
+      // }
     },
     title: "Logout",
     icon: CupertinoIcons.arrow_right_arrow_left,
