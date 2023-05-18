@@ -51,11 +51,23 @@ class _PopupLocationMenu extends State<PopupLocationMenu> {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  title: const Text('Add Position'),
+                  title: Text(
+                    'ADD POSITION',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green[800]),
+                  ),
                   content: const LocationForm(),
                   actions: <Widget>[
                     TextButton(
-                      child: const Text('Close'),
+                      child: Text(
+                        'SAVE',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.green.shade800,
+                            fontWeight: FontWeight.bold),
+                      ),
                       onPressed: () {
                         Get.back();
                       },

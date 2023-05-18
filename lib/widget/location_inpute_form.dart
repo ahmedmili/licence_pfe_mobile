@@ -35,12 +35,12 @@ class _LocationForm extends State<LocationForm> {
             Obx(
               () => TextFormField(
                 readOnly: true,
-                initialValue: geoControlle.long.value,
+                initialValue: "Longitude : ${geoControlle.long.value}",
               ),
             ),
             Obx(
               () => TextFormField(
-                initialValue: geoControlle.lat.value,
+                initialValue: "Latitude : ${geoControlle.lat.value}",
                 readOnly: true,
               ),
             ),
