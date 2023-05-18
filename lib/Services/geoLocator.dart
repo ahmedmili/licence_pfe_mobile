@@ -19,6 +19,8 @@ class GeoLocatorController extends GetxController {
   //define google map markers indicators
   RxSet<Marker> markers = {
     Marker(
+      // consumeTapEvents: true,
+      alpha: 0.5,
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
       markerId: const MarkerId('user_position'),
       position: const LatLng(0, 0),
@@ -36,6 +38,7 @@ class GeoLocatorController extends GetxController {
       strokeWidth: 2,
     ),
   }.obs;
+
   //initialize cercle
   initCercle() {
     circles.clear();
