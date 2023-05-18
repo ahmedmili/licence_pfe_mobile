@@ -80,40 +80,36 @@ class _PopupLocationMenu extends State<PopupLocationMenu> {
             showDialog(
               context: context,
               builder: (BuildContext context) {
-                return FractionallySizedBox(
-                  widthFactor: 1.5, // Adjust the width as needed
-                  heightFactor: 1, // Adjust the height as needed
-                  child: AlertDialog(
-                    title: Text(
-                      'Select Position',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green[800],
-                      ),
+                return AlertDialog(
+                  title: Text(
+                    'Select Position',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green[800],
                     ),
-                    content: GoogleMap(
-                      initialCameraPosition: const CameraPosition(
-                        target: LatLng(37.42796133580664, -122.085749655962),
-                        zoom: 14,
-                      ),
-                      onTap: (LatLng latLng) async {},
-                    ),
-                    actions: <Widget>[
-                      TextButton(
-                        child: Text(
-                          'SAVE',
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.green.shade800,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        onPressed: () {
-                          Get.back();
-                        },
-                      ),
-                    ],
                   ),
+                  content: GoogleMap(
+                    initialCameraPosition: const CameraPosition(
+                      target: LatLng(37.42796133580664, -122.085749655962),
+                      zoom: 14,
+                    ),
+                    onTap: (LatLng latLng) async {},
+                  ),
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text(
+                        'SAVE',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.green.shade800,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: () {
+                        Get.back();
+                      },
+                    ),
+                  ],
                 );
               },
             );
