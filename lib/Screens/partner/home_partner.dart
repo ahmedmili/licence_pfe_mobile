@@ -29,7 +29,7 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
       appBar: AppBar(
         title: Padding(
           padding: EdgeInsets.only(left: Dimensions.width20),
-          child: Text(
+          child: const Text(
             "Orders :",
             style: TextStyle(
               color: Colors.white,
@@ -46,7 +46,7 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
       ),
       body: Column(
         children: [
-          Container(
+          SizedBox(
             height: 100,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,

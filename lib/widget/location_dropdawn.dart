@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:saverapp/Services/geoLocator.dart';
 import 'location_inpute_form.dart';
 
@@ -98,9 +97,7 @@ class _PopupLocationMenu extends State<PopupLocationMenu> {
                         target: LatLng(37.42796133580664, -122.085749655962),
                         zoom: 14,
                       ),
-                      onTap: (LatLng latLng) async {
-                        // Rest of your code
-                      },
+                      onTap: (LatLng latLng) async {},
                     ),
                     actions: <Widget>[
                       TextButton(

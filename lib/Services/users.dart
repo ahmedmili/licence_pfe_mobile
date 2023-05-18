@@ -79,7 +79,6 @@ class UserService {
   //filter price :
   static Future<List<Box>> filterPrice(double min, double max) async {
     final token = controller.token;
-    bool isLoaded = false;
 
     final url = Uri.parse('${baseURL}user/filterprice/?min=$min&max=$max');
     final response = await http.get(
@@ -248,8 +247,8 @@ class UserService {
       body: jsonEncode(data),
     );
     if (response.statusCode == 200) {
-      Map<String, dynamic> data = jsonDecode(response.body);
-      print("dataaa ==  $data");
+      // Map<String, dynamic> data = jsonDecode(response.body);
+      // print("dataaa ==  $data");
     } else {
       throw Exception('Failed to verif QrCode');
     }
@@ -276,8 +275,27 @@ class UserService {
       Map<String, dynamic> data = jsonDecode(response.body);
       return data["partnerList"];
     } else {
-      print(response.statusCode);
+      throw Exception('Failed to  data');
+    }
+  }
 
+  static Future<Map<String, dynamic>> getUserStats() async {
+    final token = controller.token;
+
+    final url = Uri.parse('${baseURL}user/userStats');
+    final response = await http.get(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+    );
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = jsonDecode(response.body);
+      // print(data);
+      return data;
+    } else {
+      // print(response.statusCode);
       throw Exception('Failed to  data');
     }
   }

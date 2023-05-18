@@ -23,7 +23,6 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
       "command_id": widget.order.command_id,
       "partner_id": widget.order.partner_id
     };
-    // final qrstr = "${widget.order.command_id}";
     final qrstr = jsonEncode(data);
     final order = widget.order;
     return Scaffold(
