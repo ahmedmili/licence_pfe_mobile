@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:saverapp/Services/geoLocator.dart';
-import 'location_inpute_form.dart';
 
 class PopupLocationMenu extends StatefulWidget {
   const PopupLocationMenu({Key? key}) : super(key: key);
@@ -46,35 +45,41 @@ class _PopupLocationMenu extends State<PopupLocationMenu> {
       onSelected: (String value) {
         switch (value) {
           case 'Add':
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text(
-                    'ADD POSITION',
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green[800]),
-                  ),
-                  content: const LocationForm(),
-                  actions: <Widget>[
-                    TextButton(
-                      child: Text(
-                        'SAVE',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.green.shade800,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      onPressed: () {
-                        Get.back();
-                      },
-                    ),
-                  ],
-                );
-              },
-            );
+            geoController.getLocation();
+
+            geoController.getAddressFromLatLng();
+
+            // showDialog(
+            //   context: context,
+            //   builder: (BuildContext context) {
+            //     return AlertDialog(
+            //       title: Text(
+            //         'SET POSITION',
+            //         style: TextStyle(
+            //             fontSize: 20,
+            //             fontWeight: FontWeight.bold,
+            //             color: Colors.green[800]),
+            //       ),
+            //       content: const LocationForm(),
+            //       actions: <Widget>[
+            //         TextButton(
+            //           child: Text(
+            //             'SAVE',
+            //             style: TextStyle(
+            //                 fontSize: 20,
+            //                 color: Colors.green.shade800,
+            //                 fontWeight: FontWeight.bold),
+            //           ),
+            //           onPressed: () {
+            //             Get.back();
+            //           },
+            //         ),
+            //       ],
+            //     );
+            //   },
+            // );
+
+            ///
             break;
           case "Map":
             showDialog(
@@ -92,14 +97,47 @@ class _PopupLocationMenu extends State<PopupLocationMenu> {
                         color: Colors.green[800],
                       ),
                     ),
-                    content: GoogleMap(
-                      initialCameraPosition: const CameraPosition(
-                        target: LatLng(37.42796133580664, -122.085749655962),
-                        zoom: 14,
-                      ),
-                      onTap: (LatLng latLng) async {},
-                    ),
+                    content: GetBuilder<GeoLocatorController>(
+                        builder: (controllerr) {
+                      return GoogleMap(
+                        initialCameraPosition: CameraPosition(
+                          target: LatLng(
+                            double.parse(geoController.lat.value),
+                            double.parse(
+                              geoController.long.value,
+                            ),
+                          ),
+                          zoom: 14,
+                        ),
+                        markers: {
+                          Marker(
+                            alpha: 0.5,
+                            icon: BitmapDescriptor.defaultMarkerWithHue(
+                                BitmapDescriptor.hueCyan),
+                            markerId: const MarkerId('user_position'),
+                            position: LatLng(
+                              double.parse(geoController.lat.value),
+                              double.parse(
+                                geoController.long.value,
+                              ),
+                            ),
+                            infoWindow:
+                                const InfoWindow(title: 'your position'),
+                          ),
+                        },
+                        onTap: (LatLng latLng) async {
+                          geoController.lat.value = latLng.latitude.toString();
+                          geoController.long.value =
+                              latLng.longitude.toString();
+                          geoController.getAddressFromLatLng();
+                          // Get.back();
+                        },
+                      );
+                    }),
                     actions: <Widget>[
+                      GetBuilder<GeoLocatorController>(builder: (controllerr) {
+                        return Text(controllerr.adress.value);
+                      }),
                       TextButton(
                         child: Text(
                           'SAVE',

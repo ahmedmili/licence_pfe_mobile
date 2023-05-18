@@ -12,7 +12,7 @@ class GeoLocatorController extends GetxController {
   //define data
   final lat = "".obs;
   final long = "".obs;
-  final adress = "".obs;
+  RxString adress = "".obs;
   RxInt distance = 1.obs;
   static LatLng center = const LatLng(0, 0);
 
@@ -168,6 +168,7 @@ class GeoLocatorController extends GetxController {
         final String city = decoded["results"][0]["address_components"][3]
             ["short_name"]; //City name
         adress.value = "$street , $city";
+        update();
         return adress.value.toString();
       } else {
         throw Exception("Failed to get address");

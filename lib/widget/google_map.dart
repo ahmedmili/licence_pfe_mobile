@@ -38,16 +38,6 @@ class MapSampleState extends State<MapSample> {
     });
   }
 
-  // final Set<Circle> _circles = {
-  //   Circle(
-  //     circleId: const CircleId('center'),
-  //     center: _center,
-  //     radius: 2000, // In meters
-  //     fillColor: Colors.blue.withOpacity(0.1),
-  //     strokeColor: Colors.blue.withOpacity(0.5),
-  //     strokeWidth: 2,
-  //   ),
-  // };
   @override
   void initState() {
     super.initState();
