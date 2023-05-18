@@ -292,7 +292,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: 70, top: 30, right: 70),
+                              left: 30, top: 10, right: 30),
                           child: RoundedButton(
                             btnText: 'SHOW QRCODE',
                             onBtnPressed: () {
@@ -300,22 +300,11 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
-                                    contentPadding: const EdgeInsets.all(0),
-                                    content: Column(
-                                      children: [
-                                        const SizedBox(height: 10),
-                                        Container(
-                                          width: 100,
-                                          height: 250,
-                                          child: BarcodeWidget(
-                                            data: qrstr,
-                                            barcode: Barcode.qrCode(),
-                                            color: Colors.black,
-                                            width: Dimensions.width50 * 6,
-                                          ),
-                                        ),
-                                        const SizedBox(height: 10),
-                                      ],
+                                    content: BarcodeWidget(
+                                      data: qrstr,
+                                      barcode: Barcode.qrCode(),
+                                      color: Colors.black,
+                                      width: 300,
                                     ),
                                   );
                                 },
