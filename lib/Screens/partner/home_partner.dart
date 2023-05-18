@@ -30,7 +30,7 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
         title: Padding(
           padding: EdgeInsets.only(left: Dimensions.width20),
           child: Text(
-            "Orders:",
+            "Orders :",
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
