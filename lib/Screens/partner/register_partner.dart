@@ -338,7 +338,6 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               const SizedBox(
                 height: 15,
               ),
-              // Utilisez un DropdownButtonFormField pour sélectionner la catégorie
               Text(
                 'Category',
                 style: TextStyle(
@@ -371,7 +370,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                     color: Colors.blue),
               ),
 
-              // button
+              // buttons
               MaterialButton(
                 onPressed: _showTimePicker,
                 color: Colors.orange[900],
@@ -390,7 +389,6 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                     color: Colors.orange[900]),
               ),
 
-              // button
               MaterialButton(
                 onPressed: _showClosingTimePicker,
                 color: Colors.orange[900],
@@ -423,11 +421,19 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               const SizedBox(
                 height: 15,
               ),
-
-              Obx(() => Text(geoController.adress.value)),
-              const SizedBox(
-                height: 15,
-              ),
+              GetBuilder<GeoLocatorController>(builder: (controllerr) {
+                print(controllerr.adress.value);
+                return Text(controllerr.adress.value);
+              }),
+              // GetX<GeoLocatorController>(
+              //   init:GeoLocatorController ,
+              //   builder: (controller) {
+              //   return Text(controller.adress.value),
+              // },)
+              // Obx(() => Text(geoController.adress.value)),
+              // const SizedBox(
+              //   height: 15,
+              // ),
 
               RoundedButton(
                 btnText: 'Send Request',

@@ -88,19 +88,18 @@ class _MePartnerState extends State<MePartner> {
             height: 5,
           ),
           const SizedBox(
-              child: Card(
-            elevation: 4,
-            shadowColor: Colors.black12,
-            child: ListTile(
-              leading: Icon(
-                Icons.location_on_outlined,
+            child: Card(
+              elevation: 4,
+              shadowColor: Colors.black12,
+              child: ListTile(
+                leading: Icon(
+                  Icons.location_on_outlined,
+                ),
+                title: Text("Location"),
+                trailing: PopupLocationMenu(),
               ),
-              title: Text("Location"),
-              trailing: PopupLocationMenu(),
             ),
-          )
-              // child: PopupLocationMenu()),
-              ),
+          ),
         ],
       ),
     );
@@ -119,7 +118,6 @@ class ProfileCompletionCard {
 List<ProfileCompletionCard> profileCompletionCards = [];
 
 class CustomListTile {
-  // ignore: prefer_typing_uninitialized_variables
   final dynamic cb;
   final IconData icon;
   final String title;
@@ -141,22 +139,13 @@ List<CustomListTile> customListTiles = [
     icon: Icons.person_2_outlined,
     title: "Profile",
   ),
-  // CustomListTile(
-  //   cb: () {
-  //     // return const Text("00");
-  //   },
-  //   icon: Icons.location_on_outlined,
-  //   title: "Location",
-  // ),
-  // ExponsionPanel
-
   CustomListTile(
     cb: () async {
-      SharedPreferences _pref = await SharedPreferences.getInstance();
+      SharedPreferences pref = await SharedPreferences.getInstance();
       var res = await PartnersService.logout();
       // if (res.statusCode == 200) {
-      _pref.setString("token", "");
-      _pref.setString("role", "");
+      pref.setString("token", "");
+      pref.setString("role", "");
       controller.setToken("");
       controller.setRole("");
 
