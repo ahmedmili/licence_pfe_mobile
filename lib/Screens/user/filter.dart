@@ -72,7 +72,24 @@ class _FilterState extends State<Filter> {
             init: GlobalController(),
             builder: (c) {
               if (c.boxsList.isEmpty) {
-                return const Text("no data found");
+                return Column(
+                  children: [
+                    const SizedBox(height: 120),
+                    Container(
+                        height: 200,
+                        width: 200,
+                        child: Image(
+                            image: AssetImage("assets/images/chercher.png"))),
+                    const SizedBox(height: 5),
+                    Text(
+                      "Filter boxes as needed.",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.orange.shade900,
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
+                );
               } else {
                 return Container(
                   margin: const EdgeInsets.only(left: 8),
