@@ -116,16 +116,7 @@ class ProfileCompletionCard {
   });
 }
 
-List<ProfileCompletionCard> profileCompletionCards = [
-// ProfileCompletionCard(
-//   title: "Savings made",
-//   icon: CupertinoIcons.money_dollar,
-// ),
-// ProfileCompletionCard(
-//   title: "Boxes saved",
-//   icon: CupertinoIcons.cube_box,
-// ),
-];
+List<ProfileCompletionCard> profileCompletionCards = [];
 
 class CustomListTile {
   // ignore: prefer_typing_uninitialized_variables

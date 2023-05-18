@@ -12,19 +12,12 @@ class LocationForm extends StatefulWidget {
 class _LocationForm extends State<LocationForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   GeoLocatorController geoControlle = Get.find();
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
-    // () async {
     geoControlle.getLocation();
     geoControlle.getAddressFromLatLng();
-    //   Future.delayed(const Duration(minutes: 1));
-    // };
+
     return SizedBox(
       height: 150,
       child: Form(
@@ -35,12 +28,12 @@ class _LocationForm extends State<LocationForm> {
             Obx(
               () => TextFormField(
                 readOnly: true,
-                initialValue: geoControlle.long.value,
+                initialValue: "Longitude : ${geoControlle.long.value}",
               ),
             ),
             Obx(
               () => TextFormField(
-                initialValue: geoControlle.lat.value,
+                initialValue: "Latitude : ${geoControlle.lat.value}",
                 readOnly: true,
               ),
             ),
