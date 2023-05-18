@@ -52,9 +52,9 @@ class _PositionFieldState extends State<PositionField> {
                     _currentRangeValues.end.toString(),
                   ),
                   onChangeEnd: (RangeValues values) {
-                    setState(() {});
-                    print(values.end);
+                    geoController.getNearPartners(values.end);
                     geoController.distance.value = values.end.toInt();
+                    geoController.initCercle();
                   },
                   onChanged: (RangeValues values) {
                     setState(() {

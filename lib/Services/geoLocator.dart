@@ -1,17 +1,22 @@
 // ignore_for_file: file_names
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:saverapp/Services/users.dart';
 
 class GeoLocatorController extends GetxController {
+  //define data
   final lat = "".obs;
   final long = "".obs;
   final adress = "".obs;
   RxInt distance = 1.obs;
   static LatLng center = const LatLng(0, 0);
+
+  //define google map markers indicators
   RxSet<Marker> markers = {
     Marker(
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
@@ -20,11 +25,95 @@ class GeoLocatorController extends GetxController {
       infoWindow: const InfoWindow(title: 'your position'),
     ),
   }.obs;
-
-  addMarker(Marker m) {
-    markers.add(m);
+//define cercle indicator
+  RxSet<Circle> circles = {
+    Circle(
+      circleId: const CircleId('center'),
+      center: const LatLng(0, 0),
+      radius: 2000, // In meters
+      fillColor: Colors.blue.withOpacity(0.1),
+      strokeColor: Colors.blue.withOpacity(0.5),
+      strokeWidth: 2,
+    ),
+  }.obs;
+  //initialize cercle
+  initCercle() {
+    circles.clear();
+    circles.add(
+      Circle(
+        circleId: const CircleId('center'),
+        center: LatLng(double.parse(lat.value), double.parse(long.value)),
+        radius: double.parse(distance.value.toString()) * 1000, // In meters
+        fillColor: Colors.blue.withOpacity(0.1),
+        strokeColor: Colors.blue.withOpacity(0.5),
+        strokeWidth: 2,
+      ),
+    );
+    update();
   }
 
+  // initialize markers
+  initMarkers() {
+    markers.clear();
+    markers.add(
+      Marker(
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
+        markerId: const MarkerId('user_position'),
+        position: LatLng(double.parse(lat.value), double.parse(long.value)),
+        infoWindow: const InfoWindow(title: 'your position'),
+      ),
+    );
+    update();
+  }
+
+// get partners by distance
+  Future<void> getNearPartners(dist) async {
+    await UserService.getNearByPartners(
+      double.parse(long.value),
+      double.parse(lat.value),
+      dist,
+      unity: "km",
+    ).then((value) {
+      if (value.isNotEmpty) {
+        markers.value.clear();
+        markers.add(
+          Marker(
+            icon:
+                BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
+            markerId: const MarkerId('user_position'),
+            position: LatLng(double.parse(lat.value), double.parse(long.value)),
+            infoWindow: const InfoWindow(title: 'your position'),
+          ),
+        );
+        for (int i = 0; i < value.length; i++) {
+          var m = Marker(
+            markerId: MarkerId(value[i]["name"]),
+            position: LatLng(
+              double.parse(value[i]['lat'].toString()),
+              double.parse(value[i]['long'].toString()),
+            ),
+            infoWindow: InfoWindow(title: value[i]["name"]),
+          );
+
+          markers.add(m);
+        }
+      } else {
+        markers.value.clear();
+        markers.add(
+          Marker(
+            icon:
+                BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
+            markerId: const MarkerId('user_position'),
+            position: LatLng(double.parse(lat.value), double.parse(long.value)),
+            infoWindow: const InfoWindow(title: 'your position'),
+          ),
+        );
+      }
+    });
+    update();
+  }
+
+//
   // get user location from gps (lat,long)
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
