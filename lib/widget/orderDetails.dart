@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +19,12 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   //var qrstr = 'Add Data';
   @override
   Widget build(BuildContext context) {
-    var data = {widget.order.command_id, widget.order.partner_id};
+    var data = {
+      "command_id": widget.order.command_id,
+      "partner_id": widget.order.partner_id
+    };
     // final qrstr = "${widget.order.command_id}";
-    final qrstr = "$data";
+    final qrstr = jsonEncode(data);
     final order = widget.order;
     return Scaffold(
       appBar: AppBar(

@@ -352,6 +352,7 @@ class _OrderScreenState extends State<OrderScreen> {
         setState(() {
           qrstr = value;
         });
+        // print("jsonData ==  $value");
         Map<String, dynamic> jsonDta = jsonDecode(value);
         UserService.verifAndTakeOrder(jsonDta);
       });

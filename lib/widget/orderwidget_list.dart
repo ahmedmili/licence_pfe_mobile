@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/order.dart';
 import 'package:saverapp/widget/orderDetails.dart';
+import '../Screens/user/order.dart';
 import 'orderCardPartner.dart';
 import 'orderWidget.dart';
 
@@ -27,16 +28,15 @@ class _OrderwidgetScreenPartnerState extends State<OrderwidgetScreenPartner> {
       itemCount: items.length,
       itemBuilder: (context, index) {
         final order = items[index];
+        // print(order);
         return GestureDetector(
           onTap: () async {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => OrderDetailsScreen(
-                  order: order,
-                ),
-              ),
-            );
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => OrderScreen(),
+            //   ),
+            // );
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
