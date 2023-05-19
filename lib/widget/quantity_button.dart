@@ -6,18 +6,20 @@ class QantityButton extends StatefulWidget {
 }
 
 class _QantityButtonState extends State<QantityButton> {
-  int value = 0; // La valeur actuelle du "0"
+  int value = 1;
 
   void increment() {
     setState(() {
-      value++; // Augmente la valeur du "0"
+      value++;
     });
   }
 
   void decrement() {
-    setState(() {
-      value--; // Diminue la valeur du "0"
-    });
+    if (value > 1) {
+      setState(() {
+        value--;
+      });
+    }
   }
 
   @override

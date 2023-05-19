@@ -154,6 +154,24 @@ class _FoodDetailsState extends State<FoodDetails> {
                 const SizedBox(
                   height: 20,
                 ),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.production_quantity_limits,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      "Remaining Quantity : ${box.remaining_quantity}",
+                      style: const TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -220,11 +238,6 @@ class _FoodDetailsState extends State<FoodDetails> {
                             children: [
                               const SizedBox(height: 20),
                               const Icon(Icons.location_on_outlined),
-                              // const Text(
-                              //   "adresse commerce :",
-                              //   style: TextStyle(
-                              //       fontSize: 14, fontWeight: FontWeight.bold),
-                              // ),
                               Text(widget.partner.adress.toString(),
                                   style: TextStyle(
                                     fontSize: 14,
