@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 future: UserService.getAvailableBoxs(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
+                    // print(snapshot.data);
                     return Column(
                       children: [
                         const SizedBox(height: 20.0),

@@ -6,8 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../Models/partner.dart';
 
 const String baseURL = "http://$localhost:8000/api/";
-//const String localhost = "192.168.100.20";
-const String localhost = "192.168.100.18";
+const String localhost = "192.168.100.20";
+// const String localhost = "192.168.100.18";
 //const String localhost = "10.0.2.2";
 
 Map<String, String> headers = {
@@ -97,5 +97,16 @@ class GlobalController extends GetxController {
     } else {
       setRole("");
     }
+  }
+
+  logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.getString("token")!.isNotEmpty) {
+      prefs.setString("token", "");
+      prefs.setString("role", "");
+      setToken("");
+      setRole("");
+    }
+    Get.offAllNamed("/");
   }
 }

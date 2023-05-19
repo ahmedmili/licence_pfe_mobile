@@ -17,6 +17,8 @@ class AuthMiddleware extends GetMiddleware {
     bool role = (controller.role == roleType);
 
     if (!isAuthenticated) {
+      // return const RouteSettings(name: '/main')
+      controller.logout();
       return null;
     } else {
       if (!role) {
