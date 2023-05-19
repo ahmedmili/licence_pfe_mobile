@@ -219,11 +219,11 @@ class _FoodDetailsState extends State<FoodDetails> {
                             children: [
                               const SizedBox(height: 20),
                               const Icon(Icons.location_on_outlined),
-                              const Text(
-                                "adresse commerce :",
-                                style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
-                              ),
+                              // const Text(
+                              //   "adresse commerce :",
+                              //   style: TextStyle(
+                              //       fontSize: 14, fontWeight: FontWeight.bold),
+                              // ),
                               Text(widget.partner.adress.toString(),
                                   style: TextStyle(
                                     fontSize: 14,
@@ -297,24 +297,48 @@ class _FoodDetailsState extends State<FoodDetails> {
         decoration: BoxDecoration(
           color: Colors.grey[200],
         ),
-        child: MaterialButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      Congratulations(box: box, partner: partner)),
-            );
-          },
-          color: Colors.green[800],
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: const Text(
-            "TO RESERVE",
-            style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            MaterialButton(
+              onPressed: () {},
+              minWidth: 100,
+              color: Colors.green[800],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: const Text(
+                "+  0  -",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              ),
+            ),
+            const SizedBox(width: 10),
+            MaterialButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          Congratulations(box: box, partner: partner)),
+                );
+              },
+              color: Colors.green[800],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              minWidth: 220,
+              child: const Text(
+                "TO RESERVE",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              ),
+            ),
+          ],
         ),
       ),
     );
