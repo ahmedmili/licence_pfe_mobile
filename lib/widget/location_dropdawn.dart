@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:saverapp/Services/geoLocator.dart';
 
+import 'location_inpute_form.dart';
+
 class PopupLocationMenu extends StatefulWidget {
   const PopupLocationMenu({Key? key}) : super(key: key);
 
@@ -49,35 +51,35 @@ class _PopupLocationMenu extends State<PopupLocationMenu> {
 
             geoController.getAddressFromLatLng();
 
-            // showDialog(
-            //   context: context,
-            //   builder: (BuildContext context) {
-            //     return AlertDialog(
-            //       title: Text(
-            //         'SET POSITION',
-            //         style: TextStyle(
-            //             fontSize: 20,
-            //             fontWeight: FontWeight.bold,
-            //             color: Colors.green[800]),
-            //       ),
-            //       content: const LocationForm(),
-            //       actions: <Widget>[
-            //         TextButton(
-            //           child: Text(
-            //             'SAVE',
-            //             style: TextStyle(
-            //                 fontSize: 20,
-            //                 color: Colors.green.shade800,
-            //                 fontWeight: FontWeight.bold),
-            //           ),
-            //           onPressed: () {
-            //             Get.back();
-            //           },
-            //         ),
-            //       ],
-            //     );
-            //   },
-            // );
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text(
+                    'SET POSITION',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green[800]),
+                  ),
+                  content: const LocationForm(),
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text(
+                        'SAVE',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.green.shade800,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: () {
+                        Get.back();
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
 
             ///
             break;
