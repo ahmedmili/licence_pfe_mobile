@@ -77,7 +77,15 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
             child: FutureBuilder<List<Order>>(
               future: PartnersService.getPartnerOrders(_selectedStatus),
               builder: (context, snapshot) {
-                if (snapshot.hasData) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      valueColor:
+                          AlwaysStoppedAnimation<Color>(Colors.green[800]!),
+                      strokeWidth: 5,
+                    ),
+                  );
+                } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                   return OrderScreenPartner(
                     items: snapshot.data!,
                   );
@@ -85,11 +93,25 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
                   return Text('Error: ${snapshot.error}');
                 } else {
                   return Center(
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        Colors.green[800]!,
-                      ),
-                      strokeWidth: 5,
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 150),
+                        Container(
+                          height: 200,
+                          width: 200,
+                          child: Image(
+                            image: AssetImage("assets/images/order.png"),
+                          ),
+                        ),
+                        const SizedBox(height: 15),
+                        Text(
+                          "No orders found.",
+                          style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.orange.shade900,
+                              fontWeight: FontWeight.bold),
+                        )
+                      ],
                     ),
                   );
                 }
