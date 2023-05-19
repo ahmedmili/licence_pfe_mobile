@@ -89,7 +89,15 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
           FutureBuilder<List<Box>>(
             future: PartnersService.PartnerBoxsbystatus(_selectedStatus),
             builder: (context, snapshot) {
-              if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(Colors.green[800]!),
+                    strokeWidth: 5,
+                  ),
+                );
+              } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                 return Expanded(
                   child: Container(
                     margin: const EdgeInsets.all(30),
@@ -103,7 +111,28 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else {
-                return const SizedBox.shrink();
+                return Center(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 150),
+                      Container(
+                        height: 200,
+                        width: 200,
+                        child: Image(
+                          image: AssetImage("assets/images/box.png"),
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                      Text(
+                        "Add some boxes.",
+                        style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.orange.shade900,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                );
               }
             },
           ),
