@@ -225,10 +225,10 @@ class _FoodDetailsState extends State<FoodDetails> {
                                     fontSize: 14, fontWeight: FontWeight.bold),
                               ),
                               Text(widget.partner.adress.toString(),
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.green,
+                                    color: Colors.green.shade800,
                                   )),
                             ],
                           ),
