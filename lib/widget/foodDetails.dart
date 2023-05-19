@@ -7,6 +7,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:saverapp/Models/partner.dart';
 import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/widget/partnerDetails.dart';
+import 'package:saverapp/widget/quantity_button.dart';
 import '../Models/boxs.dart';
 import '../Screens/user/congratulations.dart';
 import 'neonButton.dart';
@@ -300,21 +301,7 @@ class _FoodDetailsState extends State<FoodDetails> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            MaterialButton(
-              onPressed: () {},
-              minWidth: 100,
-              color: Colors.green[800],
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: const Text(
-                "+  0  -",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
-              ),
-            ),
+            QantityButton(),
             const SizedBox(width: 10),
             MaterialButton(
               onPressed: () {
@@ -329,7 +316,7 @@ class _FoodDetailsState extends State<FoodDetails> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              minWidth: 220,
+              minWidth: 200,
               child: const Text(
                 "TO RESERVE",
                 style: TextStyle(
