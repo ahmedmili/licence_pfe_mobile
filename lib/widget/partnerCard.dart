@@ -193,7 +193,7 @@ class _PartnerCardState extends State<PartnerCard> {
                     image: AssetImage("assets/images/favoris.png"),
                   ),
                 ),
-                const SizedBox(height: 5),
+                const SizedBox(height: 15),
                 Text(
                   "No favorites found.",
                   style: TextStyle(
