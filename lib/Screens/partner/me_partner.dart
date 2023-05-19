@@ -6,6 +6,7 @@ import 'package:saverapp/Screens/partner/profile.dart';
 import 'package:saverapp/Services/geoLocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/partners.dart';
+import '../../widget/CustomListTile.dart';
 import '../../widget/Location_dropDawn.dart';
 import '../../widget/google_map.dart';
 
@@ -21,49 +22,35 @@ class _MePartnerState extends State<MePartner> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        padding: const EdgeInsets.all(10),
+      body: Column(
         children: [
-          const SizedBox(height: 40),
+          const SizedBox(height: 70),
           SizedBox(
-            height: 20,
-            child: ListView.separated(
-              physics: const BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                final card = profileCompletionCards[index];
-                return SizedBox(
-                  width: 190,
-                  child: Card(
-                    shadowColor: Colors.black12,
-                    child: Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Column(
-                        children: [
-                          Icon(
-                            card.icon,
-                            size: 30,
-                            color: Colors.green[800],
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            card.title,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.green[800],
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) =>
-                  const Padding(padding: EdgeInsets.only(right: 5)),
-              itemCount: profileCompletionCards.length,
+            child: Card(
+              elevation: 4,
+              shadowColor: Colors.black12,
+              child: CustomListTile(
+                cb: () {
+                  Get.to(() => const ProfilePartner());
+                },
+                icon: Icons.person_2_outlined,
+                title: "Profile",
+              ),
             ),
           ),
+          const SizedBox(height: 10),
+          SizedBox(
+            child: Card(
+              elevation: 4,
+              shadowColor: Colors.black12,
+              child: CustomListTile(
+                cb: () {},
+                icon: CupertinoIcons.chart_bar,
+                title: "Statistics",
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
           const SizedBox(
             child: Card(
               elevation: 4,
@@ -77,41 +64,7 @@ class _MePartnerState extends State<MePartner> {
               ),
             ),
           ),
-          const SizedBox(height: 5),
-          ...List.generate(
-            customListTiles.length,
-            (index) {
-              final tile = customListTiles[index];
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 5),
-                child: InkWell(
-                  onTap: () {
-                    tile.cb();
-                  },
-                  child: Card(
-                    elevation: 4,
-                    shadowColor: Colors.black12,
-                    child: ListTile(
-                      leading: Icon(tile.icon),
-                      title: Text(tile.title),
-                      trailing: const Icon(Icons.chevron_right),
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          // const Expanded(child: MapSample()),
-          // Container(
-          //   height: 200,
-          //   width: 200,
-          //   child: const MapSample(),
-          // )
-          // Expanded(
-          // child:
+          const SizedBox(height: 10),
           Container(
             width: 500,
             height: 200,
@@ -143,60 +96,32 @@ class _MePartnerState extends State<MePartner> {
               },
             ),
           ),
-          // ),
+          const SizedBox(height: 30),
+          SizedBox(
+            child: Card(
+              elevation: 4,
+              shadowColor: Colors.black12,
+              child: CustomListTile(
+                cb: () async {
+                  SharedPreferences pref =
+                      await SharedPreferences.getInstance();
+                  var res = await PartnersService.logout();
+                  // if (res.statusCode == 200) {
+                  pref.setString("token", "");
+                  pref.setString("role", "");
+                  controller.setToken("");
+                  controller.setRole("");
+
+                  Get.offAllNamed("/");
+                  // }
+                },
+                icon: CupertinoIcons.arrow_right_arrow_left,
+                title: "Logout",
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 }
-
-class ProfileCompletionCard {
-  final String title;
-  final IconData icon;
-  ProfileCompletionCard({
-    required this.title,
-    required this.icon,
-  });
-}
-
-List<ProfileCompletionCard> profileCompletionCards = [];
-
-class CustomListTile {
-  final dynamic cb;
-  final IconData icon;
-  final String title;
-  CustomListTile({
-    required this.cb,
-    required this.icon,
-    required this.title,
-  });
-  dynamic get age {
-    return cb;
-  }
-}
-
-List<CustomListTile> customListTiles = [
-  CustomListTile(
-    cb: () {
-      Get.to(() => const ProfilePartner());
-    },
-    icon: Icons.person_2_outlined,
-    title: "Profile",
-  ),
-  CustomListTile(
-    cb: () async {
-      SharedPreferences pref = await SharedPreferences.getInstance();
-      var res = await PartnersService.logout();
-      // if (res.statusCode == 200) {
-      pref.setString("token", "");
-      pref.setString("role", "");
-      controller.setToken("");
-      controller.setRole("");
-
-      Get.offAllNamed("/");
-      // }
-    },
-    title: "Logout",
-    icon: CupertinoIcons.arrow_right_arrow_left,
-  ),
-];
