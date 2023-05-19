@@ -114,11 +114,11 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                     const SizedBox(height: 20),
                     Stack(
                       children: <Widget>[
-                        Container(
-                          height: 50,
-                          width: 500,
-                          padding:
-                              const EdgeInsets.only(left: 10.0, right: 10.0),
+                        Expanded(
+                          // height: 50,
+                          // width: 500,
+                          // padding:
+                          //     const EdgeInsets.only(left: 10.0, right: 10.0),
                           child: Material(
                             elevation: 5.0,
                             borderRadius: BorderRadius.circular(20.0),
@@ -139,11 +139,15 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                                       const SizedBox(
                                         width: 10,
                                       ),
-                                      Text(
-                                        'Description: ${snapshot.data!.description}',
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16),
+                                      Expanded(
+                                        child: SingleChildScrollView(
+                                          child: Text(
+                                            'Description: ${snapshot.data!.description}',
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16),
+                                          ),
+                                        ),
                                       ),
                                       const SizedBox(
                                         width: 10,
