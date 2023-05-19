@@ -62,10 +62,10 @@ class PartnersService {
     return response;
   }
 
-  static Future<Partner> getUserInfo() async {
+  static Future<Partner> getPartnerInfo() async {
     var token = controller.token;
 
-    var url = Uri.parse('$baseURL/partner/user');
+    var url = Uri.parse('${baseURL}partner/user');
     var response = await http.get(
       url,
       headers: {
@@ -73,8 +73,10 @@ class PartnersService {
         'Authorization': 'Bearer $token'
       },
     );
+    //print(response.statusCode);
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body)["partner"];
+      // print(response.body);
       final partner = Partner(
         // Add fields here to create the new Box object
         id: data['id'],
@@ -90,6 +92,7 @@ class PartnersService {
         long: data['long'],
         adress: data['adress'],
       );
+      print(partner);
       return partner;
     } else {
       throw Exception('Failed to load user info');

@@ -24,7 +24,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
       ),
       body: SingleChildScrollView(
         child: FutureBuilder(
-          future: PartnersService.getUserInfo(),
+          future: PartnersService.getPartnerInfo(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Container(
