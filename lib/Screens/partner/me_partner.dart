@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:saverapp/Screens/partner/profile.dart';
+import 'package:saverapp/Services/geoLocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/partners.dart';
 import '../../widget/Location_dropDawn.dart';
+import '../../widget/google_map.dart';
 
 class MePartner extends StatefulWidget {
   const MePartner({super.key});
@@ -14,6 +17,7 @@ class MePartner extends StatefulWidget {
 }
 
 class _MePartnerState extends State<MePartner> {
+  GeoLocatorController geoController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +64,20 @@ class _MePartnerState extends State<MePartner> {
               itemCount: profileCompletionCards.length,
             ),
           ),
-          const SizedBox(height: 35),
+          const SizedBox(
+            child: Card(
+              elevation: 4,
+              shadowColor: Colors.black12,
+              child: ListTile(
+                leading: Icon(
+                  Icons.location_on_outlined,
+                ),
+                title: Text("Location"),
+                trailing: PopupLocationMenu(),
+              ),
+            ),
+          ),
+          const SizedBox(height: 5),
           ...List.generate(
             customListTiles.length,
             (index) {
@@ -87,19 +104,46 @@ class _MePartnerState extends State<MePartner> {
           const SizedBox(
             height: 5,
           ),
-          const SizedBox(
-            child: Card(
-              elevation: 4,
-              shadowColor: Colors.black12,
-              child: ListTile(
-                leading: Icon(
-                  Icons.location_on_outlined,
+          // const Expanded(child: MapSample()),
+          // Container(
+          //   height: 200,
+          //   width: 200,
+          //   child: const MapSample(),
+          // )
+          // Expanded(
+          // child:
+          Container(
+            width: 500,
+            height: 200,
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: GoogleMap(
+              initialCameraPosition: CameraPosition(
+                target: LatLng(
+                  double.parse(geoController.lat.value),
+                  double.parse(
+                    geoController.long.value,
+                  ),
                 ),
-                title: Text("Location"),
-                trailing: PopupLocationMenu(),
+                zoom: 14,
               ),
+              markers: {
+                Marker(
+                  alpha: 0.5,
+                  icon: BitmapDescriptor.defaultMarkerWithHue(
+                      BitmapDescriptor.hueCyan),
+                  markerId: const MarkerId('user_position'),
+                  position: LatLng(
+                    double.parse(geoController.lat.value),
+                    double.parse(
+                      geoController.long.toString(),
+                    ),
+                  ),
+                  infoWindow: const InfoWindow(title: 'your position'),
+                ),
+              },
             ),
           ),
+          // ),
         ],
       ),
     );

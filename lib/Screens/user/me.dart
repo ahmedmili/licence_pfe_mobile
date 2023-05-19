@@ -20,8 +20,6 @@ class _MeScreenState extends State<MeScreen> {
       body: FutureBuilder(
         future: UserService.getUserStats(),
         builder: (context, snapshot) {
-          // print(snapshot.data!["savedMoney"]);
-          // print(snapshot.data!["savedBoxs"]);
           if (snapshot.hasData) {
             return ListView(
               padding: const EdgeInsets.all(10),
