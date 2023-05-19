@@ -53,33 +53,27 @@ class _ProfileUserState extends State<ProfileUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Padding(
+          padding: EdgeInsets.only(left: 65),
+          child: Text(
+            "My Profile",
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.grey,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 30,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.to(const MeScreen());
-                },
-                child: Row(
-                  children: const [
-                    Icon(Icons.arrow_back),
-                    SizedBox(
-                      width: 100,
-                    ),
-                    Text(
-                      "My Profile",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    )
-                  ],
-                ),
-              ),
               const SizedBox(
                 height: 30,
               ),

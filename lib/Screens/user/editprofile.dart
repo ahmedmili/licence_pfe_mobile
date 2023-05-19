@@ -41,7 +41,7 @@ class _EditProfileState extends State<EditProfile> {
   }
 
   Future<void> updateUser() async {
-    final url = Uri.parse('http://$baseURL:8000/api/user/users/${user['id']}');
+    final url = Uri.parse('${baseURL}user/users/${user['id']}');
     final token = await readToken();
     final response = await http.patch(
       url,
@@ -73,7 +73,7 @@ class _EditProfileState extends State<EditProfile> {
   }
 
   Future<void> updatePassword() async {
-    final url = Uri.parse('http://$baseURL:8000/api/user/user/password');
+    final url = Uri.parse('${baseURL}user/user/password');
     final token = await readToken();
     final response = await http.put(
       url,
@@ -98,7 +98,7 @@ class _EditProfileState extends State<EditProfile> {
   }
 
   Future<void> getUserInfo(dynamic token) async {
-    final url = Uri.parse('http://$baseURL:8000/api/user/user');
+    final url = Uri.parse('${baseURL}user/user');
     final response = await http.get(
       url,
       headers: {
@@ -123,6 +123,21 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Padding(
+          padding: EdgeInsets.only(left: 65),
+          child: Text(
+            "Edit Profile",
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.grey,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(16),
@@ -132,27 +147,7 @@ class _EditProfileState extends State<EditProfile> {
               const SizedBox(
                 height: 30,
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Row(
-                  children: const [
-                    Icon(Icons.arrow_back),
-                    SizedBox(
-                      width: 100,
-                    ),
-                    Text(
-                      "Edit Profile",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
+
               Text(
                 "My Account Details ",
                 style: TextStyle(
@@ -218,8 +213,8 @@ class _EditProfileState extends State<EditProfile> {
               Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green[800], // Couleur de fond du bouton
-                    onPrimary: Colors.white, // Couleur du texte du bouton
+                    primary: Colors.green[800],
+                    onPrimary: Colors.white,
                   ),
                   onPressed: () {
                     updateUser();
