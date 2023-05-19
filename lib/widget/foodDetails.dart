@@ -216,14 +216,20 @@ class _FoodDetailsState extends State<FoodDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
-                            children: const [
-                              SizedBox(height: 20),
-                              Icon(Icons.location_on_outlined),
-                              Text(
-                                "adresse commerce",
+                            children: [
+                              const SizedBox(height: 20),
+                              const Icon(Icons.location_on_outlined),
+                              const Text(
+                                "adresse commerce :",
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.bold),
                               ),
+                              Text(widget.partner.adress.toString(),
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.green,
+                                  )),
                             ],
                           ),
                           Padding(

@@ -40,8 +40,8 @@ class _BoxScreenState extends State<BoxScreen> {
           onTap: () async {
             // Partner partner = globalController.partner;
             Partner partner = await UserService.getBoxPartnerInfo(box.id);
-
             controller.partner = partner;
+            // print(controller.partner.adress);
 
             Navigator.push(
               context,

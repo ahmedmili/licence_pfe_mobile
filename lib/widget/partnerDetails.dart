@@ -24,7 +24,7 @@ class _PartnerDetailsState extends State<PartnerDetails> {
           children: [
             Padding(
               padding: EdgeInsets.only(left: Dimensions.width50),
-              child: Text(
+              child: const Text(
                 "Commerce Details",
                 style: TextStyle(color: Colors.white),
               ),
@@ -216,8 +216,16 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                         ),
                         const SizedBox(width: 5),
                         Text(
-                          "Address :",
+                          "Address : ",
                           style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: Dimensions.font16,
+                          ),
+                        ),
+                        Text(
+                          controller.partner.adress.toString(),
+                          style: TextStyle(
+                            color: Colors.green,
                             fontWeight: FontWeight.bold,
                             fontSize: Dimensions.font16,
                           ),
