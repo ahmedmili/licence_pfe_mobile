@@ -5,6 +5,7 @@ import 'package:saverapp/Screens/user/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth.dart' as auth;
 import '../../Services/users.dart';
+import '../../widget/chart.dart';
 
 class MeScreen extends StatefulWidget {
   const MeScreen({super.key});
@@ -95,7 +96,12 @@ class _MeScreenState extends State<MeScreen> {
                       ),
                     );
                   },
-                )
+                ),
+                SizedBox(
+                  height: 350,
+                  width: 200,
+                  child: Chart(),
+                ),
               ],
             );
           } else {
