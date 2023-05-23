@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,6 +8,7 @@ import 'package:saverapp/Models/partner.dart';
 
 import 'package:saverapp/Screens/user/order.dart';
 
+import '../../Models/order.dart';
 import '../../Services/globals.dart';
 import '../../widget/rounded_button.dart';
 import 'package:http/http.dart' as http;
@@ -27,6 +30,8 @@ class Congratulations extends StatefulWidget {
 }
 
 class _CongratulationsState extends State<Congratulations> {
+  Order? newOrder;
+
   void placeOrder() async {
     final token = controller.token;
     String apiUrl = '${baseURL}user/orders/addorder';
@@ -38,10 +43,30 @@ class _CongratulationsState extends State<Congratulations> {
           'Authorization': 'Bearer $token'
         },
         body: body);
-    print(response.body);
     if (response.statusCode == 200) {
-      Get.snackbar(
-          "sucess", "Your order has been successfully placed. Thank you");
+      final data = jsonDecode(response.body);
+
+      newOrder = Order(
+        command_id: data["boxs"][0]["pivot"]["command_id"],
+        user_name: data["user"]["name"],
+        user_email: data["user"]["email"],
+        user_phone: data["user"]["phone"],
+        box_name: data['boxs'][0]["title"],
+        box_category: data["boxs"][0]["category"],
+        box_description: data["boxs"][0]["description"],
+        box_startdate: data["boxs"][0]["startdate"],
+        box_enddate: data["boxs"][0]["enddate"],
+        quantity: data["boxs"][0]["pivot"]["quantity"],
+        box_image: data["boxs"][0]["image"],
+        oldprice: data["boxs"][0]["oldprice"],
+        newprice: data["boxs"][0]["newprice"],
+        price: data["price"],
+        remaining_quantity: data["boxs"][0]['remaining_quantity'],
+        created_at: data['created_at'],
+      );
+
+      // Get.snackbar(
+      //     "sucess", "Your order has been successfully placed. Thank you");
     } else {
       print("Something wrong!");
     }
@@ -117,9 +142,11 @@ class _CongratulationsState extends State<Congratulations> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => OrderScreen(
-                                    box: widget.box,
-                                    partner: widget.partner,
-                                    value: widget.value),
+                                  box: widget.box,
+                                  partner: widget.partner,
+                                  value: widget.value,
+                                  neworder: newOrder!,
+                                ),
                               ),
                             );
                           },

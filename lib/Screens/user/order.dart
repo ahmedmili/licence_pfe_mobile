@@ -6,6 +6,7 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:saverapp/Models/partner.dart';
 import 'package:saverapp/dimensions.dart';
 import '../../Models/boxs.dart';
+import '../../Models/order.dart';
 import '../../widget/partnerDetails.dart';
 import '../../Services/users.dart';
 
@@ -13,11 +14,14 @@ class OrderScreen extends StatefulWidget {
   final Box box;
   final Partner partner;
   final int value;
-  const OrderScreen(
-      {super.key,
-      required this.box,
-      required this.partner,
-      required this.value});
+  final Order? neworder;
+  const OrderScreen({
+    super.key,
+    required this.box,
+    required this.partner,
+    required this.value,
+    required this.neworder,
+  });
 
   @override
   State<OrderScreen> createState() => _OrderScreenState();
