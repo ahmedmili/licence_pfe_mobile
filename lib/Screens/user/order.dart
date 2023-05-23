@@ -22,15 +22,16 @@ class OrderScreen extends StatefulWidget {
     required this.value,
     required this.neworder,
   });
-
   @override
   State<OrderScreen> createState() => _OrderScreenState();
 }
 
 class _OrderScreenState extends State<OrderScreen> {
   var qrstr = "let's Scan it";
+
   @override
   Widget build(BuildContext context) {
+    print(widget.neworder!.box_category);
     return Scaffold(
       appBar: AppBar(
         title: Row(
