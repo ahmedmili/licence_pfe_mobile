@@ -145,7 +145,7 @@ class _CongratulationsState extends State<Congratulations> {
                                   box: widget.box,
                                   partner: widget.partner,
                                   value: widget.value,
-                                  neworder: newOrder!,
+                                  neworder: newOrder,
                                 ),
                               ),
                             );

@@ -13,6 +13,8 @@ import 'package:saverapp/widget/partnerDetails.dart';
 import 'Screens/partner/home_partner.dart';
 
 import 'package:saverapp/middelwares/auth.dart';
+
+import 'Screens/splash/splash_page.dart';
 // import 'package:saverapp/middelwares/checkRole.dart';
 
 List<GetPage<dynamic>> routes = [
@@ -86,6 +88,12 @@ List<GetPage<dynamic>> routes = [
   GetPage(
     name: '/partnerdetails',
     page: () => const PartnerDetails(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 700),
+  ),
+  GetPage(
+    name: '/splash-page',
+    page: () => const SplashScreen(),
     transition: Transition.rightToLeft,
     transitionDuration: const Duration(milliseconds: 700),
   ),

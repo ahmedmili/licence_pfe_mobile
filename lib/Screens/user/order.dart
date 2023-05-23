@@ -29,6 +29,7 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
   var qrstr = "let's Scan it";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -196,13 +197,13 @@ class _OrderScreenState extends State<OrderScreen> {
                                   fontSize: Dimensions.font28 / 2,
                                 ),
                               ),
-                              Text(
-                                "${widget.box.newprice}Dt",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                    color: Colors.green[800]),
-                              ),
+                              // Text(
+                              //   "${widget.neworder!.price}Dt",
+                              //   style: TextStyle(
+                              //       fontWeight: FontWeight.bold,
+                              //       fontSize: 18,
+                              //       color: Colors.green[800]),
+                              // ),
                             ],
                           ),
                         ],

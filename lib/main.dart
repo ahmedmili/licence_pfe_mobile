@@ -34,7 +34,9 @@ class MyApp extends StatelessWidget {
       // supportedLocales: context.supportedLocales,
       // localizationsDelegates: context.localizationDelegates,
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      // initialRoute: '/',
+      // getPages: routes,
+      initialRoute: '/splash-page',
       getPages: routes,
     );
   }
