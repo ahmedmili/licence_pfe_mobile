@@ -69,11 +69,9 @@ class _CongratulationsState extends State<Congratulations> {
         remaining_quantity: data["boxs"][0]['remaining_quantity'],
         created_at: data['created_at'],
       );
-      // });
-      // print("order 1 : $newOrder");
 
-      // Get.snackbar(
-      //     "sucess", "Your order has been successfully placed. Thank you");
+      Get.snackbar(
+          "sucess", "Your order has been successfully placed. Thank you");
     } else {
       print("Something wrong!");
     }
@@ -154,17 +152,6 @@ class _CongratulationsState extends State<Congratulations> {
                                 neworder: newOrder,
                               ),
                             );
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => OrderScreen(
-                            //       box: widget.box,
-                            //       partner: widget.partner,
-                            //       value: widget.value,
-                            //       neworder: newOrder,
-                            //     ),
-                            //   ),
-                            // );
                           },
                         ),
                       ],

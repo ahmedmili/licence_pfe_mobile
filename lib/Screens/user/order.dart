@@ -119,10 +119,14 @@ class _OrderScreenState extends State<OrderScreen> {
                             color: Colors.green[800],
                           ),
                           SizedBox(width: Dimensions.width10 / 2),
-                          Text(
-                            widget.neworder!.box_description,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Text(
+                                widget.neworder!.box_description,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                            ),
                           ),
                         ],
                       ),
