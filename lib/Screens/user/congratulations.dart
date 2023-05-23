@@ -38,7 +38,7 @@ class _CongratulationsState extends State<Congratulations> {
           'Authorization': 'Bearer $token'
         },
         body: body);
-
+    print(response.body);
     if (response.statusCode == 200) {
       Get.snackbar(
           "sucess", "Your order has been successfully placed. Thank you");
