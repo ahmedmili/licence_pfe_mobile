@@ -174,7 +174,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                 ),
                               ),
                               Text(
-                                "${widget.value} ",
+                                "${widget.value}",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: Dimensions.font28 / 2,
