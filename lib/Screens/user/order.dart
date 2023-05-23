@@ -12,11 +12,10 @@ import '../../Services/users.dart';
 
 class OrderScreen extends StatefulWidget {
   // final Box box;
-  final Partner partner;
+
   final Order? neworder;
   const OrderScreen({
     super.key,
-    required this.partner,
     required this.neworder,
   });
   @override
@@ -244,7 +243,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                   ),
                                   SizedBox(width: Dimensions.width10 / 2),
                                   Text(
-                                    widget.partner.email,
+                                    widget.neworder!.partner_email,
                                     style: TextStyle(
                                         fontSize: Dimensions.font16,
                                         fontWeight: FontWeight.bold),
@@ -260,7 +259,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                       );
                                     },
                                     child: Padding(
-                                      padding: const EdgeInsets.only(left: 10),
+                                      padding: const EdgeInsets.only(left: 20),
                                       child: Row(
                                         children: [
                                           Text(
@@ -291,7 +290,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                   ),
                                   SizedBox(width: Dimensions.width10 / 2),
                                   Text(
-                                    "${widget.partner.phone}",
+                                    "${widget.neworder!.partner_phone}",
                                     style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),

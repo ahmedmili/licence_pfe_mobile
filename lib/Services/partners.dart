@@ -120,6 +120,8 @@ class PartnersService {
             command_id: data[i]['command_id'],
             user_name: data[i]['user_name'],
             partner_name: data[i]['partner_name'],
+            partner_phone: data[i]['partner_phone'],
+            partner_email: data[i]['partner_email'],
             user_email: data[i]['user_email'],
             user_phone: data[i]['user_phone'],
             box_name: data[i]['box_name'],
@@ -170,6 +172,8 @@ class PartnersService {
           final newOrder = Order(
             command_id: data[i]["boxs"][0]["pivot"]["command_id"],
             partner_name: data[i]["boxs"][0]["partner"]["name"],
+            partner_email: data[i]["boxs"][0]["partner"]["email"],
+            partner_phone: data[i]["boxs"][0]["partner"]["phone"],
             user_name: data[i]["user"]["name"],
             user_email: data[i]["user"]["email"],
             user_phone: data[i]["user"]["phone"],
