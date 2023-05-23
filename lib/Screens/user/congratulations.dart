@@ -40,9 +40,10 @@ class _CongratulationsState extends State<Congratulations> {
         body: body);
 
     if (response.statusCode == 200) {
-      print("test");
+      Get.snackbar(
+          "sucess", "Your order has been successfully placed. Thank you");
     } else {
-      print("test2");
+      print("Something wrong!");
     }
   }
 
@@ -116,7 +117,9 @@ class _CongratulationsState extends State<Congratulations> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => OrderScreen(
-                                    box: widget.box, partner: widget.partner),
+                                    box: widget.box,
+                                    partner: widget.partner,
+                                    value: widget.value),
                               ),
                             );
                           },

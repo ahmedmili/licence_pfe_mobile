@@ -12,8 +12,12 @@ import '../../Services/users.dart';
 class OrderScreen extends StatefulWidget {
   final Box box;
   final Partner partner;
-
-  const OrderScreen({super.key, required this.box, required this.partner});
+  final int value;
+  const OrderScreen(
+      {super.key,
+      required this.box,
+      required this.partner,
+      required this.value});
 
   @override
   State<OrderScreen> createState() => _OrderScreenState();
@@ -170,7 +174,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                 ),
                               ),
                               Text(
-                                "${widget.box.quantity} ",
+                                "${widget.value} ",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: Dimensions.font28 / 2,
