@@ -50,6 +50,7 @@ class _CongratulationsState extends State<Congratulations> {
       // setState(() {
       newOrder = Order(
         command_id: data["boxs"][0]["pivot"]["command_id"],
+        partner_name: data["boxs"][0]["partner"]["name"],
         user_name: data["user"]["name"],
         user_email: data["user"]["email"],
         user_phone: data["user"]["phone"],
@@ -145,9 +146,9 @@ class _CongratulationsState extends State<Congratulations> {
                             // print(newOrder!.box_category);
                             Get.to(
                               OrderScreen(
-                                box: widget.box,
+                                //box: widget.box,
                                 partner: widget.partner,
-                                value: widget.value,
+                                //value: widget.value,
                                 neworder: newOrder,
                               ),
                             );

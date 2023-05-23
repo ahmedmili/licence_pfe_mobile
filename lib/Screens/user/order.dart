@@ -11,15 +11,12 @@ import '../../widget/partnerDetails.dart';
 import '../../Services/users.dart';
 
 class OrderScreen extends StatefulWidget {
-  final Box box;
+  // final Box box;
   final Partner partner;
-  final int value;
   final Order? neworder;
   const OrderScreen({
     super.key,
-    required this.box,
     required this.partner,
-    required this.value,
     required this.neworder,
   });
   @override
@@ -90,7 +87,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                 width: 5,
                               ),
                               Text(
-                                widget.box.title,
+                                widget.neworder!.box_name,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 18),
                               ),
@@ -109,7 +106,7 @@ class _OrderScreenState extends State<OrderScreen> {
                             width: 5,
                           ),
                           Text(
-                            widget.box.category,
+                            widget.neworder!.box_category,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
@@ -124,7 +121,7 @@ class _OrderScreenState extends State<OrderScreen> {
                           ),
                           SizedBox(width: Dimensions.width10 / 2),
                           Text(
-                            widget.box.description,
+                            widget.neworder!.box_description,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
@@ -139,7 +136,7 @@ class _OrderScreenState extends State<OrderScreen> {
                           ),
                           SizedBox(width: Dimensions.width10 / 2),
                           Text(
-                            "${widget.box.startdate} -> ${widget.box.enddate}",
+                            "${widget.neworder!.box_startdate} -> ${widget.neworder!.box_enddate}",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: Dimensions.font28 / 2),
@@ -160,7 +157,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                 ),
                               ),
                               Text(
-                                "${widget.box.newprice}Dt",
+                                "${widget.neworder!.newprice}Dt",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -179,7 +176,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                 ),
                               ),
                               Text(
-                                "${widget.value}",
+                                "${widget.neworder!.quantity}",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: Dimensions.font28 / 2,
@@ -197,13 +194,13 @@ class _OrderScreenState extends State<OrderScreen> {
                                   fontSize: Dimensions.font28 / 2,
                                 ),
                               ),
-                              // Text(
-                              //   "${widget.neworder!.price}Dt",
-                              //   style: TextStyle(
-                              //       fontWeight: FontWeight.bold,
-                              //       fontSize: 18,
-                              //       color: Colors.green[800]),
-                              // ),
+                              Text(
+                                "${widget.neworder!.price}Dt",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                    color: Colors.green[800]),
+                              ),
                             ],
                           ),
                         ],
@@ -231,7 +228,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                   ),
                                   SizedBox(width: Dimensions.width10 / 2),
                                   Text(
-                                    widget.partner.name,
+                                    widget.neworder!.partner_name,
                                     style: TextStyle(
                                         fontSize: Dimensions.font16,
                                         fontWeight: FontWeight.bold),
@@ -262,21 +259,24 @@ class _OrderScreenState extends State<OrderScreen> {
                                                 const PartnerDetails()),
                                       );
                                     },
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "Show \nmore",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.green[800],
-                                              fontSize: 12),
-                                        ),
-                                        Icon(
-                                          Icons.arrow_forward,
-                                          color: Colors.green[800],
-                                          size: 35,
-                                        ),
-                                      ],
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            "Show \nmore",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.green[800],
+                                                fontSize: 12),
+                                          ),
+                                          Icon(
+                                            Icons.arrow_forward,
+                                            color: Colors.green[800],
+                                            size: 35,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ],
