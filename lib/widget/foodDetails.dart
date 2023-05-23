@@ -1,13 +1,9 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:saverapp/Models/partner.dart';
 import 'package:saverapp/Services/globals.dart';
-import 'package:saverapp/widget/partnerDetails.dart';
-import 'package:saverapp/widget/quantity_button.dart';
 import '../Models/boxs.dart';
 import '../Screens/user/congratulations.dart';
 import 'neonButton.dart';
