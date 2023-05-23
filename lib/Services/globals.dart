@@ -109,4 +109,6 @@ class GlobalController extends GetxController {
     }
     Get.offAllNamed("/");
   }
+
+  var value = 1.obs; // Define an observable variable
 }

@@ -360,7 +360,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                     onPressed: decrement,
                   ),
                   Text(
-                    value.toString(), // Affiche la valeur actuelle du "0"
+                    value.toString(),
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -380,8 +380,11 @@ class _FoodDetailsState extends State<FoodDetails> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          Congratulations(box: box, partner: partner)),
+                      builder: (context) => Congratulations(
+                            box: box,
+                            partner: partner,
+                            value: value,
+                          )),
                 );
               },
               color: Colors.green[800],

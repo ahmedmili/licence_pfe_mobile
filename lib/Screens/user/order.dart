@@ -12,6 +12,7 @@ import '../../Services/users.dart';
 class OrderScreen extends StatefulWidget {
   final Box box;
   final Partner partner;
+
   const OrderScreen({super.key, required this.box, required this.partner});
 
   @override

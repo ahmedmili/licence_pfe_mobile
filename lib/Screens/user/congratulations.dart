@@ -15,7 +15,12 @@ final GlobalController controller = Get.find<GlobalController>();
 class Congratulations extends StatefulWidget {
   final Box box;
   final Partner partner;
-  const Congratulations({super.key, required this.box, required this.partner});
+  final int value;
+  const Congratulations(
+      {super.key,
+      required this.box,
+      required this.partner,
+      required this.value});
 
   @override
   State<Congratulations> createState() => _CongratulationsState();
@@ -25,7 +30,7 @@ class _CongratulationsState extends State<Congratulations> {
   void placeOrder() async {
     final token = controller.token;
     String apiUrl = '${baseURL}user/orders/addorder';
-    String body = '{"box_id": "${widget.box.id}", "quantity": 1}';
+    String body = '{"box_id": "${widget.box.id}", "quantity": ${widget.value}}';
 
     http.Response response = await http.post(Uri.parse(apiUrl),
         headers: {
