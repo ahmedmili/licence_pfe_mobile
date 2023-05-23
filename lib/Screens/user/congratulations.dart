@@ -32,7 +32,7 @@ class Congratulations extends StatefulWidget {
 class _CongratulationsState extends State<Congratulations> {
   Order? newOrder;
 
-  void placeOrder() async {
+  Future<void> placeOrder() async {
     final token = controller.token;
     String apiUrl = '${baseURL}user/orders/addorder';
     String body = '{"box_id": "${widget.box.id}", "quantity": ${widget.value}}';
@@ -47,27 +47,27 @@ class _CongratulationsState extends State<Congratulations> {
       final data = jsonDecode(response.body);
       // print(data['user']);
       // print(data["boxs"][0]["pivot"]["command_id"]);
-      setState(() {
-        newOrder = Order(
-          command_id: data["boxs"][0]["pivot"]["command_id"],
-          user_name: data["user"]["name"],
-          user_email: data["user"]["email"],
-          user_phone: data["user"]["phone"],
-          box_name: data['boxs'][0]["title"],
-          box_category: data["boxs"][0]["category"],
-          box_description: data["boxs"][0]["description"],
-          box_startdate: data["boxs"][0]["startdate"],
-          box_enddate: data["boxs"][0]["enddate"],
-          quantity: data["boxs"][0]["pivot"]["quantity"],
-          box_image: data["boxs"][0]["image"],
-          oldprice: data["boxs"][0]["oldprice"],
-          newprice: data["boxs"][0]["newprice"],
-          price: data["price"],
-          remaining_quantity: data["boxs"][0]['remaining_quantity'],
-          created_at: data['created_at'],
-        );
-      });
-      // print(newOrder!.oldprice);
+      // setState(() {
+      newOrder = Order(
+        command_id: data["boxs"][0]["pivot"]["command_id"],
+        user_name: data["user"]["name"],
+        user_email: data["user"]["email"],
+        user_phone: data["user"]["phone"],
+        box_name: data['boxs'][0]["title"],
+        box_category: data["boxs"][0]["category"],
+        box_description: data["boxs"][0]["description"],
+        box_startdate: data["boxs"][0]["startdate"],
+        box_enddate: data["boxs"][0]["enddate"],
+        quantity: data["boxs"][0]["pivot"]["quantity"],
+        box_image: data["boxs"][0]["image"],
+        oldprice: data["boxs"][0]["oldprice"],
+        newprice: data["boxs"][0]["newprice"],
+        price: data["price"],
+        remaining_quantity: data["boxs"][0]['remaining_quantity'],
+        created_at: data['created_at'],
+      );
+      // });
+      // print("order 1 : $newOrder");
 
       // Get.snackbar(
       //     "sucess", "Your order has been successfully placed. Thank you");
@@ -140,20 +140,28 @@ class _CongratulationsState extends State<Congratulations> {
                                 fontWeight: FontWeight.bold),
                           ),
                           onPressed: () async {
-                            // print(newOrder!.box_category);
                             Navigator.of(context).pop();
-                            placeOrder();
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => OrderScreen(
-                                  box: widget.box,
-                                  partner: widget.partner,
-                                  value: widget.value,
-                                  neworder: newOrder,
-                                ),
+                            await placeOrder();
+                            // print(newOrder!.box_category);
+                            Get.to(
+                              OrderScreen(
+                                box: widget.box,
+                                partner: widget.partner,
+                                value: widget.value,
+                                neworder: newOrder,
                               ),
                             );
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => OrderScreen(
+                            //       box: widget.box,
+                            //       partner: widget.partner,
+                            //       value: widget.value,
+                            //       neworder: newOrder,
+                            //     ),
+                            //   ),
+                            // );
                           },
                         ),
                       ],
