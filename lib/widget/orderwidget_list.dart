@@ -31,12 +31,14 @@ class _OrderwidgetScreenPartnerState extends State<OrderwidgetScreenPartner> {
         // print(order);
         return GestureDetector(
           onTap: () async {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => OrderScreen(),
-            //   ),
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => OrderScreen(
+                  neworder: order,
+                ),
+              ),
+            );
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

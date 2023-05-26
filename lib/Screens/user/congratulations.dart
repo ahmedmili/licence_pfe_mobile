@@ -50,6 +50,9 @@ class _CongratulationsState extends State<Congratulations> {
       // setState(() {
       newOrder = Order(
         command_id: data["boxs"][0]["pivot"]["command_id"],
+        partner_name: data["boxs"][0]["partner"]["name"],
+        partner_email: data["boxs"][0]["partner"]["email"],
+        partner_phone: data["boxs"][0]["partner"]["phone"],
         user_name: data["user"]["name"],
         user_email: data["user"]["email"],
         user_phone: data["user"]["phone"],
@@ -66,11 +69,9 @@ class _CongratulationsState extends State<Congratulations> {
         remaining_quantity: data["boxs"][0]['remaining_quantity'],
         created_at: data['created_at'],
       );
-      // });
-      // print("order 1 : $newOrder");
 
-      // Get.snackbar(
-      //     "sucess", "Your order has been successfully placed. Thank you");
+      Get.snackbar(
+          "sucess", "Your order has been successfully placed. Thank you");
     } else {
       print("Something wrong!");
     }
@@ -145,23 +146,12 @@ class _CongratulationsState extends State<Congratulations> {
                             // print(newOrder!.box_category);
                             Get.to(
                               OrderScreen(
-                                box: widget.box,
-                                partner: widget.partner,
-                                value: widget.value,
+                                //box: widget.box,
+                                //partner: widget.partner,
+                                //value: widget.value,
                                 neworder: newOrder,
                               ),
                             );
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => OrderScreen(
-                            //       box: widget.box,
-                            //       partner: widget.partner,
-                            //       value: widget.value,
-                            //       neworder: newOrder,
-                            //     ),
-                            //   ),
-                            // );
                           },
                         ),
                       ],
