@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:saverapp/Models/boxs.dart';
 import 'package:http/http.dart' as http;
 import 'package:saverapp/Models/partner.dart';
@@ -7,6 +8,13 @@ import '../Models/order.dart';
 import 'globals.dart';
 
 final GlobalController controller = Get.find<GlobalController>();
+
+class SalesData {
+  SalesData(this.month, this.sales);
+
+  final String month;
+  final double sales;
+}
 
 class PartnersService {
   static Future<List<Box>> PartnerBoxsbystatus(String status) async {
@@ -141,7 +149,7 @@ class PartnersService {
         throw Exception('Failed to fetch partner orders');
       }
     } catch (error) {
-      print('Error fetching partner orders: $error');
+      // print('Error fetching partner orders: $error');
       rethrow; // Propagate the error
     }
   }
@@ -157,15 +165,11 @@ class PartnersService {
           'Authorization': 'Bearer $token'
         },
       );
-      // print(response.statusCode);
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
 
         final List<Order> orders = [];
-        // print(data[0]['boxs'][0]["title"]);
-        // print(data[0]["user"]["id"]);
         for (int i = 0; i < data.length; i++) {
-          // print(i);
           final newOrder = Order(
             command_id: data[i]["boxs"][0]["pivot"]["command_id"],
             user_name: data[i]["user"]["name"],
@@ -184,7 +188,6 @@ class PartnersService {
             remaining_quantity: data[i]["boxs"][0]['remaining_quantity'],
             created_at: data[i]['created_at'],
           );
-          // print(newOrder.box_category);
           orders.add(newOrder);
         }
         return orders;
@@ -192,7 +195,45 @@ class PartnersService {
         throw Exception('Failed to fetch partner orders');
       }
     } catch (error) {
-      print('Error fetching partner orders: $error');
+      // print('Error fetching partner orders: $error');
+      rethrow;
+    }
+  }
+
+  static Future<List<Map<String, dynamic>>> getPartnerBoxStats(
+      String type) async {
+    try {
+      final token = controller.token;
+      final url = Uri.parse('${baseURL}partner/salesStats/$type');
+      final response = await http.get(
+        url,
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer $token'
+        },
+      );
+      List<Map<String, dynamic>> returnedData = [];
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+
+        for (int i = 0; i < data["boxs"].length; i++) {
+          String date = data["boxs"][i]["month"];
+          DateTime dateTime = DateTime.parse(date);
+          String monthName = DateFormat('MMMM').format(dateTime);
+          // compare years and add into returned data list
+          if (dateTime.year >= 2022 && dateTime.year <= DateTime.now().year) {
+            returnedData.add({
+              "monthName": monthName,
+              "count": double.parse(data["boxs"][i]["count"].toString())
+            });
+          }
+        }
+      } else {
+        throw Exception('Failed to fetch data');
+      }
+      return returnedData;
+    } catch (error) {
+      // print('Error fetching stats data: $error');
       rethrow;
     }
   }

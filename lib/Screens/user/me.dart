@@ -97,11 +97,11 @@ class _MeScreenState extends State<MeScreen> {
                     );
                   },
                 ),
-                SizedBox(
-                  height: 350,
-                  width: 200,
-                  child: Chart(),
-                ),
+                // SizedBox(
+                //   height: 350,
+                //   width: 200,
+                //   child: Chart(),
+                // ),
               ],
             );
           } else {

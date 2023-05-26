@@ -8,7 +8,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/partners.dart';
 import '../../widget/CustomListTile.dart';
 import '../../widget/Location_dropDawn.dart';
-import '../../widget/google_map.dart';
+import '../../widget/chart.dart';
+// import '../../widget/google_map.dart';
 
 class MePartner extends StatefulWidget {
   const MePartner({super.key});
@@ -22,106 +23,110 @@ class _MePartnerState extends State<MePartner> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(height: 70),
-          SizedBox(
-            child: Card(
-              elevation: 4,
-              shadowColor: Colors.black12,
-              child: CustomListTile(
-                cb: () {
-                  Get.to(() => const ProfilePartner());
-                },
-                icon: Icons.person_2_outlined,
-                title: "Profile",
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          SizedBox(
-            child: Card(
-              elevation: 4,
-              shadowColor: Colors.black12,
-              child: CustomListTile(
-                cb: () {},
-                icon: CupertinoIcons.chart_bar,
-                title: "Statistics",
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          const SizedBox(
-            child: Card(
-              elevation: 4,
-              shadowColor: Colors.black12,
-              child: ListTile(
-                leading: Icon(
-                  Icons.location_on_outlined,
+      body: ListView(children: [
+        Column(
+          children: [
+            const SizedBox(height: 70),
+            SizedBox(
+              child: Card(
+                elevation: 4,
+                shadowColor: Colors.black12,
+                child: CustomListTile(
+                  cb: () {
+                    Get.to(() => const ProfilePartner());
+                  },
+                  icon: Icons.person_2_outlined,
+                  title: "Profile",
                 ),
-                title: Text("Location"),
-                trailing: PopupLocationMenu(),
               ),
             ),
-          ),
-          const SizedBox(height: 10),
-          Container(
-            width: 500,
-            height: 200,
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: GoogleMap(
-              initialCameraPosition: CameraPosition(
-                target: LatLng(
-                  double.parse(geoController.lat.value),
-                  double.parse(
-                    geoController.long.value,
+            const SizedBox(height: 10),
+            SizedBox(
+              child: Card(
+                elevation: 4,
+                shadowColor: Colors.black12,
+                child: CustomListTile(
+                  cb: () {
+                    Get.toNamed("partnerStats");
+                  },
+                  icon: CupertinoIcons.chart_bar,
+                  title: "Statistics",
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            const SizedBox(
+              child: Card(
+                elevation: 4,
+                shadowColor: Colors.black12,
+                child: ListTile(
+                  leading: Icon(
+                    Icons.location_on_outlined,
                   ),
+                  title: Text("Location"),
+                  trailing: PopupLocationMenu(),
                 ),
-                zoom: 14,
               ),
-              markers: {
-                Marker(
-                  alpha: 0.5,
-                  icon: BitmapDescriptor.defaultMarkerWithHue(
-                      BitmapDescriptor.hueCyan),
-                  markerId: const MarkerId('user_position'),
-                  position: LatLng(
+            ),
+            const SizedBox(height: 10),
+            Container(
+              width: 500,
+              height: 200,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: GoogleMap(
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(
                     double.parse(geoController.lat.value),
                     double.parse(
-                      geoController.long.toString(),
+                      geoController.long.value,
                     ),
                   ),
-                  infoWindow: const InfoWindow(title: 'your position'),
+                  zoom: 14,
                 ),
-              },
-            ),
-          ),
-          const SizedBox(height: 30),
-          SizedBox(
-            child: Card(
-              elevation: 4,
-              shadowColor: Colors.black12,
-              child: CustomListTile(
-                cb: () async {
-                  SharedPreferences pref =
-                      await SharedPreferences.getInstance();
-                  var res = await PartnersService.logout();
-                  // if (res.statusCode == 200) {
-                  pref.setString("token", "");
-                  pref.setString("role", "");
-                  controller.setToken("");
-                  controller.setRole("");
-
-                  Get.offAllNamed("/");
-                  // }
+                markers: {
+                  Marker(
+                    alpha: 0.5,
+                    icon: BitmapDescriptor.defaultMarkerWithHue(
+                        BitmapDescriptor.hueCyan),
+                    markerId: const MarkerId('user_position'),
+                    position: LatLng(
+                      double.parse(geoController.lat.value),
+                      double.parse(
+                        geoController.long.toString(),
+                      ),
+                    ),
+                    infoWindow: const InfoWindow(title: 'your position'),
+                  ),
                 },
-                icon: CupertinoIcons.arrow_right_arrow_left,
-                title: "Logout",
               ),
             ),
-          ),
-        ],
-      ),
+            const SizedBox(height: 30),
+            SizedBox(
+              child: Card(
+                elevation: 4,
+                shadowColor: Colors.black12,
+                child: CustomListTile(
+                  cb: () async {
+                    SharedPreferences pref =
+                        await SharedPreferences.getInstance();
+                    var res = await PartnersService.logout();
+                    // if (res.statusCode == 200) {
+                    pref.setString("token", "");
+                    pref.setString("role", "");
+                    controller.setToken("");
+                    controller.setRole("");
+
+                    Get.offAllNamed("/");
+                    // }
+                  },
+                  icon: CupertinoIcons.arrow_right_arrow_left,
+                  title: "Logout",
+                ),
+              ),
+            ),
+          ],
+        ),
+      ]),
     );
   }
 }

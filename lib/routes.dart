@@ -3,6 +3,7 @@ import 'package:saverapp/Screens/change_password.dart';
 import 'package:saverapp/Screens/code.dart';
 import 'package:saverapp/Screens/login.dart';
 import 'package:saverapp/Screens/partner/nav_bottom.dart';
+import 'package:saverapp/Screens/partner/partner_stats.dart';
 import 'package:saverapp/Screens/welcome.dart';
 import 'package:saverapp/Screens/partner/register_partner.dart';
 import 'package:saverapp/Screens/user/home.dart';
@@ -88,6 +89,12 @@ List<GetPage<dynamic>> routes = [
   GetPage(
     name: '/partnerdetails',
     page: () => const PartnerDetails(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 700),
+  ),
+  GetPage(
+    name: '/partnerStats',
+    page: () => const PartnerStats(),
     transition: Transition.rightToLeft,
     transitionDuration: const Duration(milliseconds: 700),
   ),
