@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:saverapp/Services/geoLocator.dart';
 import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/routes.dart';
+import 'package:saverapp/translator/En.dart';
 
 void main() async {
   Get.put(GlobalController());
@@ -31,11 +32,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      // supportedLocales: context.supportedLocales,
-      // localizationsDelegates: context.localizationDelegates,
+      // translation config
+      translations: Languages(),
+      locale: Get.deviceLocale,
+      fallbackLocale: const Locale('en', 'US'),
+      // localizationsDelegates: const [
+
       debugShowCheckedModeBanner: false,
-      // initialRoute: '/',
-      // getPages: routes,
       initialRoute: '/splash-page',
       getPages: routes,
     );

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:saverapp/Services/partners.dart';
 import 'package:saverapp/widget/box_list_view_partner.dart';
 import '../../Models/boxs.dart';
 import '../../dimensions.dart';
-import '../../widget/searchField.dart';
+// import '../../widget/searchField.dart';
 import '../../widget/statuswidget.dart';
 
 class PartnerBoxes extends StatefulWidget {
@@ -14,7 +15,7 @@ class PartnerBoxes extends StatefulWidget {
 }
 
 class _PartnerBoxesState extends State<PartnerBoxes> {
-  String _selectedStatus = "ACCEPTED";
+  String _selectedStatus = "accepted";
 
   void _onStatusSelected(String status) {
     setState(() {
@@ -33,9 +34,9 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
       appBar: AppBar(
         title: Padding(
           padding: EdgeInsets.only(left: Dimensions.width20),
-          child: const Text(
-            "Your Boxes :",
-            style: TextStyle(
+          child: Text(
+            "${("Your_Boxes".tr).toUpperCase()} :",
+            style: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
           ),
         ),
@@ -47,38 +48,38 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
       ),
       body: Column(
         children: [
-          Container(
+          SizedBox(
             height: 100,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
                   StatusWidget(
-                    status: "ACCEPTED",
-                    isSelected: _selectedStatus == "ACCEPTED",
+                    status: ("accepted"),
+                    isSelected: _selectedStatus == "accepted",
                     onStatusSelected: _onStatusSelected,
                   ),
                   const SizedBox(width: 0),
                   StatusWidget(
-                    status: "PENDING",
-                    isSelected: _selectedStatus == "PENDING",
+                    status: "pending",
+                    isSelected: _selectedStatus == "pending",
                     onStatusSelected: _onStatusSelected,
                   ),
                   const SizedBox(width: 0),
                   StatusWidget(
-                    status: "FINISHED",
-                    isSelected: _selectedStatus == "FINISHED",
+                    status: "finished",
+                    isSelected: _selectedStatus == "finished",
                     onStatusSelected: _onStatusSelected,
                   ),
                   const SizedBox(width: 0),
                   StatusWidget(
-                    status: "REJECTED",
+                    status: "refused",
                     isSelected: _selectedStatus == "REJECTED",
                     onStatusSelected: _onStatusSelected,
                   ),
                   const SizedBox(width: 0),
                   StatusWidget(
-                    status: "EXPIRED",
+                    status: "expired",
                     isSelected: _selectedStatus == "EXPIRED",
                     onStatusSelected: _onStatusSelected,
                   ),
@@ -109,13 +110,13 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
                   ),
                 );
               } else if (snapshot.hasError) {
-                return Text('Error: ${snapshot.error}');
+                return Text('${"error".tr}: ${snapshot.error}');
               } else {
                 return Center(
                   child: Column(
                     children: [
                       const SizedBox(height: 150),
-                      Container(
+                      const SizedBox(
                         height: 200,
                         width: 200,
                         child: Image(

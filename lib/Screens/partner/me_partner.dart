@@ -8,7 +8,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/partners.dart';
 import '../../widget/CustomListTile.dart';
 import '../../widget/Location_dropDawn.dart';
-import '../../widget/chart.dart';
+import '../../widget/translate.dart';
+// import '../../widget/chart.dart';
 // import '../../widget/google_map.dart';
 
 class MePartner extends StatefulWidget {
@@ -36,7 +37,7 @@ class _MePartnerState extends State<MePartner> {
                     Get.to(() => const ProfilePartner());
                   },
                   icon: Icons.person_2_outlined,
-                  title: "Profile",
+                  title: "profile".tr,
                 ),
               ),
             ),
@@ -50,21 +51,21 @@ class _MePartnerState extends State<MePartner> {
                     Get.toNamed("partnerStats");
                   },
                   icon: CupertinoIcons.chart_bar,
-                  title: "Statistics",
+                  title: "statistics".tr,
                 ),
               ),
             ),
             const SizedBox(height: 10),
-            const SizedBox(
+            SizedBox(
               child: Card(
                 elevation: 4,
                 shadowColor: Colors.black12,
                 child: ListTile(
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.location_on_outlined,
                   ),
-                  title: Text("Location"),
-                  trailing: PopupLocationMenu(),
+                  title: Text("location".tr),
+                  trailing: const PopupLocationMenu(),
                 ),
               ),
             ),
@@ -95,7 +96,7 @@ class _MePartnerState extends State<MePartner> {
                         geoController.long.toString(),
                       ),
                     ),
-                    infoWindow: const InfoWindow(title: 'your position'),
+                    infoWindow: InfoWindow(title: 'position'.tr),
                   ),
                 },
               ),
@@ -120,10 +121,11 @@ class _MePartnerState extends State<MePartner> {
                     // }
                   },
                   icon: CupertinoIcons.arrow_right_arrow_left,
-                  title: "Logout",
+                  title: "logout".tr,
                 ),
               ),
             ),
+            const LanguageSwitchDropdown()
           ],
         ),
       ]),

@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
 
 class StatusWidget extends StatelessWidget {
-  StatusWidget({
+  const StatusWidget({
     Key? key,
     required this.status,
     required this.isSelected,
@@ -24,14 +22,14 @@ class StatusWidget extends StatelessWidget {
       child: Container(
         height: 50,
         width: 150,
-        padding: EdgeInsets.only(left: 5, right: 5),
+        padding: const EdgeInsets.only(left: 5, right: 5),
         child: Material(
           elevation: isSelected ? 10.0 : 5.0,
           borderRadius: BorderRadius.circular(20),
           color: isSelected ? Colors.green.shade800 : Colors.white,
           child: Center(
             child: Text(
-              status,
+              status.tr.toUpperCase(),
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,

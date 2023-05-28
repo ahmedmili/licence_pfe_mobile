@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:saverapp/Screens/partner/profile.dart';
 import 'package:saverapp/Services/globals.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -97,15 +96,11 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
       setState(() {
         user = json.decode(response.body);
       });
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('User details updated successfully')),
-      );
+
+      Get.snackbar('Success', 'User details updated successfully');
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Failed to update user details. Please try again.'),
-        ),
-      );
+      Get.snackbar(
+          'Error'.tr, 'Failed to update user details. Please try again.');
     }
   }
 
@@ -138,11 +133,11 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Padding(
-          padding: EdgeInsets.only(left: 70),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 70),
           child: Text(
-            "Edit Profile",
-            style: TextStyle(color: Colors.black),
+            "Edit_Profile".tr,
+            style: const TextStyle(color: Colors.black),
           ),
         ),
         backgroundColor: Colors.transparent,
@@ -161,7 +156,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                 height: 10,
               ),
               Text(
-                "My Account Details ",
+                "Account_Details".tr,
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: Colors.green[800]),
               ),
@@ -175,11 +170,11 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   borderRadius: BorderRadius.circular(20.0),
                   child: TextFormField(
                     controller: nameController,
-                    decoration: const InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 14.0),
-                      prefixIcon: Icon(Icons.person),
-                      labelText: 'Name',
+                      prefixIcon: const Icon(Icons.person),
+                      labelText: 'Name'.tr,
                       border: InputBorder.none,
                     ),
                   ),
@@ -231,11 +226,11 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   borderRadius: BorderRadius.circular(20.0),
                   child: TextFormField(
                     controller: phoneController,
-                    decoration: const InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 14.0),
-                      prefixIcon: Icon(Icons.phone),
-                      labelText: 'Phone',
+                      prefixIcon: const Icon(Icons.phone),
+                      labelText: 'Phone'.tr,
                       border: InputBorder.none,
                     ),
                   ),
@@ -249,11 +244,11 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   borderRadius: BorderRadius.circular(20.0),
                   child: TextFormField(
                     controller: categoryController,
-                    decoration: const InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 14.0),
-                      prefixIcon: Icon(Icons.store),
-                      labelText: 'Category',
+                      prefixIcon: const Icon(Icons.store),
+                      labelText: 'Category'.tr,
                       border: InputBorder.none,
                     ),
                   ),
@@ -267,11 +262,11 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   borderRadius: BorderRadius.circular(20.0),
                   child: TextFormField(
                     controller: openingtimeController,
-                    decoration: const InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 14.0),
-                      prefixIcon: Icon(Icons.access_time),
-                      labelText: 'Opening Time',
+                      prefixIcon: const Icon(Icons.access_time),
+                      labelText: 'Opening_Time'.tr,
                       border: InputBorder.none,
                     ),
                   ),
@@ -285,11 +280,11 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   borderRadius: BorderRadius.circular(20.0),
                   child: TextFormField(
                     controller: closingtimeController,
-                    decoration: const InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 14.0),
-                      prefixIcon: Icon(Icons.access_time_filled),
-                      labelText: 'Closing Time',
+                      prefixIcon: const Icon(Icons.access_time_filled),
+                      labelText: 'Closing_Time'.tr,
                       border: InputBorder.none,
                     ),
                   ),
@@ -299,24 +294,20 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
               Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green[800],
-                    onPrimary: Colors.white,
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.green[800],
                   ),
                   onPressed: () {
                     updateUser();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ProfilePartner()),
-                    );
+                    Get.toNamed("profilePartner");
                   },
-                  child: const Text('Save Changes'),
+                  child: Text('Save'.tr),
                 ),
               ),
               //change password
               const SizedBox(height: 20),
               Text(
-                "Change Password",
+                "modifie_Password".tr,
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: Colors.green[800]),
               ),
@@ -329,11 +320,11 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   child: TextFormField(
                     controller: newPasswordController,
                     obscureText: true,
-                    decoration: const InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 14.0),
-                      prefixIcon: Icon(Icons.lock),
-                      labelText: 'New password',
+                      prefixIcon: const Icon(Icons.lock),
+                      labelText: 'New_password'.tr,
                       border: InputBorder.none,
                     ),
                   ),
@@ -344,18 +335,15 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
               Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green[800], // Couleur de fond du bouton
-                    onPrimary: Colors.white, // Couleur du texte du bouton
+                    foregroundColor: Colors.white,
+                    backgroundColor:
+                        Colors.green[800], // Couleur du texte du bouton
                   ),
                   onPressed: () {
                     updatePassword();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ProfilePartner()),
-                    );
+                    Get.toNamed("profilePartner");
                   },
-                  child: const Text('Save Password'),
+                  child: Text('Save'.tr),
                 ),
               ),
             ],

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:saverapp/dimensions.dart';
 
 import '../widget/rounded_button.dart';
+import '../widget/translate.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -30,19 +31,21 @@ class _WelcomeState extends State<Welcome> {
             ),
             SizedBox(height: Dimensions.height20),
             Text(
-              "Welcome to SaverFood",
+              // "Welcome to SaverFood",
+              "greeting".tr,
               style: GoogleFonts.bebasNeue(fontSize: 40),
             ),
             SizedBox(height: Dimensions.height10),
             Text(
-              "Let's take you with us !",
+              // "Let's take you with us !",
+              "greeting_message".tr,
               style: TextStyle(
                 fontSize: Dimensions.font20,
               ),
             ),
             SizedBox(height: Dimensions.height50),
             RoundedButton(
-              btnText: 'LOGIN',
+              btnText: 'login'.tr,
               onBtnPressed: () => Get.toNamed("/login"),
             ),
             SizedBox(height: Dimensions.height30),
@@ -65,7 +68,7 @@ class _WelcomeState extends State<Welcome> {
                     child: Padding(
                       padding: const EdgeInsets.only(right: 5),
                       child: Text(
-                        "Register As Partner",
+                        "register_partner".tr,
                         style: TextStyle(
                             fontSize: Dimensions.font28 / 2,
                             color: Colors.green.shade800,
@@ -84,7 +87,7 @@ class _WelcomeState extends State<Welcome> {
                     child: Padding(
                       padding: EdgeInsets.only(right: Dimensions.width10),
                       child: Text(
-                        "Register As User",
+                        "register_user".tr,
                         style: TextStyle(
                             fontSize: Dimensions.font28 / 2,
                             color: Colors.green.shade800,
@@ -95,6 +98,7 @@ class _WelcomeState extends State<Welcome> {
                 ],
               ),
             ),
+            const LanguageSwitchDropdown(),
           ],
         ),
       ),

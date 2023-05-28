@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:saverapp/Screens/partner/editBox_partner.dart';
 import 'package:saverapp/Services/globals.dart';
 import '../../Models/boxs.dart';
@@ -91,7 +92,7 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
                       width: 5,
                     ),
                     Text(
-                      'Title : ${box.title}',
+                      '${"Title".tr} : ${box.title}',
                       style: const TextStyle(
                           fontSize: 14, fontWeight: FontWeight.bold),
                     ),
@@ -109,7 +110,7 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
                       width: 5,
                     ),
                     Text(
-                      'Category : ${box.category}',
+                      '${"Category".tr} : ${box.category}',
                       style: const TextStyle(
                           fontSize: 14, fontWeight: FontWeight.bold),
                     ),
@@ -128,7 +129,7 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
                           width: 5,
                         ),
                         Text(
-                          'Initial quantity : ${box.quantity}',
+                          '${"Initial_quantity".tr} : ${box.quantity}',
                           style: const TextStyle(
                               fontSize: 14, fontWeight: FontWeight.bold),
                         ),
@@ -137,7 +138,7 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
                     Padding(
                       padding: const EdgeInsets.only(left: 30),
                       child: Text(
-                        'Remaining quantity : ${box.remaining_quantity}',
+                        '${"Remaining_quantity".tr} : ${box.remaining_quantity}',
                         style: const TextStyle(
                             fontSize: 14, fontWeight: FontWeight.bold),
                       ),
@@ -157,7 +158,7 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
                           width: 5,
                         ),
                         Text(
-                          'Available from : ${box.startdate}',
+                          '${"Available from".tr} : ${box.startdate}',
                           style: const TextStyle(
                               fontSize: 14, fontWeight: FontWeight.bold),
                         ),
@@ -166,7 +167,7 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
                     Padding(
                       padding: const EdgeInsets.only(left: 30),
                       child: Text(
-                        'To : ${box.startdate}',
+                        '${"To".tr} : ${box.startdate}',
                         style: const TextStyle(
                             fontSize: 14, fontWeight: FontWeight.bold),
                       ),
@@ -186,7 +187,7 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
                     Expanded(
                       child: SingleChildScrollView(
                         child: Text(
-                          "Description of this box : ${box.description}",
+                          "Description : ${box.description}",
                           style: const TextStyle(
                               fontSize: 14, fontWeight: FontWeight.bold),
                         ),
@@ -255,9 +256,9 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          child: const Text(
-            "Edit This Box",
-            style: TextStyle(
+          child: Text(
+            "Edit".tr,
+            style: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
           ),
         ),

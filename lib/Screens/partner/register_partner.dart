@@ -150,7 +150,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
 
         Get.to(const Waiting());
       } else {
-        Get.snackbar("error", responseMap.values.first[0]);
+        Get.snackbar("error".tr, responseMap.values.first[0]);
       }
     } else {
       errorSnackBar(context, 'email not valid');
@@ -178,7 +178,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               Padding(
                 padding: const EdgeInsets.only(right: 60),
                 child: Text(
-                  "Create your profile to save your business : ",
+                  "${'register_slog'.tr} : ",
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -199,9 +199,9 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Name',
+                        hintText: 'Name'.tr,
                       ),
                       onChanged: (value) {
                         _name = value;
@@ -275,9 +275,9 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Phone',
+                        hintText: 'Phone'.tr,
                       ),
                       onChanged: (value) {
                         _phone = value;
@@ -301,9 +301,9 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
                       obscureText: true,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Password',
+                        hintText: 'Password'.tr,
                       ),
                       onChanged: (value) {
                         _password = value;
@@ -320,7 +320,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange[900],
                 ),
-                child: const Text('Select Image'),
+                child: Text('Select_Image'.tr),
               ),
               Text(_imageName),
               const SizedBox(height: 3),
@@ -332,14 +332,14 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: _image == null
-                    ? const Center(child: Text('No image selected'))
+                    ? Center(child: Text('No_image'.tr))
                     : Image.file(_image!, fit: BoxFit.cover),
               ),
               const SizedBox(
                 height: 15,
               ),
               Text(
-                'Category',
+                'Category'.tr,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
@@ -374,10 +374,11 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               MaterialButton(
                 onPressed: _showTimePicker,
                 color: Colors.orange[900],
-                child: const Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text('Pick Opening Time',
-                      style: TextStyle(color: Colors.white, fontSize: 15)),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text('Pick_Opening_Time'.tr,
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 15)),
                 ),
               ),
 
@@ -392,10 +393,11 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               MaterialButton(
                 onPressed: _showClosingTimePicker,
                 color: Colors.orange[900],
-                child: const Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text('Pick Closing Time',
-                      style: TextStyle(color: Colors.white, fontSize: 15)),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text('Pick_Closing_Time'.tr,
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 15)),
                 ),
               ),
 
@@ -407,13 +409,14 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 color: Colors.orange[900],
                 child: SizedBox(
                   height: 50,
-                  width: 145,
+                  width: 167,
                   child: Row(
-                    children: const [
-                      Text("Get Position",
-                          style: TextStyle(color: Colors.white, fontSize: 15)),
-                      Expanded(child: SizedBox()),
-                      PopupLocationMenu(),
+                    children: [
+                      Text("Get_Position".tr,
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 15)),
+                      const Expanded(child: SizedBox()),
+                      const PopupLocationMenu(),
                     ],
                   ),
                 ),
@@ -422,21 +425,11 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 height: 15,
               ),
               GetBuilder<GeoLocatorController>(builder: (controllerr) {
-                print(controllerr.adress.value);
                 return Text(controllerr.adress.value);
               }),
-              // GetX<GeoLocatorController>(
-              //   init:GeoLocatorController ,
-              //   builder: (controller) {
-              //   return Text(controller.adress.value),
-              // },)
-              // Obx(() => Text(geoController.adress.value)),
-              // const SizedBox(
-              //   height: 15,
-              // ),
 
               RoundedButton(
-                btnText: 'Send Request',
+                btnText: 'Send_Request'.tr,
                 onBtnPressed: () => createAccountPressed(),
               ),
 
@@ -448,9 +441,9 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 onTap: () {
                   Get.to(const LoginScreen());
                 },
-                child: const Text(
-                  'Already have an account ? Login',
-                  style: TextStyle(color: Colors.blue),
+                child: Text(
+                  'account_question'.tr,
+                  style: const TextStyle(color: Colors.blue),
                 ),
               ),
               const SizedBox(

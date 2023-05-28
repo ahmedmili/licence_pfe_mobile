@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:saverapp/Models/order.dart';
 import 'package:saverapp/dimensions.dart';
 import 'package:saverapp/widget/statuswidget.dart';
@@ -15,7 +16,7 @@ class HomePartnerScreen extends StatefulWidget {
 }
 
 class _HomePartnerScreenState extends State<HomePartnerScreen> {
-  String _selectedStatus = "PENDING";
+  String _selectedStatus = "pending";
 
   void _onStatusSelected(String status) {
     setState(() {
@@ -29,9 +30,9 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
       appBar: AppBar(
         title: Padding(
           padding: EdgeInsets.only(left: Dimensions.width20),
-          child: const Text(
-            "Orders :",
-            style: TextStyle(
+          child: Text(
+            "${"orders".tr}:",
+            style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 24,
@@ -53,20 +54,20 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
               child: Row(
                 children: [
                   StatusWidget(
-                    status: "PENDING",
-                    isSelected: _selectedStatus == "PENDING",
+                    status: "pending",
+                    isSelected: _selectedStatus == "pending",
                     onStatusSelected: _onStatusSelected,
                   ),
                   const SizedBox(width: 0),
                   StatusWidget(
-                    status: "SUCCESS",
-                    isSelected: _selectedStatus == "SUCCESS",
+                    status: "success",
+                    isSelected: _selectedStatus == "success",
                     onStatusSelected: _onStatusSelected,
                   ),
                   const SizedBox(width: 0),
                   StatusWidget(
-                    status: "CANCEL",
-                    isSelected: _selectedStatus == "CANCEL",
+                    status: "cancel",
+                    isSelected: _selectedStatus == "cancel",
                     onStatusSelected: _onStatusSelected,
                   ),
                 ],
@@ -90,13 +91,13 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
                     items: snapshot.data!,
                   );
                 } else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
+                  return Text('${'Error'.tr} : ${snapshot.error}');
                 } else {
                   return Center(
                     child: Column(
                       children: [
                         const SizedBox(height: 150),
-                        Container(
+                        const SizedBox(
                           height: 200,
                           width: 200,
                           child: Image(
@@ -105,7 +106,7 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
                         ),
                         const SizedBox(height: 15),
                         Text(
-                          "No orders found.",
+                          ("No_orders".tr).toUpperCase(),
                           style: TextStyle(
                               fontSize: 25,
                               color: Colors.orange.shade900,

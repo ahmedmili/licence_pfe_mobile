@@ -104,9 +104,9 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
       appBar: AppBar(
         title: Padding(
           padding: EdgeInsets.only(left: Dimensions.width20),
-          child: const Text(
-            "Add Box :",
-            style: TextStyle(
+          child: Text(
+            "${'add_box'.tr} :",
+            style: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
           ),
         ),
@@ -133,9 +133,9 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Title',
+                        hintText: 'Title'.tr,
                       ),
                       onChanged: (value) {
                         _title = value;
@@ -183,9 +183,9 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Old Price',
+                        hintText: 'Old_Price'.tr,
                       ),
                       onChanged: (value) {
                         _oldprice = value;
@@ -208,9 +208,9 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'New Price',
+                        hintText: 'New_Price'.tr,
                       ),
                       onChanged: (value) {
                         _newprice = value;
@@ -262,9 +262,9 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                                 : DateFormat('yyyy-MM-dd HH:mm')
                                     .format(_startDate!),
                           ),
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'Start Date',
+                            hintText: 'Start_Date'.tr,
                           ),
                         ),
                       ),
@@ -316,9 +316,9 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                                 : DateFormat('yyyy-MM-dd HH:mm')
                                     .format(_endDate!),
                           ),
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'End Date',
+                            hintText: 'End_Date'.tr,
                           ),
                         ),
                       ),
@@ -340,9 +340,9 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Quantity',
+                        hintText: 'Quantity'.tr,
                       ),
                       onChanged: (value) {
                         _quantity = value;
@@ -357,9 +357,9 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
               ElevatedButton(
                 onPressed: _pickImage,
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.orange[900],
+                  backgroundColor: Colors.orange[900],
                 ),
-                child: const Text('Select Image'),
+                child: Text('Select_Image'.tr),
               ),
               Text(_imageName),
               const SizedBox(height: 3),
@@ -373,7 +373,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                 child: _image == null
                     ? Center(
                         child: Text(
-                        'No image selected',
+                        'No_image'.tr,
                         style: TextStyle(
                             color: Colors.orange[900],
                             fontWeight: FontWeight.bold),
@@ -385,7 +385,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
               ),
               // Utilisez un DropdownButtonFormField pour sélectionner la catégorie
               Text(
-                'Category',
+                'Category'.tr,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
@@ -411,7 +411,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
               ),
 
               RoundedButton(
-                btnText: 'Create Box',
+                btnText: 'Create_Box'.tr,
                 onBtnPressed: () => createBoxPressed(),
               ),
 

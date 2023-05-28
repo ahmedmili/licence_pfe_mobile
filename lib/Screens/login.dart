@@ -90,9 +90,9 @@ class _LoginScreenState extends State<LoginScreen> {
       }
 
       // If we reach this point, both login attempts have failed
-      errorSnackBar(context, 'Invalid email or password');
+      Get.snackbar("Error".tr, "Invalid email or password");
     } else {
-      errorSnackBar(context, 'enter all required fields');
+      Get.snackbar("Error".tr, "enter all required fields");
     }
   }
 
@@ -125,11 +125,11 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Column(
                   children: [
-                    Text("HELLO AGAIN !",
+                    Text("login_hello".tr,
                         style: GoogleFonts.bebasNeue(fontSize: 52)),
                     SizedBox(height: Dimensions.height10),
                     Text(
-                      "Welcome back , you've been missed !",
+                      "login_slog".tr,
                       style: TextStyle(
                         fontSize: Dimensions.font20,
                       ),
@@ -158,9 +158,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Email is required';
+                            return 'email_requied'.tr;
                           } else if (!isValidEmail(value)) {
-                            return 'Invalid email format';
+                            return 'email_invalid_format'.tr;
                           }
                           return null;
                         },
@@ -182,12 +182,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.only(left: 12.0),
+                      padding: const EdgeInsets.only(left: 12.0),
                       child: TextFormField(
                         obscureText: _obscureText,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Password',
+                          hintText: 'Password'.tr,
                           suffixIcon: GestureDetector(
                             onTap: () {
                               setState(() {
@@ -204,7 +204,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Password is required';
+                            return 'password_required'.tr;
                           }
                           return null;
                         },
@@ -218,18 +218,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: Dimensions.height10),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              const ForgetPassword(),
-                        ));
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (BuildContext context) =>
+                    //         const ForgetPassword(),
+                    //   ),
+                    // );
+                    Get.toNamed("forgetPassword");
                   },
-                  child: const Padding(
-                    padding: EdgeInsets.only(left: 220.0),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 220.0),
                     child: Text(
-                      'Forget Password ?',
-                      style: TextStyle(
+                      'forget_passsword_question'.tr,
+                      style: const TextStyle(
                         color: Colors.blue,
                       ),
                     ),
@@ -239,7 +241,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 30,
                 ),
                 RoundedButton(
-                  btnText: 'LOGIN',
+                  btnText: ('login'.tr).toUpperCase(),
                   onBtnPressed: () => loginPressed(context),
                 ),
                 const SizedBox(
@@ -259,7 +261,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
-                          'Or continue with',
+                          'or_continue_message'.tr,
                           style: TextStyle(color: Colors.grey[700]),
                         ),
                       ),
@@ -301,13 +303,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 60,
                 ),
-                // FutureBuilder(
-                //   builder: (context, snapshot) {
-                //     // print(snapshot);
-                //     return Text(geoController.lat.toString());
-                //   },
-                //   future: geoController.getLocation(),
-                // )
               ],
             ),
           ),

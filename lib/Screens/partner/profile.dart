@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:saverapp/Screens/partner/editprofile_partner.dart';
 import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/Services/partners.dart';
@@ -61,9 +62,9 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text(
-                      "My Account Details ",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    Text(
+                      "Account_Details".tr,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 20),
                     Stack(
@@ -94,7 +95,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                                         width: 10,
                                       ),
                                       Text(
-                                        'Name: ${snapshot.data!.name}',
+                                        '${"Name".tr}: ${snapshot.data!.name}',
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16),
@@ -115,10 +116,6 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                     Stack(
                       children: <Widget>[
                         Expanded(
-                          // height: 50,
-                          // width: 500,
-                          // padding:
-                          //     const EdgeInsets.only(left: 10.0, right: 10.0),
                           child: Material(
                             elevation: 5.0,
                             borderRadius: BorderRadius.circular(20.0),
@@ -238,7 +235,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                                         width: 10,
                                       ),
                                       Text(
-                                        "Phone: ${snapshot.data!.phone}",
+                                        "${'Phone'.tr}: ${snapshot.data!.phone}",
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16),
@@ -284,7 +281,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                                         width: 10,
                                       ),
                                       Text(
-                                        "Category: ${snapshot.data!.category}",
+                                        "${'Category'.tr}: ${snapshot.data!.category}",
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16),
@@ -332,7 +329,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                                         width: 10,
                                       ),
                                       Text(
-                                        "Opening Time: ${snapshot.data!.openingtime}",
+                                        "${'Opening_Time'.tr}: ${snapshot.data!.openingtime}",
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16),
@@ -380,7 +377,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                                         width: 10,
                                       ),
                                       Text(
-                                        "Closing Time: ${snapshot.data!.closingtime}",
+                                        "${'Closing_Time'.tr}: ${snapshot.data!.closingtime}",
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16),
@@ -410,7 +407,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 240.0),
                         child: Text(
-                          'Edit Your Profile ?',
+                          '${"Edit_Profile".tr} ?',
                           style: TextStyle(
                               color: Colors.green[800],
                               fontWeight: FontWeight.bold),

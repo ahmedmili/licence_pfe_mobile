@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:saverapp/Screens/partner/partner_boxes.dart';
 
 import 'boxform.dart';
@@ -46,24 +47,24 @@ class _NavBottomScreenState extends State<NavBottomScreen> {
         currentIndex: currentTabIndex,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.green[800],
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: const Icon(Icons.home),
+            label: ('home'.tr).toUpperCase(),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Add Box',
+            icon: const Icon(Icons.add),
+            label: ('add_box'.tr).toUpperCase(),
           ),
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               CupertinoIcons.cube_box,
             ),
-            label: 'Your Boxes',
+            label: ('Your_Boxes'.tr).toUpperCase(),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_3_outlined),
-            label: 'Me',
+            icon: const Icon(Icons.person_3_outlined),
+            label: ('Me'.tr).toUpperCase(),
           ),
         ],
       ),
