@@ -1,12 +1,18 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:saverapp/dimensions.dart';
 
-class AdresseField extends StatefulWidget {
-  const AdresseField({super.key, required this.adress});
+import '../Services/geoLocator.dart';
 
-  final String adress;
+class AdresseField extends StatefulWidget {
+  const AdresseField({
+    super.key,
+    // required this.adress,
+  });
+
+  // final String adress;
   @override
   State<AdresseField> createState() => _AdresseFieldState();
 }
@@ -14,6 +20,7 @@ class AdresseField extends StatefulWidget {
 class _AdresseFieldState extends State<AdresseField> {
   @override
   Widget build(BuildContext context) {
+    // print(widget.adress);
     return Stack(
       children: <Widget>[
         Expanded(
@@ -40,14 +47,28 @@ class _AdresseFieldState extends State<AdresseField> {
                         SizedBox(width: Dimensions.height10 / 2),
                         Expanded(
                           child: SingleChildScrollView(
-                            child: Text(
-                              widget.adress,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[800],
-                                  fontSize: 16),
-                            ),
-                          ),
+                              child: GetBuilder<GeoLocatorController>(
+                            builder: (controller) {
+                              // print("rebuild");
+                              // init: GeoLocatorController(),
+                              return Text(
+                                controller.adress.value,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.green[800],
+                                    fontSize: 16),
+                              );
+                            },
+                          )
+                              // Text(
+                              //   widget.adress,
+
+                              //   style: TextStyle(
+                              //       fontWeight: FontWeight.bold,
+                              //       color: Colors.green[800],
+                              //       fontSize: 16),
+                              // ),
+                              ),
                         ),
                       ],
                     ),

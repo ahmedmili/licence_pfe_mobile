@@ -44,7 +44,9 @@ class _TourScreenState extends State<TourScreen> {
       body: Column(
         children: [
           const SizedBox(height: 40),
-          AdresseField(adress: geoController.adress.toString()),
+          const AdresseField(
+              // adress: geoController.adress.toString(),
+              ),
           const SizedBox(height: 10),
           MyBottonNavBar(
             onTabChange: (index) => navigateBottomBar(index),

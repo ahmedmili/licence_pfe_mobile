@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:saverapp/routes.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -43,11 +42,12 @@ class _SplashScreenState extends State<SplashScreen>
             ),
           ),
         ),
-        Center(
-          child: Image.asset(
-            "assets/images/name.png",
-            // width: Dimensions.splashImg,
-          ),
+        const Center(
+          child: Text("SOUSSE , TUNISIE"),
+          //  Image.asset(
+          //   "assets/images/name.png",
+          //   // width: Dimensions.splashImg,
+          // ),
         ),
       ]),
     );
