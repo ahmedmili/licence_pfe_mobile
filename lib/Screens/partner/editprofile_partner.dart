@@ -64,8 +64,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
       'closingtime': closingtimeController.text,
       'description': descriptionController.text,
     };
-    // print(partner.id);
-    await PartnersService.updateUser(data, partner.id).then(
+    await PartnersService.updatePartner(data).then(
       (value) => setState(
         () {
           partner = value;
@@ -74,60 +73,15 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
     );
   }
 
-  updatePassword() {}
-
-  // Future<void> updateUser() async {
-  //   final url = Uri.parse('$baseURL/partner/partners/${user['id']}');
-  //   // final token = await readToken();
-  //   final response = await http.patch(
-  //     url,
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Authorization': 'Bearer $token',
-  //     },
-  //     body: json.encode({
-  //       'name': nameController.text,
-  //       'email': emailController.text,
-  //       'phone': int.parse(phoneController.text),
-  //     }),
-  //   );
-
-  //   if (response.statusCode == 200) {
-  //     setState(() {
-  //       user = json.decode(response.body);
-  //     });
-
-  //     Get.snackbar('Success', 'User details updated successfully');
-  //   } else {
-  //     Get.snackbar(
-  //         'Error'.tr, 'Failed to update user details. Please try again.');
-  //   }
-  // }
-
-  // Future<void> updatePassword() async {
-  //   final url = Uri.parse('$baseURL/partner/changepassword');
-  //   final token = await readToken();
-  //   final response = await http.put(
-  //     url,
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Authorization': 'Bearer $token',
-  //     },
-  //     body: json.encode({
-  //       'password': newPasswordController.text,
-  //     }),
-  //   );
-
-  //   if (response.statusCode == 200) {
-  //     setState(() {
-  //       user = json.decode(response.body);
-  //     });
-
-  //     Get.snackbar("sucess", 'User Password updated successfully');
-  //   } else {
-  //     Get.snackbar("eroor", 'Failed to update user details. Please try again.');
-  //   }
-  // }
+  updatePassword() async {
+    await PartnersService.updatePassword(nameController.text).then(
+      (value) => setState(
+        () {
+          partner = value;
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -340,7 +294,6 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   ),
                   onPressed: () {
                     updatePassword();
-                    Get.toNamed("profilePartner");
                   },
                   child: Text('Save'.tr),
                 ),

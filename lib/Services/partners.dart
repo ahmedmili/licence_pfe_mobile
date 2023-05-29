@@ -149,7 +149,6 @@ class PartnersService {
         throw Exception('Failed to fetch partner orders');
       }
     } catch (error) {
-      // print('Error fetching partner orders: $error');
       rethrow; // Propagate the error
     }
   }
@@ -198,7 +197,6 @@ class PartnersService {
         throw Exception('Failed to fetch partner orders');
       }
     } catch (error) {
-      // print('Error fetching partner orders: $error');
       rethrow;
     }
   }
@@ -236,12 +234,11 @@ class PartnersService {
       }
       return returnedData;
     } catch (error) {
-      // print('Error fetching stats data: $error');
       rethrow;
     }
   }
 
-  static Future<Partner> updateUser(Map<String, dynamic> data, int id) async {
+  static Future<Partner> updatePartner(Map<String, dynamic> data) async {
     final token = controller.token;
     final url = Uri.parse('${baseURL}partner/updateData');
     final response = await http.patch(
@@ -262,13 +259,38 @@ class PartnersService {
     );
 
     if (response.statusCode == 200) {
-      Get.snackbar('Success', 'User details updated successfully');
+      Get.snackbar('Success', 'your details changed successfully');
       Get.offNamed("profilePartner");
 
       return json.decode(response.body);
     } else {
       Get.snackbar(
-          'Error'.tr, 'Failed to update user details. Please try again.');
+          'Error'.tr, 'Failed to changed your details. Please try again.');
+      throw Exception('Failed to fetch partner data');
+    }
+  }
+
+  static Future<Partner> updatePassword(password) async {
+    final token = controller.token;
+    final url = Uri.parse('${baseURL}partner/changepassword');
+    final response = await http.put(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+      body: json.encode({
+        'password': password,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      Get.snackbar('Success', 'your password changed successfully');
+      Get.offNamed("profilePartner");
+      return json.decode(response.body);
+    } else {
+      print(response.statusCode);
+      Get.snackbar('Error'.tr, 'Failed to change password. Please try again.');
       throw Exception('Failed to fetch partner data');
     }
   }
