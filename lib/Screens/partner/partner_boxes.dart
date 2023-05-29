@@ -88,7 +88,7 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
             ),
           ),
           FutureBuilder<List<Box>>(
-            future: PartnersService.PartnerBoxsbystatus(_selectedStatus),
+            future: PartnersService.partnerBoxsbystatus(_selectedStatus),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(

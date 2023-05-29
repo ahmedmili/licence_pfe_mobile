@@ -1,12 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
-
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'package:saverapp/Services/globals.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:saverapp/Models/partner.dart';
+import 'package:saverapp/Services/partners.dart';
 
 class EditProfilePartner extends StatefulWidget {
   const EditProfilePartner({Key? key}) : super(key: key);
@@ -16,7 +12,9 @@ class EditProfilePartner extends StatefulWidget {
 }
 
 class _EditProfilePartnerState extends State<EditProfilePartner> {
-  late Map<String, dynamic> user;
+  // late Map<String, dynamic> user;
+  late Partner partner;
+
   late TextEditingController nameController;
   late TextEditingController descriptionController;
   late TextEditingController emailController;
@@ -29,7 +27,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
   @override
   void initState() {
     super.initState();
-    user = {};
+
     nameController = TextEditingController();
     descriptionController = TextEditingController();
     emailController = TextEditingController();
@@ -38,99 +36,84 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
     openingtimeController = TextEditingController();
     closingtimeController = TextEditingController();
     newPasswordController = TextEditingController();
-    readToken().then((token) {
-      getUserInfo(token);
+  }
+
+  getUserInfo() async {
+    late Partner partner;
+    partner = await PartnersService.getPartnerInfo();
+    setState(() {
+      this.partner = partner;
+      nameController.text = partner.name;
+      descriptionController.text = partner.description;
+      emailController.text = partner.email;
+      phoneController.text = partner.phone.toString();
+      categoryController.text = partner.category;
+      openingtimeController.text = partner.openingtime.toString();
+      closingtimeController.text = partner.closingtime.toString();
     });
   }
 
-  Future<String> readToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('token') ?? '0';
-  }
+  updateUser() {}
+  updatePassword() {}
 
-  Future<void> getUserInfo(dynamic token) async {
-    final url = Uri.parse('$baseURL/api/partner/user');
-    final response = await http.get(
-      url,
-      headers: {
-        "Content-Type": "application/json",
-        'Authorization': 'Bearer $token'
-      },
-    );
+  // Future<void> updateUser() async {
+  //   final url = Uri.parse('$baseURL/partner/partners/${user['id']}');
+  //   // final token = await readToken();
+  //   final response = await http.patch(
+  //     url,
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Authorization': 'Bearer $token',
+  //     },
+  //     body: json.encode({
+  //       'name': nameController.text,
+  //       'email': emailController.text,
+  //       'phone': int.parse(phoneController.text),
+  //     }),
+  //   );
 
-    if (response.statusCode == 200) {
-      // final data = json.decode(response.body);
-      final data = json.decode(response.body)['partner'];
-      setState(() {
-        user = data;
-        nameController.text = user['name'] ?? '';
-        descriptionController.text = user['description'] ?? '';
-        emailController.text = user['email'] ?? '';
-        phoneController.text = user['phone']?.toString() ?? '';
-        categoryController.text = user['category'] ?? '';
-        openingtimeController.text = user['openingtime']?.toString() ?? '';
-        closingtimeController.text = user['closingtime']?.toString() ?? '';
-      });
-    } else {
-      throw Exception('Failed to load user info');
-    }
-  }
+  //   if (response.statusCode == 200) {
+  //     setState(() {
+  //       user = json.decode(response.body);
+  //     });
 
-  Future<void> updateUser() async {
-    final url = Uri.parse('$baseURL/user/users/${user['id']}');
-    final token = await readToken();
-    final response = await http.patch(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
-      body: json.encode({
-        'name': nameController.text,
-        'email': emailController.text,
-        'phone': int.parse(phoneController.text),
-      }),
-    );
+  //     Get.snackbar('Success', 'User details updated successfully');
+  //   } else {
+  //     Get.snackbar(
+  //         'Error'.tr, 'Failed to update user details. Please try again.');
+  //   }
+  // }
 
-    if (response.statusCode == 200) {
-      setState(() {
-        user = json.decode(response.body);
-      });
+  // Future<void> updatePassword() async {
+  //   final url = Uri.parse('$baseURL/partner/changepassword');
+  //   final token = await readToken();
+  //   final response = await http.put(
+  //     url,
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Authorization': 'Bearer $token',
+  //     },
+  //     body: json.encode({
+  //       'password': newPasswordController.text,
+  //     }),
+  //   );
 
-      Get.snackbar('Success', 'User details updated successfully');
-    } else {
-      Get.snackbar(
-          'Error'.tr, 'Failed to update user details. Please try again.');
-    }
-  }
+  //   if (response.statusCode == 200) {
+  //     setState(() {
+  //       user = json.decode(response.body);
+  //     });
 
-  Future<void> updatePassword() async {
-    final url = Uri.parse('$baseURL/partner/changepassword');
-    final token = await readToken();
-    final response = await http.put(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
-      body: json.encode({
-        'password': newPasswordController.text,
-      }),
-    );
-
-    if (response.statusCode == 200) {
-      setState(() {
-        user = json.decode(response.body);
-      });
-
-      Get.snackbar("sucess", 'User Password updated successfully');
-    } else {
-      Get.snackbar("eroor", 'Failed to update user details. Please try again.');
-    }
-  }
+  //     Get.snackbar("sucess", 'User Password updated successfully');
+  //   } else {
+  //     Get.snackbar("eroor", 'Failed to update user details. Please try again.');
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
+    getUserInfo();
+    // print(partner.adress);
+
     return Scaffold(
       appBar: AppBar(
         title: Padding(

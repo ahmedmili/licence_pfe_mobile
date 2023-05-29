@@ -17,7 +17,7 @@ class SalesData {
 }
 
 class PartnersService {
-  static Future<List<Box>> PartnerBoxsbystatus(String status) async {
+  static Future<List<Box>> partnerBoxsbystatus(String status) async {
     final token = controller.token;
     final url = Uri.parse('${baseURL}partner/getPartnerBoxsbystatus/$status');
     final response = await http.get(
@@ -100,7 +100,7 @@ class PartnersService {
         long: data['long'],
         adress: data['adress'],
       );
-      print(partner);
+      // print(partner.adress);
       return partner;
     } else {
       throw Exception('Failed to load user info');

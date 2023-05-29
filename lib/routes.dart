@@ -12,6 +12,7 @@ import 'package:saverapp/Screens/user/registeruser.dart';
 import 'package:saverapp/widget/google_map.dart';
 import 'package:saverapp/widget/partnerDetails.dart';
 import 'Screens/forgetPassword.dart';
+import 'Screens/partner/editprofile_partner.dart';
 import 'Screens/partner/home_partner.dart';
 
 import 'package:saverapp/middelwares/auth.dart';
@@ -109,6 +110,12 @@ List<GetPage<dynamic>> routes = [
   GetPage(
     name: '/profilePartner',
     page: () => const ProfilePartner(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 700),
+  ),
+  GetPage(
+    name: '/editprofilePartner',
+    page: () => const EditProfilePartner(),
     transition: Transition.rightToLeft,
     transitionDuration: const Duration(milliseconds: 700),
   ),

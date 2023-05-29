@@ -397,12 +397,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                     const SizedBox(height: 20),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  const EditProfilePartner(),
-                            ));
+                        Get.toNamed("editprofilePartner");
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(left: 240.0),
