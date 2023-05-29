@@ -81,10 +81,8 @@ class PartnersService {
         'Authorization': 'Bearer $token'
       },
     );
-    //print(response.statusCode);
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body)["partner"];
-      // print(response.body);
       final partner = Partner(
         // Add fields here to create the new Box object
         id: data['id'],
@@ -100,7 +98,6 @@ class PartnersService {
         long: data['long'],
         adress: data['adress'],
       );
-      // print(partner.adress);
       return partner;
     } else {
       throw Exception('Failed to load user info');
@@ -241,6 +238,38 @@ class PartnersService {
     } catch (error) {
       // print('Error fetching stats data: $error');
       rethrow;
+    }
+  }
+
+  static Future<Partner> updateUser(Map<String, dynamic> data, int id) async {
+    final token = controller.token;
+    final url = Uri.parse('${baseURL}partner/updateData');
+    final response = await http.patch(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+      body: json.encode({
+        'name': data["name"],
+        'email': data["email"],
+        'phone': data["phone"],
+        'category': data["category"],
+        'description': data["description"],
+        'openingtime': data["openingtime"],
+        'closingtime': data["closingtime"],
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      Get.snackbar('Success', 'User details updated successfully');
+      Get.offNamed("profilePartner");
+
+      return json.decode(response.body);
+    } else {
+      Get.snackbar(
+          'Error'.tr, 'Failed to update user details. Please try again.');
+      throw Exception('Failed to fetch partner data');
     }
   }
 }

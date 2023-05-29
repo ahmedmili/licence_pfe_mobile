@@ -36,6 +36,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
     openingtimeController = TextEditingController();
     closingtimeController = TextEditingController();
     newPasswordController = TextEditingController();
+    getUserInfo();
   }
 
   getUserInfo() async {
@@ -53,7 +54,26 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
     });
   }
 
-  updateUser() {}
+  updateUser() async {
+    Map<String, dynamic> data = {
+      'name': nameController.text,
+      'email': emailController.text,
+      'phone': int.parse(phoneController.text),
+      'category': categoryController.text.toUpperCase(),
+      'openingtime': openingtimeController.text,
+      'closingtime': closingtimeController.text,
+      'description': descriptionController.text,
+    };
+    // print(partner.id);
+    await PartnersService.updateUser(data, partner.id).then(
+      (value) => setState(
+        () {
+          partner = value;
+        },
+      ),
+    );
+  }
+
   updatePassword() {}
 
   // Future<void> updateUser() async {
@@ -111,9 +131,6 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
 
   @override
   Widget build(BuildContext context) {
-    getUserInfo();
-    // print(partner.adress);
-
     return Scaffold(
       appBar: AppBar(
         title: Padding(
@@ -282,7 +299,6 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   ),
                   onPressed: () {
                     updateUser();
-                    Get.toNamed("profilePartner");
                   },
                   child: Text('Save'.tr),
                 ),
