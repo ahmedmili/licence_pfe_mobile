@@ -1,8 +1,14 @@
 // ignore_for_file: library_private_types_in_public_api
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:saverapp/Models/partner.dart';
 import 'package:saverapp/Services/partners.dart';
+import 'package:path/path.dart' as path;
+
+import '../../Services/globals.dart';
 
 class EditProfilePartner extends StatefulWidget {
   const EditProfilePartner({Key? key}) : super(key: key);
@@ -44,6 +50,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
     partner = await PartnersService.getPartnerInfo();
     setState(() {
       this.partner = partner;
+
       nameController.text = partner.name;
       descriptionController.text = partner.description;
       emailController.text = partner.email;
@@ -83,6 +90,22 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
     );
   }
 
+// image update
+  late File? _image;
+  String _imageName = '';
+
+  void _pickImage() async {
+    final pickedFile =
+        // ignore: deprecated_member_use
+        await ImagePicker().getImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+        _imageName = path.basename(pickedFile.path);
+      } else {}
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,10 +132,12 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
               const SizedBox(
                 height: 10,
               ),
-              Text(
-                "Account_Details".tr,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.green[800]),
+              Center(
+                child: Text(
+                  "Account_Details".tr,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.green[800]),
+                ),
               ),
               const SizedBox(
                 height: 20,
@@ -257,12 +282,33 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   child: Text('Save'.tr),
                 ),
               ),
+              // change image
+              Center(
+                child: ElevatedButton(
+                  onPressed: _pickImage,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange[900],
+                  ),
+                  child: Text('Select_Image'.tr),
+                ),
+              ),
+              Text(_imageName),
+              const SizedBox(height: 3),
+              SizedBox(
+                width: double.infinity,
+                height: 150,
+                child: _image == null
+                    ? Center(child: Text('No_image'.tr))
+                    : Image.file(_image!, fit: BoxFit.cover),
+              ),
               //change password
               const SizedBox(height: 20),
-              Text(
-                "modifie_Password".tr,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.green[800]),
+              Center(
+                child: Text(
+                  "modifie_Password".tr,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.green[800]),
+                ),
               ),
               const SizedBox(height: 20),
               Container(
