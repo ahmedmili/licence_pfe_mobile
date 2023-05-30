@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             const SizedBox(height: 15.0),
                             SizedBox(
                               width: 340,
-                              height: 200,
+                              height: 400,
                               child: BoxScreen(
                                 items: snapshot.data!,
                                 directions: "v",
