@@ -1,12 +1,14 @@
 // ignore_for_file: library_private_types_in_public_api
-
-import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'package:saverapp/Services/globals.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:saverapp/Models/partner.dart';
+import 'package:saverapp/Services/partners.dart';
+import 'package:path/path.dart' as path;
+
+import '../../Services/globals.dart';
 
 class EditProfilePartner extends StatefulWidget {
   const EditProfilePartner({Key? key}) : super(key: key);
@@ -16,7 +18,9 @@ class EditProfilePartner extends StatefulWidget {
 }
 
 class _EditProfilePartnerState extends State<EditProfilePartner> {
-  late Map<String, dynamic> user;
+  // late Map<String, dynamic> user;
+  late Partner partner;
+
   late TextEditingController nameController;
   late TextEditingController descriptionController;
   late TextEditingController emailController;
@@ -29,7 +33,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
   @override
   void initState() {
     super.initState();
-    user = {};
+
     nameController = TextEditingController();
     descriptionController = TextEditingController();
     emailController = TextEditingController();
@@ -38,95 +42,68 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
     openingtimeController = TextEditingController();
     closingtimeController = TextEditingController();
     newPasswordController = TextEditingController();
-    readToken().then((token) {
-      getUserInfo(token);
+    getUserInfo();
+  }
+
+  getUserInfo() async {
+    late Partner partner;
+    partner = await PartnersService.getPartnerInfo();
+    setState(() {
+      this.partner = partner;
+
+      nameController.text = partner.name;
+      descriptionController.text = partner.description;
+      emailController.text = partner.email;
+      phoneController.text = partner.phone.toString();
+      categoryController.text = partner.category;
+      openingtimeController.text = partner.openingtime.toString();
+      closingtimeController.text = partner.closingtime.toString();
     });
   }
 
-  Future<String> readToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('token') ?? '0';
+  updateUser() async {
+    Map<String, dynamic> data = {
+      'name': nameController.text,
+      'email': emailController.text,
+      'phone': int.parse(phoneController.text),
+      'category': categoryController.text.toUpperCase(),
+      'openingtime': openingtimeController.text,
+      'closingtime': closingtimeController.text,
+      'description': descriptionController.text,
+    };
+    await PartnersService.updatePartner(data).then(
+      (value) => setState(
+        () {
+          partner = value;
+        },
+      ),
+    );
   }
 
-  Future<void> getUserInfo(dynamic token) async {
-    final url = Uri.parse('$baseURL/api/partner/user');
-    final response = await http.get(
-      url,
-      headers: {
-        "Content-Type": "application/json",
-        'Authorization': 'Bearer $token'
-      },
+  updatePassword() async {
+    await PartnersService.updatePassword(nameController.text).then(
+      (value) => setState(
+        () {
+          partner = value;
+        },
+      ),
     );
-
-    if (response.statusCode == 200) {
-      // final data = json.decode(response.body);
-      final data = json.decode(response.body)['partner'];
-      setState(() {
-        user = data;
-        nameController.text = user['name'] ?? '';
-        descriptionController.text = user['description'] ?? '';
-        emailController.text = user['email'] ?? '';
-        phoneController.text = user['phone']?.toString() ?? '';
-        categoryController.text = user['category'] ?? '';
-        openingtimeController.text = user['openingtime']?.toString() ?? '';
-        closingtimeController.text = user['closingtime']?.toString() ?? '';
-      });
-    } else {
-      throw Exception('Failed to load user info');
-    }
   }
 
-  Future<void> updateUser() async {
-    final url = Uri.parse('$baseURL/user/users/${user['id']}');
-    final token = await readToken();
-    final response = await http.patch(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
-      body: json.encode({
-        'name': nameController.text,
-        'email': emailController.text,
-        'phone': int.parse(phoneController.text),
-      }),
-    );
+// image update
+  late File? _image;
+  String _imageName = '';
 
-    if (response.statusCode == 200) {
-      setState(() {
-        user = json.decode(response.body);
-      });
-
-      Get.snackbar('Success', 'User details updated successfully');
-    } else {
-      Get.snackbar(
-          'Error'.tr, 'Failed to update user details. Please try again.');
-    }
-  }
-
-  Future<void> updatePassword() async {
-    final url = Uri.parse('$baseURL/partner/changepassword');
-    final token = await readToken();
-    final response = await http.put(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
-      body: json.encode({
-        'password': newPasswordController.text,
-      }),
-    );
-
-    if (response.statusCode == 200) {
-      setState(() {
-        user = json.decode(response.body);
-      });
-
-      Get.snackbar("sucess", 'User Password updated successfully');
-    } else {
-      Get.snackbar("eroor", 'Failed to update user details. Please try again.');
-    }
+  void _pickImage() async {
+    final pickedFile =
+        // ignore: deprecated_member_use
+        await ImagePicker().getImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+        _imageName = path.basename(pickedFile.path);
+      } else {}
+    });
   }
 
   @override
@@ -155,10 +132,12 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
               const SizedBox(
                 height: 10,
               ),
-              Text(
-                "Account_Details".tr,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.green[800]),
+              Center(
+                child: Text(
+                  "Account_Details".tr,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.green[800]),
+                ),
               ),
               const SizedBox(
                 height: 20,
@@ -299,17 +278,37 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   ),
                   onPressed: () {
                     updateUser();
-                    Get.toNamed("profilePartner");
                   },
                   child: Text('Save'.tr),
                 ),
               ),
+              // change image
+              Center(
+                child: ElevatedButton(
+                  onPressed: _pickImage,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange[900],
+                  ),
+                  child: Text('Select_Image'.tr),
+                ),
+              ),
+              Text(_imageName),
+              const SizedBox(height: 3),
+              SizedBox(
+                width: double.infinity,
+                height: 150,
+                child: _image == null
+                    ? Center(child: Text('No_image'.tr))
+                    : Image.file(_image!, fit: BoxFit.cover),
+              ),
               //change password
               const SizedBox(height: 20),
-              Text(
-                "modifie_Password".tr,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.green[800]),
+              Center(
+                child: Text(
+                  "modifie_Password".tr,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.green[800]),
+                ),
               ),
               const SizedBox(height: 20),
               Container(
@@ -341,7 +340,6 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   ),
                   onPressed: () {
                     updatePassword();
-                    Get.toNamed("profilePartner");
                   },
                   child: Text('Save'.tr),
                 ),

@@ -56,7 +56,7 @@ class MapSampleState extends State<MapSample> {
         children: [
           GetBuilder<GeoLocatorController>(
             builder: (controller) {
-              print("rebuild");
+              // print("rebuild");
               return GoogleMap(
                 mapType: MapType.normal,
                 initialCameraPosition: _initialPosition,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:saverapp/Screens/partner/editprofile_partner.dart';
 import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/Services/partners.dart';
 
@@ -48,13 +47,14 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                               ),
                             ),
                             child: CircleAvatar(
-                                radius: 50,
-                                backgroundImage: NetworkImage(
-                                  "http://$localhost:8000/storage/partner_imgs/${snapshot.data!.image}",
-                                  headers: {
-                                    "Keep-Alive": "timeout=20",
-                                  },
-                                )),
+                              radius: 50,
+                              backgroundImage: NetworkImage(
+                                "http://$localhost:8000/storage/partner_imgs/${snapshot.data!.image}",
+                                headers: {
+                                  "Keep-Alive": "timeout=20",
+                                },
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -397,12 +397,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                     const SizedBox(height: 20),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  const EditProfilePartner(),
-                            ));
+                        Get.toNamed("editprofilePartner");
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(left: 240.0),

@@ -165,10 +165,12 @@ class GeoLocatorController extends GetxController {
       if (decoded["status"] == "OK") {
         final String street = decoded["results"][0]["address_components"][1]
             ["short_name"]; // street name
-        final String city = decoded["results"][0]["address_components"][3]
+        print("street ==  $street");
+        final String city = decoded["results"][0]["address_components"][2]
             ["short_name"]; //City name
         adress.value = "$street , $city";
         update();
+
         return adress.value.toString();
       } else {
         throw Exception("Failed to get address");

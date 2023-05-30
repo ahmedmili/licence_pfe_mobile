@@ -17,7 +17,7 @@ class SalesData {
 }
 
 class PartnersService {
-  static Future<List<Box>> PartnerBoxsbystatus(String status) async {
+  static Future<List<Box>> partnerBoxsbystatus(String status) async {
     final token = controller.token;
     final url = Uri.parse('${baseURL}partner/getPartnerBoxsbystatus/$status');
     final response = await http.get(
@@ -81,10 +81,8 @@ class PartnersService {
         'Authorization': 'Bearer $token'
       },
     );
-    //print(response.statusCode);
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body)["partner"];
-      // print(response.body);
       final partner = Partner(
         // Add fields here to create the new Box object
         id: data['id'],
@@ -100,7 +98,6 @@ class PartnersService {
         long: data['long'],
         adress: data['adress'],
       );
-      print(partner);
       return partner;
     } else {
       throw Exception('Failed to load user info');
@@ -152,7 +149,6 @@ class PartnersService {
         throw Exception('Failed to fetch partner orders');
       }
     } catch (error) {
-      // print('Error fetching partner orders: $error');
       rethrow; // Propagate the error
     }
   }
@@ -201,7 +197,6 @@ class PartnersService {
         throw Exception('Failed to fetch partner orders');
       }
     } catch (error) {
-      // print('Error fetching partner orders: $error');
       rethrow;
     }
   }
@@ -239,8 +234,64 @@ class PartnersService {
       }
       return returnedData;
     } catch (error) {
-      // print('Error fetching stats data: $error');
       rethrow;
+    }
+  }
+
+  static Future<Partner> updatePartner(Map<String, dynamic> data) async {
+    final token = controller.token;
+    final url = Uri.parse('${baseURL}partner/updateData');
+    final response = await http.patch(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+      body: json.encode({
+        'name': data["name"],
+        'email': data["email"],
+        'phone': data["phone"],
+        'category': data["category"],
+        'description': data["description"],
+        'openingtime': data["openingtime"],
+        'closingtime': data["closingtime"],
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      Get.snackbar('Success', 'your details changed successfully');
+      Get.offNamed("profilePartner");
+
+      return json.decode(response.body);
+    } else {
+      Get.snackbar(
+          'Error'.tr, 'Failed to changed your details. Please try again.');
+      throw Exception('Failed to fetch partner data');
+    }
+  }
+
+  static Future<Partner> updatePassword(password) async {
+    final token = controller.token;
+    final url = Uri.parse('${baseURL}partner/changepassword');
+    final response = await http.put(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+      body: json.encode({
+        'password': password,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      Get.snackbar('Success', 'your password changed successfully');
+      Get.offNamed("profilePartner");
+      return json.decode(response.body);
+    } else {
+      print(response.statusCode);
+      Get.snackbar('Error'.tr, 'Failed to change password. Please try again.');
+      throw Exception('Failed to fetch partner data');
     }
   }
 }
