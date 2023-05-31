@@ -362,17 +362,42 @@ class _OrderScreenState extends State<OrderScreen> {
 
   Future<void> scanQr() async {
     try {
-      Get.to(ProductRatingPage(),
-          arguments: {"partner_id": widget.neworder!.partner_id});
-      // FlutterBarcodeScanner.scanBarcode('#2A99CF', 'cancel', true, ScanMode.QR)
-      //     .then((value) {
-      //   setState(() {
-      //     qrstr = value;
-      //   });
-      //   // print("jsonData ==  $value");
-      //   Map<String, dynamic> jsonDta = jsonDecode(value);
-      //   UserService.verifAndTakeOrder(jsonDta);
-      // });
+      print(widget.neworder!.partner_id);
+      FlutterBarcodeScanner.scanBarcode('#2A99CF', 'cancel', true, ScanMode.QR)
+          .then((value) {
+        setState(() {
+          qrstr = value;
+        });
+        showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+            title: const Text('Rate the product'),
+            content: SizedBox(
+              height: 200,
+              child: ProductRatingPage(),
+            ),
+            actions: [
+              ElevatedButton(
+                onPressed: () => Get.offAllNamed("main"),
+                child: const Text('Cancel'),
+              ),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     if (_commentController.text.isNotEmpty) {
+              //       _submitRating(selectedEmoji);
+              //     }
+              //   },
+              //   child: const Text('Submit'),
+              // ),
+            ],
+          ),
+        );
+        // Get.to(ProductRatingPage(),
+        //     arguments: {"partner_id": widget.neworder!.partner_id});
+        // print("jsonData ==  $value");
+        // Map<String, dynamic> jsonDta = jsonDecode(value);
+        // UserService.verifAndTakeOrder(jsonDta);
+      });
     } catch (e) {
       setState(() {
         qrstr = 'unable to read this';

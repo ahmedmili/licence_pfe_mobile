@@ -4,6 +4,7 @@ import 'package:saverapp/Screens/code.dart';
 import 'package:saverapp/Screens/login.dart';
 import 'package:saverapp/Screens/partner/nav_bottom.dart';
 import 'package:saverapp/Screens/partner/partner_stats.dart';
+import 'package:saverapp/Screens/user/orderglobal.dart';
 import 'package:saverapp/Screens/welcome.dart';
 import 'package:saverapp/Screens/partner/register_partner.dart';
 import 'package:saverapp/Screens/user/home.dart';
@@ -19,6 +20,7 @@ import 'package:saverapp/middelwares/auth.dart';
 
 import 'Screens/partner/profile.dart';
 import 'Screens/splash/splash_page.dart';
+import 'Screens/user/orderPage.dart';
 // import 'package:saverapp/middelwares/checkRole.dart';
 
 List<GetPage<dynamic>> routes = [
@@ -68,6 +70,12 @@ List<GetPage<dynamic>> routes = [
   GetPage(
     name: '/partnerMain',
     page: () => const NavBottomScreen(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 700),
+  ),
+  GetPage(
+    name: '/OrderGlobal',
+    page: () => const OrderGlobal(),
     transition: Transition.rightToLeft,
     transitionDuration: const Duration(milliseconds: 700),
   ),

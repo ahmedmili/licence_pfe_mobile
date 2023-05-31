@@ -172,6 +172,7 @@ class PartnersService {
           final newOrder = Order(
             command_id: data[i]["boxs"][0]["pivot"]["command_id"],
             partner_name: data[i]["boxs"][0]["partner"]["name"],
+            partner_id: data[0]["boxs"][0]["partner"]["id"],
             partner_email: data[i]["boxs"][0]["partner"]["email"],
             partner_phone: data[i]["boxs"][0]["partner"]["phone"],
             user_name: data[i]["user"]["name"],
