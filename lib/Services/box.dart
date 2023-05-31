@@ -38,10 +38,11 @@ class BoxServices {
 
     var response = await request.send();
     var responseString = await response.stream.bytesToString();
+    //print(response.statusCode);
     if (response.statusCode == 200) {
       return http.Response(responseString, response.statusCode);
     } else {
-      throw responseString;
+      throw Exception('Erreur lors de la requête : ${response.statusCode}');
     }
   }
 }

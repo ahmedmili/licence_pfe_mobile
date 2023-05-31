@@ -53,7 +53,7 @@ class _CodeState extends State<Code> {
           Get.snackbar(
             backgroundColor: const Color.fromRGBO(243, 75, 63, 0.644),
             "error",
-            "error pls try again",
+            "Error, please try again",
           );
         }
       }
