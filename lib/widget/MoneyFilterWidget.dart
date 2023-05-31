@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:saverapp/Services/users.dart';
 
@@ -5,6 +7,7 @@ class MoneyFilter extends StatefulWidget {
   const MoneyFilter({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _MoneyFilterState createState() => _MoneyFilterState();
 }
 

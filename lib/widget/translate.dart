@@ -18,7 +18,6 @@ class _LanguageSwitchDropdownState extends State<LanguageSwitchDropdown> {
 
   @override
   Widget build(BuildContext context) {
-    print(Get.deviceLocale);
     return DropdownButtonHideUnderline(
       child: DropdownButton<String>(
         value: _selectedLanguage,
@@ -30,7 +29,6 @@ class _LanguageSwitchDropdownState extends State<LanguageSwitchDropdown> {
           fontSize: 16,
         ),
         onChanged: (String? newValue) {
-          print(newValue);
           setState(() {
             _selectedLanguage = newValue!;
             Get.updateLocale(Locale(newValue, ''));

@@ -44,7 +44,7 @@ class _PartnerDetailsState extends State<PartnerDetails> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: 10, left: 0, right: 0),
+        padding: const EdgeInsets.only(top: 10, left: 0, right: 0),
         child: Column(
           children: [
             Stack(

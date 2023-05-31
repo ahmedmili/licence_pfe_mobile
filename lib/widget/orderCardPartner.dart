@@ -1,8 +1,11 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/order.dart';
 import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/dimensions.dart';
 
+// ignore: must_be_immutable
 class OrderCardPartner extends StatefulWidget {
   OrderCardPartner({
     super.key,
@@ -20,7 +23,7 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: Container(
+      child: SizedBox(
         height: 130,
         width: 400,
         child: Material(
@@ -31,7 +34,7 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 10, top: 10),
+                    padding: const EdgeInsets.only(left: 10, top: 10),
                     child: Container(
                       width: 70,
                       height: 70,
@@ -54,7 +57,7 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Row(
                         children: [
                           Icon(Icons.person_2_outlined,
@@ -82,7 +85,7 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Row(
                         children: [
                           Icon(Icons.production_quantity_limits,
@@ -112,7 +115,7 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
                     children: [
                       const SizedBox(height: 15),
                       Row(
-                        children: [
+                        children: const [
                           Icon(
                             Icons.chevron_right,
                             size: 40,
@@ -126,7 +129,7 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
               SizedBox(height: Dimensions.height10),
               Row(
                 children: [
-                  SizedBox(width: 15),
+                  const SizedBox(width: 15),
                   Icon(
                     Icons.access_alarm,
                     color: Colors.green[800],

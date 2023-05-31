@@ -30,7 +30,7 @@ class _PartnerCardState extends State<PartnerCard> {
         favoredPartners = partners;
       });
     } catch (e) {
-      print('Error fetching favored partners: $e');
+      rethrow;
     }
   }
 
@@ -186,7 +186,7 @@ class _PartnerCardState extends State<PartnerCard> {
             child: Column(
               children: [
                 const SizedBox(height: 190),
-                Container(
+                const SizedBox(
                   height: 200,
                   width: 200,
                   child: Image(

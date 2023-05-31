@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:saverapp/Models/boxs.dart';
 import 'package:http/http.dart' as http;
 import 'package:saverapp/Models/partner.dart';
+import '../widget/rating.dart';
 import 'globals.dart';
 
 final GlobalController controller = Get.find<GlobalController>();
@@ -247,8 +248,7 @@ class UserService {
       body: jsonEncode(data),
     );
     if (response.statusCode == 200) {
-      // Map<String, dynamic> data = jsonDecode(response.body);
-      // print("dataaa ==  $data");
+      // Get.to(PartnerRatingPageState);
     } else {
       throw Exception('Failed to verif QrCode');
     }

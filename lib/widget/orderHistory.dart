@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import '../../Models/order.dart';
 import '../../Services/partners.dart';
@@ -33,7 +34,7 @@ class _OrderHistoryState extends State<OrderHistory> {
               child: Column(
                 children: [
                   const SizedBox(height: 190),
-                  Container(
+                  const SizedBox(
                     height: 200,
                     width: 200,
                     child: Image(

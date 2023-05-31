@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Models/order.dart';
-import 'package:saverapp/widget/orderDetails.dart';
 import '../Screens/user/order.dart';
-import 'orderCardPartner.dart';
 import 'orderWidget.dart';
 
 class OrderwidgetScreenPartner extends StatefulWidget {

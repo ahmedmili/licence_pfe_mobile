@@ -1,9 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
-import 'package:saverapp/dimensions.dart';
 
 class Position extends StatefulWidget {
   const Position({super.key});
@@ -56,7 +51,7 @@ class _PositionState extends State<Position> {
                 },
                 onChanged: (RangeValues values) {},
               ),
-              Container(
+              SizedBox(
                 width: 200,
                 child: MaterialButton(
                   onPressed: () {},

@@ -3,12 +3,14 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:get/get.dart';
 import 'package:saverapp/Models/partner.dart';
 import 'package:saverapp/dimensions.dart';
 import '../../Models/boxs.dart';
 import '../../Models/order.dart';
 import '../../widget/partnerDetails.dart';
 import '../../Services/users.dart';
+import '../../widget/rating.dart';
 
 class OrderScreen extends StatefulWidget {
   // final Box box;
@@ -27,7 +29,7 @@ class _OrderScreenState extends State<OrderScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.neworder!.box_category);
+    // print(widget.neworder!.box_category);
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -338,7 +340,7 @@ class _OrderScreenState extends State<OrderScreen> {
                             child: ElevatedButton(
                               onPressed: scanQr,
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.green[800],
+                                backgroundColor: Colors.green[800],
                               ),
                               child: const Text(
                                 ('SCANNER QRCODE'),
@@ -360,16 +362,19 @@ class _OrderScreenState extends State<OrderScreen> {
 
   Future<void> scanQr() async {
     try {
-      FlutterBarcodeScanner.scanBarcode('#2A99CF', 'cancel', true, ScanMode.QR)
-          .then((value) {
-        setState(() {
-          qrstr = value;
-        });
-        // print("jsonData ==  $value");
-        Map<String, dynamic> jsonDta = jsonDecode(value);
-        UserService.verifAndTakeOrder(jsonDta);
-      });
+      print("1");
+      Get.to(ProductRatingPage);
+      // FlutterBarcodeScanner.scanBarcode('#2A99CF', 'cancel', true, ScanMode.QR)
+      //     .then((value) {
+      //   setState(() {
+      //     qrstr = value;
+      //   });
+      //   // print("jsonData ==  $value");
+      //   Map<String, dynamic> jsonDta = jsonDecode(value);
+      //   UserService.verifAndTakeOrder(jsonDta);
+      // });
     } catch (e) {
+      print(e);
       setState(() {
         qrstr = 'unable to read this';
       });

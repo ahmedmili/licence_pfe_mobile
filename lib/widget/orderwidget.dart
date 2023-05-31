@@ -3,6 +3,7 @@ import 'package:saverapp/Models/order.dart';
 import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/dimensions.dart';
 
+// ignore: must_be_immutable
 class OrderwidgetPartner extends StatefulWidget {
   OrderwidgetPartner({
     super.key,
@@ -19,8 +20,8 @@ class _OrderwidgetPartnerState extends State<OrderwidgetPartner> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10),
-      child: Container(
+      padding: const EdgeInsets.all(10),
+      child: SizedBox(
         height: Dimensions.height50 * 2,
         width: Dimensions.width50 * 9,
         child: Material(
@@ -48,17 +49,17 @@ class _OrderwidgetPartnerState extends State<OrderwidgetPartner> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Text(
                     "Quantity : ${widget.order.quantity}",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     ),
                   ),
                   Text(
                     "Price : ${widget.order.price}",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     ),

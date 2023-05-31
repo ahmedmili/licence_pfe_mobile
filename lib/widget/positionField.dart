@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/dimensions.dart';
@@ -14,8 +16,8 @@ class PositionField extends StatefulWidget {
 class _PositionFieldState extends State<PositionField> {
   GeoLocatorController geoController = Get.find<GeoLocatorController>();
 
-  @override
   RangeValues _currentRangeValues = const RangeValues(1, 100);
+  @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[

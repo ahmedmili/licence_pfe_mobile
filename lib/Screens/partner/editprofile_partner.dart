@@ -91,7 +91,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
   }
 
 // image update
-  late File? _image;
+  File? _image = null;
   String _imageName = '';
 
   void _pickImage() async {
