@@ -362,8 +362,8 @@ class _OrderScreenState extends State<OrderScreen> {
 
   Future<void> scanQr() async {
     try {
-      print("1");
-      Get.to(ProductRatingPage);
+      Get.to(ProductRatingPage(),
+          arguments: {"partner_id": widget.neworder!.partner_id});
       // FlutterBarcodeScanner.scanBarcode('#2A99CF', 'cancel', true, ScanMode.QR)
       //     .then((value) {
       //   setState(() {
@@ -374,7 +374,6 @@ class _OrderScreenState extends State<OrderScreen> {
       //   UserService.verifAndTakeOrder(jsonDta);
       // });
     } catch (e) {
-      print(e);
       setState(() {
         qrstr = 'unable to read this';
       });
