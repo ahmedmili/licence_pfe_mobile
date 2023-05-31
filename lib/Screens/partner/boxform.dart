@@ -80,13 +80,26 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
       token,
     );
     Map<String, dynamic> responseMap = jsonDecode(response.body);
-
-    if (response.statusCode == 200) {
-      Get.snackbar("sucess", "Box added successfully");
+    print(responseMap["status"]);
+    if (responseMap["status"] == 200) {
+      Get.snackbar("sucess", "Box added successfully.");
       // Navigate to PartnerBoxes screen
       Get.toNamed("partnerMain");
-    } else {
-      Get.snackbar("error", responseMap.values.first[0]);
+    } else if (responseMap["status"] == 403) {
+      Get.snackbar(
+          backgroundColor: const Color.fromRGBO(243, 75, 63, 0.644),
+          "error",
+          "The start date must be before the end date.");
+    } else if (responseMap["status"] == 422) {
+      Get.snackbar(
+          backgroundColor: const Color.fromRGBO(243, 75, 63, 0.644),
+          "error",
+          "The old price must be higher than the new price.");
+    } else if (responseMap["status"] == 400) {
+      Get.snackbar(
+          backgroundColor: const Color.fromRGBO(243, 75, 63, 0.644),
+          "error",
+          "The quantity must be greater than or equal to 1.");
     }
   }
 
