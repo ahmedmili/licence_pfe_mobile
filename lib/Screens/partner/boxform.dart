@@ -103,12 +103,21 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
           colorText: Colors.white);
     } else if (responseMap["status"] == 400) {
       Get.snackbar(
-          backgroundColor: Colors.red, "error", "Quantity should be ≥ 1");
+          backgroundColor: Colors.red,
+          "error",
+          "Quantity should be ≥ 1",
+          colorText: Colors.white);
     } else if (responseMap["status"] == 404) {
       Get.snackbar(
           backgroundColor: Colors.red,
           "error",
           "Max 2 days difference between start and end dates.",
+          colorText: Colors.white);
+    } else if (responseMap["status"] == 401) {
+      Get.snackbar(
+          backgroundColor: Colors.red,
+          "error",
+          "An empty field",
           colorText: Colors.white);
     }
   }
