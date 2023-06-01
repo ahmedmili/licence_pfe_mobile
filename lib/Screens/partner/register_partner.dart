@@ -322,18 +322,20 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 ),
                 child: Text('Select_Image'.tr),
               ),
-              Text(_imageName),
+              // Text(_imageName),
               const SizedBox(height: 3),
-              Container(
-                width: double.infinity,
-                height: 150,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.green.shade800),
-                  borderRadius: BorderRadius.circular(10),
-                ),
+              SizedBox(
                 child: _image == null
-                    ? Center(child: Text('No_image'.tr))
-                    : Image.file(_image!, fit: BoxFit.cover),
+                    ? const SizedBox()
+                    : Container(
+                        width: double.infinity,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.green.shade800),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Image.file(_image!, fit: BoxFit.cover),
+                      ),
               ),
               const SizedBox(
                 height: 15,

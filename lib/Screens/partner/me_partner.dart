@@ -34,7 +34,7 @@ class _MePartnerState extends State<MePartner> {
                 shadowColor: Colors.black12,
                 child: CustomListTile(
                   cb: () {
-                    Get.to(() => const ProfilePartner());
+                    Get.toNamed("profilePartner");
                   },
                   icon: Icons.person_2_outlined,
                   title: "profile".tr,

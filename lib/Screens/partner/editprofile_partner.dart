@@ -106,6 +106,25 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
     });
   }
 
+  // Future<void> updateImage () async {
+
+  // http.Response response = await AuthServices.registerpartner(
+
+  //       _image!,
+
+  //     );
+  //     Map<String, dynamic> responseMap = jsonDecode(response.body);
+
+  //     if (response.statusCode == 200) {
+  //       String token = responseMap['token'];
+
+  //       Get.to(const Waiting());
+  //     } else {
+  //       Get.snackbar("error".tr, responseMap.values.first[0]);
+  //     }
+
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -282,6 +301,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   child: Text('Save'.tr),
                 ),
               ),
+
               // change image
               Center(
                 child: ElevatedButton(
@@ -292,15 +312,31 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   child: Text('Select_Image'.tr),
                 ),
               ),
-              Text(_imageName),
-              const SizedBox(height: 3),
-              SizedBox(
-                width: double.infinity,
-                height: 150,
+              const SizedBox(height: 20),
+
+              Center(
                 child: _image == null
-                    ? Center(child: Text('No_image'.tr))
-                    : Image.file(_image!, fit: BoxFit.cover),
+                    ? const SizedBox()
+                    : SizedBox(
+                        width: double.infinity,
+                        height: 150,
+                        child: Image.file(_image!, fit: BoxFit.cover),
+                      ),
               ),
+              Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.green[800],
+                  ),
+                  onPressed: () {
+                    // print("save clicked 1");
+                    PartnersService.updateImage(_image!);
+                  },
+                  child: Text('Save'.tr),
+                ),
+              ),
+              const SizedBox(height: 3),
               //change password
               const SizedBox(height: 20),
               Center(

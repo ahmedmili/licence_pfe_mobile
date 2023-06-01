@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:saverapp/Models/boxs.dart';
@@ -293,6 +294,36 @@ class PartnersService {
       print(response.statusCode);
       Get.snackbar('Error'.tr, 'Failed to change password. Please try again.');
       throw Exception('Failed to fetch partner data');
+    }
+  }
+// update image
+
+  static Future<void> updateImage(File image) async {
+    print("aaaaaaaaaaaaaaaaaaa");
+    final token = controller.token;
+    Map<String, String> headers = {
+      "Content-Type": "application/json",
+      'Authorization': 'Bearer $token'
+    };
+    final url = Uri.parse('${baseURL}partner/updateImage');
+    var request = http.MultipartRequest("post", url);
+    request.files.add(await http.MultipartFile.fromPath('image', image.path));
+    request.headers.addAll(headers);
+    var response = await request.send();
+    var responseString = await response.stream.bytesToString();
+
+    if (response.statusCode == 200) {
+      Get.snackbar('Success', 'your password changed successfully');
+      Get.offNamed("profilePartner");
+      print(responseString);
+      // print("save clicked 2");
+      // return json.decode(response.body);
+    } else {
+      print(responseString);
+      // print("save clicked 3");
+      // print(response.statusCode);
+      Get.snackbar('Error'.tr, 'Failed to change image. Please try again.');
+      throw Exception('Failed to fetch partner image');
     }
   }
 }

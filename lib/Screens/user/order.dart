@@ -376,11 +376,11 @@ class _OrderScreenState extends State<OrderScreen> {
               height: 200,
               child: ProductRatingPage(),
             ),
-            actions: [
-              ElevatedButton(
-                onPressed: () => Get.offAllNamed("main"),
-                child: const Text('Cancel'),
-              ),
+            actions: const [
+              // ElevatedButton(
+              //   onPressed: () => Get.offAllNamed("main"),
+              //   child: const Text('Cancel'),
+              // ),
               // ElevatedButton(
               //   onPressed: () {
               //     if (_commentController.text.isNotEmpty) {

@@ -213,11 +213,13 @@ class _ProductRatingPageState extends State<ProductRatingPage> {
           // ),
           ElevatedButton(
             onPressed: () {
-              // if (_commentController.text.isNotEmpty) {
               _submitRating(_selectedRating);
-              // }
             },
             child: const Text('Submit'),
+          ),
+          ElevatedButton(
+            onPressed: () => Get.offAllNamed("main"),
+            child: const Text('Cancel'),
           ),
         ],
       ),
