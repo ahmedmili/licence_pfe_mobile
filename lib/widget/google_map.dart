@@ -41,13 +41,13 @@ class MapSampleState extends State<MapSample> {
   @override
   void initState() {
     super.initState();
+    geoController.initMarkers();
+    geoController.initCercle();
   }
 
   @override
   Widget build(BuildContext context) {
     _getCurrentLocation();
-    geoController.initMarkers();
-    geoController.initCercle();
     _center = LatLng(double.parse(geoController.lat.value),
         double.parse(geoController.long.value)); // current position
 

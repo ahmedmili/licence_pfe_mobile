@@ -75,7 +75,7 @@ class _FilterState extends State<Filter> {
                 return Column(
                   children: [
                     const SizedBox(height: 120),
-                    Container(
+                    const SizedBox(
                         height: 200,
                         width: 200,
                         child: Image(
