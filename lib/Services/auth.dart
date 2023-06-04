@@ -115,10 +115,11 @@ class AuthServices {
         "status": response.statusCode
       };
     } else {
-      responseMessage = {
-        "response": json.decode(response.body),
-        "status": response.statusCode
-      };
+      print(response.statusCode);
+      // responseMessage = {
+      //   "response": json.decode(response.body),
+      //   "status": response.statusCode
+      // };
     }
     return responseMessage;
   }

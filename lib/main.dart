@@ -5,14 +5,16 @@ import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/routes.dart';
 import 'package:saverapp/translator/En.dart';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_core/firebase_core.dart';
+// import 'firebase_options.dart';
+
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Get.put(GlobalController());
   Get.put(GeoLocatorController());
-
   GlobalController controller = Get.find<GlobalController>();
   GeoLocatorController geoController = Get.find<GeoLocatorController>();
-
-  WidgetsFlutterBinding.ensureInitialized();
 
   await controller.readRole();
   await controller.readToken();
@@ -36,7 +38,6 @@ class MyApp extends StatelessWidget {
       translations: Languages(),
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en', 'US'),
-      // localizationsDelegates: const [
 
       debugShowCheckedModeBanner: false,
       initialRoute: '/splash-page',

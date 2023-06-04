@@ -18,7 +18,7 @@ class _ScanScreenState extends State<ScanScreen> {
           ElevatedButton(
             onPressed: scanQr,
             style: ElevatedButton.styleFrom(
-              primary: Colors.green[800],
+              backgroundColor: Colors.green[800],
             ),
             child: const Text(
               ('SCANNER QRCODE'),

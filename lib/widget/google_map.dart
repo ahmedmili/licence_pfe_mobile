@@ -41,8 +41,8 @@ class MapSampleState extends State<MapSample> {
   @override
   void initState() {
     super.initState();
-    geoController.initMarkers();
-    geoController.initCercle();
+    // geoController.initMarkers();
+    // geoController.initCercle();
   }
 
   @override

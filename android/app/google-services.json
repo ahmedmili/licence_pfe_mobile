@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "611440653281",
+    "project_id": "foodsaver-da3c2",
+    "storage_bucket": "foodsaver-da3c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611440653281:android:75ad94ac3fb6767011d8a0",
+        "android_client_info": {
+          "package_name": "com.company.food_saver_notification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611440653281-rv1q0u1p02fgcjab1t7dqlo2hmebre5s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeALiTwk0mUsAtV2cilxa1zCYARAVqnWo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611440653281-rv1q0u1p02fgcjab1t7dqlo2hmebre5s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
