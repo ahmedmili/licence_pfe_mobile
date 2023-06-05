@@ -18,11 +18,40 @@ void main() async {
 
   await controller.readRole();
   await controller.readToken();
-
   Future.delayed(const Duration(milliseconds: 500), () async {
     await geoController.getLocation();
     await geoController.getAddressFromLatLng();
   }); //0.5 seconds
+
+  // /////////firebase notification part
+  await Firebase.initializeApp();
+
+  try {
+    if (GetPlatform.isAndroid) {
+      final RemoteMessage? remoteMessage =
+          await FirebaseMessaging.instance.getInitialMessage();
+      if (remoteMessage != null) {
+        print(remoteMessage);
+        // print(remoteMessage.notification?.titleLocKey!);
+      }
+      // await HelperNotification;
+    }
+  } catch (e) {
+    print(e);
+  }
+
+  // FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+  // NotificationSettings settings = await messaging.requestPermission(
+  //   alert: true,
+  //   announcement: false,
+  //   badge: true,
+  //   carPlay: false,
+  //   criticalAlert: false,
+  //   provisional: false,
+  //   sound: true,
+  // );
+  // print('User granted permission: ${settings.authorizationStatus}');
 
   runApp(const MyApp());
 }
