@@ -299,7 +299,6 @@ class PartnersService {
 // update image
 
   static Future<void> updateImage(File image) async {
-    print("aaaaaaaaaaaaaaaaaaa");
     final token = controller.token;
     Map<String, String> headers = {
       "Content-Type": "application/json",

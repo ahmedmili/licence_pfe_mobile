@@ -73,132 +73,136 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
           bottom: 0,
           top: 270 - 20,
           child: Container(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(20),
-                  topLeft: Radius.circular(20),
-                ),
-                color: Colors.white),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    const Icon(
-                      CupertinoIcons.cube_box,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      '${"Title".tr} : ${box.title}',
-                      style: const TextStyle(
-                          fontSize: 14, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.fastfood_outlined,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      '${"Category".tr} : ${box.category}',
-                      style: const TextStyle(
-                          fontSize: 14, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        const Icon(Icons.add_shopping_cart),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          '${"Initial_quantity".tr} : ${box.quantity}',
-                          style: const TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30),
-                      child: Text(
-                        '${"Remaining_quantity".tr} : ${box.remaining_quantity}',
-                        style: const TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(20),
+                  ),
+                  color: Colors.white),
+              child: GetBuilder<GlobalController>(
+                builder: (controller) {
+                  print("rebuild");
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(
+                            CupertinoIcons.cube_box,
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            '${"Title".tr} : ${controller.box.title}',
+                            style: const TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        const Icon(Icons.access_alarm),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          '${"Available from".tr} : ${box.startdate}',
-                          style: const TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30),
-                      child: Text(
-                        '${"To".tr} : ${box.startdate}',
-                        style: const TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
+                      const SizedBox(
+                        height: 20,
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                //expandable text widget
-                Row(
-                  children: [
-                    const Icon(Icons.description_outlined),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Text(
-                          "Description : ${box.description}",
-                          style: const TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
-                        ),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.fastfood_outlined,
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            '${"Category".tr} : ${controller.box.category}',
+                            style: const TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                  ],
-                ),
-              ],
-            ),
-          ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(Icons.add_shopping_cart),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                '${"Initial_quantity".tr} : ${controller.box.quantity}',
+                                style: const TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 30),
+                            child: Text(
+                              '${"Remaining_quantity".tr} : ${controller.box.remaining_quantity}',
+                              style: const TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(Icons.access_alarm),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                '${"Available from".tr} : ${controller.box.startdate}',
+                                style: const TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 30),
+                            child: Text(
+                              '${"To".tr} : ${controller.box.startdate}',
+                              style: const TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      //expandable text widget
+                      Row(
+                        children: [
+                          const Icon(Icons.description_outlined),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Text(
+                                "Description : ${controller.box.description}",
+                                style: const TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                        ],
+                      ),
+                    ],
+                  );
+                },
+              )),
         ),
         Positioned(
           left: 0,
@@ -211,7 +215,7 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  '${box.oldprice} Dt',
+                  '${controller.box.oldprice} Dt',
                   style: const TextStyle(
                     fontSize: 16,
                     color: Colors.redAccent,
@@ -223,7 +227,7 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
                   height: 5,
                 ),
                 Text(
-                  '${box.newprice} Dt',
+                  '${controller.box.newprice} Dt',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,

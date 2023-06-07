@@ -10,6 +10,7 @@ import 'package:path/path.dart' as path;
 import '../../dimensions.dart';
 import 'package:saverapp/Models/boxs.dart';
 import 'package:saverapp/Services/globals.dart';
+import 'package:saverapp/Services/box.dart';
 
 import '../../widget/rounded_button.dart';
 
@@ -33,7 +34,6 @@ class _EditBoxState extends State<EditBox> {
   late File? _image = null;
   String _category = '';
   String _imageName = '';
-  late String token;
 
   List<String> categories = [
     '',
@@ -98,6 +98,8 @@ class _EditBoxState extends State<EditBox> {
 
   @override
   Widget build(BuildContext context) {
+    final Box box = controller.box;
+
     return Scaffold(
       appBar: AppBar(
         title: Padding(
@@ -137,7 +139,9 @@ class _EditBoxState extends State<EditBox> {
                         hintText: 'Title'.tr,
                       ),
                       onChanged: (value) {
-                        _title = value;
+                        setState(() {
+                          _title = value;
+                        });
                       },
                     ),
                   ),
@@ -163,7 +167,9 @@ class _EditBoxState extends State<EditBox> {
                         hintText: 'Description',
                       ),
                       onChanged: (value) {
-                        _description = value;
+                        setState(() {
+                          _description = value;
+                        });
                       },
                     ),
                   ),
@@ -189,7 +195,9 @@ class _EditBoxState extends State<EditBox> {
                         hintText: 'Old_Price'.tr,
                       ),
                       onChanged: (value) {
-                        _oldprice = value;
+                        setState(() {
+                          _oldprice = value;
+                        });
                       },
                     ),
                   ),
@@ -215,7 +223,9 @@ class _EditBoxState extends State<EditBox> {
                         hintText: 'New_Price'.tr,
                       ),
                       onChanged: (value) {
-                        _newprice = value;
+                        setState(() {
+                          _newprice = value;
+                        });
                       },
                     ),
                   ),
@@ -242,6 +252,7 @@ class _EditBoxState extends State<EditBox> {
                       setState(() {
                         _startDate = DateTime(date.year, date.month, date.day,
                             time.hour, time.minute);
+                        startdatetimeController.text = _startDate.toString();
                       });
                     }
                   }
@@ -261,7 +272,7 @@ class _EditBoxState extends State<EditBox> {
                         child: TextField(
                           controller: TextEditingController(
                             text: _startDate == null
-                                ? ''
+                                ? startdatetimeController.text
                                 : DateFormat('yyyy-MM-dd HH:mm')
                                     .format(_startDate!),
                           ),
@@ -297,6 +308,7 @@ class _EditBoxState extends State<EditBox> {
                       setState(() {
                         _endDate = DateTime(date.year, date.month, date.day,
                             time.hour, time.minute);
+                        enddateController.text = _endDate.toString();
                       });
                     }
                   }
@@ -316,7 +328,7 @@ class _EditBoxState extends State<EditBox> {
                         child: TextField(
                           controller: TextEditingController(
                             text: _endDate == null
-                                ? ''
+                                ? enddateController.text
                                 : DateFormat('yyyy-MM-dd HH:mm')
                                     .format(_endDate!),
                           ),
@@ -350,7 +362,9 @@ class _EditBoxState extends State<EditBox> {
                         hintText: 'Quantity'.tr,
                       ),
                       onChanged: (value) {
-                        _quantity = value;
+                        setState(() {
+                          _quantity = value;
+                        });
                       },
                     ),
                   ),
@@ -359,30 +373,30 @@ class _EditBoxState extends State<EditBox> {
               const SizedBox(
                 height: 15,
               ),
-              ElevatedButton(
-                onPressed: _pickImage,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange[900],
-                ),
-                child: Text('Select_Image'.tr),
-              ),
-              const SizedBox(height: 3),
-              SizedBox(
-                child: _image == null
-                    ? const SizedBox()
-                    : Container(
-                        width: double.infinity,
-                        height: 150,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.green.shade800),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Image.file(_image!, fit: BoxFit.cover),
-                      ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
+              // ElevatedButton(
+              //   onPressed: _pickImage,
+              //   style: ElevatedButton.styleFrom(
+              //     backgroundColor: Colors.orange[900],
+              //   ),
+              //   child: Text('Select_Image'.tr),
+              // ),
+              // const SizedBox(height: 3),
+              // SizedBox(
+              //   child: _image == null
+              //       ? const SizedBox()
+              //       : Container(
+              //           width: double.infinity,
+              //           height: 150,
+              //           decoration: BoxDecoration(
+              //             border: Border.all(color: Colors.green.shade800),
+              //             borderRadius: BorderRadius.circular(10),
+              //           ),
+              //           child: Image.file(_image!, fit: BoxFit.cover),
+              //         ),
+              // ),
+              // const SizedBox(
+              //   height: 15,
+              // ),
               // Utilisez un DropdownButtonFormField pour sélectionner la catégorie
               Text(
                 'Category'.tr,
@@ -392,7 +406,7 @@ class _EditBoxState extends State<EditBox> {
                     color: Colors.green[800]),
               ),
               DropdownButtonFormField(
-                value: _category,
+                value: categoryController.text,
                 items: categories.map((category) {
                   return DropdownMenuItem(
                     value: category,
@@ -402,6 +416,7 @@ class _EditBoxState extends State<EditBox> {
                 onChanged: (value) {
                   setState(() {
                     _category = value as String;
+                    categoryController.text = _category;
                   });
                 },
               ),
@@ -410,10 +425,22 @@ class _EditBoxState extends State<EditBox> {
                 height: 25,
               ),
 
-              // RoundedButton(
-              //   btnText: 'Create_Box'.tr,
-              //   onBtnPressed: () => createBoxPressed(),
-              // ),
+              RoundedButton(
+                btnText: "${'Save'.tr} box",
+                onBtnPressed: () {
+                  BoxServices.updateBoxDetails(
+                    box.id,
+                    titleController.value.text,
+                    descriptionController.value.text,
+                    oldpriceController.value.text,
+                    newpriceController.value.text,
+                    startdatetimeController.value.text,
+                    enddateController.value.text,
+                    quantityController.value.text,
+                    categoryController.value.text,
+                  );
+                },
+              ),
 
               const SizedBox(
                 height: 20,
