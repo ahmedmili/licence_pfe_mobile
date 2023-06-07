@@ -74,7 +74,7 @@ class Languages extends Translations {
           'Edit': 'Modifier',
           //edit Profile
           'Save': 'ENREGISTRER',
-          'modifie_Password': 'modifier mot de passe',
+          'modifie_Password': 'Modifier mot de passe',
           'New_password': 'Nouveau mot de passe',
           // Box form
           'Old_Price': 'Ancien prix',

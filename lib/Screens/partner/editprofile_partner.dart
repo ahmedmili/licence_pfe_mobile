@@ -130,10 +130,10 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
     return Scaffold(
       appBar: AppBar(
         title: Padding(
-          padding: const EdgeInsets.only(left: 50),
+          padding: const EdgeInsets.only(left: 40),
           child: Text(
             "Edit_Profile".tr,
-            style: const TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.green.shade800),
           ),
         ),
         backgroundColor: Colors.transparent,
@@ -333,7 +333,8 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
               const SizedBox(height: 3),
               //change password
               const SizedBox(height: 20),
-              Center(
+              Padding(
+                padding: EdgeInsets.only(right: 20, left: 20),
                 child: Text(
                   "modifie_Password".tr,
                   style: TextStyle(
