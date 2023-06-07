@@ -130,7 +130,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
     return Scaffold(
       appBar: AppBar(
         title: Padding(
-          padding: const EdgeInsets.only(left: 70),
+          padding: const EdgeInsets.only(left: 50),
           child: Text(
             "Edit_Profile".tr,
             style: const TextStyle(color: Colors.black),
@@ -151,13 +151,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
               const SizedBox(
                 height: 10,
               ),
-              Center(
-                child: Text(
-                  "Account_Details".tr,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.green[800]),
-                ),
-              ),
+
               const SizedBox(
                 height: 20,
               ),

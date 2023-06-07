@@ -73,7 +73,7 @@ class Languages extends Translations {
           'To': 'À',
           'Edit': 'Modifier',
           //edit Profile
-          'Save': 'Sauvegarder',
+          'Save': 'ENREGISTRER',
           'modifie_Password': 'modifier mot de passe',
           'New_password': 'Nouveau mot de passe',
           // Box form
