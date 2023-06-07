@@ -136,7 +136,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
         title: Padding(
           padding: EdgeInsets.only(left: Dimensions.width20),
           child: Text(
-            "${'add_box'.tr} :",
+            "${'ADD BOX'.tr} :",
             style: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
           ),

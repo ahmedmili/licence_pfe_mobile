@@ -44,7 +44,7 @@ class Languages extends Translations {
           'Add some boxes': 'Ajouter des boxes',
           //nav bar
           'home': 'accueil',
-          'add_box': 'AJOUTER BOX',
+          'ADD BOX': 'AJOUTER BOX',
           'Your_Boxes': 'VOS BOXES',
           'Me': 'Moi',
           // profile
