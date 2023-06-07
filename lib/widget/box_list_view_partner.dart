@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:saverapp/Screens/partner/foodDetails_partner.dart';
+import 'package:get/get.dart';
+import 'package:saverapp/Services/globals.dart';
 import 'package:saverapp/widget/boxCardPartner.dart';
 import '../Models/boxs.dart';
 
@@ -14,6 +15,7 @@ class BoxScreenPartner extends StatefulWidget {
 
 class _BoxScreenPartnerState extends State<BoxScreenPartner> {
   get items => widget.items;
+  final GlobalController controller = Get.find<GlobalController>();
 
   @override
   void initState() {
@@ -30,16 +32,8 @@ class _BoxScreenPartnerState extends State<BoxScreenPartner> {
         final box = items[index];
         return GestureDetector(
           onTap: () async {
-            // Partner partner = await UserService.getBoxPartnerInfo(box.id);
-            // ignore: use_build_context_synchronously
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => FoodDetailsPartner(
-                  box: box,
-                ),
-              ),
-            );
+            controller.setBox(box);
+            Get.toNamed('FoodDetailsPartner');
           },
           child: widget.directions == "V"
               ? Column(

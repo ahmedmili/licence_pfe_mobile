@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:saverapp/Screens/change_password.dart';
 import 'package:saverapp/Screens/code.dart';
 import 'package:saverapp/Screens/login.dart';
+import 'package:saverapp/Screens/partner/editBox_partner.dart';
+import 'package:saverapp/Screens/partner/foodDetails_partner.dart';
 import 'package:saverapp/Screens/partner/nav_bottom.dart';
 import 'package:saverapp/Screens/partner/partner_stats.dart';
 import 'package:saverapp/Screens/user/orderglobal.dart';
@@ -106,6 +108,18 @@ List<GetPage<dynamic>> routes = [
   GetPage(
     name: '/partnerStats',
     page: () => const PartnerStats(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 700),
+  ),
+  GetPage(
+    name: '/FoodDetailsPartner',
+    page: () => const FoodDetailsPartner(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 700),
+  ),
+  GetPage(
+    name: '/PartnerEditBox',
+    page: () => const EditBox(),
     transition: Transition.rightToLeft,
     transitionDuration: const Duration(milliseconds: 700),
   ),

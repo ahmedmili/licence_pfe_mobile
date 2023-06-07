@@ -3,22 +3,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:saverapp/Screens/partner/editBox_partner.dart';
 import 'package:saverapp/Services/globals.dart';
-import '../../Models/boxs.dart';
 
 class FoodDetailsPartner extends StatefulWidget {
-  const FoodDetailsPartner({super.key, required this.box});
-  final Box box;
+  const FoodDetailsPartner({
+    super.key,
+  });
 
   @override
   State<FoodDetailsPartner> createState() => _FoodDetailsPartnerState();
 }
 
 class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
+  final GlobalController controller = Get.find<GlobalController>();
   @override
   Widget build(BuildContext context) {
-    final box = widget.box;
+    final box = controller.box;
     return Scaffold(
       body: Stack(children: [
         Positioned(
@@ -247,10 +247,7 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
         ),
         child: MaterialButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const EditBox()),
-            );
+            Get.toNamed("PartnerEditBox");
           },
           color: Colors.green[800],
           shape: RoundedRectangleBorder(

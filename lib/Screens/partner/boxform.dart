@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/box.dart';
-import '../../Services/globals.dart';
 import '../../dimensions.dart';
 import '../../widget/rounded_button.dart';
 import 'package:http/http.dart' as http;
@@ -263,6 +262,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                     lastDate: DateTime(2100),
                   );
                   if (date != null) {
+                    // ignore: use_build_context_synchronously
                     final TimeOfDay? time = await showTimePicker(
                       context: context,
                       initialTime: TimeOfDay.now(),
@@ -317,6 +317,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                     lastDate: DateTime(2100),
                   );
                   if (date != null) {
+                    // ignore: use_build_context_synchronously
                     final TimeOfDay? time = await showTimePicker(
                       context: context,
                       initialTime: TimeOfDay.now(),

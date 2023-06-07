@@ -8,9 +8,9 @@ import '../Models/partner.dart';
 // const String localhost = "192.168.137.119"; // bee
 // const String localhost = "192.168.100.20";
 // const String localhost = "192.168.17.36"; // hrizi
-const String localhost = "192.168.1.66"; // coffe
+// const String localhost = "192.168.1.66"; // coffe
 // const String localhost = "172.16.27.231"; // iset
-// const String localhost = "192.168.17.140"; // foye
+const String localhost = "192.168.1.140"; // foye
 
 const String baseURL = "http://$localhost:8000/api/";
 
@@ -51,6 +51,20 @@ class GlobalController extends GetxController {
     adress: "",
     likes: false,
   );
+  var _box = Box(
+    newprice: "",
+    startdate: "",
+    enddate: "",
+    quantity: 0,
+    remaining_quantity: 0,
+    image: "",
+    category: "",
+    partnerId: 0,
+    id: 0,
+    title: "",
+    description: "",
+    oldprice: "",
+  );
 
   late List<Box> _boxsList = [];
 // getters
@@ -58,6 +72,7 @@ class GlobalController extends GetxController {
   String get token => _token.value;
   String get role => _role.value;
   bool get firstLogin => _firstLogin.value;
+  Box get box => _box;
 
   List<Box> get boxsList => _boxsList;
 
@@ -81,6 +96,11 @@ class GlobalController extends GetxController {
 
   void setBoxsList(List<Box> boxsList) {
     _boxsList = boxsList;
+    update();
+  }
+
+  void setBox(Box box) {
+    _box = box;
     update();
   }
 
