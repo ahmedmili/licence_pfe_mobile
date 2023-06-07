@@ -32,6 +32,8 @@ class _LoginScreenState extends State<LoginScreen> {
     return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
   }
 
+  bool _obscureText = true;
+
   Future<void> loginPressed(BuildContext context) async {
     if (_email.isNotEmpty && _password.isNotEmpty) {
       if (!isValidEmail(_email)) {
@@ -105,7 +107,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    bool _obscureText = true;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -197,6 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Icon(
                               _obscureText
                                   ? Icons.visibility_off
+                                  // ignore: dead_code
                                   : Icons.visibility,
                               color: Colors.grey,
                             ),
