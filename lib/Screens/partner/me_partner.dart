@@ -6,6 +6,7 @@ import 'package:saverapp/Screens/partner/profile.dart';
 import 'package:saverapp/Services/geoLocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/partners.dart';
+import '../../dimensions.dart';
 import '../../widget/CustomListTile.dart';
 import '../../widget/Location_dropDawn.dart';
 import '../../widget/translate.dart';
@@ -24,6 +25,24 @@ class _MePartnerState extends State<MePartner> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Padding(
+          padding: EdgeInsets.only(left: Dimensions.width20),
+          child: Text(
+            "${"SETTINGS".tr}:",
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.green[800],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.grey,
+        ),
+      ),
       body: ListView(children: [
         Column(
           children: [

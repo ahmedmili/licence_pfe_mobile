@@ -21,7 +21,7 @@ class StatusWidget extends StatelessWidget {
       },
       child: Container(
         height: 50,
-        width: 150,
+        width: 140,
         padding: const EdgeInsets.only(left: 5, right: 5),
         child: Material(
           elevation: isSelected ? 10.0 : 5.0,
@@ -31,7 +31,7 @@ class StatusWidget extends StatelessWidget {
             child: Text(
               status.tr.toUpperCase(),
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 19,
                 fontWeight: FontWeight.bold,
                 color: isSelected ? Colors.white : Colors.black,
               ),

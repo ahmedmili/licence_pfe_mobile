@@ -98,7 +98,7 @@ class _CongratulationsState extends State<Congratulations> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Thanks To You", style: GoogleFonts.bebasNeue(fontSize: 52)),
+            Text("Thank You", style: GoogleFonts.bebasNeue(fontSize: 52)),
             const SizedBox(height: 10),
             Text(
               "This box won't go to waste",

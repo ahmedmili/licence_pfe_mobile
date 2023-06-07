@@ -400,7 +400,7 @@ class _ProfilePartnerState extends State<ProfilePartner> {
                         Get.toNamed("editprofilePartner");
                       },
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 240.0),
+                        padding: const EdgeInsets.only(left: 230.0),
                         child: Text(
                           '${"Edit_Profile".tr} ?',
                           style: TextStyle(

@@ -125,7 +125,7 @@ class _PartnerBoxesState extends State<PartnerBoxes> {
                       ),
                       const SizedBox(height: 15),
                       Text(
-                        "Add some boxes.",
+                        "${("Add some boxes".tr)}",
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.orange.shade900,

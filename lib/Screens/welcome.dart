@@ -24,9 +24,9 @@ class _WelcomeState extends State<Welcome> {
             SizedBox(height: Dimensions.height30 * 2),
             Center(
               child: Image.asset(
-                "assets/images/food.png",
-                width: Dimensions.width20 * 10,
-                height: Dimensions.height20 * 10,
+                "assets/images/logo.png",
+                width: Dimensions.width20 * 20,
+                height: Dimensions.height20 * 15,
               ),
             ),
             SizedBox(height: Dimensions.height20),
