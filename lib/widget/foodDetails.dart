@@ -125,7 +125,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                 Text(
                   partner.name,
                   style: const TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 26,
                       fontWeight: FontWeight.bold),
                 ),
