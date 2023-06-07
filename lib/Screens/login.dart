@@ -248,57 +248,57 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 30,
                 ),
                 // or continue with
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Text(
-                          'or_continue_message'.tr,
-                          style: TextStyle(color: Colors.grey[700]),
-                        ),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                //   child: Row(
+                //     children: [
+                // Expanded(
+                //   child: Divider(
+                //     thickness: 0.5,
+                //     color: Colors.grey[400],
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                //   child: Text(
+                //     'or_continue_message'.tr,
+                //     style: TextStyle(color: Colors.grey[700]),
+                //   ),
+                // ),
+                // Expanded(
+                //   child: Divider(
+                //     thickness: 0.5,
+                //     color: Colors.grey[400],
+                //   ),
+                // ),
+                //     ],
+                //   ),
+                // ),
 
-                const SizedBox(height: 30),
+                // const SizedBox(height: 30),
 
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black87,
-                    backgroundColor: Colors.white,
-                    minimumSize: const Size(double.infinity, 60.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/google_logo.png',
-                        height: 24.0,
-                      ),
-                      const SizedBox(width: 8.0),
-                      const Text('Sign in with Google'),
-                    ],
-                  ),
-                ),
+                // ElevatedButton(
+                //   onPressed: () {},
+                //   style: ElevatedButton.styleFrom(
+                //     foregroundColor: Colors.black87,
+                //     backgroundColor: Colors.white,
+                //     minimumSize: const Size(double.infinity, 60.0),
+                //     shape: RoundedRectangleBorder(
+                //       borderRadius: BorderRadius.circular(10.0),
+                //     ),
+                //   ),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     children: [
+                //       Image.asset(
+                //         'assets/images/google_logo.png',
+                //         height: 24.0,
+                //       ),
+                //       const SizedBox(width: 8.0),
+                //       const Text('Sign in with Google'),
+                //     ],
+                //   ),
+                // ),
 
                 const SizedBox(
                   height: 60,
