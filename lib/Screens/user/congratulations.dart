@@ -71,7 +71,10 @@ class _CongratulationsState extends State<Congratulations> {
       );
 
       Get.snackbar(
-          "sucess", "Your order has been successfully placed. Thank you");
+          backgroundColor: Colors.white,
+          "sucess",
+          "Your order has been successfully placed.",
+          colorText: Colors.green.shade800);
     } else {
       print("Something wrong!");
     }
@@ -121,7 +124,7 @@ class _CongratulationsState extends State<Congratulations> {
                               color: Colors.red[400]),
                           const SizedBox(width: 5),
                           Text(
-                            'That\'s good to remember',
+                            'Reminder',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.red[400]),
@@ -129,7 +132,7 @@ class _CongratulationsState extends State<Congratulations> {
                         ],
                       ),
                       content: const Text(
-                        'Please arrive at the designated time on your receipt - neither early nor late. Your box will be ready and waiting for you.',
+                        'Make sure to come at  the designated time. Your box will be waiting for you.',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       actions: <Widget>[
