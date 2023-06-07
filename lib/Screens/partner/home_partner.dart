@@ -31,7 +31,7 @@ class _HomePartnerScreenState extends State<HomePartnerScreen> {
         title: Padding(
           padding: EdgeInsets.only(left: Dimensions.width20),
           child: Text(
-            "${"orders".tr}:",
+            "${"ORDERS".tr}:",
             style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
