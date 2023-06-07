@@ -228,7 +228,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Get.toNamed("forgetPassword");
                   },
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 220.0),
+                    padding: const EdgeInsets.only(left: 200.0),
                     child: Text(
                       'forget_passsword_question'.tr,
                       style: const TextStyle(
