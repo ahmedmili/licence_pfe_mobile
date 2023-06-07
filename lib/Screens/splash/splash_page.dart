@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../dimensions.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -32,22 +34,25 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         ScaleTransition(
           scale: animation,
           child: Center(
             child: Image.asset(
-              "assets/images/food.png",
-              // width: Dimensions.splashImg,
+              "assets/images/logo.png",
+              width: Dimensions.width20 * 35,
+              height: Dimensions.height20 * 25,
             ),
           ),
         ),
-        const Center(
-          child: Text("SOUSSE , TUNISIE"),
-          //  Image.asset(
-          //   "assets/images/name.png",
-          //   // width: Dimensions.splashImg,
-          // ),
+        Center(
+          child: Text(
+            "SOUSSE , TUNISIE",
+            style: TextStyle(
+                color: Colors.green.shade800,
+                fontSize: 18,
+                fontWeight: FontWeight.bold),
+          ),
         ),
       ]),
     );
