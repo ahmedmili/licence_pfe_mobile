@@ -44,9 +44,7 @@ class AuthServices {
     var uri = Uri.parse('${baseURL}user/registerpartner');
     var request = http.MultipartRequest("POST", uri);
     print("---------------------");
-    print(long);
-    print(lat);
-    print(adress);
+
     Map<String, String> data = {
       "name": name,
       "description": description,
@@ -56,6 +54,9 @@ class AuthServices {
       "category": category,
       "openingtime": openingtime,
       "closingtime": closingtime,
+      "long": long.toString(),
+      "lat": lat.toString(),
+      "adress": adress,
       "roleId": roleId.toString(),
     };
 
@@ -66,10 +67,20 @@ class AuthServices {
     var response = await request.send();
     var responseString = await response.stream.bytesToString();
     if (response.statusCode == 200) {
-      return {
-        "error": jsonDecode(responseString)["0"],
-        "status": jsonDecode(responseString)["status"]
-      };
+      if (jsonDecode(responseString)["status"] == 400) {
+        return {
+          "error": jsonDecode(responseString)["0"],
+          "status": jsonDecode(responseString)["status"]
+        };
+      } else if (jsonDecode(responseString)['status'] == 201) {
+        // print(jsonDecode(responseString));
+        return {
+          "message": jsonDecode(responseString)['message'],
+          "status": jsonDecode(responseString)['status'],
+        };
+      } else {
+        throw responseString;
+      }
     } else {
       throw responseString;
     }

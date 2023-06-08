@@ -159,13 +159,17 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
         } else if (err["description"] != null) {
           Get.snackbar("error".tr, err["description"][0]);
         } else if (err["openingtime"] != null) {
-          Get.snackbar("error".tr, err["closingtime"][0]);
+          Get.snackbar("error".tr, err["openingtime"][0]);
         } else if (err["closingtime"] != null) {
-          Get.snackbar("error".tr, err["popeningtimeassword"][0]);
+          Get.snackbar("error".tr, err["closingtime"][0]);
         }
+      } else if (response["status"] == 201) {
+        Get.snackbar("success".tr, response["message"]);
+        Get.to(const Waiting());
       }
+    } else {
+      Get.snackbar("error".tr, "invalide email format");
     }
-    Get.to(const Waiting());
   }
 
   @override
