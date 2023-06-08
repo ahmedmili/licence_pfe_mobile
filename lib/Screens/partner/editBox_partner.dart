@@ -373,30 +373,7 @@ class _EditBoxState extends State<EditBox> {
               const SizedBox(
                 height: 15,
               ),
-              // ElevatedButton(
-              //   onPressed: _pickImage,
-              //   style: ElevatedButton.styleFrom(
-              //     backgroundColor: Colors.orange[900],
-              //   ),
-              //   child: Text('Select_Image'.tr),
-              // ),
-              // const SizedBox(height: 3),
-              // SizedBox(
-              //   child: _image == null
-              //       ? const SizedBox()
-              //       : Container(
-              //           width: double.infinity,
-              //           height: 150,
-              //           decoration: BoxDecoration(
-              //             border: Border.all(color: Colors.green.shade800),
-              //             borderRadius: BorderRadius.circular(10),
-              //           ),
-              //           child: Image.file(_image!, fit: BoxFit.cover),
-              //         ),
-              // ),
-              // const SizedBox(
-              //   height: 15,
-              // ),
+
               // Utilisez un DropdownButtonFormField pour sélectionner la catégorie
               Text(
                 'Category'.tr,
@@ -420,13 +397,11 @@ class _EditBoxState extends State<EditBox> {
                   });
                 },
               ),
-
               const SizedBox(
                 height: 25,
               ),
-
               RoundedButton(
-                btnText: "${'Save'.tr} box",
+                btnText: "${'Save'.tr} BOX DETAILS",
                 onBtnPressed: () {
                   BoxServices.updateBoxDetails(
                     box.id,
@@ -441,9 +416,45 @@ class _EditBoxState extends State<EditBox> {
                   );
                 },
               ),
-
               const SizedBox(
-                height: 20,
+                height: 50,
+              ),
+              // image section
+              ElevatedButton(
+                onPressed: _pickImage,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange[900],
+                ),
+                child: Text('Select_Image'.tr),
+              ),
+              const SizedBox(height: 3),
+              SizedBox(
+                child: _image == null
+                    ? const SizedBox()
+                    : Container(
+                        width: double.infinity,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.green.shade800),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Image.file(_image!, fit: BoxFit.cover),
+                      ),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+
+              /// save image button
+              _image != null
+                  ? RoundedButton(
+                      btnText: "${'Save'.tr} IMAGE",
+                      onBtnPressed: () {
+                        BoxServices.updateBoxImage(_image!, box.id);
+                      })
+                  : const SizedBox(),
+              const SizedBox(
+                height: 15,
               ),
             ],
           ),
