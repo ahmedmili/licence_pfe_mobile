@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             // adress: geoController.adress.value,
                             ),
                         const SizedBox(
-                          height: 10,
+                          height: 30,
                         ),
                         Container(
                           padding:
@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Text(
                                 "Recommended for you",
                                 style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
+                                    fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -57,16 +57,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 200,
                           child: BoxScreen(items: snapshot.data!),
                         ),
+                        SizedBox(height: 20),
                         Column(
                           children: [
                             Container(
                               margin: const EdgeInsets.only(bottom: 5),
                               padding: const EdgeInsets.only(
-                                  left: 20.0, right: 15.0),
+                                  left: 10.0, right: 240.0),
                               child: const Text(
-                                "All boxes available",
+                                "Available",
                                 style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
+                                    fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                             ),
                             const SizedBox(height: 15.0),
