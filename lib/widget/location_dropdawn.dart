@@ -22,7 +22,7 @@ class _PopupLocationMenu extends State<PopupLocationMenu> {
       itemBuilder: (BuildContext context) {
         return <PopupMenuEntry<String>>[
           PopupMenuItem<String>(
-            value: 'Add',
+            value: 'GPS',
             child: Row(
               children: const [
                 Icon(Icons.add_circle_outline),
@@ -46,7 +46,7 @@ class _PopupLocationMenu extends State<PopupLocationMenu> {
       icon: const Icon(Icons.more_vert),
       onSelected: (String value) {
         switch (value) {
-          case 'Add':
+          case 'GPS':
             geoController.getLocation();
 
             geoController.getAddressFromLatLng();

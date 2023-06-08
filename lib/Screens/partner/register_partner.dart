@@ -127,7 +127,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(_email);
     if (emailValid) {
-      http.Response response = await AuthServices.registerpartner(
+      Map response = await AuthServices.registerpartner(
         _name,
         _description,
         _email,
@@ -142,19 +142,30 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
         double.parse(geoController.lat.value),
         geoController.adress.value,
       );
-      Map<String, dynamic> responseMap = jsonDecode(response.body);
-
-      if (response.statusCode == 200) {
-        String token = responseMap['token'];
-        _save(token);
-
-        Get.to(const Waiting());
-      } else {
-        Get.snackbar("error".tr, responseMap.values.first[0]);
+      if (response["status"] == 400) {
+        final err = response["error"];
+        if (err["phone"] != null) {
+          Get.snackbar("error".tr, err["phone"][0]);
+        } else if (err["email"] != null) {
+          Get.snackbar("error".tr, err["email"][0]);
+        } else if (err["name"] != null) {
+          Get.snackbar("error".tr, err["name"][0]);
+        } else if (err["password"] != null) {
+          Get.snackbar("error".tr, err["password"][0]);
+        } else if (err["image"] != null) {
+          Get.snackbar("error".tr, err["image"][0]);
+        } else if (err["category"] != null) {
+          Get.snackbar("error".tr, err["category"][0]);
+        } else if (err["description"] != null) {
+          Get.snackbar("error".tr, err["description"][0]);
+        } else if (err["openingtime"] != null) {
+          Get.snackbar("error".tr, err["closingtime"][0]);
+        } else if (err["closingtime"] != null) {
+          Get.snackbar("error".tr, err["popeningtimeassword"][0]);
+        }
       }
-    } else {
-      errorSnackBar(context, 'email not valid');
     }
+    Get.to(const Waiting());
   }
 
   @override

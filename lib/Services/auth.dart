@@ -26,7 +26,7 @@ class AuthServices {
     return response;
   }
 
-  static Future<http.Response> registerpartner(
+  static Future<Map> registerpartner(
     String name,
     String description,
     String email,
@@ -43,7 +43,10 @@ class AuthServices {
   ) async {
     var uri = Uri.parse('${baseURL}user/registerpartner');
     var request = http.MultipartRequest("POST", uri);
-
+    print("---------------------");
+    print(long);
+    print(lat);
+    print(adress);
     Map<String, String> data = {
       "name": name,
       "description": description,
@@ -63,7 +66,10 @@ class AuthServices {
     var response = await request.send();
     var responseString = await response.stream.bytesToString();
     if (response.statusCode == 200) {
-      return http.Response(responseString, response.statusCode);
+      return {
+        "error": jsonDecode(responseString)["0"],
+        "status": jsonDecode(responseString)["status"]
+      };
     } else {
       throw responseString;
     }
