@@ -192,7 +192,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: const IconThemeData(
+        iconTheme: IconThemeData(
           color: Colors.grey,
         ),
       ),
@@ -208,7 +208,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -218,6 +218,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Name'.tr,
+                        hintStyle: TextStyle(color: Colors.grey.shade800),
                       ),
                       onChanged: (value) {
                         _name = value;
@@ -233,16 +234,17 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Description',
+                        hintStyle: TextStyle(color: Colors.grey[800]),
                       ),
                       onChanged: (value) {
                         _description = value;
@@ -258,7 +260,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -266,9 +268,10 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
                       keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Email',
+                        hintStyle: TextStyle(color: Colors.grey[800]),
                       ),
                       onChanged: (value) {
                         _email = value;
@@ -284,7 +287,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -294,6 +297,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Phone'.tr,
+                        hintStyle: TextStyle(color: Colors.grey[800]),
                       ),
                       onChanged: (value) {
                         _phone = value;
@@ -309,7 +313,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -320,6 +324,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Password'.tr,
+                        hintStyle: TextStyle(color: Colors.grey[800]),
                       ),
                       onChanged: (value) {
                         _password = value;
@@ -331,29 +336,28 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               const SizedBox(
                 height: 15,
               ),
-              ElevatedButton(
-                onPressed: _pickImage,
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(360, 40),
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  backgroundColor: Colors.white,
-                  side: BorderSide(color: Colors.orange.shade900, width: 2),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+              Container(
+                width: 360,
+                child: ElevatedButton(
+                  onPressed: _pickImage,
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(360, 40),
+                    // padding: EdgeInsets.symmetric(horizontal: 20),
+                    backgroundColor: Colors.white,
+                    side: BorderSide(color: Colors.green.shade800, width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.image,
-                      color: Colors.orange.shade900,
-                    ),
-                    Text(
-                      'Select_Image'.tr,
-                      style: TextStyle(color: Colors.orange.shade900),
-                    ),
-                  ],
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Select_Image'.tr,
+                        style: TextStyle(color: Colors.grey[800]),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               // Text(_imageName),
@@ -400,35 +404,36 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               ),
               Text(
                 _openingtime,
-                style: const TextStyle(
+                style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
-                    color: Colors.blue),
+                    color: Colors.grey[800]),
               ),
 
               // buttons
-              MaterialButton(
-                onPressed: _showTimePicker,
-                color: Colors.white,
-                height: 40,
-                minWidth: 360,
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: Colors.orange.shade900, // Couleur de la bordure
-                    width: 2.0, // Largeur de la bordure
+              Container(
+                width: 360,
+                child: MaterialButton(
+                  onPressed: _showTimePicker,
+                  color: Colors.white,
+                  height: 40,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: Colors.green.shade800, // Couleur de la bordure
+                      width: 2.0, // Largeur de la bordure
+                    ),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.access_time_outlined,
-                        color: Colors.orange.shade900),
-                    SizedBox(height: 5),
-                    Text('Pick_Opening_Time'.tr,
-                        style: TextStyle(
-                            color: Colors.orange.shade900, fontSize: 15)),
-                  ],
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.access_time_outlined, color: Colors.grey[800]),
+                      SizedBox(width: 5),
+                      Text('Pick_Opening_Time'.tr,
+                          style:
+                              TextStyle(color: Colors.grey[800], fontSize: 15)),
+                    ],
+                  ),
                 ),
               ),
 
@@ -437,32 +442,34 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
-                    color: Colors.orange[900]),
+                    color: Colors.grey[800]),
               ),
 
-              MaterialButton(
-                onPressed: _showClosingTimePicker,
-                color: Colors.white,
-                height: 40,
-                minWidth: 360,
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: Colors.orange.shade900, // Couleur de la bordure
-                    width: 2.0, // Largeur de la bordure
+              Container(
+                width: 360,
+                child: MaterialButton(
+                  onPressed: _showClosingTimePicker,
+                  color: Colors.white,
+                  height: 40,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: Colors.green.shade800,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  borderRadius:
-                      BorderRadius.circular(10), // Rayon des coins du bouton
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.access_time_filled,
-                        color: Colors.orange.shade900),
-                    SizedBox(height: 5),
-                    Text('Pick_Closing_Time'.tr,
-                        style: TextStyle(
-                            color: Colors.orange.shade900, fontSize: 15)),
-                  ],
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.access_time_filled, color: Colors.grey[800]),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text('Pick_Closing_Time'.tr,
+                          style:
+                              TextStyle(color: Colors.grey[800], fontSize: 15)),
+                    ],
+                  ),
                 ),
               ),
 
@@ -474,7 +481,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
-                    color: Colors.orange.shade900,
+                    color: Colors.green.shade800,
                     width: 2.0,
                   ),
                   borderRadius: BorderRadius.circular(10),
@@ -488,7 +495,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                         padding: EdgeInsets.only(left: 100),
                         child: Text("Get_Position".tr,
                             style: TextStyle(
-                                color: Colors.orange.shade900, fontSize: 15)),
+                                color: Colors.grey[800], fontSize: 15)),
                       ),
                       const Expanded(child: SizedBox()),
                       const PopupLocationMenu(),

@@ -64,7 +64,7 @@ class Languages extends Translations {
           'Pick_Opening_Time': 'Choisissez l\'heure d\'ouverture',
           'Get_Position': 'Obtenir position',
           'Send_Request': 'Envoyer une demande',
-          'account_question': 'Vous avez déjà un compte ? Connecte !!',
+          'account_question': 'Vous avez déjà un compte ? Connexion ?',
           // food details
           'Title': 'Titre',
           'Initial_quantity': 'Quantité initiale',
