@@ -42,16 +42,15 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
             MaterialPageRoute(
               builder: (BuildContext context) => LoginScreen(),
             ));
-        // Get.toNamed("/home");
       } else {
         String errorMessage = responseMap.values.first[0].toString();
-        // ignore: use_build_context_synchronously
-        // errorSnackBar(context, errorMessage);
         Get.snackbar("Error", errorMessage);
       }
-
-      // errorSnackBar(context, 'Email not valid');
-      Get.snackbar("Error", "Email not valid");
+      Get.snackbar(
+          backgroundColor: Colors.white,
+          "success",
+          "Successfully registered.",
+          colorText: Colors.green.shade800);
     }
   }
 
@@ -64,9 +63,19 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Padding(
+          padding: const EdgeInsets.only(left: 40),
+          child: Text(
+            "Create Your Profile ",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.green.shade800),
+          ),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: const IconThemeData(
+        iconTheme: IconThemeData(
           color: Colors.grey,
         ),
       ),
@@ -75,32 +84,22 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              SizedBox(height: Dimensions.height10),
-              Padding(
-                padding: EdgeInsets.only(right: Dimensions.width30 * 2),
-                child: Text(
-                  "Create your profile to save food :",
-                  style: TextStyle(
-                      fontSize: Dimensions.font20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green[800]),
-                ),
-              ),
               SizedBox(height: Dimensions.height30),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Name',
+                        hintStyle: TextStyle(color: Colors.grey.shade800),
                       ),
                       onChanged: (value) {
                         _name = value;
@@ -116,7 +115,7 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -124,9 +123,10 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
                       keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Email',
+                        hintStyle: TextStyle(color: Colors.grey.shade800),
                       ),
                       onChanged: (value) {
                         _email = value;
@@ -142,16 +142,17 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Phone',
+                        hintStyle: TextStyle(color: Colors.grey.shade800),
                       ),
                       onChanged: (value) {
                         _phone = value;
@@ -167,7 +168,7 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -175,9 +176,10 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
                       obscureText: true,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Password',
+                        hintStyle: TextStyle(color: Colors.grey.shade800),
                       ),
                       onChanged: (value) {
                         _password = value;
