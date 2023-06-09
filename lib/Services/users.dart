@@ -102,7 +102,7 @@ class UserService {
     }
   }
 
-  static Future<Partner> getBoxPartnerInfo(id) async {
+  static Future<Partner> getBoxPartnerInfo(int id) async {
     final token = controller.token;
     final url = Uri.parse('${baseURL}user/boxs/boxdetails/$id');
     final response = await http.get(
@@ -115,6 +115,7 @@ class UserService {
     if (response.statusCode == 200) {
       Map<String, dynamic> data = jsonDecode(response.body);
       final boxPartner = Partner.fromJson(data);
+
       return boxPartner;
     } else {
       throw Exception('Failed to fetch box partner info');

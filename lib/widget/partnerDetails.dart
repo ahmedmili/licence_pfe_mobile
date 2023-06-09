@@ -51,7 +51,7 @@ class _PartnerDetailsState extends State<PartnerDetails> {
               children: <Widget>[
                 SingleChildScrollView(
                   child: Container(
-                    height: 700,
+                    height: 650,
                     width: Dimensions.width50 * 10,
                     padding:
                         const EdgeInsets.only(left: 35.0, right: 25.0, top: 0),

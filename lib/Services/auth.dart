@@ -7,7 +7,7 @@ import 'dart:io';
 final GlobalController controller = Get.find<GlobalController>();
 
 class AuthServices {
-  static Future<http.Response> register(String name, String email, String phone,
+  static Future<Map> register(String name, String email, String phone,
       String password, int roleId) async {
     Map data = {
       "name": name,
@@ -23,7 +23,29 @@ class AuthServices {
       headers: headers,
       body: body,
     );
-    return response;
+
+    if (response.statusCode == 200) {
+      // print(response.body);
+      if (jsonDecode(response.body)["status"] == 400) {
+        print("400");
+        return {
+          "error": jsonDecode(response.body)["0"],
+          "status": jsonDecode(response.body)["status"]
+        };
+      } else if (jsonDecode(response.body)['status'] == 200) {
+        print("200");
+        print(jsonDecode(response.body)['token']);
+        return {
+          "message": jsonDecode(response.body)['message'],
+          "token": jsonDecode(response.body)['token'],
+          "status": jsonDecode(response.body)['status'],
+        };
+      } else {
+        throw jsonDecode(response.body);
+      }
+    } else {
+      throw jsonDecode(response.body);
+    }
   }
 
   static Future<Map> registerpartner(
@@ -43,7 +65,6 @@ class AuthServices {
   ) async {
     var uri = Uri.parse('${baseURL}user/registerpartner');
     var request = http.MultipartRequest("POST", uri);
-    print("---------------------");
 
     Map<String, String> data = {
       "name": name,
@@ -73,7 +94,6 @@ class AuthServices {
           "status": jsonDecode(responseString)["status"]
         };
       } else if (jsonDecode(responseString)['status'] == 201) {
-        // print(jsonDecode(responseString));
         return {
           "message": jsonDecode(responseString)['message'],
           "status": jsonDecode(responseString)['status'],
