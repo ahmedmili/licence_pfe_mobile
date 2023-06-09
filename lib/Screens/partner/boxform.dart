@@ -167,6 +167,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Title'.tr,
+                        hintStyle: TextStyle(color: Colors.grey.shade800),
                       ),
                       onChanged: (value) {
                         _title = value;
@@ -182,16 +183,17 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Description',
+                        hintStyle: TextStyle(color: Colors.grey.shade800),
                       ),
                       onChanged: (value) {
                         _description = value;
@@ -207,7 +209,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -217,6 +219,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Old_Price'.tr,
+                        hintStyle: TextStyle(color: Colors.grey.shade800),
                       ),
                       onChanged: (value) {
                         _oldprice = value;
@@ -232,7 +235,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -242,6 +245,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'New_Price'.tr,
+                        hintStyle: TextStyle(color: Colors.grey.shade800),
                       ),
                       onChanged: (value) {
                         _newprice = value;
@@ -280,7 +284,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
+                        color: Colors.white,
                         border:
                             Border.all(color: Colors.green.shade800, width: 2),
                         borderRadius: BorderRadius.circular(12),
@@ -297,6 +301,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Start_Date'.tr,
+                            hintStyle: TextStyle(color: Colors.grey.shade800),
                           ),
                         ),
                       ),
@@ -335,7 +340,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
+                        color: Colors.white,
                         border:
                             Border.all(color: Colors.green.shade800, width: 2),
                         borderRadius: BorderRadius.circular(12),
@@ -352,6 +357,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'End_Date'.tr,
+                            hintStyle: TextStyle(color: Colors.grey.shade800),
                           ),
                         ),
                       ),
@@ -366,7 +372,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -376,6 +382,7 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Quantity'.tr,
+                        hintStyle: TextStyle(color: Colors.grey.shade800),
                       ),
                       onChanged: (value) {
                         _quantity = value;
@@ -387,12 +394,15 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
               const SizedBox(
                 height: 15,
               ),
-              ElevatedButton(
-                onPressed: _pickImage,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange[900],
+              Container(
+                width: 360,
+                child: ElevatedButton(
+                  onPressed: _pickImage,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange[900],
+                  ),
+                  child: Text('Select_Image'.tr),
                 ),
-                child: Text('Select_Image'.tr),
               ),
               Text(_imageName),
               const SizedBox(height: 3),

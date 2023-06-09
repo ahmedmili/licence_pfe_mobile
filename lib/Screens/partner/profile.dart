@@ -16,6 +16,14 @@ class _ProfilePartnerState extends State<ProfilePartner> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Padding(
+          padding: EdgeInsets.only(left: 65),
+          child: Text(
+            '${"My Profile".tr}',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
+          ),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: const IconThemeData(
