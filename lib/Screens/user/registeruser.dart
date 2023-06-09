@@ -46,6 +46,7 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
       Get.snackbar("success".tr, response["message"]);
       print("----------------");
       print(response["token"]);
+
       String token = response['token'];
       _save(token);
       Get.offNamed("/login");
@@ -71,6 +72,32 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
     errorSnackBar(context, 'Email not valid');
     Get.snackbar("Error", "Email not valid");
     }
+
+      // String token = response['token'];
+      // _save(token);
+      // Get.offNamed("/login");
+    
+    // } else {
+    //   Get.snackbar("error".tr, "invalide email format");
+    // }
+    // Map responseMap = jsonDecode(response.body);
+
+    // if (response.statusCode == 201) {
+    //   String token = responseMap['token'];
+    //   _save(token);
+
+
+    //   Get.offNamed("/login");
+    // } else {
+    //   String errorMessage = responseMap.values.first[0].toString();
+    //   // ignore: use_build_context_synchronously
+    //   // errorSnackBar(context, errorMessage);
+    //   Get.snackbar("Error", errorMessage);
+    // }
+
+    // errorSnackBar(context, 'Email not valid');
+    // Get.snackbar("Error", "Email not valid");
+    // }
       if (response.statusCode == 201) {
         String token = responseMap['token'];
         _save(token);
@@ -89,7 +116,6 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
           "Successfully registered.",
           colorText: Colors.green.shade800);
     }
-
   }
 
   _save(String token) async {
