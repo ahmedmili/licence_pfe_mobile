@@ -28,13 +28,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 future: UserService.getAvailableBoxs(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    // print(geoController.adress.value);
                     return Column(
                       children: [
                         const SizedBox(height: 20.0),
-                        const AdresseField(
-                            // adress: geoController.adress.value,
-                            ),
+                        const AdresseField(),
                         const SizedBox(
                           height: 30,
                         ),
@@ -57,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 200,
                           child: BoxScreen(items: snapshot.data!),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         Column(
                           children: [
                             Container(

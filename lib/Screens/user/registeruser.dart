@@ -28,31 +28,48 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(_email);
 
-    if (emailValid) {
-      http.Response response = await AuthServices.register(
-          _name, _email, _phone, _password, _roleId);
-
-      Map responseMap = jsonDecode(response.body);
-
-      if (response.statusCode == 201) {
-        String token = responseMap['token'];
-        _save(token);
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (BuildContext context) => LoginScreen(),
-            ));
-        // Get.toNamed("/home");
-      } else {
-        String errorMessage = responseMap.values.first[0].toString();
-        // ignore: use_build_context_synchronously
-        // errorSnackBar(context, errorMessage);
-        Get.snackbar("Error", errorMessage);
+    // if (emailValid) {
+    Map response =
+        await AuthServices.register(_name, _email, _phone, _password, _roleId);
+    if (response["status"] == 400) {
+      final err = response["error"];
+      if (err["phone"] != null) {
+        Get.snackbar("error".tr, err["phone"][0]);
+      } else if (err["email"] != null) {
+        Get.snackbar("error".tr, err["email"][0]);
+      } else if (err["name"] != null) {
+        Get.snackbar("error".tr, err["name"][0]);
+      } else if (err["password"] != null) {
+        Get.snackbar("error".tr, err["password"][0]);
       }
-
-      // errorSnackBar(context, 'Email not valid');
-      Get.snackbar("Error", "Email not valid");
+    } else if (response["status"] == 201) {
+      Get.snackbar("success".tr, response["message"]);
+      print("----------------");
+      print(response["token"]);
+      // String token = response['token'];
+      // _save(token);
+      // Get.offNamed("/login");
     }
+    // } else {
+    //   Get.snackbar("error".tr, "invalide email format");
+    // }
+    // Map responseMap = jsonDecode(response.body);
+
+    // if (response.statusCode == 201) {
+    //   String token = responseMap['token'];
+    //   _save(token);
+
+    //   Get.offNamed("/login");
+    // } else {
+    //   String errorMessage = responseMap.values.first[0].toString();
+    //   // ignore: use_build_context_synchronously
+    //   // errorSnackBar(context, errorMessage);
+    //   Get.snackbar("Error", errorMessage);
+    // }
+
+    // errorSnackBar(context, 'Email not valid');
+    // Get.snackbar("Error", "Email not valid");
+    // }
   }
 
   _save(String token) async {
