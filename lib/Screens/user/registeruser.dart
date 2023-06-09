@@ -29,34 +29,36 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(_email);
 
-    // if (emailValid) {
-    Map response =
-        await AuthServices.register(_name, _email, _phone, _password, _roleId);
-    if (response["status"] == 400) {
-      final err = response["error"];
-      if (err["phone"] != null) {
-        Get.snackbar("error".tr, err["phone"][0]);
-      } else if (err["email"] != null) {
-        Get.snackbar("error".tr, err["email"][0]);
-      } else if (err["name"] != null) {
-        Get.snackbar("error".tr, err["name"][0]);
-      } else if (err["password"] != null) {
-        Get.snackbar("error".tr, err["password"][0]);
-      }
-    } else if (response["status"] == 201) {
-      Get.snackbar("success".tr, response["message"]);
+    if (emailValid) {
+      Map response = await AuthServices.register(
+          _name, _email, _phone, _password, _roleId);
+      if (response["status"] == 400) {
+        final err = response["error"];
+        if (err["phone"] != null) {
+          Get.snackbar("error".tr, err["phone"][0]);
+        } else if (err["email"] != null) {
+          Get.snackbar("error".tr, err["email"][0]);
+        } else if (err["name"] != null) {
+          Get.snackbar("error".tr, err["name"][0]);
+        } else if (err["password"] != null) {
+          Get.snackbar("error".tr, err["password"][0]);
+        }
+      } else if (response["status"] == 200) {
+        Get.snackbar("success".tr, response["message"]);
 
-      String token = response['token'];
-      _save(token);
-      Get.offNamed("/login");
-      // }
+        String token = response['token'];
+        _save(token);
+        Get.offNamed("/login");
+        Get.snackbar(
+            backgroundColor: Colors.white,
+            "success",
+            "Successfully registered.",
+            colorText: Colors.green.shade800);
+      }
     } else {
-      Get.snackbar(
-          backgroundColor: Colors.white,
-          "success",
-          "Successfully registered.",
-          colorText: Colors.green.shade800);
+      Get.snackbar("Error", "Email not valid");
     }
+    // } else {}
   }
 
   _save(String token) async {
