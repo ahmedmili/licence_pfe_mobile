@@ -334,6 +334,8 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               ElevatedButton(
                 onPressed: _pickImage,
                 style: ElevatedButton.styleFrom(
+                  minimumSize: Size(360, 40),
+                  padding: EdgeInsets.symmetric(horizontal: 30),
                   backgroundColor: Colors.orange[900],
                 ),
                 child: Text('Select_Image'.tr),
@@ -392,6 +394,8 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               MaterialButton(
                 onPressed: _showTimePicker,
                 color: Colors.orange[900],
+                height: 40,
+                minWidth: 360,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('Pick_Opening_Time'.tr,
@@ -411,6 +415,8 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               MaterialButton(
                 onPressed: _showClosingTimePicker,
                 color: Colors.orange[900],
+                height: 40,
+                minWidth: 360,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('Pick_Closing_Time'.tr,
@@ -426,13 +432,16 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 onPressed: () {},
                 color: Colors.orange[900],
                 child: SizedBox(
-                  height: 50,
-                  width: 167,
+                  height: 40,
+                  width: 330,
                   child: Row(
                     children: [
-                      Text("Get_Position".tr,
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 15)),
+                      Padding(
+                        padding: EdgeInsets.only(left: 100),
+                        child: Text("Get_Position".tr,
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 15)),
+                      ),
                       const Expanded(child: SizedBox()),
                       const PopupLocationMenu(),
                     ],
