@@ -24,15 +24,20 @@ class AuthServices {
       body: body,
     );
 
+    // print(jsonDecode(response.body)["status"]);
+    // print(response.statusCode);
     if (response.statusCode == 200) {
-      // print(response.body);
       if (jsonDecode(response.body)["status"] == 400) {
         print("400");
         return {
           "error": jsonDecode(response.body)["0"],
           "status": jsonDecode(response.body)["status"]
         };
-      } else if (jsonDecode(response.body)['status'] == 200) {
+      } else {
+        throw jsonDecode(response.body);
+      }
+    } else if (response.statusCode == 201) {
+      if (jsonDecode(response.body)['status'] == 200) {
         print("200");
         print(jsonDecode(response.body)['token']);
         return {
@@ -88,13 +93,12 @@ class AuthServices {
     var response = await request.send();
     var responseString = await response.stream.bytesToString();
     if (response.statusCode == 200) {
-      print(jsonDecode(responseString));
       if (jsonDecode(responseString)["status"] == 400) {
         return {
           "error": jsonDecode(responseString)["0"],
           "status": jsonDecode(responseString)["status"]
         };
-      } else if (jsonDecode(responseString)['status'] == 200) {
+      } else if (jsonDecode(responseString)['status'] == 201) {
         return {
           "message": jsonDecode(responseString)['message'],
           "status": jsonDecode(responseString)['status'],
