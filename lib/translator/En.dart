@@ -56,7 +56,7 @@ class Languages extends Translations {
           'Closing_Time': 'Heure de fermeture',
           'Edit_Profile': 'Modifier mon profil',
           //register page
-          'register_slog': 'Créez votre profil pour sauver votre affaire',
+          'register_slog': 'Créez Votre Profil ',
           'Password': 'Mot de passe',
           'Select_Image': 'Sélectionner une image',
           'No_image': 'Aucune image sélectionnée',
@@ -130,7 +130,7 @@ class Languages extends Translations {
           'Closing_Time': 'Closing Time',
           'Edit_Profile': 'Edit Your Profile',
           //register page
-          'register_slog': 'Create your profile to save your business',
+          'register_slog': 'Create Your Profile',
           'Password': 'Password',
           'Select_Image': 'Select Image',
           'No_image': 'No image selected',

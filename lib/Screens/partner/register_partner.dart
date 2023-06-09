@@ -168,7 +168,11 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
         Get.to(const Waiting());
       }
     } else {
-      Get.snackbar("error".tr, "invalide email format");
+      Get.snackbar(
+          backgroundColor: Colors.red,
+          "Error".tr,
+          "Enter all required fields.",
+          colorText: Colors.white);
     }
   }
 
@@ -176,6 +180,16 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Padding(
+          padding: const EdgeInsets.only(left: 40),
+          child: Text(
+            "${'register_slog'.tr} ",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.green.shade800),
+          ),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: const IconThemeData(
@@ -189,19 +203,6 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
             children: [
               const SizedBox(
                 height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 60),
-                child: Text(
-                  "${'register_slog'.tr} : ",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green[800]),
-                ),
-              ),
-              const SizedBox(
-                height: 30,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
