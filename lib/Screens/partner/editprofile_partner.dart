@@ -283,29 +283,36 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                 ),
               ),
               const SizedBox(height: 20),
-              Center(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.green[800],
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Container(
+                  width: 360,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.green[800],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    onPressed: () {
+                      updateUser();
+                    },
+                    child: Text('Save'.tr),
                   ),
-                  onPressed: () {
-                    updateUser();
-                  },
-                  child: Text('Save'.tr),
                 ),
               ),
 
               // change image
-              Center(
-                child: ElevatedButton(
-                  onPressed: _pickImage,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange[900],
-                  ),
-                  child: Text('Select_Image'.tr),
+
+              ElevatedButton(
+                onPressed: _pickImage,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange[900],
                 ),
+                child: Text('Select_Image'.tr),
               ),
+
               const SizedBox(height: 20),
 
               Center(
