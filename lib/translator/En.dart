@@ -56,7 +56,7 @@ class Languages extends Translations {
           'Closing_Time': 'Heure de fermeture',
           'Edit_Profile': 'Modifier mon profil',
           //register page
-          'register_slog': 'Créez votre profil pour sauver votre affaire',
+          'register_slog': 'Créez Votre Profil ',
           'Password': 'Mot de passe',
           'Select_Image': 'Sélectionner une image',
           'No_image': 'Aucune image sélectionnée',
@@ -64,7 +64,7 @@ class Languages extends Translations {
           'Pick_Opening_Time': 'Choisissez l\'heure d\'ouverture',
           'Get_Position': 'Obtenir position',
           'Send_Request': 'Envoyer une demande',
-          'account_question': 'Vous avez déjà un compte ? Connecte !!',
+          'account_question': 'Vous avez déjà un compte ? Connexion ?',
           // food details
           'Title': 'Titre',
           'Initial_quantity': 'Quantité initiale',
@@ -130,7 +130,7 @@ class Languages extends Translations {
           'Closing_Time': 'Closing Time',
           'Edit_Profile': 'Edit Your Profile',
           //register page
-          'register_slog': 'Create your profile to save your business',
+          'register_slog': 'Create Your Profile',
           'Password': 'Password',
           'Select_Image': 'Select Image',
           'No_image': 'No image selected',

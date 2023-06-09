@@ -145,30 +145,74 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
       if (response["status"] == 400) {
         final err = response["error"];
         if (err["phone"] != null) {
-          Get.snackbar("error".tr, err["phone"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["phone"][0],
+              colorText: Colors.white);
         } else if (err["email"] != null) {
-          Get.snackbar("error".tr, err["email"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["email"][0],
+              colorText: Colors.white);
         } else if (err["name"] != null) {
-          Get.snackbar("error".tr, err["name"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["name"][0],
+              colorText: Colors.white);
         } else if (err["password"] != null) {
-          Get.snackbar("error".tr, err["password"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["password"][0],
+              colorText: Colors.white);
         } else if (err["image"] != null) {
-          Get.snackbar("error".tr, err["image"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["image"][0],
+              colorText: Colors.white);
         } else if (err["category"] != null) {
-          Get.snackbar("error".tr, err["category"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["category"][0],
+              colorText: Colors.white);
         } else if (err["description"] != null) {
-          Get.snackbar("error".tr, err["description"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["description"][0],
+              colorText: Colors.white);
         } else if (err["openingtime"] != null) {
-          Get.snackbar("error".tr, err["openingtime"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["openingtime"][0],
+              colorText: Colors.white);
         } else if (err["closingtime"] != null) {
-          Get.snackbar("error".tr, err["closingtime"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["closingtime"][0],
+              colorText: Colors.white);
         }
       } else if (response["status"] == 201) {
-        Get.snackbar("success".tr, response["message"]);
+        Get.snackbar(
+            backgroundColor: Colors.white,
+            "success".tr,
+            response["message"],
+            colorText: Colors.green.shade800);
         Get.to(const Waiting());
       }
     } else {
-      Get.snackbar("error".tr, "invalide email format");
+      Get.snackbar(
+          backgroundColor: Colors.red,
+          "Error".tr,
+          "Enter all required fields.",
+          colorText: Colors.white);
     }
   }
 
@@ -176,9 +220,19 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Padding(
+          padding: const EdgeInsets.only(left: 40),
+          child: Text(
+            "${'register_slog'.tr} ",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.green.shade800),
+          ),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: const IconThemeData(
+        iconTheme: IconThemeData(
           color: Colors.grey,
         ),
       ),
@@ -191,23 +245,10 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 height: 10,
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 60),
-                child: Text(
-                  "${'register_slog'.tr} : ",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green[800]),
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -217,6 +258,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Name'.tr,
+                        hintStyle: TextStyle(color: Colors.grey.shade800),
                       ),
                       onChanged: (value) {
                         _name = value;
@@ -232,16 +274,17 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Description',
+                        hintStyle: TextStyle(color: Colors.grey[800]),
                       ),
                       onChanged: (value) {
                         _description = value;
@@ -257,7 +300,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -265,9 +308,10 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                     padding: const EdgeInsets.only(left: 12.0),
                     child: TextField(
                       keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Email',
+                        hintStyle: TextStyle(color: Colors.grey[800]),
                       ),
                       onChanged: (value) {
                         _email = value;
@@ -283,7 +327,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -293,6 +337,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Phone'.tr,
+                        hintStyle: TextStyle(color: Colors.grey[800]),
                       ),
                       onChanged: (value) {
                         _phone = value;
@@ -308,7 +353,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -319,6 +364,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Password'.tr,
+                        hintStyle: TextStyle(color: Colors.grey[800]),
                       ),
                       onChanged: (value) {
                         _password = value;
@@ -330,12 +376,29 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               const SizedBox(
                 height: 15,
               ),
-              ElevatedButton(
-                onPressed: _pickImage,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange[900],
+              Container(
+                width: 360,
+                child: ElevatedButton(
+                  onPressed: _pickImage,
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(360, 40),
+                    // padding: EdgeInsets.symmetric(horizontal: 20),
+                    backgroundColor: Colors.white,
+                    side: BorderSide(color: Colors.green.shade800, width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Select_Image'.tr,
+                        style: TextStyle(color: Colors.grey[800]),
+                      ),
+                    ],
+                  ),
                 ),
-                child: Text('Select_Image'.tr),
               ),
               // Text(_imageName),
               const SizedBox(height: 3),
@@ -381,21 +444,36 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               ),
               Text(
                 _openingtime,
-                style: const TextStyle(
+                style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
-                    color: Colors.blue),
+                    color: Colors.grey[800]),
               ),
 
               // buttons
-              MaterialButton(
-                onPressed: _showTimePicker,
-                color: Colors.orange[900],
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text('Pick_Opening_Time'.tr,
-                      style:
-                          const TextStyle(color: Colors.white, fontSize: 15)),
+              Container(
+                width: 360,
+                child: MaterialButton(
+                  onPressed: _showTimePicker,
+                  color: Colors.white,
+                  height: 40,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: Colors.green.shade800, // Couleur de la bordure
+                      width: 2.0, // Largeur de la bordure
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.access_time_outlined, color: Colors.grey[800]),
+                      SizedBox(width: 5),
+                      Text('Pick_Opening_Time'.tr,
+                          style:
+                              TextStyle(color: Colors.grey[800], fontSize: 15)),
+                    ],
+                  ),
                 ),
               ),
 
@@ -404,17 +482,34 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
-                    color: Colors.orange[900]),
+                    color: Colors.grey[800]),
               ),
 
-              MaterialButton(
-                onPressed: _showClosingTimePicker,
-                color: Colors.orange[900],
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text('Pick_Closing_Time'.tr,
-                      style:
-                          const TextStyle(color: Colors.white, fontSize: 15)),
+              Container(
+                width: 360,
+                child: MaterialButton(
+                  onPressed: _showClosingTimePicker,
+                  color: Colors.white,
+                  height: 40,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: Colors.green.shade800,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.access_time_filled, color: Colors.grey[800]),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text('Pick_Closing_Time'.tr,
+                          style:
+                              TextStyle(color: Colors.grey[800], fontSize: 15)),
+                    ],
+                  ),
                 ),
               ),
 
@@ -423,15 +518,25 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               ),
               MaterialButton(
                 onPressed: () {},
-                color: Colors.orange[900],
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    color: Colors.green.shade800,
+                    width: 2.0,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: SizedBox(
-                  height: 50,
-                  width: 167,
+                  height: 40,
+                  width: 330,
                   child: Row(
                     children: [
-                      Text("Get_Position".tr,
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 15)),
+                      Padding(
+                        padding: EdgeInsets.only(left: 100),
+                        child: Text("Get_Position".tr,
+                            style: TextStyle(
+                                color: Colors.grey[800], fontSize: 15)),
+                      ),
                       const Expanded(child: SizedBox()),
                       const PopupLocationMenu(),
                     ],

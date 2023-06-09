@@ -37,7 +37,11 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> loginPressed(BuildContext context) async {
     if (_email.isNotEmpty && _password.isNotEmpty) {
       if (!isValidEmail(_email)) {
-        errorSnackBar(context, 'Invalid email');
+        Get.snackbar(
+            backgroundColor: Colors.red,
+            "error",
+            "The email format is invalid.",
+            colorText: Colors.white);
         return;
       }
 
@@ -70,31 +74,28 @@ class _LoginScreenState extends State<LoginScreen> {
             await AuthServices.login(_email, _password, 'partner');
         Map responseMap = jsonDecode(response.body);
         if (response.statusCode == 200) {
-          // Login successful as partner, navigate to PartnerScreen
-
           String token = responseMap['token'];
           String role = responseMap['role'];
           controller.setRole(role);
           controller.setToken(token);
           _save(token, role);
-
           if (token.isNotEmpty) {
-            // Get.toNamed("/main");
             Get.offAllNamed('/partnerMain');
-
-            // Get.back();
             return;
           }
         }
-      } catch (e) {
-        // Catch any errors and handle appropriately
-        // print("Error: $e");
-      }
-
-      // If we reach this point, both login attempts have failed
-      Get.snackbar("Error".tr, "Invalid email or password");
+      } catch (e) {}
+      Get.snackbar(
+          backgroundColor: Colors.red,
+          "Error".tr,
+          "Please check your credentials and try again.",
+          colorText: Colors.white);
     } else {
-      Get.snackbar("Error".tr, "enter all required fields");
+      Get.snackbar(
+          backgroundColor: Colors.red,
+          "Error".tr,
+          "Enter all required fields.",
+          colorText: Colors.white);
     }
   }
 
