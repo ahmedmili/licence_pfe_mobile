@@ -145,23 +145,59 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
       if (response["status"] == 400) {
         final err = response["error"];
         if (err["phone"] != null) {
-          Get.snackbar("error".tr, err["phone"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["phone"][0],
+              colorText: Colors.white);
         } else if (err["email"] != null) {
-          Get.snackbar("error".tr, err["email"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["email"][0],
+              colorText: Colors.white);
         } else if (err["name"] != null) {
-          Get.snackbar("error".tr, err["name"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["name"][0],
+              colorText: Colors.white);
         } else if (err["password"] != null) {
-          Get.snackbar("error".tr, err["password"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["password"][0],
+              colorText: Colors.white);
         } else if (err["image"] != null) {
-          Get.snackbar("error".tr, err["image"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["image"][0],
+              colorText: Colors.white);
         } else if (err["category"] != null) {
-          Get.snackbar("error".tr, err["category"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["category"][0],
+              colorText: Colors.white);
         } else if (err["description"] != null) {
-          Get.snackbar("error".tr, err["description"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["description"][0],
+              colorText: Colors.white);
         } else if (err["openingtime"] != null) {
-          Get.snackbar("error".tr, err["openingtime"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["openingtime"][0],
+              colorText: Colors.white);
         } else if (err["closingtime"] != null) {
-          Get.snackbar("error".tr, err["closingtime"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["closingtime"][0],
+              colorText: Colors.white);
         }
       } else if (response["status"] == 201) {
         Get.snackbar(
