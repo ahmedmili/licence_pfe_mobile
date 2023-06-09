@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:saverapp/dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth.dart';
+import '../../Services/globals.dart';
 import '../../widget/rounded_button.dart';
 import '../login.dart';
 import 'package:http/http.dart' as http;
@@ -100,21 +101,56 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
     // }
       if (response.statusCode == 201) {
         String token = responseMap['token'];
+
+    if (emailValid) {
+      Map response = await AuthServices.register(
+          _name, _email, _phone, _password, _roleId);
+      if (response["status"] == 400) {
+        final err = response["error"];
+        if (err["phone"] != null) {
+          Get.snackbar("error".tr, err["phone"][0]);
+        } else if (err["email"] != null) {
+          Get.snackbar("error".tr, err["email"][0]);
+        } else if (err["name"] != null) {
+          Get.snackbar("error".tr, err["name"][0]);
+        } else if (err["password"] != null) {
+          Get.snackbar("error".tr, err["password"][0]);
+        }
+      } else if (response["status"] == 201) {
+        Get.snackbar("success".tr, response["message"]);
+        print("----------------");
+        print(response["token"]);
+        String token = response['token'];
+
         _save(token);
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (BuildContext context) => LoginScreen(),
-            ));
+        Get.offNamed("/login");
+        // }
       } else {
-        String errorMessage = responseMap.values.first[0].toString();
-        Get.snackbar("Error", errorMessage);
+        Get.snackbar("error".tr, "invalide email format");
       }
-      Get.snackbar(
-          backgroundColor: Colors.white,
-          "success",
-          "Successfully registered.",
-          colorText: Colors.green.shade800);
+      // Map responseMap = jsonDecode(response.body);
+
+      // if (response.statusCode == 201) {
+      //   String token = responseMap['token'];
+      //   _save(token);
+
+// <<<<<<< HEAD
+      //   Get.offNamed("/login");
+      // } else {
+      //   String errorMessage = responseMap.values.first[0].toString();
+      //   // ignore: use_build_context_synchronously
+      //   // errorSnackBar(context, errorMessage);
+      //   Get.snackbar("Error", errorMessage);
+      // }
+
+      errorSnackBar(context, 'Email not valid');
+      Get.snackbar("Error", "Email not valid");
+    }
+
+    @override
+    Widget build(BuildContext context) {
+      // TODO: implement build
+      throw UnimplementedError();
     }
   }
 
@@ -139,7 +175,7 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.grey,
         ),
       ),
