@@ -339,13 +339,21 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                   backgroundColor: Colors.white,
                   side: BorderSide(color: Colors.orange.shade900, width: 2),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                        10), // Ajoutez le border radius souhaité ici
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: Text(
-                  'Select_Image'.tr,
-                  style: TextStyle(color: Colors.orange.shade900),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.image,
+                      color: Colors.orange.shade900,
+                    ),
+                    Text(
+                      'Select_Image'.tr,
+                      style: TextStyle(color: Colors.orange.shade900),
+                    ),
+                  ],
                 ),
               ),
               // Text(_imageName),
@@ -409,14 +417,18 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                     color: Colors.orange.shade900, // Couleur de la bordure
                     width: 2.0, // Largeur de la bordure
                   ),
-                  borderRadius:
-                      BorderRadius.circular(10), // Rayon des coins du bouton
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text('Pick_Opening_Time'.tr,
-                      style: TextStyle(
-                          color: Colors.orange.shade900, fontSize: 15)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.access_time_outlined,
+                        color: Colors.orange.shade900),
+                    SizedBox(height: 5),
+                    Text('Pick_Opening_Time'.tr,
+                        style: TextStyle(
+                            color: Colors.orange.shade900, fontSize: 15)),
+                  ],
                 ),
               ),
 
@@ -430,14 +442,27 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
 
               MaterialButton(
                 onPressed: _showClosingTimePicker,
-                color: Colors.orange[900],
+                color: Colors.white,
                 height: 40,
                 minWidth: 360,
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text('Pick_Closing_Time'.tr,
-                      style:
-                          const TextStyle(color: Colors.white, fontSize: 15)),
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    color: Colors.orange.shade900, // Couleur de la bordure
+                    width: 2.0, // Largeur de la bordure
+                  ),
+                  borderRadius:
+                      BorderRadius.circular(10), // Rayon des coins du bouton
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.access_time_filled,
+                        color: Colors.orange.shade900),
+                    SizedBox(height: 5),
+                    Text('Pick_Closing_Time'.tr,
+                        style: TextStyle(
+                            color: Colors.orange.shade900, fontSize: 15)),
+                  ],
                 ),
               ),
 
@@ -446,7 +471,14 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               ),
               MaterialButton(
                 onPressed: () {},
-                color: Colors.orange[900],
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    color: Colors.orange.shade900,
+                    width: 2.0,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: SizedBox(
                   height: 40,
                   width: 330,
@@ -455,8 +487,8 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                       Padding(
                         padding: EdgeInsets.only(left: 100),
                         child: Text("Get_Position".tr,
-                            style: const TextStyle(
-                                color: Colors.white, fontSize: 15)),
+                            style: TextStyle(
+                                color: Colors.orange.shade900, fontSize: 15)),
                       ),
                       const Expanded(child: SizedBox()),
                       const PopupLocationMenu(),

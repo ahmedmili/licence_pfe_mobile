@@ -18,7 +18,7 @@ class _PopupLocationMenu extends State<PopupLocationMenu> {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-      color: Colors.white,
+      color: Colors.orange.shade900,
       itemBuilder: (BuildContext context) {
         return <PopupMenuEntry<String>>[
           PopupMenuItem<String>(
