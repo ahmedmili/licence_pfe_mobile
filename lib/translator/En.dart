@@ -56,6 +56,7 @@ class Languages extends Translations {
           'Closing_Time': 'Heure de fermeture',
           'Edit_Profile': 'Modifier mon profil',
           'My Profile': 'Mon Profil',
+          'Change profile picture': 'Changer photo profil',
           //register page
           'register_slog': 'Créez Votre Profil ',
           'Password': 'Mot de passe',

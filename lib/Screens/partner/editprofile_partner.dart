@@ -307,7 +307,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
               Padding(
                 padding: const EdgeInsets.only(left: 10),
                 child: Text(
-                  "Changer mon image :",
+                  'Change profile picture'.tr,
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.green[800]),
                 ),
@@ -377,7 +377,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                       fontWeight: FontWeight.bold, color: Colors.green[800]),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               Container(
                 padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                 child: Material(
