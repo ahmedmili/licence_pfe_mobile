@@ -88,12 +88,13 @@ class AuthServices {
     var response = await request.send();
     var responseString = await response.stream.bytesToString();
     if (response.statusCode == 200) {
+      print(jsonDecode(responseString));
       if (jsonDecode(responseString)["status"] == 400) {
         return {
           "error": jsonDecode(responseString)["0"],
           "status": jsonDecode(responseString)["status"]
         };
-      } else if (jsonDecode(responseString)['status'] == 201) {
+      } else if (jsonDecode(responseString)['status'] == 200) {
         return {
           "message": jsonDecode(responseString)['message'],
           "status": jsonDecode(responseString)['status'],
