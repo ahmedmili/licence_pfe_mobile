@@ -302,15 +302,35 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                   ),
                 ),
               ),
-
+              SizedBox(height: 20),
               // change image
-
-              ElevatedButton(
-                onPressed: _pickImage,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange[900],
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text(
+                  "Changer mon image :",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.green[800]),
                 ),
-                child: Text('Select_Image'.tr),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Container(
+                  width: 360,
+                  child: ElevatedButton(
+                    onPressed: _pickImage,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      side: BorderSide(color: Colors.grey.shade600, width: 2),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Text(
+                      'Select_Image'.tr,
+                      style: TextStyle(color: Colors.grey.shade600),
+                    ),
+                  ),
+                ),
               ),
 
               const SizedBox(height: 20),
@@ -324,19 +344,28 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
                         child: Image.file(_image!, fit: BoxFit.cover),
                       ),
               ),
-              Center(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.green[800],
+
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Container(
+                  width: 360,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.green[800],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    onPressed: () {
+                      // print("save clicked 1");
+                      PartnersService.updateImage(_image!);
+                    },
+                    child: Text('Save'.tr),
                   ),
-                  onPressed: () {
-                    // print("save clicked 1");
-                    PartnersService.updateImage(_image!);
-                  },
-                  child: Text('Save'.tr),
                 ),
               ),
+
               const SizedBox(height: 3),
               //change password
               const SizedBox(height: 20),
@@ -369,17 +398,24 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
               ),
 
               const SizedBox(height: 20),
-              Center(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor:
-                        Colors.green[800], // Couleur du texte du bouton
+
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Container(
+                  width: 360,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.green[800],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    onPressed: () {
+                      updatePassword();
+                    },
+                    child: Text('Save'.tr),
                   ),
-                  onPressed: () {
-                    updatePassword();
-                  },
-                  child: Text('Save'.tr),
                 ),
               ),
             ],
