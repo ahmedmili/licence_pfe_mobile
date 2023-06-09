@@ -36,13 +36,11 @@ class _BoxScreenState extends State<BoxScreen> {
       itemCount: items.length,
       itemBuilder: (context, index) {
         final box = items[index];
+
         return GestureDetector(
           onTap: () async {
-            // Partner partner = globalController.partner;
             Partner partner = await UserService.getBoxPartnerInfo(box.id);
             controller.partner = partner;
-            // print(controller.partner.adress);
-
             Navigator.push(
               context,
               MaterialPageRoute(
