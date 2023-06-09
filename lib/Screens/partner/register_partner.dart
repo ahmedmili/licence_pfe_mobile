@@ -164,7 +164,11 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
           Get.snackbar("error".tr, err["closingtime"][0]);
         }
       } else if (response["status"] == 201) {
-        Get.snackbar("success".tr, response["message"]);
+        Get.snackbar(
+            backgroundColor: Colors.white,
+            "success".tr,
+            response["message"],
+            colorText: Colors.green.shade800);
         Get.to(const Waiting());
       }
     } else {
