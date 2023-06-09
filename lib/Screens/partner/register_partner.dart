@@ -336,9 +336,17 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(360, 40),
                   padding: EdgeInsets.symmetric(horizontal: 30),
-                  backgroundColor: Colors.orange[900],
+                  backgroundColor: Colors.white,
+                  side: BorderSide(color: Colors.orange.shade900, width: 2),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                        10), // Ajoutez le border radius souhaité ici
+                  ),
                 ),
-                child: Text('Select_Image'.tr),
+                child: Text(
+                  'Select_Image'.tr,
+                  style: TextStyle(color: Colors.orange.shade900),
+                ),
               ),
               // Text(_imageName),
               const SizedBox(height: 3),
@@ -393,14 +401,22 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               // buttons
               MaterialButton(
                 onPressed: _showTimePicker,
-                color: Colors.orange[900],
+                color: Colors.white,
                 height: 40,
                 minWidth: 360,
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    color: Colors.orange.shade900, // Couleur de la bordure
+                    width: 2.0, // Largeur de la bordure
+                  ),
+                  borderRadius:
+                      BorderRadius.circular(10), // Rayon des coins du bouton
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('Pick_Opening_Time'.tr,
-                      style:
-                          const TextStyle(color: Colors.white, fontSize: 15)),
+                      style: TextStyle(
+                          color: Colors.orange.shade900, fontSize: 15)),
                 ),
               ),
 
