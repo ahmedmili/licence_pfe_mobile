@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Services/geoLocator.dart';
+import 'package:saverapp/Services/globals.dart';
 
 class LocationForm extends StatefulWidget {
   const LocationForm({super.key});
@@ -15,9 +16,11 @@ class _LocationForm extends State<LocationForm> {
 
   @override
   Widget build(BuildContext context) {
-    geoControlle.getLocation();
-    geoControlle.getAddressFromLatLng();
-
+    // geoControlle.getLocation();
+    // geoControlle.getAddressFromLatLng();
+    // print(geoControlle.long.value);
+    // print(geoControlle.lat.value);
+    // print(geoControlle.adress.value);
     return SizedBox(
       height: 150,
       child: Form(
@@ -26,22 +29,31 @@ class _LocationForm extends State<LocationForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Obx(
-              () => TextFormField(
-                readOnly: true,
-                initialValue: "Longitude : ${geoControlle.long.value}",
-              ),
+              () {
+                print("rebuild 1");
+                return TextFormField(
+                  readOnly: true,
+                  initialValue: "Longitude : ${geoControlle.long.value}",
+                );
+              },
             ),
             Obx(
-              () => TextFormField(
-                initialValue: "Latitude : ${geoControlle.lat.value}",
-                readOnly: true,
-              ),
+              () {
+                print("rebuild 2");
+                return TextFormField(
+                  initialValue: "Latitude : ${geoControlle.lat.value}",
+                  readOnly: true,
+                );
+              },
             ),
             Obx(
-              () => TextFormField(
-                initialValue: geoControlle.adress.value,
-                readOnly: true,
-              ),
+              () {
+                print("rebuild 3");
+                return TextFormField(
+                  initialValue: geoControlle.adress.value,
+                  readOnly: true,
+                );
+              },
             ),
           ],
         ),
