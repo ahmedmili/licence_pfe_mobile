@@ -362,47 +362,31 @@ class _OrderScreenState extends State<OrderScreen> {
 
   Future<void> scanQr() async {
     try {
-      print(widget.neworder!.partner_id);
       FlutterBarcodeScanner.scanBarcode('#2A99CF', 'cancel', true, ScanMode.QR)
-          .then((value) {
+          .then((value) async {
         setState(() {
           qrstr = value;
         });
-        print(
-            "value----------------------------------------------------------------");
-        print(value);
         Map<String, dynamic> jsonDta = jsonDecode(value);
-        // UserService.verifAndTakeOrder(jsonDta);
+        final response = await UserService.verifAndTakeOrder(jsonDta);
+        print(response);
+        if (response['status'] == 200) {
+          print(response);
+          Get.snackbar("Sucess", response['message']);
+        }
         showDialog(
           context: context,
           builder: (_) => AlertDialog(
-            title: const Text('Rate the product'),
+            title: const Text('Rate the Product'),
             content: SizedBox(
               height: 200,
               child: ProductRatingPage(jsonDta: jsonDta),
             ),
-            actions: const [
-              // ElevatedButton(
-              //   onPressed: () => Get.offAllNamed("main"),
-              //   child: const Text('Cancel'),
-              // ),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     if (_commentController.text.isNotEmpty) {
-              //       _submitRating(selectedEmoji);
-              //     }
-              //   },
-              //   child: const Text('Submit'),
-              // ),
-            ],
+            actions: const [],
           ),
         );
-        // Get.to(ProductRatingPage(),
-        //     arguments: {"partner_id": widget.neworder!.partner_id});
-        // print("jsonData ==  $value");
       });
     } catch (e) {
-      print("-------------------------------------+++++++++++++");
       setState(() {
         qrstr = 'unable to read this';
       });

@@ -236,7 +236,8 @@ class UserService {
   }
 
 //QrCode verification
-  static Future<void> verifAndTakeOrder(Map<String, dynamic> data) async {
+  static Future<Map<String, dynamic>> verifAndTakeOrder(
+      Map<String, dynamic> data) async {
     final token = controller.token;
 
     final url = Uri.parse('${baseURL}user/orders/verif');
@@ -249,7 +250,13 @@ class UserService {
       body: jsonEncode(data),
     );
     if (response.statusCode == 200) {
+      final Map<String, dynamic> responseData = {
+        "status": jsonDecode(response.body)["status"],
+        "message": jsonDecode(response.body)["message"],
+      };
+      // print(responseData);
       // Get.to(PartnerRatingPageState);
+      return responseData;
     } else {
       throw Exception('Failed to verif QrCode');
     }

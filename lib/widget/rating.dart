@@ -161,14 +161,12 @@ class ProductRatingPage extends StatefulWidget {
 }
 
 class _ProductRatingPageState extends State<ProductRatingPage> {
-  final TextEditingController _commentController = TextEditingController();
+  // final TextEditingController _commentController = TextEditingController();
   late int _selectedRating = 0;
   late String _selectedEmoji = "";
   // late String selectedEmoji = "";
 
   void _submitRating(int rate) async {
-    print("data == ${widget.jsonDta}");
-    print("rate == $rate");
     Map<String, dynamic> data = {
       "rating": rate,
       'partner_id': widget.jsonDta["partner_id"],
