@@ -255,6 +255,32 @@ class UserService {
     }
   }
 
+// rate partner
+  static Future<Map<String, dynamic>> rateBox(Map<String, dynamic> data) async {
+    final token = controller.token;
+
+    final url = Uri.parse('${baseURL}user/RatePartner');
+    final response = await http.post(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+      body: jsonEncode(data),
+    );
+
+    if (response.statusCode == 200) {
+      final responseData = {
+        "status": jsonDecode(response.body)['status'],
+        "message": jsonDecode(response.body)['message'],
+      };
+      return responseData;
+      // Get.to(PartnerRatingPageState);
+    } else {
+      throw Exception('Failed to rate partner');
+    }
+  }
+
   static Future<List<dynamic>> getNearByPartners(
     double long,
     double lat,

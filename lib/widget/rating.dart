@@ -147,9 +147,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:saverapp/Services/users.dart';
 
 class ProductRatingPage extends StatefulWidget {
-  ProductRatingPage({super.key});
+  ProductRatingPage({
+    super.key,
+    required this.jsonDta,
+  });
+  final Map jsonDta;
 
   @override
   State<ProductRatingPage> createState() => _ProductRatingPageState();
@@ -162,7 +167,18 @@ class _ProductRatingPageState extends State<ProductRatingPage> {
   // late String selectedEmoji = "";
 
   void _submitRating(int rate) async {
-    print(rate);
+    print("data == ${widget.jsonDta}");
+    print("rate == $rate");
+    Map<String, dynamic> data = {
+      "rating": rate,
+      'partner_id': widget.jsonDta["partner_id"],
+      'command_id': widget.jsonDta["command_id"],
+    };
+    Map<String, dynamic> response = await UserService.rateBox(data);
+    if (response['status'] == 200) {
+      Get.snackbar("success".tr, response['message']);
+      Get.offAllNamed("main");
+    }
   }
 
   Widget _buildEmojiButton(String emoji, int rate) {
@@ -218,7 +234,8 @@ class _ProductRatingPageState extends State<ProductRatingPage> {
             child: const Text('Submit'),
           ),
           ElevatedButton(
-            onPressed: () => Get.offAllNamed("main"),
+            // onPressed: () => Get.offAllNamed("main"),
+            onPressed: () => Get.back(),
             child: const Text('Cancel'),
           ),
         ],

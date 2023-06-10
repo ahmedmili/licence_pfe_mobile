@@ -31,6 +31,7 @@ class _LocationForm extends State<LocationForm> {
             Obx(
               () {
                 print("rebuild 1");
+                _formKey.currentWidget;
                 return TextFormField(
                   readOnly: true,
                   initialValue: "Longitude : ${geoControlle.long.value}",

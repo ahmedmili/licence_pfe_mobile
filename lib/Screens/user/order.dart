@@ -368,13 +368,18 @@ class _OrderScreenState extends State<OrderScreen> {
         setState(() {
           qrstr = value;
         });
+        print(
+            "value----------------------------------------------------------------");
+        print(value);
+        Map<String, dynamic> jsonDta = jsonDecode(value);
+        // UserService.verifAndTakeOrder(jsonDta);
         showDialog(
           context: context,
           builder: (_) => AlertDialog(
             title: const Text('Rate the product'),
             content: SizedBox(
               height: 200,
-              child: ProductRatingPage(),
+              child: ProductRatingPage(jsonDta: jsonDta),
             ),
             actions: const [
               // ElevatedButton(
@@ -395,10 +400,9 @@ class _OrderScreenState extends State<OrderScreen> {
         // Get.to(ProductRatingPage(),
         //     arguments: {"partner_id": widget.neworder!.partner_id});
         // print("jsonData ==  $value");
-        // Map<String, dynamic> jsonDta = jsonDecode(value);
-        // UserService.verifAndTakeOrder(jsonDta);
       });
     } catch (e) {
+      print("-------------------------------------+++++++++++++");
       setState(() {
         qrstr = 'unable to read this';
       });
