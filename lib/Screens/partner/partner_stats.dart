@@ -11,7 +11,12 @@ class PartnerStats extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Padding(
-          padding: EdgeInsets.only(left: Dimensions.width20),
+          padding: EdgeInsets.only(left: 65),
+          child: Text(
+            'Statistiques',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
+          ),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -22,7 +27,7 @@ class PartnerStats extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 30, top: 180),
+            padding: const EdgeInsets.only(left: 30, top: 240),
             child: SizedBox(
               height: 400,
               width: 400,
