@@ -353,4 +353,23 @@ class PartnersService {
       throw Exception('Failed to fetch partner image');
     }
   }
+
+  ////////////////////////////////////////////////////////
+  // static Future<Map<String, dynamic>> getPartnerOrderCount() async {
+  //   final token = controller.token;
+  //   final url = Uri.parse('${baseURL}partner/getPartnerOrderCount');
+  //   final response = await http.get(
+  //     url,
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       'Authorization': 'Bearer $token'
+  //     },
+  //   );
+  //   if (response.statusCode == 200) {
+  //     final data = jsonDecode(response.body);
+  //     return data;
+  //   } else {
+  //     throw Exception('Failed to fetch partner order count');
+  //   }
+  // }
 }
