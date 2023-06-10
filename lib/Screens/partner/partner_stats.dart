@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saverapp/widget/pie.dart';
 
 import '../../dimensions.dart';
 import '../../widget/chart.dart';
@@ -24,17 +25,20 @@ class PartnerStats extends StatelessWidget {
           color: Colors.grey,
         ),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 30, top: 240),
-            child: SizedBox(
-              height: 400,
-              width: 400,
-              child: Chart(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Pie(),
+            Padding(
+              padding: const EdgeInsets.only(left: 30, top: 240),
+              child: SizedBox(
+                height: 400,
+                width: 400,
+                child: Chart(),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
