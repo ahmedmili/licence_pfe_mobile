@@ -47,10 +47,18 @@ class _PopupLocationMenu extends State<PopupLocationMenu> {
       onSelected: (String value) {
         switch (value) {
           case 'GPS':
+            print(geoController.long);
             geoController.getLocation();
-
-            geoController.getAddressFromLatLng();
-
+            print(geoController.long);
+            Future.delayed(
+              const Duration(milliseconds: 2000),
+              () => geoController.getAddressFromLatLng(),
+            );
+            print(geoController.adress);
+            // Future.delayed(
+            //   const Duration(seconds: 3),
+            //   () {
+            //     return
             showDialog(
               context: context,
               builder: (BuildContext context) {
@@ -80,6 +88,8 @@ class _PopupLocationMenu extends State<PopupLocationMenu> {
                 );
               },
             );
+            // },
+            // );
 
             ///
             break;
@@ -142,7 +152,7 @@ class _PopupLocationMenu extends State<PopupLocationMenu> {
                       }),
                       TextButton(
                         child: Text(
-                          'SAVE',
+                          'SAVEeeee',
                           style: TextStyle(
                               fontSize: 20,
                               color: Colors.green.shade800,

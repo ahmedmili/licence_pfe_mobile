@@ -296,6 +296,34 @@ class PartnersService {
       throw Exception('Failed to fetch partner data');
     }
   }
+
+  static Future<Partner> updatePosition(
+      double lat, double long, String adress) async {
+    final token = controller.token;
+    final url = Uri.parse('${baseURL}partner/updatePosition');
+    final response = await http.put(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+      body: json.encode({
+        "lat": lat,
+        "long": long,
+        "adress": adress,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      Get.snackbar('Success', 'your password changed successfully');
+      Get.offNamed("profilePartner");
+      return json.decode(response.body);
+    } else {
+      print(response.statusCode);
+      Get.snackbar('Error'.tr, 'Failed to change password. Please try again.');
+      throw Exception('Failed to fetch partner data');
+    }
+  }
 // update image
 
   static Future<void> updateImage(File image) async {
