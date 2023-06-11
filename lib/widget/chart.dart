@@ -48,7 +48,7 @@ class ChartState extends State<Chart> {
         } else {
           return Center(
             child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.green[800]!),
+              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFB2CCFF)),
               strokeWidth: 5,
             ),
           );
