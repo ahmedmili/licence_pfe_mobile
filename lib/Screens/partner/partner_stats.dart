@@ -29,13 +29,42 @@ class PartnerStats extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Pie(),
-            Padding(
-              padding: const EdgeInsets.only(left: 30, top: 200),
-              child: SizedBox(
-                height: 400,
-                width: 400,
-                child: Chart(),
+            const SizedBox(height: 30),
+            const Padding(
+              padding: EdgeInsets.only(right: 90),
+              child: Text(
+                "Distribution of Order Status :",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFFB2CCFF),
+                ),
+              ),
+            ),
+            const Pie(),
+            const Padding(
+              padding: EdgeInsets.only(right: 90),
+              child: Text(
+                "Monthly Sales Trend of Boxes :",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFFB2CCFF),
+                ),
+              ),
+            ),
+            const SizedBox(height: 30),
+            Chart(),
+            const SizedBox(height: 30),
+            const Padding(
+              padding: EdgeInsets.only(right: 90),
+              child: Text(
+                "Distribution of Box Status :",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFFB2CCFF),
+                ),
               ),
             ),
             DoughnutChart(),
