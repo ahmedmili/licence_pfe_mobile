@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saverapp/widget/DoughnutChart.dart';
 import 'package:saverapp/widget/pie.dart';
 
 import '../../dimensions.dart';
@@ -30,13 +31,14 @@ class PartnerStats extends StatelessWidget {
           children: [
             Pie(),
             Padding(
-              padding: const EdgeInsets.only(left: 30, top: 240),
+              padding: const EdgeInsets.only(left: 30, top: 200),
               child: SizedBox(
                 height: 400,
                 width: 400,
                 child: Chart(),
               ),
             ),
+            DoughnutChart(),
           ],
         ),
       ),
