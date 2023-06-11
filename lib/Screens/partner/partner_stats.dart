@@ -15,7 +15,7 @@ class PartnerStats extends StatelessWidget {
         title: Padding(
           padding: EdgeInsets.only(left: 65),
           child: Text(
-            'Statistiques',
+            'Statistics',
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
           ),

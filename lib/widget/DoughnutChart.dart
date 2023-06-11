@@ -25,8 +25,10 @@ class _DoughnutChartState extends State<DoughnutChart> {
   List<ChartData> chartData = [];
   List<Color> categoryColors = [
     Color.fromRGBO(255, 217, 184, 1.0),
-    Color(0xFFB2CCFF),
+    Color.fromARGB(255, 31, 67, 137),
+    Color.fromARGB(255, 73, 7, 40),
     Color(0xFFFFB2D9),
+    Color(0xFFB2CCFF),
   ];
 
   @override
@@ -38,7 +40,8 @@ class _DoughnutChartState extends State<DoughnutChart> {
   Future<void> fetchDataForDoughnutChart() async {
     try {
       final token = controller.token;
-      final url = Uri.parse('${baseURL}partner/getPartnerOrderCount');
+      final url = Uri.parse(
+          '${baseURL}partner/getTotalBoxCountsstat'); // Mettez à jour l'URL de l'API
       final response = await http.get(
         url,
         headers: {
@@ -61,7 +64,7 @@ class _DoughnutChartState extends State<DoughnutChart> {
           chartData = dataPoints;
         });
       } else {
-        throw Exception('Failed to fetch partner order count');
+        throw Exception('Failed to fetch box counts');
       }
     } catch (error) {
       print(error);
