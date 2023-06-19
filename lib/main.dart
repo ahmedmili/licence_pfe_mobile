@@ -11,6 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   Get.put(GlobalController());
   Get.put(GeoLocatorController());
   GlobalController controller = Get.find<GlobalController>();
@@ -39,19 +40,6 @@ void main() async {
   } catch (e) {
     print(e);
   }
-
-  // FirebaseMessaging messaging = FirebaseMessaging.instance;
-
-  // NotificationSettings settings = await messaging.requestPermission(
-  //   alert: true,
-  //   announcement: false,
-  //   badge: true,
-  //   carPlay: false,
-  //   criticalAlert: false,
-  //   provisional: false,
-  //   sound: true,
-  // );
-  // print('User granted permission: ${settings.authorizationStatus}');
 
   runApp(const MyApp());
 }

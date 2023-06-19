@@ -373,18 +373,18 @@ class _OrderScreenState extends State<OrderScreen> {
         if (response['status'] == 200) {
           print(response);
           Get.snackbar("Sucess", response['message']);
-        }
-        showDialog(
-          context: context,
-          builder: (_) => AlertDialog(
-            title: const Text('Rate the Product'),
-            content: SizedBox(
-              height: 200,
-              child: ProductRatingPage(jsonDta: jsonDta),
+          showDialog(
+            context: context,
+            builder: (_) => AlertDialog(
+              title: const Text('Rate the Product'),
+              content: SizedBox(
+                height: 200,
+                child: ProductRatingPage(jsonDta: jsonDta),
+              ),
+              actions: const [],
             ),
-            actions: const [],
-          ),
-        );
+          );
+        }
       });
     } catch (e) {
       setState(() {
