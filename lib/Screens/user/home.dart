@@ -17,6 +17,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   GeoLocatorController geoController = Get.find<GeoLocatorController>();
   @override
+  void dispose() {
+    // Cleanup operations: cancel subscriptions, release resources, dispose controllers, etc.
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(

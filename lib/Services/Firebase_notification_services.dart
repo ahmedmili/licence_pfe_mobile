@@ -36,11 +36,32 @@ class FirebaseMessagingService {
     print('Firebase Token: $token');
     // Send the token to your server for further processing
   }
+
+  Future initialize() async {
+    // Request permission and get the FCM token
+    await _firebaseMessaging.requestPermission();
+    String? token = await _firebaseMessaging.getToken();
+
+    print('------------------------------------------------');
+    print('FCM Token: $token');
+
+    // Configure FCM message handling
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print('Received message: ${message.notification?.body}');
+    });
+
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  }
+
+  static Future<dynamic> _firebaseMessagingBackgroundHandler(
+      RemoteMessage message) async {
+    print("Handling a background message: ${message.messageId}");
+  }
 }
 
 // Initialize FirebaseMessagingService in your main.dart file
-void main() {
-  FirebaseMessagingService firebaseMessagingService =
-      FirebaseMessagingService();
-  firebaseMessagingService.setupFirebaseMessaging();
-}
+// void main() {
+//   FirebaseMessagingService firebaseMessagingService =
+//       FirebaseMessagingService();
+//   firebaseMessagingService.setupFirebaseMessaging();
+// }
