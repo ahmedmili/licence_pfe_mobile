@@ -10,7 +10,6 @@ const String localhost = "192.168.1.20";
 
 const String baseURL = "http://$localhost:8000/api/";
 
-
 Map<String, String> headers = {
   "Content-Type": "application/json",
 };

@@ -7,15 +7,26 @@ import 'dart:io';
 final GlobalController controller = Get.find<GlobalController>();
 
 class AuthServices {
-  static Future<Map> register(String name, String email, String phone,
-      String password, int roleId) async {
+  static Future<Map> register(
+    String name,
+    String email,
+    String phone,
+    String password,
+    int roleId,
+    String sexe,
+    String birthday,
+  ) async {
     Map data = {
       "name": name,
       "email": email,
       "phone": phone,
       "password": password,
       "roleId": roleId,
+      "sexe": sexe,
+      "birthday": birthday, //birthday
     };
+    print(birthday);
+    // throw birthday;
     var body = json.encode(data);
     var url = Uri.parse('${baseURL}user/register');
     http.Response response = await http.post(
@@ -24,10 +35,12 @@ class AuthServices {
       body: body,
     );
 
-    // print(jsonDecode(response.body)["status"]);
-    // print(response.statusCode);
+    print(jsonDecode(response.body)["status"]);
+    print(response.statusCode);
     if (response.statusCode == 200) {
       if (jsonDecode(response.body)["status"] == 400) {
+        // print(sexe);
+        print(jsonDecode(response.body));
         print("400");
         return {
           "error": jsonDecode(response.body)["0"],
