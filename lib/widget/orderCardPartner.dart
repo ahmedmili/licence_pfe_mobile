@@ -81,7 +81,7 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
                       ),
                     ],
                   ),
-                  const SizedBox(width: 40),
+                  const SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -109,7 +109,7 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
                       ),
                     ],
                   ),
-                  const SizedBox(width: 60),
+                  const SizedBox(width: 30),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
