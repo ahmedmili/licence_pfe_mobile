@@ -182,7 +182,7 @@ class _EditBoxState extends State<EditBox> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -401,7 +401,7 @@ class _EditBoxState extends State<EditBox> {
                 height: 25,
               ),
               RoundedButton(
-                btnText: "${'Save'.tr} BOX DETAILS",
+                btnText: "${'Save'.tr}",
                 onBtnPressed: () {
                   BoxServices.updateBoxDetails(
                     box.id,
@@ -420,12 +420,24 @@ class _EditBoxState extends State<EditBox> {
                 height: 50,
               ),
               // image section
-              ElevatedButton(
-                onPressed: _pickImage,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange[900],
+              Container(
+                width: 360,
+                child: ElevatedButton(
+                  onPressed: _pickImage,
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(360, 40),
+                    // padding: EdgeInsets.symmetric(horizontal: 20),
+                    backgroundColor: Colors.white,
+                    side: BorderSide(color: Colors.green.shade800, width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Text(
+                    'Select_Image'.tr,
+                    style: TextStyle(color: Colors.grey[800]),
+                  ),
                 ),
-                child: Text('Select_Image'.tr),
               ),
               const SizedBox(height: 3),
               SizedBox(
