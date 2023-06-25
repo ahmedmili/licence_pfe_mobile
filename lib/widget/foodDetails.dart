@@ -125,8 +125,8 @@ class _FoodDetailsState extends State<FoodDetails> {
                 Text(
                   partner.name,
                   style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 26,
+                      color: Colors.white,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
               ],
@@ -260,13 +260,17 @@ class _FoodDetailsState extends State<FoodDetails> {
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 25),
-                            child: Text(
-                              "More information about ${partner.name}",
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[800]),
+                            padding: const EdgeInsets.only(left: 1),
+                            child: Expanded(
+                              child: SingleChildScrollView(
+                                child: Text(
+                                  "More information about ${partner.name}",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.green[800]),
+                                ),
+                              ),
                             ),
                           ),
                         ],

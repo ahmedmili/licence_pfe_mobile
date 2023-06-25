@@ -170,6 +170,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               ),
                             ],
                           ),
+                          SizedBox(width: 6),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -189,6 +190,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               ),
                             ],
                           ),
+                          SizedBox(width: 6),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -265,7 +267,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                       );
                                     },
                                     child: Padding(
-                                      padding: const EdgeInsets.only(left: 20),
+                                      padding: const EdgeInsets.only(left: 5),
                                       child: Row(
                                         children: [
                                           Text(
@@ -273,12 +275,12 @@ class _OrderScreenState extends State<OrderScreen> {
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.green[800],
-                                                fontSize: 12),
+                                                fontSize: 10),
                                           ),
                                           Icon(
                                             Icons.arrow_forward,
                                             color: Colors.green[800],
-                                            size: 35,
+                                            size: 25,
                                           ),
                                         ],
                                       ),
