@@ -41,8 +41,12 @@
             </intent-filter>
         </service>
         <!-- add google geo service  -->
+        <!-- AIzaSyDgA3fCmempzwLHJGfmGanFdFnp-Dd4pPE -->
+        <!-- AIzaSyBiZ8SjQd4I8sbCYk21luHXS3DITdhxSCo -->
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBiZ8SjQd4I8sbCYk21luHXS3DITdhxSCo" />
+            android:value="AIzaSyDgA3fCmempzwLHJGfmGanFdFnp-Dd4pPE"
+            
+             />
         <!-- android:largeHeap="true" -->
         <activity
             android:name=".MainActivity"

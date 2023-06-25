@@ -284,7 +284,6 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
                           controller: TextEditingController(
                             text: _selectedDate == null
                                 ? ''
-                                // : DateFormat('yyyy-MM-dd HH:mm:ss')
                                 : DateFormat('yyyy-MM-dd')
                                     .format(_selectedDate),
                           ),

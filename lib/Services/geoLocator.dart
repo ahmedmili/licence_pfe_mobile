@@ -147,6 +147,7 @@ class GeoLocatorController extends GetxController {
     lat.value = location.latitude.toString();
     long.value = location.longitude.toString();
     center = LatLng(location.latitude, location.longitude);
+
     update();
     return location.altitude.toString();
   }

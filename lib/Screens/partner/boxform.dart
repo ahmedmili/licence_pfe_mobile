@@ -79,7 +79,6 @@ class _BoxFormScreenState extends State<BoxFormScreen> {
       token,
     );
     Map<String, dynamic> responseMap = jsonDecode(response.body);
-    print(responseMap["status"]);
     if (responseMap["status"] == 200) {
       Get.snackbar(
           backgroundColor: Colors.white,

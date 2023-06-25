@@ -20,7 +20,6 @@ class UserService {
       },
     );
     final favorsData = jsonDecode(favorsListresponse.body);
-    print(favorsData[0][1]);
     if (favorsData[0].length != 0) {
       final name = favorsData[0][0]["name"];
       final url = Uri.parse('${baseURL}user/recommandedBoxs/$name');
