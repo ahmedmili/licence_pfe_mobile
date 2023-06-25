@@ -17,24 +17,39 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   GeoLocatorController geoController = Get.find<GeoLocatorController>();
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // UserService.getRecommandedBoxs();
+  }
+
+  @override
+  void dispose() {
+    // Cleanup operations: cancel subscriptions, release resources, dispose controllers, etc.
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    UserService.getRecommandedBoxs();
+
     return Scaffold(
       body: ListView(
         scrollDirection: Axis.vertical,
         children: [
           Column(
             children: [
-              FutureBuilder<List<Box>>(
-                future: UserService.getAvailableBoxs(),
+              const SizedBox(height: 20.0),
+              const AdresseField(),
+              const SizedBox(
+                height: 30,
+              ),
+              FutureBuilder(
+                future: UserService.getRecommandedBoxs(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return Column(
                       children: [
-                        const SizedBox(height: 20.0),
-                        const AdresseField(),
-                        const SizedBox(
-                          height: 30,
-                        ),
                         Container(
                           padding:
                               const EdgeInsets.only(left: 20.0, right: 15.0),
@@ -54,6 +69,25 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 200,
                           child: BoxScreen(items: snapshot.data!),
                         ),
+                      ],
+                    );
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Colors.green[800]!),
+                        strokeWidth: 5,
+                      ),
+                    );
+                  }
+                },
+              ),
+              FutureBuilder<List<Box>>(
+                future: UserService.getAvailableBoxs(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Column(
+                      children: [
                         const SizedBox(height: 20),
                         Column(
                           children: [

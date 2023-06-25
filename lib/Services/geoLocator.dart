@@ -147,13 +147,15 @@ class GeoLocatorController extends GetxController {
     lat.value = location.latitude.toString();
     long.value = location.longitude.toString();
     center = LatLng(location.latitude, location.longitude);
+
     update();
     return location.altitude.toString();
   }
 
   /// conver adress location (lat , longs) to Adress Name
   Future<String> getAddressFromLatLng() async {
-    const apiKey = "AIzaSyBiZ8SjQd4I8sbCYk21luHXS3DITdhxSCo";
+    const apiKey = "AIzaSyDgA3fCmempzwLHJGfmGanFdFnp-Dd4pPE";
+    // const apiKey = "AIzaSyBiZ8SjQd4I8sbCYk21luHXS3DITdhxSCo";
 
     final latlng = '${lat.value},${long.value}';
     final url =
@@ -165,7 +167,7 @@ class GeoLocatorController extends GetxController {
       if (decoded["status"] == "OK") {
         final String street = decoded["results"][0]["address_components"][1]
             ["short_name"]; // street name
-        // print("street ==  $street");
+        print("street ==  $street");
         final String city = decoded["results"][0]["address_components"][2]
             ["short_name"]; //City name
         adress.value = "$street , $city";

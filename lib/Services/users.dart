@@ -3,12 +3,64 @@ import 'package:get/get.dart';
 import 'package:saverapp/Models/boxs.dart';
 import 'package:http/http.dart' as http;
 import 'package:saverapp/Models/partner.dart';
-import '../widget/rating.dart';
+// import '../widget/rating.dart';
 import 'globals.dart';
 
 final GlobalController controller = Get.find<GlobalController>();
 
 class UserService {
+  static Future<List<Box>> getRecommandedBoxs() async {
+    final token = controller.token;
+    final favorsurl = Uri.parse('${baseURL}user/partners/favorites');
+    final favorsListresponse = await http.get(
+      favorsurl,
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token'
+      },
+    );
+    final favorsData = jsonDecode(favorsListresponse.body);
+    if (favorsData[0].length != 0) {
+      final name = favorsData[0][0]["name"];
+      final url = Uri.parse('${baseURL}user/recommandedBoxs/$name');
+      final response = await http.get(
+        url,
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer $token'
+        },
+      );
+      List<dynamic> boxsList = jsonDecode(response.body)["boxs"];
+      if (response.statusCode == 200) {
+        final List<Box> boxs = [];
+        for (int i = 0; i < boxsList.length; i++) {
+          final newBox = Box(
+            // Add fields here to create the new Box object
+            id: boxsList[i]['id'],
+            description: boxsList[i]['description'],
+            category: boxsList[i]['category'],
+            newprice: boxsList[i]['newprice'],
+            startdate: boxsList[i]['startdate'],
+            enddate: boxsList[i]['enddate'],
+            quantity: boxsList[i]['quantity'],
+            remaining_quantity: boxsList[i]['remaining_quantity'],
+            image: boxsList[i]['image'],
+            partnerId: boxsList[i]['partner_id'],
+            title: boxsList[i]['title'],
+            oldprice: boxsList[i]['oldprice'],
+          );
+          boxs.add(newBox);
+        }
+
+        return boxs;
+      } else {
+        throw Exception('Failed to fetch products');
+      }
+    } else {
+      throw ("no data found");
+    }
+  }
+
   static Future<List<Box>> getAvailableBoxs() async {
     final token = controller.token;
     final url = Uri.parse('${baseURL}user/availableBoxs');
@@ -254,8 +306,7 @@ class UserService {
         "status": jsonDecode(response.body)["status"],
         "message": jsonDecode(response.body)["message"],
       };
-      // print(responseData);
-      // Get.to(PartnerRatingPageState);
+
       return responseData;
     } else {
       throw Exception('Failed to verif QrCode');
@@ -282,7 +333,6 @@ class UserService {
         "message": jsonDecode(response.body)['message'],
       };
       return responseData;
-      // Get.to(PartnerRatingPageState);
     } else {
       throw Exception('Failed to rate partner');
     }

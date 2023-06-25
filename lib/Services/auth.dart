@@ -7,14 +7,23 @@ import 'dart:io';
 final GlobalController controller = Get.find<GlobalController>();
 
 class AuthServices {
-  static Future<Map> register(String name, String email, String phone,
-      String password, int roleId) async {
+  static Future<Map> register(
+    String name,
+    String email,
+    String phone,
+    String password,
+    int roleId,
+    String sexe,
+    String birthday,
+  ) async {
     Map data = {
       "name": name,
       "email": email,
       "phone": phone,
       "password": password,
       "roleId": roleId,
+      "sexe": sexe,
+      "birthday": birthday, //birthday
     };
     var body = json.encode(data);
     var url = Uri.parse('${baseURL}user/register');
@@ -23,12 +32,8 @@ class AuthServices {
       headers: headers,
       body: body,
     );
-
-    // print(jsonDecode(response.body)["status"]);
-    // print(response.statusCode);
     if (response.statusCode == 200) {
       if (jsonDecode(response.body)["status"] == 400) {
-        print("400");
         return {
           "error": jsonDecode(response.body)["0"],
           "status": jsonDecode(response.body)["status"]
@@ -38,8 +43,6 @@ class AuthServices {
       }
     } else if (response.statusCode == 201) {
       if (jsonDecode(response.body)['status'] == 200) {
-        print("200");
-        print(jsonDecode(response.body)['token']);
         return {
           "message": jsonDecode(response.body)['message'],
           "token": jsonDecode(response.body)['token'],
@@ -157,7 +160,6 @@ class AuthServices {
         "status": response.statusCode
       };
     } else {
-      print(response.statusCode);
       // responseMessage = {
       //   "response": json.decode(response.body),
       //   "status": response.statusCode

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:saverapp/dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth.dart';
@@ -24,6 +25,9 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
   String _password = '';
   final int _roleId = 2;
 
+  DateTime _selectedDate = DateTime.now();
+  String? _selectedSex;
+
   createAccountPressed() async {
     bool emailValid = RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -31,7 +35,14 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
 
     if (emailValid) {
       Map response = await AuthServices.register(
-          _name, _email, _phone, _password, _roleId);
+        _name,
+        _email,
+        _phone,
+        _password,
+        _roleId,
+        _selectedSex.toString(),
+        _selectedDate.toIso8601String(),
+      );
       if (response["status"] == 400) {
         final err = response["error"];
         if (err["phone"] != null) {
@@ -42,6 +53,10 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
           Get.snackbar("error".tr, err["name"][0]);
         } else if (err["password"] != null) {
           Get.snackbar("error".tr, err["password"][0]);
+        } else if (err["sexe"] != null) {
+          Get.snackbar("error".tr, err["sexe"][0]);
+        } else if (err["birthday"] != null) {
+          Get.snackbar("error".tr, err["birthday"][0]);
         }
       } else if (response["status"] == 200) {
         Get.snackbar("success".tr, response["message"]);
@@ -198,6 +213,97 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
               const SizedBox(
                 height: 40,
               ),
+              /////
+              ///
+              ///
+              ///
+              const SizedBox(height: 10),
+              DropdownButtonFormField<String>(
+                decoration: const InputDecoration(labelText: 'Gender'),
+                items: ['male', 'female'] // male,female
+                    .map((String value) => DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        ))
+                    .toList(),
+                validator: (value) {
+                  if (value == null) {
+                    return 'Please select your gender';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  setState(() {
+                    _selectedSex = value;
+                  });
+                },
+                value: _selectedSex, // Set the default value of the dropdown
+              ),
+              const SizedBox(height: 10),
+
+              /////
+              ///
+              ///*
+              GestureDetector(
+                onTap: () async {
+                  final DateTime? date = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime(2000),
+                    firstDate: DateTime(1950),
+                    lastDate: DateTime(2100),
+                  );
+                  if (date != null) {
+                    // ignore: use_build_context_synchronously
+                    // final TimeOfDay? time = await showTimePicker(
+                    //   context: context,
+                    //   initialTime: TimeOfDay.now(),
+                    // );
+                    // if (time != null) {
+                    setState(() {
+                      _selectedDate = DateTime(
+                        date.year, date.month, date.day,
+                        // time.hour, time.minute
+                      );
+                    });
+                    // }
+                  }
+                },
+                child: AbsorbPointer(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border:
+                            Border.all(color: Colors.green.shade800, width: 2),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 12.0),
+                        child: TextField(
+                          controller: TextEditingController(
+                            text: _selectedDate == null
+                                ? ''
+                                : DateFormat('yyyy-MM-dd')
+                                    .format(_selectedDate),
+                          ),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'birth_date'.tr,
+                            hintStyle: TextStyle(color: Colors.grey.shade800),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+
+              ///
+              ///
               RoundedButton(
                 btnText: 'REGISTER',
                 onBtnPressed: () => createAccountPressed(),

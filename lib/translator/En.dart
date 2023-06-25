@@ -67,6 +67,8 @@ class Languages extends Translations {
           'Get_Position': 'Obtenir position',
           'Send_Request': 'Envoyer une demande',
           'account_question': 'Vous avez déjà un compte ? Connexion ?',
+          'birth_date': 'date d\'anniversaire',
+
           // food details
           'Title': 'Titre',
           'Initial_quantity': 'Quantité initiale',
@@ -141,6 +143,7 @@ class Languages extends Translations {
           'Get_Position': 'Get Position',
           'Send_Request': 'Send Request',
           'account_question': 'Already have an account ? Login',
+          'birth_date': 'birthday',
           // food details
           'Title': 'Title',
           'Initial_quantity': 'Initial quantity',

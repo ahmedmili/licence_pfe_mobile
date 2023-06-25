@@ -14,6 +14,7 @@ class Box {
   final String category;
   final int partnerId;
 
+  String? status;
   int? likes;
 
   Box(
@@ -29,22 +30,24 @@ class Box {
       required this.title,
       required this.description,
       required this.oldprice,
+      this.status,
       this.likes});
 
   factory Box.fromJson(Map<String, dynamic> json) {
     return Box(
       id: json['id'],
+      title: json['title'],
       description: json['description'],
-      category: json['category'],
+      oldprice: json['oldprice'],
       newprice: json['newprice'],
       startdate: json['startdate'],
       enddate: json['enddate'],
       quantity: json['quantity'],
       remaining_quantity: json['remaining_quantity'],
       image: json['image'],
+      category: json['category'],
+      status: json['status'],
       partnerId: json['partner_id'],
-      title: json['title'],
-      oldprice: json['oldprice'],
       likes: json["likes"].length,
     );
   }
