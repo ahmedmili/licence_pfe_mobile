@@ -118,7 +118,7 @@ class _PartnerCardState extends State<PartnerCard> {
                                   Icon(Icons.location_on_outlined,
                                       color: Colors.green[800]),
                                   const SizedBox(width: 10),
-                                  const Text(
+                                  Text(
                                     "Address",
                                     style: TextStyle(
                                       fontSize: 16,
