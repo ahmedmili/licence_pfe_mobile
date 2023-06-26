@@ -243,34 +243,71 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
                 ),
               ),
               const SizedBox(
-                height: 40,
+                height: 20,
               ),
               /////
               ///
               ///
               ///
-              const SizedBox(height: 10),
-              DropdownButtonFormField<String>(
-                decoration: const InputDecoration(labelText: 'Gender'),
-                items: ['male', 'female'] // male,female
-                    .map((String value) => DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        ))
-                    .toList(),
-                validator: (value) {
-                  if (value == null) {
-                    return 'Please select your gender';
-                  }
-                  return null;
-                },
-                onChanged: (value) {
-                  setState(() {
-                    _selectedSex = value;
-                  });
-                },
-                value: _selectedSex, // Set the default value of the dropdown
+
+              // DropdownButtonFormField<String>(
+              //   decoration: const InputDecoration(labelText: 'Gender'),
+              //   items: ['male', 'female'] // male,female
+              //       .map((String value) => DropdownMenuItem<String>(
+              //             value: value,
+              //             child: Text(value),
+              //           ))
+              //       .toList(),
+              //   validator: (value) {
+              //     if (value == null) {
+              //       return 'Please select your gender';
+              //     }
+              //     return null;
+              //   },
+              //   onChanged: (value) {
+              //     setState(() {
+              //       _selectedSex = value;
+              //     });
+              //   },
+              //   value: _selectedSex, // Set the default value of the dropdown
+              // ),
+
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Gender:',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.green.shade800),
+                    ),
+                  ),
+                  RadioListTile<String>(
+                    title: const Text('Male'),
+                    value: 'male',
+                    groupValue: _selectedSex,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedSex = value;
+                      });
+                    },
+                  ),
+                  RadioListTile<String>(
+                    title: const Text('Female'),
+                    value: 'female',
+                    groupValue: _selectedSex,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedSex = value;
+                      });
+                    },
+                  ),
+                ],
               ),
+
               const SizedBox(height: 10),
 
               /////
