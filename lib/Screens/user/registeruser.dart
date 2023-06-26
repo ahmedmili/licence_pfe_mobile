@@ -46,20 +46,48 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
       if (response["status"] == 400) {
         final err = response["error"];
         if (err["phone"] != null) {
-          Get.snackbar("error".tr, err["phone"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["phone"][0],
+              colorText: Colors.white);
         } else if (err["email"] != null) {
-          Get.snackbar("error".tr, err["email"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["email"][0],
+              colorText: Colors.white);
         } else if (err["name"] != null) {
-          Get.snackbar("error".tr, err["name"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["name"][0],
+              colorText: Colors.white);
         } else if (err["password"] != null) {
-          Get.snackbar("error".tr, err["password"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["password"][0],
+              colorText: Colors.white);
         } else if (err["sexe"] != null) {
-          Get.snackbar("error".tr, err["sexe"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["sexe"][0],
+              colorText: Colors.white);
         } else if (err["birthday"] != null) {
-          Get.snackbar("error".tr, err["birthday"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["birthday"][0],
+              colorText: Colors.white);
         }
       } else if (response["status"] == 200) {
-        Get.snackbar("success".tr, response["message"]);
+        Get.snackbar(
+            backgroundColor: Colors.white,
+            "success".tr,
+            response["message"],
+            colorText: Colors.green.shade800);
 
         String token = response['token'];
         _save(token);
@@ -71,7 +99,11 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
             colorText: Colors.green.shade800);
       }
     } else {
-      Get.snackbar("Error", "Email not valid");
+      Get.snackbar(
+          backgroundColor: Colors.red,
+          "Error",
+          "Email not valid",
+          colorText: Colors.white);
     }
     // } else {}
   }
