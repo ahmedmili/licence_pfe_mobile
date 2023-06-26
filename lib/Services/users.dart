@@ -20,6 +20,7 @@ class UserService {
       },
     );
     final favorsData = jsonDecode(favorsListresponse.body);
+    print(favorsData);
     if (favorsData[0].length != 0) {
       final name = favorsData[0][0]["name"];
       final url = Uri.parse('${baseURL}user/recommandedBoxs/$name');
@@ -32,6 +33,7 @@ class UserService {
       );
       List<dynamic> boxsList = jsonDecode(response.body)["boxs"];
       if (response.statusCode == 200) {
+        print(boxsList.length);
         final List<Box> boxs = [];
         for (int i = 0; i < boxsList.length; i++) {
           final newBox = Box(
