@@ -86,6 +86,7 @@ class BoxServices {
         startdate: data['startdate'],
       );
       controller.setBox(box);
+      Get.toNamed('/boxdetails');
       print(jsonDecode(responseString)["message"]);
     } else {
       throw Exception('Erreur lors de la requête : ${response.statusCode}');
