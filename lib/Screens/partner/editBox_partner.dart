@@ -417,7 +417,7 @@ class _EditBoxState extends State<EditBox> {
                 },
               ),
               const SizedBox(
-                height: 50,
+                height: 30,
               ),
               // image section
               Container(
