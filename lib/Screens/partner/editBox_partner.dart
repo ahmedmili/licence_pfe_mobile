@@ -126,7 +126,7 @@ class _EditBoxState extends State<EditBox> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -154,7 +154,7 @@ class _EditBoxState extends State<EditBox> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -210,7 +210,7 @@ class _EditBoxState extends State<EditBox> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -262,7 +262,7 @@ class _EditBoxState extends State<EditBox> {
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
+                        color: Colors.white,
                         border:
                             Border.all(color: Colors.green.shade800, width: 2),
                         borderRadius: BorderRadius.circular(12),
@@ -318,7 +318,7 @@ class _EditBoxState extends State<EditBox> {
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
+                        color: Colors.white,
                         border:
                             Border.all(color: Colors.green.shade800, width: 2),
                         borderRadius: BorderRadius.circular(12),
@@ -349,7 +349,7 @@ class _EditBoxState extends State<EditBox> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.white,
                     border: Border.all(color: Colors.green.shade800, width: 2),
                     borderRadius: BorderRadius.circular(12),
                   ),
