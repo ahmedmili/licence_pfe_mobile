@@ -371,10 +371,14 @@ class _OrderScreenState extends State<OrderScreen> {
         });
         Map<String, dynamic> jsonDta = jsonDecode(value);
         final response = await UserService.verifAndTakeOrder(jsonDta);
-        print(response);
-        if (response['status'] == 200) {
-          print(response);
+        // print("-----------------------------------------------------");
+        // print(response['status']);
+        // print(response['message']);
+        if (response['status'] == "200") {
+          // print(response);
           Get.snackbar("Sucess", response['message']);
+          print(response['message']);
+          print(response['status']);
           showDialog(
             context: context,
             builder: (_) => AlertDialog(
@@ -386,6 +390,11 @@ class _OrderScreenState extends State<OrderScreen> {
               actions: const [],
             ),
           );
+        } else if (response['status'] == "400") {
+          print(response['message']);
+          print(response['status']);
+
+          Get.snackbar("Sucess", response['message']);
         }
       });
     } catch (e) {
