@@ -234,12 +234,16 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                                   fontSize: Dimensions.font16,
                                 ),
                               ),
-                              Text(
-                                controller.partner.adress.toString(),
-                                style: TextStyle(
-                                  color: Colors.green.shade800,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: Dimensions.font16,
+                              Expanded(
+                                child: SingleChildScrollView(
+                                  child: Text(
+                                    controller.partner.adress.toString(),
+                                    style: TextStyle(
+                                      color: Colors.green.shade800,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: Dimensions.font16,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
