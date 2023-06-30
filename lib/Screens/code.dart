@@ -45,16 +45,19 @@ class _CodeState extends State<Code> {
       } else {
         var response = await AuthServices.sendVerifCode(code);
         if (response["response"]?["status"] == 200) {
-          Get.snackbar("success", response["response"]["message"],
-              backgroundColor: const Color.fromARGB(255, 38, 209, 44));
+          Get.snackbar(
+              backgroundColor: Colors.white,
+              "success",
+              response["response"]["message"],
+              colorText: Colors.green.shade800);
           Get.toNamed("changePassword", arguments: email);
           // print(response["response"]["message"]);
         } else {
           Get.snackbar(
-            backgroundColor: const Color.fromRGBO(243, 75, 63, 0.644),
-            "error",
-            "Error, please try again",
-          );
+              backgroundColor: Colors.red,
+              "error",
+              "Error, please try again",
+              colorText: Colors.white);
         }
       }
     }
