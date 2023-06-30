@@ -37,14 +37,23 @@ class _ChangePasswordState extends State<ChangePassword> {
     if (response.statusCode == 200) {
       // Password updated successfully, show a success message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Password updated successfully')),
+        SnackBar(
+          content: Text(
+            'Password updated successfully',
+            style: TextStyle(color: Colors.green.shade800),
+          ),
+          backgroundColor: Colors.white,
+        ),
       );
     } else {
       // Password update failed, show an error message
       final errorMessage = response.body;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(errorMessage),
+          content: Text(
+            errorMessage,
+            style: TextStyle(color: Colors.white),
+          ),
           backgroundColor: Colors.red,
         ),
       );
