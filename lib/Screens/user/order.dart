@@ -376,13 +376,23 @@ class _OrderScreenState extends State<OrderScreen> {
         // print(response['message']);
         if (response['status'] == "200") {
           // print(response);
-          Get.snackbar("Sucess", response['message']);
-          print(response['message']);
-          print(response['status']);
+          Get.snackbar(
+              backgroundColor: Colors.white,
+              "Sucess",
+              response['message'],
+              colorText: Colors.green.shade800);
+          // print(response['message']);
+          //print(response['status']);
           showDialog(
             context: context,
             builder: (_) => AlertDialog(
-              title: const Text('Rate the Product'),
+              title: Text(
+                'Rate your experience',
+                style: TextStyle(
+                    color: Colors.green.shade800,
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold),
+              ),
               content: SizedBox(
                 height: 200,
                 child: ProductRatingPage(jsonDta: jsonDta),
@@ -391,10 +401,14 @@ class _OrderScreenState extends State<OrderScreen> {
             ),
           );
         } else if (response['status'] == "400") {
-          print(response['message']);
-          print(response['status']);
+          //print(response['message']);
+          //print(response['status']);
 
-          Get.snackbar("Sucess", response['message']);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "Error",
+              response['message'],
+              colorText: Colors.white);
         }
       });
     } catch (e) {
