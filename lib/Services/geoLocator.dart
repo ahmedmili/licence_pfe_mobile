@@ -167,11 +167,9 @@ class GeoLocatorController extends GetxController {
       if (decoded["status"] == "OK") {
         final String street = decoded["results"][0]["address_components"][1]
             ["short_name"]; // street name
-        print("street ==  $street");
         final String city = decoded["results"][0]["address_components"][2]
             ["short_name"]; //City name
         adress.value = "$street , $city";
-        print("street ==  $adress");
         update();
 
         return adress.value.toString();

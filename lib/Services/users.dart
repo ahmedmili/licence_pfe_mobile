@@ -11,6 +11,8 @@ final GlobalController controller = Get.find<GlobalController>();
 class UserService {
   static Future<List<Box>> getRecommandedBoxs() async {
     final token = controller.token;
+
+    // check for favorits partners
     final favorsurl = Uri.parse('${baseURL}user/partners/favorites');
     final favorsListresponse = await http.get(
       favorsurl,
@@ -20,8 +22,10 @@ class UserService {
       },
     );
     final favorsData = jsonDecode(favorsListresponse.body);
-    if (favorsData[0].length != 0) {
+    if (favorsData[0].length > 0) {
+      // if one or more favorits exists
       final name = favorsData[0][0]["name"];
+      // get recommanded boxs from favorits partners
       final url = Uri.parse('${baseURL}user/recommandedBoxs/$name');
       final response = await http.get(
         url,
@@ -30,8 +34,9 @@ class UserService {
           'Authorization': 'Bearer $token'
         },
       );
-      List<dynamic> boxsList = jsonDecode(response.body)["boxs"];
       if (response.statusCode == 200) {
+        // fetch result into list
+        List<dynamic> boxsList = jsonDecode(response.body)["boxs"];
         final List<Box> boxs = [];
         for (int i = 0; i < boxsList.length; i++) {
           final newBox = Box(
@@ -51,13 +56,53 @@ class UserService {
           );
           boxs.add(newBox);
         }
+        // return boxs list
+        print("AI part return");
 
         return boxs;
       } else {
         throw Exception('Failed to fetch products');
       }
+
+      // no favorits partners exists
     } else {
-      throw ("no data found");
+      // get recommanded boxs from graph db
+      final url = Uri.parse('${baseURL}user/graphRecommandedBoxs');
+      final response = await http.get(
+        url,
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer $token'
+        },
+      );
+      if (response.statusCode == 200) {
+        // fetch box into list
+        List<dynamic> boxsList = jsonDecode(response.body)["boxs"];
+        final List<Box> boxs = [];
+        for (int i = 0; i < boxsList.length; i++) {
+          final newBox = Box(
+            // Add fields here to create the new Box object
+            id: boxsList[i]['id'],
+            description: boxsList[i]['description'],
+            category: boxsList[i]['category'],
+            newprice: boxsList[i]['newprice'],
+            startdate: boxsList[i]['startdate'],
+            enddate: boxsList[i]['enddate'],
+            quantity: boxsList[i]['quantity'],
+            remaining_quantity: boxsList[i]['remaining_quantity'],
+            image: boxsList[i]['image'],
+            partnerId: boxsList[i]['partner_id'],
+            title: boxsList[i]['title'],
+            oldprice: boxsList[i]['oldprice'],
+          );
+          boxs.add(newBox);
+        }
+        print("Graph part return");
+        return boxs;
+      } else {
+        throw ("no data found");
+      }
+      // no graph db or favorits recommanded box exists
     }
   }
 

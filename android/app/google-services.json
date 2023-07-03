@@ -1,62 +1,33 @@
 {
   "project_info": {
-    "project_number": "611440653281",
-    "project_id": "foodsaver-da3c2",
-    "storage_bucket": "foodsaver-da3c2.appspot.com"
+    "project_number": "819192438979",
+    "project_id": "foodsaverapp-bcf3c",
+    "storage_bucket": "foodsaverapp-bcf3c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:611440653281:android:75ad94ac3fb6767011d8a0",
+        "mobilesdk_app_id": "1:819192438979:android:a8f4999e69a7c5bc4b8276",
         "android_client_info": {
-          "package_name": "com.company.food_saver_notification"
+          "package_name": "com.company.FoodSaverApp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "611440653281-rv1q0u1p02fgcjab1t7dqlo2hmebre5s.apps.googleusercontent.com",
+          "client_id": "819192438979-ms3965idp7tm9cku6ltde0deonrb4s7c.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCeALiTwk0mUsAtV2cilxa1zCYARAVqnWo"
+          "current_key": "AIzaSyDIAYuHcFfvhtFcn3xpOqUp2PY--spgQz0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "611440653281-rv1q0u1p02fgcjab1t7dqlo2hmebre5s.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:611440653281:android:eb8a2913636a306a11d8a0",
-        "android_client_info": {
-          "package_name": "com.example.saverapp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "611440653281-rv1q0u1p02fgcjab1t7dqlo2hmebre5s.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCeALiTwk0mUsAtV2cilxa1zCYARAVqnWo"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "611440653281-rv1q0u1p02fgcjab1t7dqlo2hmebre5s.apps.googleusercontent.com",
+              "client_id": "819192438979-ms3965idp7tm9cku6ltde0deonrb4s7c.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

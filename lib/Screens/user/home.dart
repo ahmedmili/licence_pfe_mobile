@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
               FutureBuilder(
                 future: UserService.getRecommandedBoxs(),
                 builder: (context, snapshot) {
+                  // return const Text("coming soon");
                   if (snapshot.hasData) {
                     return Column(
                       children: [
