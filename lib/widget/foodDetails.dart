@@ -1,7 +1,8 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:saverapp/Models/partner.dart';
 import 'package:saverapp/Services/globals.dart';
 import '../Models/boxs.dart';
@@ -20,7 +21,7 @@ class FoodDetails extends StatefulWidget {
 class _FoodDetailsState extends State<FoodDetails> {
   int value = 1;
   void increment() {
-    if (value < widget.box.remaining_quantity) {
+    if (value < widget.box.remainingQuantity) {
       setState(() {
         value++;
       });
@@ -176,7 +177,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                       width: 5,
                     ),
                     Text(
-                      "Remaining Quantity : ${box.remaining_quantity}",
+                      "Remaining Quantity : ${box.remainingQuantity}",
                       style: const TextStyle(
                           fontSize: 14, fontWeight: FontWeight.bold),
                     ),
@@ -333,11 +334,11 @@ class _FoodDetailsState extends State<FoodDetails> {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('Valeur actuelle'),
+                      title: const Text('Valeur actuelle'),
                       content: Text(value.toString()),
                       actions: [
                         TextButton(
-                          child: Text('OK'),
+                          child: const Text('OK'),
                           onPressed: () {
                             Navigator.of(context).pop();
                           },

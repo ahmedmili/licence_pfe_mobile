@@ -93,7 +93,7 @@ class _EditBoxState extends State<EditBox> {
     categoryController.text = box.category;
     startdatetimeController.text = box.startdate;
     quantityController.text = box.quantity.toString();
-    remainingQuantityController.text = box.remaining_quantity.toString();
+    remainingQuantityController.text = box.remainingQuantity.toString();
   }
 
   @override

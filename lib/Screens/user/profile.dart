@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:saverapp/Screens/user/editprofile.dart';
 import 'package:saverapp/Services/globals.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'me.dart';
 
 class ProfileUser extends StatefulWidget {
   const ProfileUser({Key? key}) : super(key: key);

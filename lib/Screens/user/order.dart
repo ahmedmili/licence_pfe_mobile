@@ -4,9 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
-import 'package:saverapp/Models/partner.dart';
 import 'package:saverapp/dimensions.dart';
-import '../../Models/boxs.dart';
 import '../../Models/order.dart';
 import '../../widget/partnerDetails.dart';
 import '../../Services/users.dart';
@@ -369,10 +367,10 @@ class _OrderScreenState extends State<OrderScreen> {
         });
         Map<String, dynamic> jsonDta = jsonDecode(value);
         final response = await UserService.verifAndTakeOrder(jsonDta);
-        print(response);
+
         if (response['status'] == 200) {
-          print(response);
           Get.snackbar("Sucess", response['message']);
+          // ignore: use_build_context_synchronously
           showDialog(
             context: context,
             builder: (_) => AlertDialog(

@@ -150,7 +150,7 @@ import 'package:get/get.dart';
 import 'package:saverapp/Services/users.dart';
 
 class ProductRatingPage extends StatefulWidget {
-  ProductRatingPage({
+  const ProductRatingPage({
     super.key,
     required this.jsonDta,
   });

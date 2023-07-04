@@ -18,7 +18,7 @@ class Order {
   final String oldprice;
   final String created_at;
   final int price;
-  final int remaining_quantity;
+  final int remainingQuantity;
 
   Order({
     this.partner_id,
@@ -39,7 +39,7 @@ class Order {
     required this.oldprice,
     required this.newprice,
     required this.price,
-    required this.remaining_quantity,
+    required this.remainingQuantity,
     required this.created_at,
   });
 
@@ -63,7 +63,7 @@ class Order {
       oldprice: json['oldprice'],
       newprice: json['newprice'],
       price: json['price'],
-      remaining_quantity: json['remaining_quantity'],
+      remainingQuantity: json['remaining_quantity'],
       created_at: json['created_at'],
     );
   }

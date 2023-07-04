@@ -44,7 +44,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                   child: Column(
                     children: [
                       const SizedBox(height: 190),
-                      Container(
+                      const SizedBox(
                         height: 200,
                         width: 200,
                         child: Image(

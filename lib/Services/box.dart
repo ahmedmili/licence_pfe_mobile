@@ -81,11 +81,10 @@ class BoxServices {
         oldprice: data["oldprice"],
         partnerId: data["partner_id"],
         quantity: data["quantity"],
-        remaining_quantity: data['remaining_quantity'],
+        remainingQuantity: data['remaining_quantity'],
         startdate: data['startdate'],
       );
       controller.setBox(box);
-      print(jsonDecode(responseString)["message"]);
     } else {
       throw Exception('Erreur lors de la requête : ${response.statusCode}');
     }
@@ -134,7 +133,7 @@ class BoxServices {
       oldprice: jsonDecode(response.body)["box"]["oldprice"],
       partnerId: jsonDecode(response.body)["box"]["partner_id"],
       quantity: int.parse(jsonDecode(response.body)["box"]["quantity"]),
-      remaining_quantity:
+      remainingQuantity:
           int.parse(jsonDecode(response.body)["box"]['remaining_quantity']),
       startdate: jsonDecode(response.body)["box"]['startdate'],
     );

@@ -47,18 +47,12 @@ class _PopupLocationMenu extends State<PopupLocationMenu> {
       onSelected: (String value) {
         switch (value) {
           case 'GPS':
-            print(geoController.long);
             geoController.getLocation();
-            print(geoController.long);
             Future.delayed(
               const Duration(milliseconds: 2000),
               () => geoController.getAddressFromLatLng(),
             );
-            print(geoController.adress);
-            // Future.delayed(
-            //   const Duration(seconds: 3),
-            //   () {
-            //     return
+
             showDialog(
               context: context,
               builder: (BuildContext context) {

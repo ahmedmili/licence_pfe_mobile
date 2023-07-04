@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saverapp/Services/geoLocator.dart';
-import 'package:saverapp/Services/globals.dart';
 
 class LocationForm extends StatefulWidget {
   const LocationForm({super.key});
@@ -30,7 +29,6 @@ class _LocationForm extends State<LocationForm> {
           children: <Widget>[
             Obx(
               () {
-                print("rebuild 1");
                 _formKey.currentWidget;
                 return TextFormField(
                   readOnly: true,
@@ -40,7 +38,6 @@ class _LocationForm extends State<LocationForm> {
             ),
             Obx(
               () {
-                print("rebuild 2");
                 return TextFormField(
                   initialValue: "Latitude : ${geoControlle.lat.value}",
                   readOnly: true,
@@ -49,7 +46,6 @@ class _LocationForm extends State<LocationForm> {
             ),
             Obx(
               () {
-                print("rebuild 3");
                 return TextFormField(
                   initialValue: geoControlle.adress.value,
                   readOnly: true,

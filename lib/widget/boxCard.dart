@@ -145,7 +145,7 @@ class _BoxCardState extends State<BoxCard> {
                     ),
                     child: Center(
                       child: Text(
-                        '${widget.box.remaining_quantity.toString()} to save',
+                        '${widget.box.remainingQuantity.toString()} to save',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

@@ -23,7 +23,7 @@ class Pie extends StatefulWidget {
 
 class _PieState extends State<Pie> {
   List<ChartData> chartData = [];
-  List<Color> categoryColors = [
+  List<Color> categoryColors = const [
     Color.fromRGBO(255, 217, 184, 1.0),
     Color(0xFFB2CCFF),
     Color(0xFFFFB2D9),
@@ -46,7 +46,6 @@ class _PieState extends State<Pie> {
           'Authorization': 'Bearer $token',
         },
       );
-      print(response.body);
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         List<ChartData> dataPoints = [];
@@ -64,14 +63,14 @@ class _PieState extends State<Pie> {
         throw Exception('Failed to fetch partner order count');
       }
     } catch (error) {
-      print(error);
+      // print(error);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     if (chartData.isEmpty) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(
           valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFB2CCFF)),
           strokeWidth: 5,
@@ -88,7 +87,7 @@ class _PieState extends State<Pie> {
                     dataSource: chartData,
                     xValueMapper: (ChartData data, _) => data.category,
                     yValueMapper: (ChartData data, _) => data.value,
-                    dataLabelSettings: DataLabelSettings(
+                    dataLabelSettings: const DataLabelSettings(
                       isVisible: true,
                     ),
                     pointColorMapper: (ChartData data, _) {
@@ -100,7 +99,7 @@ class _PieState extends State<Pie> {
                 ],
               ),
             ),
-            Container(
+            SizedBox(
               width: 100,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -112,7 +111,7 @@ class _PieState extends State<Pie> {
                       Container(
                         width: 10,
                         height: 10,
-                        margin: EdgeInsets.only(right: 5),
+                        margin: const EdgeInsets.only(right: 5),
                         color: categoryColors[index],
                       ),
                       Text(data.category),

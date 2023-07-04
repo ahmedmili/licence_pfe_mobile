@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/user/home.dart';
-import 'package:saverapp/Screens/user/order.dart';
-import 'package:saverapp/Screens/user/orderPage.dart';
 import 'package:saverapp/Screens/user/orderglobal.dart';
 import 'package:saverapp/Screens/user/tour.dart';
 import 'favoriteglobal.dart';

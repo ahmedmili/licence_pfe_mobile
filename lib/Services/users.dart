@@ -48,7 +48,7 @@ class UserService {
             startdate: boxsList[i]['startdate'],
             enddate: boxsList[i]['enddate'],
             quantity: boxsList[i]['quantity'],
-            remaining_quantity: boxsList[i]['remaining_quantity'],
+            remainingQuantity: boxsList[i]['remaining_quantity'],
             image: boxsList[i]['image'],
             partnerId: boxsList[i]['partner_id'],
             title: boxsList[i]['title'],
@@ -57,8 +57,6 @@ class UserService {
           boxs.add(newBox);
         }
         // return boxs list
-        print("AI part return");
-
         return boxs;
       } else {
         throw Exception('Failed to fetch products');
@@ -89,7 +87,7 @@ class UserService {
             startdate: boxsList[i]['startdate'],
             enddate: boxsList[i]['enddate'],
             quantity: boxsList[i]['quantity'],
-            remaining_quantity: boxsList[i]['remaining_quantity'],
+            remainingQuantity: boxsList[i]['remaining_quantity'],
             image: boxsList[i]['image'],
             partnerId: boxsList[i]['partner_id'],
             title: boxsList[i]['title'],
@@ -97,7 +95,6 @@ class UserService {
           );
           boxs.add(newBox);
         }
-        print("Graph part return");
         return boxs;
       } else {
         throw ("no data found");
@@ -261,7 +258,7 @@ class UserService {
           startdate: data[i]['startdate'],
           enddate: data[i]['enddate'],
           quantity: data[i]['quantity'],
-          remaining_quantity: data[i]['remaining_quantity'],
+          remainingQuantity: data[i]['remaining_quantity'],
           image: data[i]['image'],
           partnerId: data[i]['partner_id'],
           title: data[i]['title'],

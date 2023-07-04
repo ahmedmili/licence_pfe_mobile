@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:saverapp/Screens/welcome.dart';
 
-import '../dimensions.dart';
-import '../widget/rounded_button.dart';
-import 'login.dart';
-
 class Waiting extends StatelessWidget {
   const Waiting({super.key});
 
@@ -27,9 +23,9 @@ class Waiting extends StatelessWidget {
           ElevatedButton(
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(Colors.grey),
-              fixedSize: MaterialStateProperty.all<Size>(Size(200, 50)),
+              fixedSize: MaterialStateProperty.all<Size>(const Size(200, 50)),
             ),
-            child: Text('Take me back home'),
+            child: const Text('Take me back home'),
             onPressed: () {
               Navigator.push(
                   context,

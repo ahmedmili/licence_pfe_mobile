@@ -1,11 +1,9 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:saverapp/dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth.dart';
-import '../../Services/globals.dart';
 import '../../widget/rounded_button.dart';
 import '../login.dart';
 import 'package:http/http.dart' as http;

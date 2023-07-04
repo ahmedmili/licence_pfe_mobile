@@ -5,7 +5,8 @@ class CustomListTile extends StatelessWidget {
   final IconData icon;
   final String title;
 
-  CustomListTile({
+  const CustomListTile({
+    super.key,
     required this.cb,
     required this.icon,
     required this.title,

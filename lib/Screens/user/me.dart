@@ -5,7 +5,6 @@ import 'package:saverapp/Screens/user/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth.dart' as auth;
 import '../../Services/users.dart';
-import '../../widget/chart.dart';
 
 class MeScreen extends StatefulWidget {
   const MeScreen({super.key});
@@ -167,7 +166,7 @@ List<CustomListTile> customListTiles = [
   CustomListTile(
     cb: () async {
       SharedPreferences pref = await SharedPreferences.getInstance();
-      var res = await auth.AuthServices.logout();
+      await auth.AuthServices.logout();
       // if (res.statusCode == 200) {
       pref.setString("token", "");
       pref.setString("role", "");
