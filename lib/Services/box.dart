@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../Models/boxs.dart';
@@ -85,6 +86,7 @@ class BoxServices {
         startdate: data['startdate'],
       );
       controller.setBox(box);
+      Get.toNamed('/boxdetails');
     } else {
       throw Exception('Erreur lors de la requête : ${response.statusCode}');
     }
@@ -139,11 +141,19 @@ class BoxServices {
     );
     controller.setBox(box);
     if (response.statusCode == 200) {
-      Get.snackbar('Success', 'box details changed successfully');
-      Get.back();
+      Get.snackbar(
+          backgroundColor: Colors.white,
+          'Success',
+          'box details changed successfully',
+          colorText: Colors.green.shade800);
+      // Get.back();
+      Get.toNamed('/boxdetails');
     } else {
       Get.snackbar(
-          'Error'.tr, 'Failed to changed box details. Please try again.');
+          backgroundColor: Colors.red,
+          'Error'.tr,
+          'Failed to changed box details. Please try again.',
+          colorText: Colors.white);
       throw Exception('Failed to fetch partner data');
     }
   }

@@ -20,6 +20,8 @@ class _EditProfileState extends State<EditProfile> {
   late TextEditingController nameController;
   late TextEditingController emailController;
   late TextEditingController phoneController;
+  late TextEditingController birthdayController;
+  late TextEditingController sexeController;
   late TextEditingController newPasswordController;
 
   @override
@@ -29,6 +31,8 @@ class _EditProfileState extends State<EditProfile> {
     nameController = TextEditingController();
     emailController = TextEditingController();
     phoneController = TextEditingController();
+    birthdayController = TextEditingController();
+    sexeController = TextEditingController();
     newPasswordController = TextEditingController();
     readToken().then((token) {
       getUserInfo(token);
@@ -53,6 +57,8 @@ class _EditProfileState extends State<EditProfile> {
         'name': nameController.text,
         'email': emailController.text,
         'phone': int.parse(phoneController.text),
+        'birthday': int.parse(birthdayController.text),
+        'sexe': int.parse(sexeController.text),
       }),
     );
 
@@ -114,6 +120,8 @@ class _EditProfileState extends State<EditProfile> {
         nameController.text = user['name'] ?? '';
         emailController.text = user['email'] ?? '';
         phoneController.text = user['phone']?.toString() ?? '';
+        birthdayController.text = user['birthday']?.toString() ?? '';
+        sexeController.text = user['sexe']?.toString() ?? '';
       });
     } else {
       throw Exception('Failed to load user info');
@@ -204,6 +212,42 @@ class _EditProfileState extends State<EditProfile> {
                           horizontal: 30.0, vertical: 14.0),
                       prefixIcon: Icon(Icons.phone),
                       labelText: 'Phone',
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Container(
+                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                child: Material(
+                  elevation: 5.0,
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: TextFormField(
+                    controller: birthdayController,
+                    decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 14.0),
+                      prefixIcon: Icon(Icons.cake),
+                      labelText: 'Birthday',
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Container(
+                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                child: Material(
+                  elevation: 5.0,
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: TextFormField(
+                    controller: sexeController,
+                    decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 14.0),
+                      prefixIcon: Icon(Icons.person),
+                      labelText: 'Sexe',
                       border: InputBorder.none,
                     ),
                   ),

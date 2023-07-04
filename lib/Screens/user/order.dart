@@ -168,6 +168,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               ),
                             ],
                           ),
+                          SizedBox(width: 6),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -187,6 +188,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               ),
                             ],
                           ),
+                          SizedBox(width: 6),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -263,7 +265,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                       );
                                     },
                                     child: Padding(
-                                      padding: const EdgeInsets.only(left: 20),
+                                      padding: const EdgeInsets.only(left: 5),
                                       child: Row(
                                         children: [
                                           Text(
@@ -271,12 +273,12 @@ class _OrderScreenState extends State<OrderScreen> {
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.green[800],
-                                                fontSize: 12),
+                                                fontSize: 10),
                                           ),
                                           Icon(
                                             Icons.arrow_forward,
                                             color: Colors.green[800],
-                                            size: 35,
+                                            size: 25,
                                           ),
                                         ],
                                       ),
@@ -374,7 +376,13 @@ class _OrderScreenState extends State<OrderScreen> {
           showDialog(
             context: context,
             builder: (_) => AlertDialog(
-              title: const Text('Rate the Product'),
+              title: Text(
+                'Rate your experience',
+                style: TextStyle(
+                    color: Colors.green.shade800,
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold),
+              ),
               content: SizedBox(
                 height: 200,
                 child: ProductRatingPage(jsonDta: jsonDta),
@@ -382,6 +390,15 @@ class _OrderScreenState extends State<OrderScreen> {
               actions: const [],
             ),
           );
+        } else if (response['status'] == "400") {
+          //print(response['message']);
+          //print(response['status']);
+
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "Error",
+              response['message'],
+              colorText: Colors.white);
         }
       });
     } catch (e) {

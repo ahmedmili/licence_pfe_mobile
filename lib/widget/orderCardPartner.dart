@@ -65,8 +65,8 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
                           Text(
                             widget.order.user_name,
                             style: const TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
-                          )
+                                fontSize: 13, fontWeight: FontWeight.bold),
+                          ),
                         ],
                       ),
                       Row(
@@ -75,7 +75,7 @@ class _OrderCardPartnerState extends State<OrderCardPartner> {
                           Text(
                             "${widget.order.user_phone}",
                             style: const TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
+                                fontSize: 14, fontWeight: FontWeight.bold),
                           )
                         ],
                       ),

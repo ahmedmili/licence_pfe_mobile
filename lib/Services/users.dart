@@ -22,6 +22,7 @@ class UserService {
       },
     );
     final favorsData = jsonDecode(favorsListresponse.body);
+
     if (favorsData[0].length > 0) {
       // if one or more favorits exists
       final name = favorsData[0][0]["name"];
@@ -37,6 +38,7 @@ class UserService {
       if (response.statusCode == 200) {
         // fetch result into list
         List<dynamic> boxsList = jsonDecode(response.body)["boxs"];
+
         final List<Box> boxs = [];
         for (int i = 0; i < boxsList.length; i++) {
           final newBox = Box(

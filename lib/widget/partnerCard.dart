@@ -40,7 +40,7 @@ class _PartnerCardState extends State<PartnerCard> {
       children: <Widget>[
         if (favoredPartners.isNotEmpty)
           SizedBox(
-            height: 500,
+            height: 680,
             width: 450,
             child: ListView.builder(
               itemCount: favoredPartners.length,
@@ -118,7 +118,7 @@ class _PartnerCardState extends State<PartnerCard> {
                                   Icon(Icons.location_on_outlined,
                                       color: Colors.green[800]),
                                   const SizedBox(width: 10),
-                                  const Text(
+                                  Text(
                                     "Address",
                                     style: TextStyle(
                                       fontSize: 16,

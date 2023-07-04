@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    UserService.getRecommandedBoxs();
+    // UserService.getRecommandedBoxs();
 
     return Scaffold(
       body: ListView(

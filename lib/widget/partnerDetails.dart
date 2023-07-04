@@ -52,7 +52,7 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                 SingleChildScrollView(
                   child: Container(
                     height: 650,
-                    width: Dimensions.width50 * 10,
+                    width: 580,
                     padding:
                         const EdgeInsets.only(left: 35.0, right: 25.0, top: 0),
                     child: Material(
@@ -87,18 +87,20 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                                       ),
                                     ),
                                   ),
-                                  Text(
-                                    controller.partner.name,
-                                    style: const TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
+                                  SingleChildScrollView(
+                                    child: Text(
+                                      controller.partner.name,
+                                      style: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold),
+                                    ),
                                   ),
                                 ],
                               ),
                               //like
                               const Padding(
                                 padding: EdgeInsets.only(
-                                    left: 20, right: 20, top: 10, bottom: 20),
+                                    left: 15, right: 20, top: 10, bottom: 20),
                                 child: NeuButtonPartner(),
                               ),
                             ],
@@ -232,12 +234,16 @@ class _PartnerDetailsState extends State<PartnerDetails> {
                                   fontSize: Dimensions.font16,
                                 ),
                               ),
-                              Text(
-                                controller.partner.adress.toString(),
-                                style: TextStyle(
-                                  color: Colors.green.shade800,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: Dimensions.font16,
+                              Expanded(
+                                child: SingleChildScrollView(
+                                  child: Text(
+                                    controller.partner.adress.toString(),
+                                    style: TextStyle(
+                                      color: Colors.green.shade800,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: Dimensions.font16,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],

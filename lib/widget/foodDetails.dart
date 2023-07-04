@@ -7,6 +7,7 @@ import 'package:saverapp/Models/partner.dart';
 import 'package:saverapp/Services/globals.dart';
 import '../Models/boxs.dart';
 import '../Screens/user/congratulations.dart';
+import '../dimensions.dart';
 import 'neonButton.dart';
 
 class FoodDetails extends StatefulWidget {
@@ -126,8 +127,8 @@ class _FoodDetailsState extends State<FoodDetails> {
                 Text(
                   partner.name,
                   style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 26,
+                      color: Colors.white,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
               ],
@@ -249,25 +250,29 @@ class _FoodDetailsState extends State<FoodDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
-                            children: [
-                              const SizedBox(height: 20),
-                              const Icon(Icons.location_on_outlined),
-                              Text(widget.partner.adress.toString(),
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green.shade800,
-                                  )),
-                            ],
-                          ),
+                              // children: [
+                              //   SizedBox(height: 20),
+                              //   Icon(Icons.location_on_outlined),
+                              //   Text(widget.partner.adress.toString(),
+                              //       style: TextStyle(
+                              //         fontSize: 14,
+                              //         fontWeight: FontWeight.bold,
+                              //         color: Colors.green.shade800,
+                              //       )),
+                              // ],
+                              ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 25),
-                            child: Text(
-                              "More information about ${partner.name}",
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[800]),
+                            padding: const EdgeInsets.only(left: 1),
+                            child: Expanded(
+                              child: SingleChildScrollView(
+                                child: Text(
+                                  "More information about ${partner.name}",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.green[800]),
+                                ),
+                              ),
                             ),
                           ),
                         ],
