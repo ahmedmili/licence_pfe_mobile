@@ -86,7 +86,6 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
                 color: Colors.white),
             child: GetBuilder<GlobalController>(
               builder: (controller) {
-                print("rebuild");
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -145,7 +144,7 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
                         Padding(
                           padding: const EdgeInsets.only(left: 30),
                           child: Text(
-                            '${"Remaining_quantity".tr} : ${controller.box.remaining_quantity}',
+                            '${"Remaining_quantity".tr} : ${controller.box.remainingQuantity}',
                             style: const TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.bold),
                           ),

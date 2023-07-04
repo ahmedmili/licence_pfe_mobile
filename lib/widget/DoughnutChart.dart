@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -23,7 +25,7 @@ class DoughnutChart extends StatefulWidget {
 
 class _DoughnutChartState extends State<DoughnutChart> {
   List<ChartData> chartData = [];
-  List<Color> categoryColors = [
+  List<Color> categoryColors = const [
     Color.fromRGBO(255, 217, 184, 1.0),
     Color.fromARGB(255, 31, 67, 137),
     Color.fromARGB(255, 73, 7, 40),
@@ -49,7 +51,6 @@ class _DoughnutChartState extends State<DoughnutChart> {
           'Authorization': 'Bearer $token',
         },
       );
-      print(response.body);
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         List<ChartData> dataPoints = [];
@@ -67,14 +68,14 @@ class _DoughnutChartState extends State<DoughnutChart> {
         throw Exception('Failed to fetch box counts');
       }
     } catch (error) {
-      print(error);
+      // print(error);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     if (chartData.isEmpty) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(
           valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFB2CCFF)),
           strokeWidth: 5,
@@ -91,7 +92,7 @@ class _DoughnutChartState extends State<DoughnutChart> {
                     dataSource: chartData,
                     xValueMapper: (ChartData data, _) => data.category,
                     yValueMapper: (ChartData data, _) => data.value,
-                    dataLabelSettings: DataLabelSettings(
+                    dataLabelSettings: const DataLabelSettings(
                       isVisible: true,
                     ),
                     pointColorMapper: (ChartData data, _) {
@@ -103,7 +104,7 @@ class _DoughnutChartState extends State<DoughnutChart> {
                 ],
               ),
             ),
-            Container(
+            SizedBox(
               width: 100,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -115,7 +116,7 @@ class _DoughnutChartState extends State<DoughnutChart> {
                       Container(
                         width: 10,
                         height: 10,
-                        margin: EdgeInsets.only(right: 5),
+                        margin: const EdgeInsets.only(right: 5),
                         color: categoryColors[index],
                       ),
                       Text(data.category),

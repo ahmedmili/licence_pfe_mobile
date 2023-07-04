@@ -84,7 +84,7 @@ class _FilterFieldState extends State<FilterField> {
                               Padding(
                                 padding: EdgeInsets.only(
                                     left: Dimensions.width50 * 3),
-                                child: Text(
+                                child: const Text(
                                   "Filters",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -110,7 +110,7 @@ class _FilterFieldState extends State<FilterField> {
                           SizedBox(
                             height: 48,
                             width: Dimensions.width50 * 8,
-                            child: MoneyFilter(),
+                            child: const MoneyFilter(),
                           ),
                           SizedBox(height: Dimensions.height20 * 2),
                           GestureDetector(

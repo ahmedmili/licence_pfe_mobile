@@ -1,8 +1,4 @@
-// import './translation_keys.dart' as translation;
-
-// const title = 'title';
-// const subtitle = 'subtitle';
-// const withParam = 'withParam';
+// ignore_for_file: file_names
 
 import 'package:get/get.dart';
 

@@ -131,7 +131,7 @@ class _BoxCardPartnerState extends State<BoxCardPartner> {
               ),
               child: Center(
                 child: Text(
-                  'Stay ${widget.box.remaining_quantity.toString()} to save',
+                  'Stay ${widget.box.remainingQuantity.toString()} to save',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,

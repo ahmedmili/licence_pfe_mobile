@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../Models/boxs.dart';
@@ -81,11 +82,11 @@ class BoxServices {
         oldprice: data["oldprice"],
         partnerId: data["partner_id"],
         quantity: data["quantity"],
-        remaining_quantity: data['remaining_quantity'],
+        remainingQuantity: data['remaining_quantity'],
         startdate: data['startdate'],
       );
       controller.setBox(box);
-      print(jsonDecode(responseString)["message"]);
+      Get.toNamed('/boxdetails');
     } else {
       throw Exception('Erreur lors de la requête : ${response.statusCode}');
     }
@@ -134,17 +135,25 @@ class BoxServices {
       oldprice: jsonDecode(response.body)["box"]["oldprice"],
       partnerId: jsonDecode(response.body)["box"]["partner_id"],
       quantity: int.parse(jsonDecode(response.body)["box"]["quantity"]),
-      remaining_quantity:
+      remainingQuantity:
           int.parse(jsonDecode(response.body)["box"]['remaining_quantity']),
       startdate: jsonDecode(response.body)["box"]['startdate'],
     );
     controller.setBox(box);
     if (response.statusCode == 200) {
-      Get.snackbar('Success', 'box details changed successfully');
-      Get.back();
+      Get.snackbar(
+          backgroundColor: Colors.white,
+          'Success',
+          'box details changed successfully',
+          colorText: Colors.green.shade800);
+      // Get.back();
+      Get.toNamed('/boxdetails');
     } else {
       Get.snackbar(
-          'Error'.tr, 'Failed to changed box details. Please try again.');
+          backgroundColor: Colors.red,
+          'Error'.tr,
+          'Failed to changed box details. Please try again.',
+          colorText: Colors.white);
       throw Exception('Failed to fetch partner data');
     }
   }

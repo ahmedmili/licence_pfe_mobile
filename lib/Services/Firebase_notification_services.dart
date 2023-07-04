@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 class FirebaseMessagingService {
@@ -58,10 +60,3 @@ class FirebaseMessagingService {
     print("Handling a background message: ${message.messageId}");
   }
 }
-
-// Initialize FirebaseMessagingService in your main.dart file
-// void main() {
-//   FirebaseMessagingService firebaseMessagingService =
-//       FirebaseMessagingService();
-//   firebaseMessagingService.setupFirebaseMessaging();
-// }

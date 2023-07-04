@@ -41,7 +41,7 @@ class PartnersService {
           startdate: data[i]['startdate'],
           enddate: data[i]['enddate'],
           quantity: data[i]['quantity'],
-          remaining_quantity: data[i]['remaining_quantity'],
+          remainingQuantity: data[i]['remaining_quantity'],
           image: data[i]['image'],
           partnerId: data[i]['partner_id'],
           title: data[i]['title'],
@@ -140,7 +140,7 @@ class PartnersService {
             oldprice: data[i]['oldprice'],
             newprice: data[i]['newprice'],
             price: data[i]['price'],
-            remaining_quantity: data[i]['remaining_quantity'],
+            remainingQuantity: data[i]['remaining_quantity'],
             created_at: data[i]['created_at'],
           );
           orders.add(newOrder);
@@ -189,7 +189,7 @@ class PartnersService {
             oldprice: data[i]["boxs"][0]["oldprice"],
             newprice: data[i]["boxs"][0]["newprice"],
             price: data[i]["price"],
-            remaining_quantity: data[i]["boxs"][0]['remaining_quantity'],
+            remainingQuantity: data[i]["boxs"][0]['remaining_quantity'],
             created_at: data[i]['created_at'],
           );
           orders.add(newOrder);
@@ -291,7 +291,6 @@ class PartnersService {
       Get.offNamed("profilePartner");
       return json.decode(response.body);
     } else {
-      print(response.statusCode);
       Get.snackbar('Error'.tr, 'Failed to change password. Please try again.');
       throw Exception('Failed to fetch partner data');
     }
@@ -319,7 +318,6 @@ class PartnersService {
       Get.offNamed("profilePartner");
       return json.decode(response.body);
     } else {
-      print(response.statusCode);
       Get.snackbar('Error'.tr, 'Failed to change password. Please try again.');
       throw Exception('Failed to fetch partner data');
     }
@@ -337,18 +335,12 @@ class PartnersService {
     request.files.add(await http.MultipartFile.fromPath('image', image.path));
     request.headers.addAll(headers);
     var response = await request.send();
-    var responseString = await response.stream.bytesToString();
+    // var responseString = await response.stream.bytesToString();
 
     if (response.statusCode == 200) {
       Get.snackbar('Success', 'your password changed successfully');
       Get.offNamed("profilePartner");
-      print(responseString);
-      // print("save clicked 2");
-      // return json.decode(response.body);
     } else {
-      print(responseString);
-      // print("save clicked 3");
-      // print(response.statusCode);
       Get.snackbar('Error'.tr, 'Failed to change image. Please try again.');
       throw Exception('Failed to fetch partner image');
     }

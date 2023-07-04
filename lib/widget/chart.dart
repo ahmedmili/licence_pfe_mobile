@@ -46,7 +46,7 @@ class ChartState extends State<Chart> {
             ],
           );
         } else {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFB2CCFF)),
               strokeWidth: 5,

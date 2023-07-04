@@ -66,7 +66,7 @@ class _CongratulationsState extends State<Congratulations> {
         oldprice: data["boxs"][0]["oldprice"],
         newprice: data["boxs"][0]["newprice"],
         price: data["price"],
-        remaining_quantity: data["boxs"][0]['remaining_quantity'],
+        remainingQuantity: data["boxs"][0]['remaining_quantity'],
         created_at: data['created_at'],
       );
 
@@ -76,7 +76,7 @@ class _CongratulationsState extends State<Congratulations> {
           "Your order has been successfully placed.",
           colorText: Colors.green.shade800);
     } else {
-      print("Something wrong!");
+      // print("Something wrong!");
     }
   }
 

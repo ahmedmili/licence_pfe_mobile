@@ -18,7 +18,6 @@ class _HomeScreenState extends State<HomeScreen> {
   GeoLocatorController geoController = Get.find<GeoLocatorController>();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     // UserService.getRecommandedBoxs();
   }
@@ -31,8 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    UserService.getRecommandedBoxs();
-
     return Scaffold(
       body: ListView(
         scrollDirection: Axis.vertical,

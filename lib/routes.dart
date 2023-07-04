@@ -76,6 +76,12 @@ List<GetPage<dynamic>> routes = [
     transitionDuration: const Duration(milliseconds: 700),
   ),
   GetPage(
+    name: '/boxdetails',
+    page: () => const FoodDetailsPartner(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 700),
+  ),
+  GetPage(
     name: '/OrderGlobal',
     page: () => const OrderGlobal(),
     transition: Transition.rightToLeft,

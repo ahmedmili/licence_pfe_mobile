@@ -1,11 +1,9 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:saverapp/dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth.dart';
-import '../../Services/globals.dart';
 import '../../widget/rounded_button.dart';
 import '../login.dart';
 import 'package:http/http.dart' as http;
@@ -46,20 +44,48 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
       if (response["status"] == 400) {
         final err = response["error"];
         if (err["phone"] != null) {
-          Get.snackbar("error".tr, err["phone"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["phone"][0],
+              colorText: Colors.white);
         } else if (err["email"] != null) {
-          Get.snackbar("error".tr, err["email"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["email"][0],
+              colorText: Colors.white);
         } else if (err["name"] != null) {
-          Get.snackbar("error".tr, err["name"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["name"][0],
+              colorText: Colors.white);
         } else if (err["password"] != null) {
-          Get.snackbar("error".tr, err["password"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["password"][0],
+              colorText: Colors.white);
         } else if (err["sexe"] != null) {
-          Get.snackbar("error".tr, err["sexe"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["sexe"][0],
+              colorText: Colors.white);
         } else if (err["birthday"] != null) {
-          Get.snackbar("error".tr, err["birthday"][0]);
+          Get.snackbar(
+              backgroundColor: Colors.red,
+              "error".tr,
+              err["birthday"][0],
+              colorText: Colors.white);
         }
       } else if (response["status"] == 200) {
-        Get.snackbar("success".tr, response["message"]);
+        Get.snackbar(
+            backgroundColor: Colors.white,
+            "success".tr,
+            response["message"],
+            colorText: Colors.green.shade800);
 
         String token = response['token'];
         _save(token);
@@ -71,7 +97,11 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
             colorText: Colors.green.shade800);
       }
     } else {
-      Get.snackbar("Error", "Email not valid");
+      Get.snackbar(
+          backgroundColor: Colors.red,
+          "Error",
+          "Email not valid",
+          colorText: Colors.white);
     }
     // } else {}
   }
@@ -211,34 +241,71 @@ class _RegisterScreenState extends State<RegisterUserScreen> {
                 ),
               ),
               const SizedBox(
-                height: 40,
+                height: 20,
               ),
               /////
               ///
               ///
               ///
-              const SizedBox(height: 10),
-              DropdownButtonFormField<String>(
-                decoration: const InputDecoration(labelText: 'Gender'),
-                items: ['male', 'female'] // male,female
-                    .map((String value) => DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        ))
-                    .toList(),
-                validator: (value) {
-                  if (value == null) {
-                    return 'Please select your gender';
-                  }
-                  return null;
-                },
-                onChanged: (value) {
-                  setState(() {
-                    _selectedSex = value;
-                  });
-                },
-                value: _selectedSex, // Set the default value of the dropdown
+
+              // DropdownButtonFormField<String>(
+              //   decoration: const InputDecoration(labelText: 'Gender'),
+              //   items: ['male', 'female'] // male,female
+              //       .map((String value) => DropdownMenuItem<String>(
+              //             value: value,
+              //             child: Text(value),
+              //           ))
+              //       .toList(),
+              //   validator: (value) {
+              //     if (value == null) {
+              //       return 'Please select your gender';
+              //     }
+              //     return null;
+              //   },
+              //   onChanged: (value) {
+              //     setState(() {
+              //       _selectedSex = value;
+              //     });
+              //   },
+              //   value: _selectedSex, // Set the default value of the dropdown
+              // ),
+
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Gender:',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.green.shade800),
+                    ),
+                  ),
+                  RadioListTile<String>(
+                    title: const Text('Male'),
+                    value: 'male',
+                    groupValue: _selectedSex,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedSex = value;
+                      });
+                    },
+                  ),
+                  RadioListTile<String>(
+                    title: const Text('Female'),
+                    value: 'female',
+                    groupValue: _selectedSex,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedSex = value;
+                      });
+                    },
+                  ),
+                ],
               ),
+
               const SizedBox(height: 10),
 
               /////

@@ -150,7 +150,7 @@ import 'package:get/get.dart';
 import 'package:saverapp/Services/users.dart';
 
 class ProductRatingPage extends StatefulWidget {
-  ProductRatingPage({
+  const ProductRatingPage({
     super.key,
     required this.jsonDta,
   });
@@ -193,11 +193,11 @@ class _ProductRatingPageState extends State<ProductRatingPage> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: _selectedEmoji == emoji ? Colors.yellow : Colors.grey,
+          color: _selectedEmoji == emoji ? Colors.green.shade800 : Colors.grey,
         ),
         child: Text(
           emoji,
-          style: const TextStyle(fontSize: 20.0),
+          style: const TextStyle(fontSize: 30.0),
         ),
       ),
     );
@@ -206,15 +206,18 @@ class _ProductRatingPageState extends State<ProductRatingPage> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 160,
+      height: 100,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          const SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildEmojiButton('😍', 1),
+              const SizedBox(width: 10),
               _buildEmojiButton('😐', 2),
+              const SizedBox(width: 10),
               _buildEmojiButton('😞', 3),
             ],
           ),
@@ -225,17 +228,53 @@ class _ProductRatingPageState extends State<ProductRatingPage> {
           //     labelText: 'Comment',
           //   ),
           // ),
-          ElevatedButton(
-            onPressed: () {
-              _submitRating(_selectedRating);
-            },
-            child: const Text('Submit'),
-          ),
-          ElevatedButton(
-            // onPressed: () => Get.offAllNamed("main"),
-            onPressed: () => Get.back(),
-            child: const Text('Cancel'),
-          ),
+          const SizedBox(height: 30),
+          Row(
+            children: [
+              SizedBox(
+                width: 120,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _submitRating(_selectedRating);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(360, 40),
+                    // padding: EdgeInsets.symmetric(horizontal: 20),
+                    backgroundColor: Colors.white,
+                    side: BorderSide(color: Colors.green.shade800, width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Text(
+                    'Submit',
+                    style: TextStyle(color: Colors.green.shade800),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 20),
+              SizedBox(
+                width: 120,
+                child: ElevatedButton(
+                  // onPressed: () => Get.offAllNamed("main"),
+                  onPressed: () => Get.back(),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(360, 40),
+                    // padding: EdgeInsets.symmetric(horizontal: 20),
+                    backgroundColor: Colors.white,
+                    side: const BorderSide(color: Colors.red, width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Text(
+                    'Cancel',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );

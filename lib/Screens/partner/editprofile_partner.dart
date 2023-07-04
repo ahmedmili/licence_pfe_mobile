@@ -285,7 +285,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(left: 10),
-                child: Container(
+                child: SizedBox(
                   width: 360,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -314,7 +314,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 10),
-                child: Container(
+                child: SizedBox(
                   width: 360,
                   child: ElevatedButton(
                     onPressed: _pickImage,
@@ -347,7 +347,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
 
               Padding(
                 padding: const EdgeInsets.only(left: 10),
-                child: Container(
+                child: SizedBox(
                   width: 360,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -401,7 +401,7 @@ class _EditProfilePartnerState extends State<EditProfilePartner> {
 
               Padding(
                 padding: const EdgeInsets.only(left: 10),
-                child: Container(
+                child: SizedBox(
                   width: 360,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(

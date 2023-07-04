@@ -1,6 +1,5 @@
 // ignore_for_file: depend_on_referenced_packages, avoid_init_to_null
 
-import 'dart:convert';
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -10,9 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:saverapp/Screens/login.dart';
 import 'package:saverapp/Screens/waiting.dart';
 import 'package:saverapp/Services/geoLocator.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/auth.dart';
-import '../../Services/globals.dart';
 import '../../widget/rounded_button.dart';
 import 'package:http/http.dart' as http;
 import '../../widget/Location_dropDawn.dart';
@@ -109,11 +106,6 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
         _imageName = path.basename(pickedFile.path);
       } else {}
     });
-  }
-
-  _save(String token) async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString("token", token);
   }
 
   @override
@@ -232,7 +224,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.grey,
         ),
       ),
@@ -376,7 +368,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               const SizedBox(
                 height: 15,
               ),
-              Container(
+              SizedBox(
                 width: 360,
                 child: ElevatedButton(
                   onPressed: _pickImage,
@@ -451,7 +443,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
               ),
 
               // buttons
-              Container(
+              SizedBox(
                 width: 360,
                 child: MaterialButton(
                   onPressed: _showTimePicker,
@@ -468,7 +460,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.access_time_outlined, color: Colors.grey[800]),
-                      SizedBox(width: 5),
+                      const SizedBox(width: 5),
                       Text('Pick_Opening_Time'.tr,
                           style:
                               TextStyle(color: Colors.grey[800], fontSize: 15)),
@@ -485,7 +477,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                     color: Colors.grey[800]),
               ),
 
-              Container(
+              SizedBox(
                 width: 360,
                 child: MaterialButton(
                   onPressed: _showClosingTimePicker,
@@ -502,7 +494,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.access_time_filled, color: Colors.grey[800]),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Text('Pick_Closing_Time'.tr,
@@ -532,7 +524,7 @@ class _RegisterPartnerScreenState extends State<RegisterPartnerScreen> {
                   child: Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 100),
+                        padding: const EdgeInsets.only(left: 100),
                         child: Text("Get_Position".tr,
                             style: TextStyle(
                                 color: Colors.grey[800], fontSize: 15)),

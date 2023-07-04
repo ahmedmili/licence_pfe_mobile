@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:saverapp/Screens/user/editprofile.dart';
 import 'package:saverapp/Services/globals.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'me.dart';
 
 class ProfileUser extends StatefulWidget {
   const ProfileUser({Key? key}) : super(key: key);
@@ -206,6 +203,100 @@ class _ProfileUserState extends State<ProfileUser> {
                                 ),
                                 Text(
                                   "Phone: ${user['phone']}",
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Stack(
+                children: <Widget>[
+                  Container(
+                    height: 50,
+                    width: 500,
+                    padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                    child: Material(
+                      elevation: 5.0,
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 17),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.cake,
+                                  color: Colors.green[800],
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  "Birthday: ${user['birthday']}",
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Stack(
+                children: <Widget>[
+                  Container(
+                    height: 50,
+                    width: 500,
+                    padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                    child: Material(
+                      elevation: 5.0,
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 17),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.person,
+                                  color: Colors.green[800],
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  "Sexe: ${user['sexe']}",
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16),

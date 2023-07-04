@@ -22,6 +22,7 @@ class UserService {
       },
     );
     final favorsData = jsonDecode(favorsListresponse.body);
+
     if (favorsData[0].length > 0) {
       // if one or more favorits exists
       final name = favorsData[0][0]["name"];
@@ -37,6 +38,7 @@ class UserService {
       if (response.statusCode == 200) {
         // fetch result into list
         List<dynamic> boxsList = jsonDecode(response.body)["boxs"];
+
         final List<Box> boxs = [];
         for (int i = 0; i < boxsList.length; i++) {
           final newBox = Box(
@@ -48,7 +50,7 @@ class UserService {
             startdate: boxsList[i]['startdate'],
             enddate: boxsList[i]['enddate'],
             quantity: boxsList[i]['quantity'],
-            remaining_quantity: boxsList[i]['remaining_quantity'],
+            remainingQuantity: boxsList[i]['remaining_quantity'],
             image: boxsList[i]['image'],
             partnerId: boxsList[i]['partner_id'],
             title: boxsList[i]['title'],
@@ -57,8 +59,6 @@ class UserService {
           boxs.add(newBox);
         }
         // return boxs list
-        print("AI part return");
-
         return boxs;
       } else {
         throw Exception('Failed to fetch products');
@@ -89,7 +89,7 @@ class UserService {
             startdate: boxsList[i]['startdate'],
             enddate: boxsList[i]['enddate'],
             quantity: boxsList[i]['quantity'],
-            remaining_quantity: boxsList[i]['remaining_quantity'],
+            remainingQuantity: boxsList[i]['remaining_quantity'],
             image: boxsList[i]['image'],
             partnerId: boxsList[i]['partner_id'],
             title: boxsList[i]['title'],
@@ -97,7 +97,6 @@ class UserService {
           );
           boxs.add(newBox);
         }
-        print("Graph part return");
         return boxs;
       } else {
         throw ("no data found");
@@ -261,7 +260,7 @@ class UserService {
           startdate: data[i]['startdate'],
           enddate: data[i]['enddate'],
           quantity: data[i]['quantity'],
-          remaining_quantity: data[i]['remaining_quantity'],
+          remainingQuantity: data[i]['remaining_quantity'],
           image: data[i]['image'],
           partnerId: data[i]['partner_id'],
           title: data[i]['title'],

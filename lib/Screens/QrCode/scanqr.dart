@@ -2,6 +2,8 @@ import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 
 class CreateScreen extends StatefulWidget {
+  const CreateScreen({super.key});
+
   @override
   _CreateScreenState createState() => _CreateScreenState();
 }

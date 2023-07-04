@@ -40,7 +40,7 @@ class _PartnerCardState extends State<PartnerCard> {
       children: <Widget>[
         if (favoredPartners.isNotEmpty)
           SizedBox(
-            height: 500,
+            height: 680,
             width: 450,
             child: ListView.builder(
               itemCount: favoredPartners.length,
