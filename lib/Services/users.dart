@@ -117,12 +117,32 @@ class UserService {
     );
     if (response.statusCode == 200) {
       List<dynamic> data = jsonDecode(response.body);
-      final box = List<Box>.from(
-        data.map((boxJson) => Box.fromJson(boxJson)),
-      );
+      // final box = List<Box>.from(
+      //   data.map((boxJson) => Box.fromJson(boxJson)),
+      // );
+      // print(box);
+      // return box;
+      final List<Box> boxs = [];
 
-      print(box);
-      return box;
+      for (int i = 0; i < data.length; i++) {
+        final newBox = Box(
+          // Add fields here to create the new Box object
+          id: data[i]['id'],
+          description: data[i]['description'],
+          category: data[i]['category'],
+          newprice: data[i]['newprice'],
+          startdate: data[i]['startdate'],
+          enddate: data[i]['enddate'],
+          quantity: data[i]['quantity'],
+          remainingQuantity: data[i]['remaining_quantity'],
+          image: data[i]['image'],
+          partnerId: data[i]['partner_id'],
+          title: data[i]['title'],
+          oldprice: data[i]['oldprice'],
+        );
+        boxs.add(newBox);
+      }
+      return boxs;
     } else {
       throw Exception('Failed to fetch products');
     }
