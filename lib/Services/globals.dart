@@ -5,7 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Models/partner.dart';
 
-const String localhost = "192.168.1.20";
+// const String localhost = "192.168.137.224";
+const String localhost = "192.168.100.21";
 // const String localhost = "10.0.2.2";
 
 const String baseURL = "http://$localhost:8000/api/";
