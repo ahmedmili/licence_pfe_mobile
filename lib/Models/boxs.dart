@@ -43,7 +43,7 @@ class Box {
       startdate: json['startdate'],
       enddate: json['enddate'],
       quantity: json['quantity'],
-      remainingQuantity: json['remainingQuantity'],
+      remainingQuantity: json['remaining_quantity'],
       image: json['image'],
       category: json['category'],
       status: json['status'],

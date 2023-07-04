@@ -83,6 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
               FutureBuilder<List<Box>>(
                 future: UserService.getAvailableBoxs(),
                 builder: (context, snapshot) {
+                  // print(snapshot.data);
                   if (snapshot.hasData) {
                     return Column(
                       children: [

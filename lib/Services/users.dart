@@ -121,6 +121,7 @@ class UserService {
         data.map((boxJson) => Box.fromJson(boxJson)),
       );
 
+      print(box);
       return box;
     } else {
       throw Exception('Failed to fetch products');
