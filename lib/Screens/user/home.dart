@@ -18,7 +18,6 @@ class _HomeScreenState extends State<HomeScreen> {
   GeoLocatorController geoController = Get.find<GeoLocatorController>();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     // UserService.getRecommandedBoxs();
   }
@@ -31,8 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // UserService.getRecommandedBoxs();
-
     return Scaffold(
       body: ListView(
         scrollDirection: Axis.vertical,
@@ -44,45 +41,45 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 30,
               ),
-              // FutureBuilder(
-              //   future: UserService.getRecommandedBoxs(),
-              //   builder: (context, snapshot) {
-              //     // return const Text("coming soon");
-              //     if (snapshot.hasData) {
-              //       return Column(
-              //         children: [
-              //           Container(
-              //             padding:
-              //                 const EdgeInsets.only(left: 20.0, right: 15.0),
-              //             child: Row(
-              //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //               children: const <Widget>[
-              //                 Text(
-              //                   "Recommended for you",
-              //                   style: TextStyle(
-              //                       fontSize: 20, fontWeight: FontWeight.bold),
-              //                 ),
-              //               ],
-              //             ),
-              //           ),
-              //           const SizedBox(height: 10.0),
-              //           SizedBox(
-              //             height: 200,
-              //             child: BoxScreen(items: snapshot.data!),
-              //           ),
-              //         ],
-              //       );
-              //     } else {
-              //       return Center(
-              //         child: CircularProgressIndicator(
-              //           valueColor:
-              //               AlwaysStoppedAnimation<Color>(Colors.green[800]!),
-              //           strokeWidth: 5,
-              //         ),
-              //       );
-              //     }
-              //   },
-              // ),
+              FutureBuilder(
+                future: UserService.getRecommandedBoxs(),
+                builder: (context, snapshot) {
+                  // return const Text("coming soon");
+                  if (snapshot.hasData) {
+                    return Column(
+                      children: [
+                        Container(
+                          padding:
+                              const EdgeInsets.only(left: 20.0, right: 15.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: const <Widget>[
+                              Text(
+                                "Recommended for you",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 10.0),
+                        SizedBox(
+                          height: 200,
+                          child: BoxScreen(items: snapshot.data!),
+                        ),
+                      ],
+                    );
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Colors.green[800]!),
+                        strokeWidth: 5,
+                      ),
+                    );
+                  }
+                },
+              ),
               FutureBuilder<List<Box>>(
                 future: UserService.getAvailableBoxs(),
                 builder: (context, snapshot) {

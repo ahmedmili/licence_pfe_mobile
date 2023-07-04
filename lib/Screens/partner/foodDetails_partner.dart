@@ -86,7 +86,6 @@ class _FoodDetailsPartnerState extends State<FoodDetailsPartner> {
                 color: Colors.white),
             child: GetBuilder<GlobalController>(
               builder: (controller) {
-                print("rebuild");
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

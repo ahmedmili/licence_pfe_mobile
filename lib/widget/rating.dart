@@ -210,14 +210,14 @@ class _ProductRatingPageState extends State<ProductRatingPage> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildEmojiButton('😍', 1),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               _buildEmojiButton('😐', 2),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               _buildEmojiButton('😞', 3),
             ],
           ),
@@ -228,10 +228,10 @@ class _ProductRatingPageState extends State<ProductRatingPage> {
           //     labelText: 'Comment',
           //   ),
           // ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Row(
             children: [
-              Container(
+              SizedBox(
                 width: 120,
                 child: ElevatedButton(
                   onPressed: () {
@@ -252,8 +252,8 @@ class _ProductRatingPageState extends State<ProductRatingPage> {
                   ),
                 ),
               ),
-              SizedBox(width: 20),
-              Container(
+              const SizedBox(width: 20),
+              SizedBox(
                 width: 120,
                 child: ElevatedButton(
                   // onPressed: () => Get.offAllNamed("main"),
@@ -262,12 +262,12 @@ class _ProductRatingPageState extends State<ProductRatingPage> {
                     minimumSize: const Size(360, 40),
                     // padding: EdgeInsets.symmetric(horizontal: 20),
                     backgroundColor: Colors.white,
-                    side: BorderSide(color: Colors.red, width: 2),
+                    side: const BorderSide(color: Colors.red, width: 2),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Cancel',
                     style: TextStyle(color: Colors.red),
                   ),

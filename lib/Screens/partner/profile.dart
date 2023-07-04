@@ -17,10 +17,10 @@ class _ProfilePartnerState extends State<ProfilePartner> {
     return Scaffold(
       appBar: AppBar(
         title: Padding(
-          padding: EdgeInsets.only(left: 65),
+          padding: const EdgeInsets.only(left: 65),
           child: Text(
-            '${"My Profile".tr}',
-            style: TextStyle(
+            "My Profile".tr,
+            style: const TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
           ),
         ),

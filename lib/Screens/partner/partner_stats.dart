@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:saverapp/widget/DoughnutChart.dart';
 import 'package:saverapp/widget/pie.dart';
 
-import '../../dimensions.dart';
 import '../../widget/chart.dart';
 
 class PartnerStats extends StatelessWidget {
@@ -12,7 +11,7 @@ class PartnerStats extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
+        title: const Padding(
           padding: EdgeInsets.only(left: 65),
           child: Text(
             'Statistics',
@@ -67,7 +66,7 @@ class PartnerStats extends StatelessWidget {
                 ),
               ),
             ),
-            DoughnutChart(),
+            const DoughnutChart(),
           ],
         ),
       ),

@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saverapp/Screens/partner/partner_boxes.dart';
 
 import '../../widget/google_map.dart';
 import 'boxform.dart';
 
-import 'home_partner.dart';
 import 'me_partner.dart';
 
 class NavBottomScreen extends StatefulWidget {

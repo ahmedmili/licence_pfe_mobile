@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:saverapp/Screens/partner/profile.dart';
 import 'package:saverapp/Services/geoLocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Services/partners.dart';
@@ -129,7 +128,7 @@ class _MePartnerState extends State<MePartner> {
                   cb: () async {
                     SharedPreferences pref =
                         await SharedPreferences.getInstance();
-                    var res = await PartnersService.logout();
+                    PartnersService.logout();
                     // if (res.statusCode == 200) {
                     pref.setString("token", "");
                     pref.setString("role", "");

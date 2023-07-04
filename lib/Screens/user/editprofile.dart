@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -257,8 +259,8 @@ class _EditProfileState extends State<EditProfile> {
               Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green[800],
-                    onPrimary: Colors.white,
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.green[800],
                   ),
                   onPressed: () {
                     updateUser();
@@ -302,8 +304,9 @@ class _EditProfileState extends State<EditProfile> {
               Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green[800], // Couleur de fond du bouton
-                    onPrimary: Colors.white, // Couleur du texte du bouton
+                    foregroundColor: Colors.white,
+                    backgroundColor:
+                        Colors.green[800], // Couleur du texte du bouton
                   ),
                   onPressed: () {
                     updatePassword();

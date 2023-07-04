@@ -168,7 +168,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -188,7 +188,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
